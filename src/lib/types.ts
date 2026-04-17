@@ -7,9 +7,7 @@ import type { LucideIcon } from "lucide-react";
 export type Category = {
   name: Record<"ar" | "fr", string>;
   slug: string;
-  icon: LucideIcon;
-  quizCount: number;
-  avgDifficulty: "easy" | "medium" | "hard";
+  icon: string;
 };
 
 export type LeaderboardUser = {
@@ -27,7 +25,41 @@ export type Guild = {
   memberCount: number;
 };
 
-// Re-exporting AI flow types for consistency
 export type Quiz = GenerateLocalizedQuizContentOutput;
 export type Question = GenerateLocalizedQuizContentOutput[0];
 export type QuizGenerationInput = GenerateLocalizedQuizContentInput;
+
+export interface FeaturedQuiz {
+  id: string;
+  title: string;
+  category: string;
+  author: string;
+  imageId: string;
+  difficulty: "easy" | "medium" | "hard";
+  rating: number;
+  questionCount: number;
+}
+
+export interface TrendingQuiz {
+  rank: number;
+  title: string;
+  category: string;
+  points: number;
+  rating: number;
+  difficulty: "easy" | "medium" | "hard";
+}
+
+export interface DailyQuest {
+  id: string;
+  title: string;
+  progress: number;
+  goal: number;
+  reward: number;
+}
+
+export interface FriendActivity {
+  id: number;
+  text: string;
+  timestamp: string;
+  avatar: string;
+}

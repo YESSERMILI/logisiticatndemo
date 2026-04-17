@@ -47,6 +47,30 @@
       "description": "Guild logo 2",
       "imageUrl": "https://picsum.photos/seed/302/100/100",
       "imageHint": "geometric shape"
+    },
+    {
+      "id": "quiz-space",
+      "description": "An image of space for the space explorer quiz.",
+      "imageUrl": "https://picsum.photos/seed/401/600/400",
+      "imageHint": "nebula galaxy"
+    },
+    {
+      "id": "quiz-capitals",
+      "description": "An image of a cityscape for the world capitals quiz.",
+      "imageUrl": "https://picsum.photos/seed/402/600/400",
+      "imageHint": "london street"
+    },
+    {
+      "id": "quiz-movies",
+      "description": "An image representing 90s movies.",
+      "imageUrl": "https://picsum.photos/seed/403/600/400",
+      "imageHint": "retro cinema"
+    },
+    {
+      "id": "quiz-history",
+      "description": "An image for the ancient civilizations quiz.",
+      "imageUrl": "https://picsum.photos/seed/404/600/400",
+      "imageHint": "egyptian pyramids"
     }
   ]
 }

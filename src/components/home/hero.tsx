@@ -2,37 +2,67 @@
 
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/use-translation";
-import { AppName } from "../logo";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, History, Play } from "lucide-react";
 import Link from "next/link";
+import { Card, CardContent } from "../ui/card";
+import { categories } from "@/lib/data";
+import { Icon } from "../ui/icon";
 
 export function Hero() {
   const { t, language } = useTranslation();
+  const heroCategories = categories.slice(0, 4);
 
   return (
     <section
-      className="relative h-[60vh] min-h-[500px] w-full"
+      className="container mx-auto py-16 md:py-24"
       dir={language === "ar" ? "rtl" : "ltr"}
     >
-      <div className="container relative z-10 mx-auto flex h-full flex-col items-center justify-center text-center">
-        <AppName className="text-foreground" />
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="text-center lg:text-left">
+          <p className="font-semibold text-primary">{t('the_living_library')}</p>
+          <h1 className="mt-2 font-heading text-4xl md:text-6xl font-black tracking-tighter">
+            Good morning, Alex!
+          </h1>
+          <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-lg text-muted-foreground">
+            {t('hero_subtitle_extended')}
+          </p>
 
-        <p className="mt-4 max-w-xl font-heading text-lg text-muted-foreground md:text-xl">
-          {t("hero_subtitle")}
-        </p>
-
-        <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
-          <Button asChild size="lg" className="font-bold glow-on-hover">
-            <Link href="/categories">
-              {t("hero_cta_play")}
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <Button size="lg" className="font-bold glow-on-hover w-full sm:w-auto">
+              <Play className="mr-2 h-5 w-5" />
+              {t("continue_playing")}
+            </Button>
+            <Button size="lg" variant="outline" className="font-bold w-full sm:w-auto">
+              {t("explore_quizzes")}
               <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="font-bold border-primary/50 bg-transparent text-primary-foreground hover:bg-primary hover:text-primary-foreground">
-            <Link href="/register">
-              {t("hero_cta_create_account")}
-            </Link>
-          </Button>
+            </Button>
+          </div>
+          
+          <Card className="mt-8 text-left glassmorphic">
+            <CardContent className="p-4 flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-lg bg-secondary flex items-center justify-center">
+                        <History className="h-6 w-6 text-primary"/>
+                    </div>
+                    <div>
+                        <p className="text-sm text-muted-foreground">{t('continue_where_you_left_off')}</p>
+                        <p className="font-bold">The Ultimate Space Explorer</p>
+                    </div>
+                </div>
+                <ArrowRight className="h-5 w-5 text-muted-foreground"/>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+            {heroCategories.map((category) => (
+                 <Link key={category.slug} href={`/quiz/${category.slug}`} passHref>
+                    <Card className="glassmorphic aspect-square flex flex-col items-center justify-center gap-3 text-center p-4 glow-on-hover transition-all duration-300 hover:-translate-y-2">
+                        <Icon name={category.icon as any} className="h-10 w-10 text-primary" />
+                        <p className="font-bold text-lg">{category.name[language]}</p>
+                    </Card>
+                 </Link>
+            ))}
         </div>
       </div>
     </section>

@@ -1,19 +1,21 @@
 import Link from "next/link";
-import { Trophy } from "lucide-react";
+import { Logo } from "../logo";
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
-        <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
-          <Trophy className="h-6 w-6 text-primary" />
-          <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-            Built by Your Team. The source code is available on GitHub.
-          </p>
+    <footer className="w-full mt-24">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6 py-8 border-t">
+        <div className="flex flex-col md:flex-row items-center gap-4">
+            <Logo className="text-foreground"/>
+            <p className="text-sm text-muted-foreground">
+                Learn, Compete, Create, Conquer.
+            </p>
         </div>
-        <p className="text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} 3ez El Mondial. All rights reserved.
-        </p>
+        <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <Link href="/privacy" className="hover:text-primary">Privacy</Link>
+            <Link href="/terms" className="hover:text-primary">Terms</Link>
+            <Link href="/contact" className="hover:text-primary">Contact</Link>
+        </div>
       </div>
     </footer>
   );

@@ -2,10 +2,10 @@ import { cn } from "@/lib/utils";
 import { Trophy } from "lucide-react";
 
 export const Logo = ({ className }: { className?: string }) => (
-  <div className={cn("flex items-center gap-2 text-primary-foreground", className)}>
-    <Trophy className="h-6 w-6 text-accent" />
+  <div className={cn("flex items-center gap-2", className)}>
+    <Trophy className="h-6 w-6 text-primary" />
     <span className="font-heading text-xl font-bold tracking-tight">
-      3ez El Mondial
+      QuizVerse
     </span>
   </div>
 );
