@@ -34,7 +34,6 @@ async function QuizGenerator({ params, searchParams }: QuizPageProps) {
 
     return <QuizClient quiz={quizContent} topic={params.topic} />;
   } catch (error) {
-    console.error("Failed to generate quiz content:", error);
     return <QuizError />;
   }
 }

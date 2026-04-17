@@ -36,7 +36,7 @@ export async function generateLocalizedQuizContent(input: GenerateLocalizedQuizC
 
 const quizContentPrompt = ai.definePrompt({
   name: 'quizContentPrompt',
-  model: 'googleai/gemini-2.5-flash',
+  model: 'googleai/gemini-1.5-flash-latest',
   input: { schema: GenerateLocalizedQuizContentInputSchema },
   output: { schema: GenerateLocalizedQuizContentOutputSchema },
   prompt: `You are an expert quiz question generator for a competitive quiz platform focused on football, culture, and general knowledge in Tunisia. Your goal is to create high-quality, engaging, and challenging questions that are culturally relevant to a Tunisian audience.
