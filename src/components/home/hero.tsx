@@ -20,7 +20,7 @@ export function Hero() {
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <div className="text-center lg:text-left">
           <p className="font-semibold text-primary">{t('the_living_library')}</p>
-          <h1 className="mt-2 font-heading text-4xl md:text-6xl font-black tracking-tighter">
+          <h1 className="mt-2 text-4xl md:text-6xl font-black tracking-tighter">
             {t('hero_greeting')}{' '}{t('hero_alex')}
           </h1>
           <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-lg text-muted-foreground">

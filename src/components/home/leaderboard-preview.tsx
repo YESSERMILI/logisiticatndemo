@@ -12,7 +12,7 @@ export function FriendsActivity() {
   return (
     <div>
         <div className="flex items-center justify-between mb-4">
-             <h3 className="font-heading text-xl text-glow">
+             <h3 className="text-xl text-glow">
                 {t('friends_activity')}
             </h3>
             <Users className="text-accent" />

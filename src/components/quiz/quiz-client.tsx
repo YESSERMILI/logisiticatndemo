@@ -81,14 +81,14 @@ export function QuizClient({ quiz, topic }: QuizClientProps) {
       <div className="container mx-auto max-w-2xl py-12">
         <Card className="text-center">
           <CardHeader>
-            <CardTitle className="flex flex-col items-center gap-4 font-heading text-3xl">
+            <CardTitle className="flex flex-col items-center gap-4 text-3xl">
               <Trophy className="h-16 w-16 text-accent" />
               {t("quiz_results")}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-lg text-muted-foreground">{t("quiz_score")}:</p>
-            <p className="my-4 font-heading text-6xl font-bold text-primary">
+            <p className="my-4 text-6xl font-bold text-primary">
               {score} / {quiz.length}
             </p>
             <p className="text-muted-foreground">
@@ -151,7 +151,7 @@ export function QuizClient({ quiz, topic }: QuizClientProps) {
             <p className="text-sm text-muted-foreground">{t("quiz_score")}: {score}</p>
           </div>
           <Progress value={timerProgress} className="mt-4 h-2" />
-          <CardTitle className="pt-6 text-center font-heading text-2xl md:text-3xl">
+          <CardTitle className="pt-6 text-center text-2xl md:text-3xl">
             {questionText}
           </CardTitle>
         </CardHeader>

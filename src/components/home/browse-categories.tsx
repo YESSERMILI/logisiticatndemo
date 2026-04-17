@@ -14,7 +14,7 @@ export function BrowseCategories() {
     <section dir={language === "ar" ? "rtl" : "ltr"}>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h2 className="font-heading text-3xl font-bold text-glow">
+          <h2 className="text-3xl font-bold text-glow">
             {t("browse_categories")}
           </h2>
           <p className="text-muted-foreground">{t('find_next_challenge')}</p>

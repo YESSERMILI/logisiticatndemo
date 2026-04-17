@@ -49,7 +49,7 @@ export default function CategoriesPage() {
       dir={language === "ar" ? "rtl" : "ltr"}
     >
       <div className="mb-8 text-center">
-        <h1 className="font-heading text-4xl font-bold tracking-tight lg:text-5xl text-glow">
+        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl text-glow">
           {t("nav_categories")}
         </h1>
         <p className="mt-2 text-lg text-muted-foreground">
@@ -89,7 +89,7 @@ export default function CategoriesPage() {
                   <category.icon className="h-6 w-6" />
                 </div>
                 <div className="flex-grow">
-                  <CardTitle className="text-xl font-bold font-heading">
+                  <CardTitle className="text-xl font-bold">
                     {category.name[language]}
                   </CardTitle>
                    <p className="text-sm text-muted-foreground">

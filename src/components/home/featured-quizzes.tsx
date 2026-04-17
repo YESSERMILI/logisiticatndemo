@@ -36,7 +36,7 @@ export function FeaturedQuizzes() {
   return (
     <section dir={language === "ar" ? "rtl" : "ltr"}>
         <div className="mb-8">
-            <h2 className="font-heading text-3xl font-bold text-glow">{t('featured_quizzes')}</h2>
+            <h2 className="text-3xl font-bold text-glow">{t('featured_quizzes')}</h2>
             <p className="text-muted-foreground">{t('handpicked_by_team')}</p>
         </div>
         <Carousel
@@ -68,7 +68,7 @@ export function FeaturedQuizzes() {
                                     <Badge variant={getDifficultyVariant(quiz.difficulty)} className="absolute top-3 right-3">
                                         {difficultyTranslations[quiz.difficulty]}
                                     </Badge>
-                                     <CardTitle className="font-heading text-lg font-bold text-white absolute bottom-3 left-4">{quiz.title}</CardTitle>
+                                     <CardTitle className="text-lg font-bold text-white absolute bottom-3 left-4">{quiz.title}</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-4 flex-grow">
                                     <p className="text-sm text-primary font-semibold">{quiz.category}</p>

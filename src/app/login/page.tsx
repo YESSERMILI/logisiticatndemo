@@ -26,7 +26,7 @@ export default function LoginPage() {
             <AppName />
           </div>
           <div className="space-y-1">
-            <CardTitle className="font-heading text-2xl">
+            <CardTitle className="text-2xl">
               {t("login_welcome")}
             </CardTitle>
             <CardDescription>{t("login_subtitle")}</CardDescription>

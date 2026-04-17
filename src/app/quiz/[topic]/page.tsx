@@ -61,7 +61,7 @@ export default function QuizPage(props: QuizPageProps) {
             <div className="py-12 bg-secondary text-center">
                 <div className="container">
                     <p className="text-primary font-semibold">{category?.name.fr || props.params.topic}</p>
-                    <h1 className="font-heading text-4xl font-bold tracking-tight lg:text-5xl text-glow mt-2">
+                    <h1 className="text-4xl font-bold tracking-tight lg:text-5xl text-glow mt-2">
                         {category?.name.fr || props.params.topic} Quiz
                     </h1>
                      <p className="mt-2 text-lg text-muted-foreground">{category?.name.ar || ''}</p>
@@ -78,7 +78,7 @@ function LoadingState() {
   return (
     <div className="container mx-auto flex flex-col items-center justify-center py-20 text-center">
       <Loader2 className="h-12 w-12 animate-spin text-primary" />
-      <h2 className="mt-6 font-heading text-2xl font-semibold">
+      <h2 className="mt-6 text-2xl font-semibold">
         Generating Your Quiz...
       </h2>
       <p className="mt-2 text-muted-foreground">

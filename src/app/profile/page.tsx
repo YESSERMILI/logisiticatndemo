@@ -28,7 +28,7 @@ export default function ProfilePage() {
   return (
     <div className="container mx-auto py-8">
       <div className="mb-8 text-center">
-        <h1 className="font-heading text-4xl font-bold tracking-tight lg:text-5xl text-glow">
+        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl text-glow">
           {t("profile_title")}
         </h1>
         <p className="mt-2 text-lg text-muted-foreground">
@@ -52,17 +52,17 @@ export default function ProfilePage() {
               </Button>
             </div>
             <div className="flex-1 text-center sm:text-left">
-              <h1 className="font-heading text-3xl font-bold">{user.name}</h1>
+              <h1 className="text-3xl font-bold">{user.name}</h1>
               <div className="mt-4 flex flex-wrap justify-center gap-6 sm:justify-start">
                 <div>
                   <p className="text-sm text-muted-foreground">{t("profile_rank")}</p>
-                  <p className="font-heading text-2xl font-bold text-primary">
+                  <p className="text-2xl font-bold text-primary">
                     #{user.rank}
                   </p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">{t("profile_points")}</p>
-                  <p className="font-heading text-2xl font-bold text-primary">
+                  <p className="text-2xl font-bold text-primary">
                     {user.points.toLocaleString()}
                   </p>
                 </div>
@@ -74,7 +74,7 @@ export default function ProfilePage() {
 
       <Card className="mx-auto mt-8 max-w-3xl glassmorphic">
         <CardHeader>
-          <CardTitle className="font-heading text-glow">{t("profile_achievements")}</CardTitle>
+          <CardTitle className="text-glow">{t("profile_achievements")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
@@ -93,7 +93,7 @@ export default function ProfilePage() {
 
       <Card className="mx-auto mt-8 max-w-3xl glassmorphic">
         <CardHeader>
-          <CardTitle className="font-heading">{t("profile_quiz_history")}</CardTitle>
+          <CardTitle>{t("profile_quiz_history")}</CardTitle>
         </CardHeader>
         <CardContent className="text-center text-muted-foreground pt-6">
           <p>{t("profile_quiz_history_desc")}</p>

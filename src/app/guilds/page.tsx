@@ -11,7 +11,7 @@ export default function GuildsPage() {
   return (
     <div className="container mx-auto py-8">
       <div className="mb-8 text-center">
-        <h1 className="font-heading text-4xl font-bold tracking-tight lg:text-5xl text-glow">
+        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl text-glow">
           {t("guilds_title")}
         </h1>
         <p className="mt-2 text-lg text-muted-foreground">
@@ -22,7 +22,7 @@ export default function GuildsPage() {
       <Card className="max-w-4xl mx-auto glassmorphic">
         <CardContent className="p-10 text-center">
           <Shield className="h-24 w-24 text-primary mx-auto" />
-          <h2 className="mt-6 font-heading text-3xl font-bold tracking-tight">
+          <h2 className="mt-6 text-3xl font-bold tracking-tight">
             {t("guilds_wip_title")}
           </h2>
           <p className="mt-3 max-w-2xl text-lg text-muted-foreground mx-auto">

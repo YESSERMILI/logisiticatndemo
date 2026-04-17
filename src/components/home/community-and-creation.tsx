@@ -42,7 +42,7 @@ export function CommunityAndCreationSection() {
       <Card className="glassmorphic overflow-hidden">
         <div className="grid md:grid-cols-2">
           <div className="p-8 md:p-12 flex flex-col justify-center items-center md:items-start text-center md:text-start">
-              <h2 className="font-heading text-4xl font-bold text-glow">{t('create_your_own_quiz')}</h2>
+              <h2 className="text-4xl font-bold text-glow">{t('create_your_own_quiz')}</h2>
               <p className="mt-4 text-lg text-muted-foreground max-w-md">{t('create_your_own_quiz_desc')}</p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                   <Button size="lg" className="font-bold glow-on-hover">

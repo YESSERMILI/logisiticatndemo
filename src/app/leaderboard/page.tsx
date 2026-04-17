@@ -70,7 +70,7 @@ export default function LeaderboardPage() {
   return (
     <div className="container mx-auto py-8" dir={language === "ar" ? "rtl" : "ltr"}>
       <div className="mb-8 text-center">
-        <h1 className="font-heading text-4xl font-bold tracking-tight lg:text-5xl text-glow">
+        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl text-glow">
           {t("nav_leaderboard")}
         </h1>
         <p className="mt-2 text-lg text-muted-foreground">
@@ -80,7 +80,7 @@ export default function LeaderboardPage() {
       
       <Card className="mb-8 glassmorphic">
         <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-primary font-heading">
+            <CardTitle className="flex items-center gap-2 text-primary">
                 <Star className="text-accent" />
                 {language === "ar" ? "جوائز TT" : "Récompenses TT"}
             </CardTitle>

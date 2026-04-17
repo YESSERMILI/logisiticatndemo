@@ -13,7 +13,7 @@ export function DailyQuests() {
   return (
     <Card className="glassmorphic h-full">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 font-heading text-xl text-glow">
+        <CardTitle className="flex items-center gap-2 text-xl text-glow">
           <Flame className="text-accent" />
           {t('daily_quests')}
         </CardTitle>

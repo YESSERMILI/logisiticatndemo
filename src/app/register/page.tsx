@@ -26,7 +26,7 @@ export default function RegisterPage() {
             <AppName />
           </div>
           <div className="space-y-1">
-            <CardTitle className="font-heading text-2xl">
+            <CardTitle className="text-2xl">
               {t("register_title")}
             </CardTitle>
             <CardDescription>{t("register_subtitle")}</CardDescription>
