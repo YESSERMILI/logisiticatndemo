@@ -44,6 +44,7 @@ export interface FeaturedQuiz {
 export interface TrendingQuiz {
   rank: number;
   title: string;
+  slug: string;
   category: string;
   points: number;
   rating: number;

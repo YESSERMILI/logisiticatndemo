@@ -38,7 +38,7 @@ export function TrendingNow() {
         <ul className="space-y-2">
           {trendingQuizzes.map((quiz) => (
             <li key={quiz.rank}>
-              <Link href="#" passHref>
+              <Link href={`/quiz/${quiz.slug}?difficulty=${quiz.difficulty}`} passHref>
                 <Card className="bg-card/50 hover:bg-card/80 transition-colors duration-200">
                   <CardContent className="p-3 flex items-center gap-4">
                     <div className="text-xl font-black text-muted-foreground w-6 text-center">#{quiz.rank}</div>

@@ -60,7 +60,7 @@ export function Hero() {
 
         <div className="grid grid-cols-2 gap-4">
             {heroCategories.map((category) => (
-                 <Link key={category.slug} href={`/quiz/${category.slug}`} passHref>
+                 <Link key={category.slug} href={`/quiz/${category.slug}?difficulty=${category.avgDifficulty}`} passHref>
                     <Card className="glassmorphic group aspect-square flex flex-col items-center justify-center gap-3 text-center p-4 glow-on-hover transition-all duration-300 hover:-translate-y-2 hover:bg-primary/10">
                         <Icon name={category.icon as any} className="h-10 w-10 text-primary transition-transform duration-300 group-hover:scale-110" />
                         <p className="font-bold text-lg">{category.name[language]}</p>
