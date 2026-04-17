@@ -14,8 +14,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 const cairo = Cairo({
-  subsets: ["arabic", "latin"],
-  weight: "variable",
+  subsets: ["arabic"],
+  weight: ["400", "700", "900"],
   variable: "--font-cairo",
 });
 
