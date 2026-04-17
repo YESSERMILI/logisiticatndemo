@@ -13,14 +13,15 @@ export const translations = {
 
     // Hero Section
     the_living_library: "مكتبة المعرفة الحية",
-    hero_subtitle_extended: "مستعد لمواصلة سلسلة انتصاراتك في العلوم؟ أنت في حماسك لمدة 7 أيام متتالية!",
+    hero_subtitle_extended:
+      "مستعد لمواصلة سلسلة انتصاراتك في العلوم؟ أنت في حماسك لمدة 7 أيام متتالية!",
     continue_playing: "مواصلة اللعب",
     explore_quizzes: "استكشف الاختبارات",
     continue_where_you_left_off: "أكمل من حيث توقفت",
     hero_greeting: "مساء الخير،",
     hero_alex: "زياد!",
     last_played_quiz: "تاريخ تونس الحديث",
-    
+
     // Browse Categories
     browse_categories: "تصفح الأقسام",
     find_next_challenge: "ابحث عن تحديك القادم",
@@ -61,7 +62,8 @@ export const translations = {
     guilds_title: "الفرق",
     guilds_subtitle: "كوّن فريقًا، تنافس، وانتصر معًا.",
     guilds_wip_title: "هذه الميزة قيد الإنشاء",
-    guilds_wip_desc: "نظام الفرق والعشائر قادم قريبًا! استعدوا لتشكيل فرق مع الأصدقاء، والمنافسة في معارك فرق ملحمية، والصعود في المراتب معًا لكسب مكافآت حصرية.",
+    guilds_wip_desc:
+      "نظام الفرق والعشائر قادم قريبًا! استعدوا لتشكيل فرق مع الأصدقاء، والمنافسة في معارك فرق ملحمية، والصعود في المراتب معًا لكسب مكافآت حصرية.",
     guilds_create: "أنشئ فريق",
     guilds_join: "انضم إلى فريق",
 
@@ -75,7 +77,8 @@ export const translations = {
     leaderboard_weekly: "أسبوعي",
     leaderboard_all_time: "إجمالي",
     leaderboard_rewards_title: "جوائز TT",
-    leaderboard_rewards_desc: "أفضل 10 لاعبين كل أسبوع يفوزون بباقات إنترنت مجانية!",
+    leaderboard_rewards_desc:
+      "أفضل 10 لاعبين كل أسبوع يفوزون بباقات إنترنت مجانية!",
     leaderboard_who_is_champion: "من هو بطل عز المونديال؟",
 
     // Login page
@@ -106,14 +109,14 @@ export const translations = {
     register_signin: "تسجيل الدخول",
 
     // Footer component
-    footer_motto: "تعلم، تنافس، أنشئ، انتصر. منصة الاختبارات التنافسية الرسمية في تونس.",
+    footer_motto:
+      "تعلم، تنافس، أنشئ، انتصر. منصة الاختبارات التنافسية الرسمية في تونس.",
     footer_privacy: "الخصوصية",
     footer_terms: "الشروط",
     footer_contact: "اتصل بنا",
     footer_legal: "قانوني",
     footer_rights: "جميع الحقوق محفوظة.",
     footer_navigation: "التنقل",
-
 
     // Other
     nav_login: "تسجيل الدخول",
@@ -126,10 +129,10 @@ export const translations = {
     leaderboard_preview_title: "أفضل اللاعبين",
     leaderboard_preview_cta: "عرض الترتيب الكامل",
     guild_highlight_title: "انضم إلى فريق وهيمن على المنافسة",
-    guild_highlight_subtitle: "كوّن فريقًا مع أصدقائك وتنافسوا معًا للصعود في الترتيب والفوز بجوائز حصرية.",
+    guild_highlight_subtitle:
+      "كوّن فريقًا مع أصدقائك وتنافسوا معًا للصعود في الترتيب والفوز بجوائز حصرية.",
     guild_highlight_cta: "استكشف الفرق",
     quiz_loading: "جاري تحضير الأسئلة...",
-    quiz_error: "حدث خطأ أثناء تحميل الاختبار. الرجاء المحاولة مرة أخرى.",
     quiz_results: "النتائج",
     quiz_score: "نتيجتك",
     quiz_correct_answers: "إجابات صحيحة",
@@ -138,7 +141,8 @@ export const translations = {
     quiz_next_question: "السؤال التالي",
     quiz_submit: "تأكيد",
     quiz_generating: "جاري إنشاء اختبارك...",
-    quiz_generating_desc: "الرجاء الانتظار بينما يقوم الذكاء الاصطناعي بإعداد تحديك!",
+    quiz_generating_desc:
+      "الرجاء الانتظار بينما يقوم الذكاء الاصطناعي بإعداد تحديك!",
 
     // Categories page
     categories_title: "الأقسام",
@@ -151,6 +155,44 @@ export const translations = {
     categories_hard: "صعب",
     categories_no_results: "لم يتم العثور على فئات تطابق بحثك.",
     categories_quiz_count: "اختبار",
+
+    // Quiz Error
+    quiz_error_title: "خطأ",
+    quiz_error_desc: "فشل تحميل محتوى الاختبار. يرجى المحاولة مرة أخرى لاحقًا.",
+
+    // Create Page
+    create_title: "أنشئ اختبار",
+    create_subtitle: "أطلق العنان لإبداعك وشارك معرفتك.",
+    create_wip_title: "صانع الاختبارات قادم قريبًا!",
+    create_wip_desc:
+      "استعد لإطلاق العنان لإبداعك. نعمل على أداة قوية لإنشاء الاختبارات تتيح لك تصميم تحديات جذابة بمساعدة الذكاء الاصطناعي.",
+
+    // Privacy Page
+    privacy_title: "سياسة الخصوصية",
+    privacy_subtitle: "كيف نتعامل مع بياناتك.",
+    privacy_content_1:
+      "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.",
+    privacy_content_2:
+      "إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.",
+    privacy_content_3:
+      "ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً، دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.",
+
+    // Terms Page
+    terms_title: "شروط الخدمة",
+    terms_subtitle: "القواعد التي تحكم استخدامك لمنصتنا.",
+    terms_content_1:
+      "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.",
+    terms_content_2:
+      "إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.",
+    terms_content_3:
+      "ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً، دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.",
+
+    // Contact Page
+    contact_title: "اتصل بنا",
+    contact_subtitle: "هل لديك أسئلة؟ نحن هنا للمساعدة.",
+    contact_wip_title: "صفحة الاتصال قادمة قريبًا",
+    contact_wip_desc:
+      "نحن بصدد إعداد أفضل طريقة للتواصل معنا. في هذه الأثناء ، يمكنك متابعتنا على وسائل التواصل الاجتماعي!",
   },
   fr: {
     // Navbar
@@ -164,7 +206,8 @@ export const translations = {
 
     // Hero Section
     the_living_library: "La Bibliothèque Vivante du Savoir",
-    hero_subtitle_extended: "Prêt à continuer votre série en Science ? Vous êtes en feu avec 7 jours de suite !",
+    hero_subtitle_extended:
+      "Prêt à continuer votre série en Science ? Vous êtes en feu avec 7 jours de suite !",
     continue_playing: "Continuer à jouer",
     explore_quizzes: "Explorer les Quiz",
     continue_where_you_left_off: "Reprendre là où vous vous êtes arrêté",
@@ -196,7 +239,8 @@ export const translations = {
 
     // Create Your Own Quiz
     create_your_own_quiz: "Créez votre propre Quiz",
-    create_your_own_quiz_desc: "Libérez votre créativité et partagez vos connaissances avec le monde.",
+    create_your_own_quiz_desc:
+      "Libérez votre créativité et partagez vos connaissances avec le monde.",
     start_creating: "Commencer à créer",
     learn_more: "En savoir plus",
     quiz_types: "Types de Quiz",
@@ -212,7 +256,8 @@ export const translations = {
     guilds_title: "Guildes",
     guilds_subtitle: "Faites équipe, rivalisez et conquérez ensemble.",
     guilds_wip_title: "Cette fonctionnalité est en construction",
-    guilds_wip_desc: "Le système de guildes et de clans arrive bientôt ! Préparez-vous à faire équipe avec des amis, à participer à des batailles de guildes épiques et à grimper dans le classement ensemble pour gagner des récompenses exclusives.",
+    guilds_wip_desc:
+      "Le système de guildes et de clans arrive bientôt ! Préparez-vous à faire équipe avec des amis, à participer à des batailles de guildes épiques et à grimper dans le classement ensemble pour gagner des récompenses exclusives.",
     guilds_create: "Créer une Guilde",
     guilds_join: "Rejoindre une Guilde",
 
@@ -226,7 +271,8 @@ export const translations = {
     leaderboard_weekly: "Hebdomadaire",
     leaderboard_all_time: "Total",
     leaderboard_rewards_title: "Récompenses TT",
-    leaderboard_rewards_desc: "Le Top 10 de chaque semaine gagne des forfaits internet gratuits!",
+    leaderboard_rewards_desc:
+      "Le Top 10 de chaque semaine gagne des forfaits internet gratuits!",
     leaderboard_who_is_champion: "Qui est le champion de 3ez El Mondial?",
 
     // Login page
@@ -246,7 +292,8 @@ export const translations = {
     profile_points: "Points",
     profile_achievements: "Succès",
     profile_quiz_history: "Historique des Quiz",
-    profile_quiz_history_desc: "Vos performances récentes aux quiz apparaîtront ici.",
+    profile_quiz_history_desc:
+      "Vos performances récentes aux quiz apparaîtront ici.",
 
     // Register page
     register_title: "Rejoignez la compétition",
@@ -257,7 +304,8 @@ export const translations = {
     register_signin: "Se connecter",
 
     // Footer component
-    footer_motto: "Apprenez, rivalisez, créez, conquérez. La plateforme de quiz compétitif officielle en Tunisie.",
+    footer_motto:
+      "Apprenez, rivalisez, créez, conquérez. La plateforme de quiz compétitif officielle en Tunisie.",
     footer_privacy: "Confidentialité",
     footer_terms: "Conditions",
     footer_contact: "Contact",
@@ -276,10 +324,10 @@ export const translations = {
     leaderboard_preview_title: "Meilleurs joueurs",
     leaderboard_preview_cta: "Voir le classement complet",
     guild_highlight_title: "Rejoignez une guilde et dominez",
-    guild_highlight_subtitle: "Faites équipe avec vos amis, grimpez dans le classement et gagnez des récompenses exclusives.",
+    guild_highlight_subtitle:
+      "Faites équipe avec vos amis, grimpez dans le classement et gagnez des récompenses exclusives.",
     guild_highlight_cta: "Explorer les guildes",
     quiz_loading: "Préparation des questions...",
-    quiz_error: "Une erreur est survenue lors du chargement du quiz. Veuillez réessayer.",
     quiz_results: "Résultats",
     quiz_score: "Votre score",
     quiz_correct_answers: "Bonnes réponses",
@@ -288,7 +336,8 @@ export const translations = {
     quiz_next_question: "Question suivante",
     quiz_submit: "Valider",
     quiz_generating: "Génération de votre quiz...",
-    quiz_generating_desc: "Veuillez patienter pendant que notre IA prépare votre défi !",
+    quiz_generating_desc:
+      "Veuillez patienter pendant que notre IA prépare votre défi !",
 
     // Categories page
     categories_title: "Catégories",
@@ -301,5 +350,44 @@ export const translations = {
     categories_hard: "Difficile",
     categories_no_results: "Aucune catégorie ne correspond à votre recherche.",
     categories_quiz_count: "quiz",
+
+    // Quiz Error
+    quiz_error_title: "Erreur",
+    quiz_error_desc:
+      "Échec du chargement du contenu du quiz. Veuillez réessayer plus tard.",
+
+    // Create Page
+    create_title: "Créer un Quiz",
+    create_subtitle: "Libérez votre créativité et partagez vos connaissances.",
+    create_wip_title: "Le créateur de quiz arrive bientôt !",
+    create_wip_desc:
+      "Préparez-vous à libérer votre créativité. Nous travaillons sur un puissant créateur de quiz qui vous permettra de concevoir des défis captivants avec l'aide de l'IA.",
+
+    // Privacy Page
+    privacy_title: "Politique de Confidentialité",
+    privacy_subtitle: "Comment nous traitons vos données.",
+    privacy_content_1:
+      "Ceci est un exemple de texte qui peut être remplacé dans le même espace. Ce texte a été généré à partir du générateur de texte factice, où vous pouvez générer un tel texte ou de nombreux autres textes en plus d'augmenter le nombre de caractères générés par l'application.",
+    privacy_content_2:
+      "Si vous avez besoin d'un plus grand nombre de paragraphes, le générateur de texte factice vous permet d'augmenter le nombre de paragraphes comme vous le souhaitez. Le texte n'apparaîtra pas divisé et ne contiendra pas d'erreurs linguistiques. Le générateur de texte factice est particulièrement utile pour les concepteurs de sites Web.",
+    privacy_content_3:
+      "Le client a souvent besoin de voir une image réelle de la conception du site. Le concepteur doit donc placer des textes temporaires sur la conception pour montrer au client la forme complète.",
+
+    // Terms Page
+    terms_title: "Conditions d'Utilisation",
+    terms_subtitle: "Les règles régissant votre utilisation de notre plateforme.",
+    terms_content_1:
+      "Ceci est un exemple de texte qui peut être remplacé dans le même espace. Ce texte a été généré à partir du générateur de texte factice, où vous pouvez générer un tel texte ou de nombreux autres textes en plus d'augmenter le nombre de caractères générés par l'application.",
+    terms_content_2:
+      "Si vous avez besoin d'un plus grand nombre de paragraphes, le générateur de texte factice vous permet d'augmenter le nombre de paragraphes comme vous le souhaitez. Le texte n'apparaîtra pas divisé et ne contiendra pas d'erreurs linguistiques. Le générateur de texte factice est particulièrement utile pour les concepteurs de sites Web.",
+    terms_content_3:
+      "Le client a souvent besoin de voir une image réelle de la conception du site. Le concepteur doit donc placer des textes temporaires sur la conception pour montrer au client la forme complète.",
+
+    // Contact Page
+    contact_title: "Contactez-nous",
+    contact_subtitle: "Des questions ? Nous sommes là pour vous aider.",
+    contact_wip_title: "Page de contact à venir",
+    contact_wip_desc:
+      "Nous mettons en place le meilleur moyen pour vous de nous joindre. En attendant, vous pouvez nous suivre sur les réseaux sociaux !",
   },
 };

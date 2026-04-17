@@ -1,11 +1,8 @@
 import { generateLocalizedQuizContent } from "@/ai/flows/generate-localized-quiz-content-flow";
 import { QuizClient } from "@/components/quiz/quiz-client";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
+import { QuizError } from "@/components/quiz/quiz-error";
 import { categories } from "@/lib/data";
-import { useTranslation } from "@/hooks/use-translation";
-import { AlertTriangle, Loader2 } from "lucide-react";
-import Link from "next/link";
+import { Loader2 } from "lucide-react";
 import { Suspense } from "react";
 
 type QuizPageProps = {
@@ -38,22 +35,7 @@ async function QuizGenerator({ params, searchParams }: QuizPageProps) {
     return <QuizClient quiz={quizContent} topic={params.topic} />;
   } catch (error) {
     console.error("Failed to generate quiz content:", error);
-    return (
-        <div className="container mx-auto max-w-2xl py-12">
-             <Alert variant="destructive">
-                <AlertTriangle className="h-4 w-4" />
-                <AlertTitle>Error</AlertTitle>
-                <AlertDescription>
-                   Failed to load quiz content. Please try again later.
-                </AlertDescription>
-            </Alert>
-            <div className="mt-6 text-center">
-                <Button asChild>
-                    <Link href="/categories">Back to Categories</Link>
-                </Button>
-            </div>
-        </div>
-    );
+    return <QuizError />;
   }
 }
 
