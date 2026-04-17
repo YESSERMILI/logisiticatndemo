@@ -70,16 +70,10 @@ const generateLocalizedQuizContentFlow = ai.defineFlow(
     outputSchema: GenerateLocalizedQuizContentOutputSchema,
   },
   async (input) => {
-    try {
-      const { output } = await quizContentPrompt(input);
-      if (!output) {
-        throw new Error('AI model did not return any content.');
-      }
-      return output;
-    } catch (e) {
-      console.error("Error in generateLocalizedQuizContentFlow:", e);
-      const errorMessage = e instanceof Error ? e.message : JSON.stringify(e);
-      throw new Error(`Quiz generation failed within the AI flow: ${errorMessage}`);
+    const { output } = await quizContentPrompt(input);
+    if (!output) {
+      throw new Error('AI model did not return any content.');
     }
+    return output;
   }
 );
