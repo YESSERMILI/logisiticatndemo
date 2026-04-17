@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Sora, Space_Grotesk, Tajawal } from "next/font/google";
+import { Sora, Space_Grotesk, Cairo } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/layout/navbar";
@@ -12,10 +12,10 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
 });
-const tajawal = Tajawal({
+const cairo = Cairo({
   subsets: ["arabic"],
   weight: ["400", "500", "700"],
-  variable: "--font-tajawal",
+  variable: "--font-cairo",
 });
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ export default function RootLayout({
           "min-h-screen bg-background font-sans antialiased",
           sora.variable,
           spaceGrotesk.variable,
-          tajawal.variable
+          cairo.variable
         )}
       >
         <Providers>
