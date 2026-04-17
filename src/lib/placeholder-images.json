@@ -1,3 +1,52 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-stadium",
+      "description": "A brightly lit football stadium at night",
+      "imageUrl": "https://picsum.photos/seed/101/1600/900",
+      "imageHint": "stadium lights"
+    },
+    {
+      "id": "avatar-1",
+      "description": "User avatar 1",
+      "imageUrl": "https://picsum.photos/seed/201/100/100",
+      "imageHint": "profile portrait"
+    },
+    {
+      "id": "avatar-2",
+      "description": "User avatar 2",
+      "imageUrl": "https://picsum.photos/seed/202/100/100",
+      "imageHint": "person smiling"
+    },
+    {
+      "id": "avatar-3",
+      "description": "User avatar 3",
+      "imageUrl": "https://picsum.photos/seed/203/100/100",
+      "imageHint": "woman face"
+    },
+    {
+      "id": "avatar-4",
+      "description": "User avatar 4",
+      "imageUrl": "https://picsum.photos/seed/204/100/100",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "avatar-5",
+      "description": "User avatar 5",
+      "imageUrl": "https://picsum.photos/seed/205/100/100",
+      "imageHint": "person happy"
+    },
+    {
+      "id": "guild-logo-1",
+      "description": "Guild logo 1",
+      "imageUrl": "https://picsum.photos/seed/301/100/100",
+      "imageHint": "abstract logo"
+    },
+    {
+      "id": "guild-logo-2",
+      "description": "Guild logo 2",
+      "imageUrl": "https://picsum.photos/seed/302/100/100",
+      "imageHint": "geometric shape"
+    }
+  ]
 }
