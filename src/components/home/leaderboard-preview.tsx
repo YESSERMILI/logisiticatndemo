@@ -4,18 +4,16 @@ import { useTranslation } from "@/hooks/use-translation";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { friendsActivity } from "@/lib/data";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Users } from "lucide-react";
 
 export function FriendsActivity() {
   const { t } = useTranslation();
   
   return (
     <div>
-        <div className="flex items-center justify-between mb-4">
-             <h3 className="text-xl text-glow font-bold">
+        <div className="mb-4">
+             <h3 className="text-lg font-semibold text-primary">
                 {t('friends_activity')}
             </h3>
-            <Users className="text-accent" />
         </div>
         <ul className="space-y-4">
             {friendsActivity.slice(0, 3).map(activity => {

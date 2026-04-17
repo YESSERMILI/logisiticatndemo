@@ -37,20 +37,6 @@ export function CommunityAndCreationSection() {
     <section dir={language === "ar" ? "rtl" : "ltr"} className="py-16">
       <Card className="glassmorphic overflow-hidden">
         <div className="grid md:grid-cols-2">
-          <div className="p-8 md:p-12 flex flex-col justify-center items-center md:items-start text-center md:text-start">
-              <h2 className="text-4xl font-black text-glow">{t('create_your_own_quiz')}</h2>
-              <p className="mt-4 text-lg text-muted-foreground max-w-md">{t('create_your_own_quiz_desc')}</p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="font-bold glow-on-hover">
-                     <Link href="/create" className="flex items-center">
-                       {t('start_creating')} <ArrowRight className="ms-2 h-5 w-5" />
-                     </Link>
-                  </Button>
-                   <Button size="lg" variant="outline" className="font-bold">
-                     {t('learn_more')}
-                  </Button>
-              </div>
-          </div>
           <div className="p-8 md:p-12 bg-card/50 flex flex-col gap-8">
             <div className="grid sm:grid-cols-2 gap-x-6 gap-y-8">
               {features.map((feature, index) => (
@@ -64,6 +50,20 @@ export function CommunityAndCreationSection() {
               ))}
             </div>
              <FriendsActivity />
+          </div>
+          <div className="p-8 md:p-12 flex flex-col justify-center items-center md:items-start text-center md:text-start">
+              <h2 className="text-4xl font-black text-glow">{t('create_your_own_quiz')}</h2>
+              <p className="mt-4 text-lg text-muted-foreground max-w-md">{t('create_your_own_quiz_desc')}</p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                  <Button size="lg" className="font-bold glow-on-hover">
+                     <Link href="/create" className="flex items-center">
+                       {t('start_creating')} <ArrowRight className="ms-2 h-5 w-5" />
+                     </Link>
+                  </Button>
+                   <Button size="lg" variant="outline" className="font-bold">
+                     {t('learn_more')}
+                  </Button>
+              </div>
           </div>
         </div>
       </Card>
