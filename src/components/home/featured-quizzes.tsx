@@ -43,6 +43,7 @@ export function FeaturedQuizzes() {
           opts={{
             align: "start",
             loop: true,
+            direction: language === "ar" ? "rtl" : "ltr",
           }}
           className="w-full"
         >
@@ -65,13 +66,14 @@ export function FeaturedQuizzes() {
                                         />
                                     )}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                    <Badge variant={getDifficultyVariant(quiz.difficulty)} className="absolute top-3 right-3">
+                                    <Badge variant={getDifficultyVariant(quiz.difficulty)} className="absolute top-3 end-3">
                                         {difficultyTranslations[quiz.difficulty]}
                                     </Badge>
-                                     <CardTitle className="text-lg font-bold text-white absolute bottom-3 left-4">{quiz.title}</CardTitle>
+                                     <CardTitle className="text-lg font-bold text-white absolute bottom-3 start-4">{quiz.title}</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-4 flex-grow">
                                     <p className="text-sm text-primary font-semibold">{quiz.category}</p>
+
                                     <p className="text-xs text-muted-foreground mt-2">{t('featured_by')} {quiz.author}</p>
                                 </CardContent>
                                 <CardFooter className="p-4 text-xs text-muted-foreground flex justify-between items-center border-t">
@@ -91,8 +93,8 @@ export function FeaturedQuizzes() {
                 )
             })}
           </CarouselContent>
-          <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4"/>
-          <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4"/>
+          <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 ltr:-left-4 rtl:-right-4 hidden md:flex" />
+          <CarouselNext className="absolute top-1/2 -translate-y-1/2 ltr:-right-4 rtl:-left-4 hidden md:flex" />
         </Carousel>
     </section>
   );

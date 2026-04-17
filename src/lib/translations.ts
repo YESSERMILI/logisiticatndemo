@@ -95,10 +95,13 @@ export const translations = {
     register_signin: "تسجيل الدخول",
 
     // Footer component
-    footer_motto: "تعلم، تنافس، أنشئ، انتصر.",
+    footer_motto: "تعلم، تنافس، أنشئ، انتصر. منصة الاختبارات التنافسية الرسمية في تونس.",
     footer_privacy: "الخصوصية",
     footer_terms: "الشروط",
     footer_contact: "اتصل بنا",
+    footer_legal: "قانوني",
+    footer_rights: "جميع الحقوق محفوظة.",
+
 
     // Other
     nav_login: "تسجيل الدخول",
@@ -218,10 +221,12 @@ export const translations = {
     register_signin: "Se connecter",
 
     // Footer component
-    footer_motto: "Apprenez, rivalisez, créez, conquérez.",
+    footer_motto: "Apprenez, rivalisez, créez, conquérez. La plateforme de quiz compétitif officielle en Tunisie.",
     footer_privacy: "Confidentialité",
     footer_terms: "Conditions",
     footer_contact: "Contact",
+    footer_legal: "Légal",
+    footer_rights: "Tous droits réservés.",
 
     // Other
     nav_login: "Connexion",

@@ -35,8 +35,8 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-xl">
       <div className="container flex h-16 max-w-screen-2xl items-center">
-        <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
+        <div className="hidden md:flex md:flex-1">
+          <Link href="/" className="me-6 flex items-center space-x-2">
             <Logo />
           </Link>
           <nav className="flex items-center gap-6 text-sm">
@@ -59,8 +59,8 @@ export function Navbar() {
               <span className="sr-only">Toggle Menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className={cn("pr-0", language === 'ar' && 'pl-0')}>
-            <Link href="/" className="mr-6 flex items-center space-x-2 px-6">
+          <SheetContent side="left" className={cn("pe-0", language === 'ar' && 'ps-0')}>
+            <Link href="/" className="flex items-center space-x-2 px-6">
               <Logo />
             </Link>
             <div className="my-4 h-[calc(100vh-8rem)] px-6">
@@ -81,12 +81,12 @@ export function Navbar() {
 
 
         <div className="flex flex-1 items-center justify-end gap-4">
-           <div className="hidden sm:flex items-center gap-2">
+           <div className="hidden sm:flex items-center">
               <Button asChild className="font-bold">
                  <Link href="/create">{t('create_quiz')}</Link>
               </Button>
            </div>
-          <div className="flex items-center gap-2 border-r border-border pr-4 mr-2">
+          <div className="flex items-center gap-2 border-border ps-2 sm:ps-4 sm:border-s sm:ms-2">
               <div className="flex items-center gap-2 rounded-lg bg-secondary px-3 py-1.5 text-sm font-semibold">
                   <Trophy className="h-4 w-4 text-accent"/>
                   <span>15,750</span>
@@ -120,13 +120,13 @@ export function Navbar() {
               <DropdownMenuSeparator />
                <Link href="/profile">
                   <DropdownMenuItem className="cursor-pointer">
-                    <User className="mr-2 h-4 w-4" />
+                    <User className="me-2 h-4 w-4" />
                     <span>{t('nav_profile')}</span>
                   </DropdownMenuItem>
                </Link>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="cursor-pointer">
-                <LogOut className="mr-2 h-4 w-4" />
+                <LogOut className="me-2 h-4 w-4" />
                 <span>{t('nav_logout')}</span>
               </DropdownMenuItem>
             </DropdownMenuContent>

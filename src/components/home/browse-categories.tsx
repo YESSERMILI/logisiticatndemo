@@ -27,7 +27,7 @@ export function BrowseCategories() {
         {featured.map((category) => (
           <Link key={category.slug} href={`/quiz/${category.slug}`} passHref>
             <div className="group flex flex-col items-center gap-4 transition-transform duration-300 ease-in-out hover:-translate-y-2">
-              <div className="flex h-24 w-24 items-center justify-center rounded-2xl glassmorphic glow-on-hover transition-colors group-hover:bg-primary/20">
+              <div className="flex h-24 w-24 items-center justify-center rounded-2xl glassmorphic glow-on-hover transition-all duration-300 group-hover:bg-primary/20 group-hover:border-primary/50">
                 <Icon name={category.icon as any} className="h-10 w-10 text-primary transition-colors group-hover:text-accent" />
               </div>
               <p className="text-base font-semibold text-center truncate w-full">
