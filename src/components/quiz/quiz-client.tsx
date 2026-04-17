@@ -144,30 +144,33 @@ export function QuizClient({ quiz, topic }: QuizClientProps) {
             <p className="text-sm font-bold text-muted-foreground tabular-nums">
               {currentQuestionIndex + 1} / {quiz.length}
             </p>
-            <div className="relative flex h-20 w-20 flex-col items-center justify-center rounded-full border-4 border-primary bg-secondary p-2 font-mono font-bold text-primary">
-               <svg className="absolute inset-0 h-full w-full -rotate-90 transform">
+            <div className="relative flex h-24 w-24 items-center justify-center">
+                <svg className="absolute inset-0" viewBox="0 0 100 100">
                 <circle
-                    className="text-secondary"
-                    strokeWidth="4"
+                    className="text-primary/10"
+                    strokeWidth="10"
                     stroke="currentColor"
                     fill="transparent"
-                    r="34"
-                    cx="40"
-                    cy="40"
+                    r="45"
+                    cx="50"
+                    cy="50"
                 />
                 <circle
-                    className="text-primary transition-all duration-1000 ease-linear"
-                    strokeWidth="4"
-                    strokeDasharray={213.5}
-                    strokeDashoffset={213.5 - (timerProgress / 100) * 213.5}
+                    className="text-primary -rotate-90 origin-center transform-gpu transition-all duration-1000 ease-linear"
+                    strokeWidth="10"
+                    strokeDasharray="283"
+                    strokeDashoffset={283 - (timerProgress / 100) * 283}
+                    strokeLinecap="round"
                     stroke="currentColor"
                     fill="transparent"
-                    r="34"
-                    cx="40"
-                    cy="40"
+                    r="45"
+                    cx="50"
+                    cy="50"
                 />
-              </svg>
-              <span className="z-10 text-3xl">{timeLeft}</span>
+                </svg>
+                <span className="z-10 font-mono text-4xl font-extrabold text-primary text-glow">
+                {timeLeft}
+                </span>
             </div>
             <p className="text-sm font-bold text-muted-foreground">{t("quiz_score")}: {score}</p>
           </div>
