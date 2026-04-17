@@ -1,7 +1,7 @@
 import { generateLocalizedQuizContent } from "@/ai/flows/generate-localized-quiz-content-flow";
 import { QuizClient } from "@/components/quiz/quiz-client";
 import { QuizError } from "@/components/quiz/quiz-error";
-import { categories } from "@/lib/data";
+import { categories, trendingQuizzes, featuredQuizzes } from "@/lib/data";
 import { Loader2 } from "lucide-react";
 import { Suspense } from "react";
 
@@ -19,8 +19,19 @@ async function QuizGenerator({ params, searchParams }: QuizPageProps) {
   const numQuestions = 10;
   
   try {
-    const category = categories.find(c => c.slug === params.topic);
-    const topicName = category ? category.name.fr : params.topic.replace(/-/g, ' ');
+    const allTopics = [...categories, ...trendingQuizzes, ...featuredQuizzes];
+    const category = allTopics.find(c => (c as any).slug === params.topic || (c as any).id === params.topic);
+    
+    let topicName: string;
+    if (category) {
+      if ('name' in category) {
+        topicName = category.name.fr;
+      } else {
+        topicName = category.title;
+      }
+    } else {
+      topicName = params.topic.replace(/-/g, ' ');
+    }
 
     const quizContent = await generateLocalizedQuizContent({
       topic: topicName,
@@ -39,11 +50,27 @@ async function QuizGenerator({ params, searchParams }: QuizPageProps) {
 }
 
 export default function QuizPage(props: QuizPageProps) {
-    const category = categories.find(c => c.slug === props.params.topic);
+    const allTopics = [...categories, ...trendingQuizzes, ...featuredQuizzes];
+    const category = allTopics.find(c => (c as any).slug === props.params.topic || (c as any).id === props.params.topic);
+
     // This is a server component, so we can't use the useTranslation hook
     // We'll pass the names to the client component if needed or just display one lang
-    const topicTitleFr = category?.name.fr || props.params.topic.replace(/-/g, ' ');
-    const topicTitleAr = category?.name.ar || '';
+    let topicTitleFr: string;
+    let topicTitleAr: string;
+
+    if (category) {
+       if ('name' in category) { // It's a Category
+         topicTitleFr = category.name.fr;
+         topicTitleAr = category.name.ar;
+       } else { // It's a TrendingQuiz or FeaturedQuiz
+         topicTitleFr = category.title;
+         topicTitleAr = category.title; // Assuming title is the same for now
+       }
+    } else {
+        topicTitleFr = props.params.topic.replace(/-/g, ' ');
+        topicTitleAr = '';
+    }
+
 
     return (
         <div>

@@ -41,10 +41,10 @@ export const featuredQuizzes: FeaturedQuiz[] = [
 ];
 
 export const trendingQuizzes: TrendingQuiz[] = [
-  { rank: 1, slug: "أبطال-دوري-أبطال-أفريقيا", title: "أبطال دوري أبطال أفريقيا", category: "كرة القدم التونسية", points: 18200, rating: 4.8, difficulty: "hard" },
-  { rank: 2, slug: "مواقع-التراث-العالمي-في-تونس", title: "مواقع التراث العالمي في تونس", category: "جغرافيا تونس", points: 15300, rating: 4.7, difficulty: "medium" },
-  { rank: 3, slug: "من-هو-الممثل", title: "من هو الممثل؟", category: "سينما تونسية", points: 12500, rating: 4.5, difficulty: "easy" },
-  { rank: 4, slug: "ألحان-خالدة", title: "ألحان خالدة", category: "موسيقى تونسية", points: 9800, rating: 4.6, difficulty: "medium" },
+  { rank: 1, slug: "african-champions-league", title: "أبطال دوري أبطال أفريقيا", category: "كرة القدم التونسية", points: 18200, rating: 4.8, difficulty: "hard" },
+  { rank: 2, slug: "tunisia-world-heritage-sites", title: "مواقع التراث العالمي في تونس", category: "جغرافيا تونس", points: 15300, rating: 4.7, difficulty: "medium" },
+  { rank: 3, slug: "guess-the-actor", title: "من هو الممثل؟", category: "سينما تونسية", points: 12500, rating: 4.5, difficulty: "easy" },
+  { rank: 4, slug: "timeless-melodies", title: "ألحان خالدة", category: "موسيقى تونسية", points: 9800, rating: 4.6, difficulty: "medium" },
 ];
 
 export const dailyQuests: DailyQuest[] = [
