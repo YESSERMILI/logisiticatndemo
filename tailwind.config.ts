@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-cairo)"],
+        sans: ["var(--font-space-grotesk)", "var(--font-cairo)"],
         heading: ["var(--font-space-grotesk)", "var(--font-cairo)"],
       },
       colors: {

@@ -113,8 +113,8 @@ export default function LeaderboardPage() {
                   <div className="flex items-center gap-4">
                     <span className="font-bold text-lg">2,345</span>
                     <div>
-                        <p className="font-bold">{language === "ar" ? "ترتيبك" : "Votre Rang"}</p>
-                        <p className="text-sm text-muted-foreground">You</p>
+                        <p className="font-bold">{t("profile_rank")}</p>
+                        <p className="text-sm text-muted-foreground">{t("leaderboard_you")}</p>
                     </div>
                   </div>
                   <p className="font-bold text-primary text-lg">1,250 {t('leaderboard_points')}</p>

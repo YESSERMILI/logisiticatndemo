@@ -17,6 +17,8 @@ export const translations = {
     continue_playing: "مواصلة اللعب",
     explore_quizzes: "استكشف الاختبارات",
     continue_where_you_left_off: "أكمل من حيث توقفت",
+    hero_greeting: "صباح الخير،",
+    hero_alex: "أليكس!",
 
     // Browse Categories
     browse_categories: "تصفح الأقسام",
@@ -26,6 +28,8 @@ export const translations = {
     // Featured Quizzes
     featured_quizzes: "الاختبارات المميزة",
     handpicked_by_team: "اختيرت بعناية من قبل فريقنا",
+    featured_by: "بواسطة",
+    featured_questions: "أسئلة",
 
     // Trending Now
     trending_now: "الأكثر رواجًا الآن",
@@ -51,6 +55,50 @@ export const translations = {
     collaboration_desc: "شارك في الإنشاء مع الأصدقاء",
     analytics: "تحليلات",
     analytics_desc: "تتبع أدائك",
+
+    // Guilds page
+    guilds_title: "الفرق",
+    guilds_subtitle: "كوّن فريقًا، تنافس، وانتصر معًا.",
+    guilds_wip_title: "هذه الميزة قيد الإنشاء",
+    guilds_wip_desc: "نظام الفرق والعشائر قادم قريبًا! استعدوا لتشكيل فرق مع الأصدقاء، والمنافسة في معارك فرق ملحمية، والصعود في المراتب معًا لكسب مكافآت حصرية.",
+    guilds_create: "أنشئ فريق",
+    guilds_join: "انضم إلى فريق",
+
+    // Leaderboard page
+    leaderboard_you: "أنت",
+
+    // Login page
+    login_welcome: "مرحبا بعودتك!",
+    login_subtitle: "سجل الدخول لمواصلة رحلتك.",
+    login_email: "البريد الإلكتروني",
+    login_password: "كلمة المرور",
+    login_forgot: "هل نسيت كلمة المرور؟",
+    login_signin: "تسجيل الدخول",
+    login_no_account: "ليس لديك حساب؟",
+    login_signup: "إنشاء حساب",
+
+    // Profile page
+    profile_title: "ملفي الشخصي",
+    profile_subtitle: "إحصائياتك وإنجازاتك وتاريخ اختباراتك.",
+    profile_rank: "الترتيب",
+    profile_points: "النقاط",
+    profile_achievements: "الإنجازات",
+    profile_quiz_history: "تاريخ الاختبارات (قريباً)",
+    profile_quiz_history_desc: "سيظهر أداءك الأخير في الاختبارات هنا.",
+
+    // Register page
+    register_title: "انضم إلى المنافسة",
+    register_subtitle: "أنشئ حسابًا لبدء اللعب والفوز.",
+    register_username: "اسم المستخدم",
+    register_create_account: "إنشاء حساب",
+    register_has_account: "هل لديك حساب بالفعل؟",
+    register_signin: "تسجيل الدخول",
+
+    // Footer component
+    footer_motto: "تعلم، تنافس، أنشئ، انتصر.",
+    footer_privacy: "الخصوصية",
+    footer_terms: "الشروط",
+    footer_contact: "اتصل بنا",
 
     // Other
     nav_login: "تسجيل الدخول",
@@ -92,7 +140,9 @@ export const translations = {
     continue_playing: "Continuer à jouer",
     explore_quizzes: "Explorer les Quiz",
     continue_where_you_left_off: "Reprendre là où vous vous êtes arrêté",
-    
+    hero_greeting: "Bonjour,",
+    hero_alex: "Alex !",
+
     // Browse Categories
     browse_categories: "Parcourir les catégories",
     find_next_challenge: "Trouvez votre prochain défi",
@@ -101,6 +151,8 @@ export const translations = {
     // Featured Quizzes
     featured_quizzes: "Quiz à la une",
     handpicked_by_team: "Sélectionnés par notre équipe",
+    featured_by: "Par",
+    featured_questions: "Questions",
 
     // Trending Now
     trending_now: "Tendances Actuelles",
@@ -126,6 +178,50 @@ export const translations = {
     collaboration_desc: "Co-créer avec des amis",
     analytics: "Analyses",
     analytics_desc: "Suivez vos performances",
+
+    // Guilds page
+    guilds_title: "Guildes",
+    guilds_subtitle: "Faites équipe, rivalisez et conquérez ensemble.",
+    guilds_wip_title: "Cette fonctionnalité est en construction",
+    guilds_wip_desc: "Le système de guildes et de clans arrive bientôt ! Préparez-vous à faire équipe avec des amis, à participer à des batailles de guildes épiques et à grimper dans le classement ensemble pour gagner des récompenses exclusives.",
+    guilds_create: "Créer une Guilde",
+    guilds_join: "Rejoindre une Guilde",
+
+    // Leaderboard page
+    leaderboard_you: "Vous",
+
+    // Login page
+    login_welcome: "Content de vous revoir !",
+    login_subtitle: "Connectez-vous pour continuer votre aventure.",
+    login_email: "Email",
+    login_password: "Mot de passe",
+    login_forgot: "Mot de passe oublié ?",
+    login_signin: "Se connecter",
+    login_no_account: "Pas de compte ?",
+    login_signup: "S'inscrire",
+
+    // Profile page
+    profile_title: "Mon Profil",
+    profile_subtitle: "Vos statistiques, succès et historique de quiz.",
+    profile_rank: "Rang",
+    profile_points: "Points",
+    profile_achievements: "Succès",
+    profile_quiz_history: "Historique des Quiz (Bientôt)",
+    profile_quiz_history_desc: "Vos performances récentes aux quiz apparaîtront ici.",
+
+    // Register page
+    register_title: "Rejoignez la compétition",
+    register_subtitle: "Créez un compte pour commencer à jouer et à gagner.",
+    register_username: "Nom d'utilisateur",
+    register_create_account: "Créer un compte",
+    register_has_account: "Déjà un compte ?",
+    register_signin: "Se connecter",
+
+    // Footer component
+    footer_motto: "Apprenez, rivalisez, créez, conquérez.",
+    footer_privacy: "Confidentialité",
+    footer_terms: "Conditions",
+    footer_contact: "Contact",
 
     // Other
     nav_login: "Connexion",

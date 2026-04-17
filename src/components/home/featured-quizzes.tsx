@@ -72,7 +72,7 @@ export function FeaturedQuizzes() {
                                 </CardHeader>
                                 <CardContent className="p-4 flex-grow">
                                     <p className="text-sm text-primary font-semibold">{quiz.category}</p>
-                                    <p className="text-xs text-muted-foreground mt-2">By {quiz.author}</p>
+                                    <p className="text-xs text-muted-foreground mt-2">{t('featured_by')} {quiz.author}</p>
                                 </CardContent>
                                 <CardFooter className="p-4 text-xs text-muted-foreground flex justify-between items-center border-t">
                                     <div className="flex items-center gap-1">
@@ -81,7 +81,7 @@ export function FeaturedQuizzes() {
                                     </div>
                                     <div className="flex items-center gap-1">
                                         <Users className="w-4 h-4" />
-                                        <span>{quiz.questionCount} Questions</span>
+                                        <span>{quiz.questionCount} {t('featured_questions')}</span>
                                     </div>
                                 </CardFooter>
                             </Card>
