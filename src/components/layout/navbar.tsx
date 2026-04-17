@@ -87,12 +87,6 @@ export function Navbar() {
         </div>
 
         <div className="flex flex-1 items-center justify-end gap-2 sm:gap-4">
-           <div className="hidden sm:flex items-center">
-              <Button asChild className="font-bold glow-on-hover">
-                 <Link href="/create">{t('create_quiz')}</Link>
-              </Button>
-           </div>
-          
           <LanguageToggle />
 
           <DropdownMenu>

@@ -20,7 +20,6 @@ export function Footer() {
       { href: "/categories", label: t('nav_categories') },
       { href: "/leaderboard", label: t('nav_leaderboard') },
       { href: "/guilds", label: t('nav_guilds') },
-      { href: "/create", label: t('create_quiz') },
     ],
     legal: [
         { href: "/privacy", label: t('footer_privacy') },

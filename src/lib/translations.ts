@@ -9,7 +9,6 @@ export const translations = {
     nav_guilds: "الفرق",
     nav_profile: "حسابي",
     nav_logout: "تسجيل الخروج",
-    create_quiz: "أنشئ اختبار",
 
     // Hero Section
     the_living_library: "مكتبة المعرفة الحية",
@@ -44,11 +43,11 @@ export const translations = {
     // Friends Activity
     friends_activity: "نشاط الأصدقاء",
 
-    // Create Your Own Quiz
-    create_your_own_quiz: "أنشئ اختبارك الخاص",
-    create_your_own_quiz_desc: "أطلق العنان لإبداعك وشارك معرفتك مع العالم.",
-    start_creating: "ابدأ الإنشاء",
-    learn_more: "اعرف المزيد",
+    // Community Hub Section
+    community_hub_title: "انضم إلى مجتمعنا",
+    community_hub_desc: "كوّن فريقًا، تنافس، وادعُ أصدقاءك للارتقاء في المراتب معًا.",
+    explore_guilds: "استكشف الفرق",
+    view_leaderboard: "عرض الترتيب",
     quiz_types: "أنواع الاختبارات",
     quiz_types_desc: "خيارات متعددة، صور، والمزيد",
     ai_assistant: "مساعد الذكاء الاصطناعي",
@@ -160,13 +159,6 @@ export const translations = {
     quiz_error_title: "خطأ",
     quiz_error_desc: "فشل تحميل محتوى الاختبار. يرجى المحاولة مرة أخرى لاحقًا.",
 
-    // Create Page
-    create_title: "أنشئ اختبار",
-    create_subtitle: "أطلق العنان لإبداعك وشارك معرفتك.",
-    create_wip_title: "صانع الاختبارات قادم قريبًا!",
-    create_wip_desc:
-      "استعد لإطلاق العنان لإبداعك. نعمل على أداة قوية لإنشاء الاختبارات تتيح لك تصميم تحديات جذابة بمساعدة الذكاء الاصطناعي.",
-
     // Privacy Page
     privacy_title: "سياسة الخصوصية",
     privacy_subtitle: "كيف نتعامل مع بياناتك.",
@@ -202,7 +194,6 @@ export const translations = {
     nav_guilds: "Guildes",
     nav_profile: "Profil",
     nav_logout: "Déconnexion",
-    create_quiz: "Créer un Quiz",
 
     // Hero Section
     the_living_library: "La Bibliothèque Vivante du Savoir",
@@ -237,12 +228,11 @@ export const translations = {
     // Friends Activity
     friends_activity: "Activité des amis",
 
-    // Create Your Own Quiz
-    create_your_own_quiz: "Créez votre propre Quiz",
-    create_your_own_quiz_desc:
-      "Libérez votre créativité et partagez vos connaissances avec le monde.",
-    start_creating: "Commencer à créer",
-    learn_more: "En savoir plus",
+    // Community Hub Section
+    community_hub_title: "Rejoignez notre communauté",
+    community_hub_desc: "Formez une équipe, rivalisez et invitez vos amis à gravir les échelons ensemble.",
+    explore_guilds: "Explorer les guildes",
+    view_leaderboard: "Voir le classement",
     quiz_types: "Types de Quiz",
     quiz_types_desc: "Choix multiples, images, et plus",
     ai_assistant: "Assistant IA",
@@ -355,13 +345,6 @@ export const translations = {
     quiz_error_title: "Erreur",
     quiz_error_desc:
       "Échec du chargement du contenu du quiz. Veuillez réessayer plus tard.",
-
-    // Create Page
-    create_title: "Créer un Quiz",
-    create_subtitle: "Libérez votre créativité et partagez vos connaissances.",
-    create_wip_title: "Le créateur de quiz arrive bientôt !",
-    create_wip_desc:
-      "Préparez-vous à libérer votre créativité. Nous travaillons sur un puissant créateur de quiz qui vous permettra de concevoir des défis captivants avec l'aide de l'IA.",
 
     // Privacy Page
     privacy_title: "Politique de Confidentialité",
