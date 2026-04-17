@@ -40,7 +40,7 @@ export function Hero() {
             </Button>
           </div>
           
-          <Link href="#">
+          <Link href="/quiz/modern-tunisian-history?difficulty=medium">
             <Card className="mt-8 text-start glassmorphic transition-all duration-300 hover:border-primary/60 hover:-translate-y-1 glow-on-hover">
               <CardContent className="p-4 flex items-center justify-between">
                   <div className="flex items-center gap-4">

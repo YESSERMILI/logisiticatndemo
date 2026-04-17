@@ -9,6 +9,10 @@ export const categories: Category[] = [
     { name: { ar: "جغرافيا تونس", fr: "Géographie de la Tunisie" }, slug: "tunisian-geography", icon: "Globe", avgDifficulty: "medium", quizCount: 12 },
     { name: { ar: "أدب تونسي", fr: "Littérature Tunisienne" }, slug: "tunisian-literature", icon: "BookOpen", avgDifficulty: "hard", quizCount: 10 },
     { name: { ar: "العلوم والتكنولوجيا", fr: "Science & Tech" }, slug: "science-and-tech", icon: "FlaskConical", avgDifficulty: "medium", quizCount: 30 },
+    { name: { ar: "تاريخ تونس الحديث", fr: "Histoire Moderne de la Tunisie" }, slug: "modern-tunisian-history", icon: "History", avgDifficulty: "medium", quizCount: 9 },
+    { name: { ar: "مدرجات تونس الأثرية", fr: "Amphithéâtres de Tunisie" }, slug: "tunisian-amphitheaters", icon: "Landmark", avgDifficulty: "hard", quizCount: 8 },
+    { name: { ar: "أمثال تونسية", fr: "Proverbes Tunisiens" }, slug: "tunisian-proverbs", icon: "Quote", avgDifficulty: "easy", quizCount: 14 },
+    { name: { ar: "رحلات صحراوية", fr: "Expéditions au Sahara" }, slug: "sahara-expeditions", icon: "Mountain", avgDifficulty: "medium", quizCount: 11 },
 ];
 
 export const leaderboardUsers: LeaderboardUser[] = [
