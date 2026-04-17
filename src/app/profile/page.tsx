@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Award, BarChart2, Edit, Trophy } from "lucide-react";
+import { Award, BarChart2, Edit, Shield, Trophy } from "lucide-react";
 
 export default function ProfilePage() {
   const user = {
@@ -18,11 +18,21 @@ export default function ProfilePage() {
     { icon: Trophy, name: "Football Expert", color: "text-yellow-500" },
     { icon: Award, name: "Tunisia Master", color: "text-red-500" },
     { icon: BarChart2, name: "Top 10 Weekly", color: "text-primary" },
+    { icon: Shield, name: "Carthage Eagle", color: "text-blue-400" },
   ];
 
   return (
     <div className="container mx-auto py-8">
-      <Card className="mx-auto max-w-3xl bg-card/30 backdrop-blur-lg border-primary/20">
+      <div className="mb-8 text-center">
+        <h1 className="font-heading text-4xl font-bold tracking-tight lg:text-5xl text-glow">
+          My Profile
+        </h1>
+        <p className="mt-2 text-lg text-muted-foreground">
+          Your stats, achievements, and quiz history.
+        </p>
+      </div>
+
+      <Card className="mx-auto max-w-3xl glassmorphic">
         <CardContent className="p-6">
           <div className="flex flex-col items-center gap-6 sm:flex-row">
             <div className="relative">
@@ -51,12 +61,12 @@ export default function ProfilePage() {
         </CardContent>
       </Card>
 
-      <Card className="mx-auto mt-8 max-w-3xl bg-card/30 backdrop-blur-lg border-primary/20">
+      <Card className="mx-auto mt-8 max-w-3xl glassmorphic">
         <CardHeader>
           <CardTitle className="font-heading text-glow">Achievements</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {achievements.map((ach, index) => (
               <div key={index} className="flex flex-col items-center rounded-lg border border-primary/20 bg-card/50 p-4 text-center">
                 <ach.icon className={`h-10 w-10 ${ach.color}`} />
@@ -67,11 +77,11 @@ export default function ProfilePage() {
         </CardContent>
       </Card>
       
-       <Card className="mx-auto mt-8 max-w-3xl bg-card/30 backdrop-blur-lg border-primary/20">
+       <Card className="mx-auto mt-8 max-w-3xl glassmorphic">
         <CardHeader>
           <CardTitle className="font-heading">Quiz History (Coming Soon)</CardTitle>
         </CardHeader>
-        <CardContent className="text-center text-muted-foreground">
+        <CardContent className="text-center text-muted-foreground pt-6">
           <p>Your recent quiz performance will appear here.</p>
         </CardContent>
       </Card>

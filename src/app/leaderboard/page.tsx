@@ -40,7 +40,7 @@ export default function LeaderboardPage() {
         {data.map((user) => {
           const avatarImage = PlaceHolderImages.find((p) => p.id === user.avatar);
           return (
-            <TableRow key={user.rank} className={user.rank <=3 ? "bg-secondary" : ""}>
+            <TableRow key={user.rank} className={user.rank <=3 ? "bg-secondary/50" : ""}>
               <TableCell className="text-center font-bold">{getRankIndicator(user.rank)}</TableCell>
               <TableCell>
                 <div className="flex items-center gap-3">
@@ -70,7 +70,7 @@ export default function LeaderboardPage() {
   return (
     <div className="container mx-auto py-8" dir={language === "ar" ? "rtl" : "ltr"}>
       <div className="mb-8 text-center">
-        <h1 className="font-heading text-4xl font-bold tracking-tight lg:text-5xl">
+        <h1 className="font-heading text-4xl font-bold tracking-tight lg:text-5xl text-glow">
           {t("nav_leaderboard")}
         </h1>
         <p className="mt-2 text-lg text-muted-foreground">
@@ -78,7 +78,7 @@ export default function LeaderboardPage() {
         </p>
       </div>
       
-      <Card className="mb-8 bg-primary/10 border-primary/20">
+      <Card className="mb-8 glassmorphic">
         <CardHeader>
             <CardTitle className="flex items-center gap-2 text-primary font-heading">
                 <Star className="text-accent" />
@@ -97,18 +97,18 @@ export default function LeaderboardPage() {
           <TabsTrigger value="all-time">{language === "ar" ? "إجمالي" : "Total"}</TabsTrigger>
         </TabsList>
         <TabsContent value="daily">
-            <Card><CardContent className="p-0">{renderTable(leaderboardUsers)}</CardContent></Card>
+            <Card className="glassmorphic"><CardContent className="p-0">{renderTable(leaderboardUsers)}</CardContent></Card>
         </TabsContent>
         <TabsContent value="weekly">
-            <Card><CardContent className="p-0">{renderTable(leaderboardUsers)}</CardContent></Card>
+            <Card className="glassmorphic"><CardContent className="p-0">{renderTable(leaderboardUsers)}</CardContent></Card>
         </TabsContent>
         <TabsContent value="all-time">
-            <Card><CardContent className="p-0">{renderTable(leaderboardUsers)}</CardContent></Card>
+            <Card className="glassmorphic"><CardContent className="p-0">{renderTable(leaderboardUsers)}</CardContent></Card>
         </TabsContent>
       </Tabs>
       
-      <div className="sticky bottom-0 mt-8 py-4 bg-background/80 backdrop-blur">
-          <Card className="border-accent shadow-lg">
+      <div className="sticky bottom-0 mt-8 py-4 bg-background/80 backdrop-blur-lg">
+          <Card className="border-accent shadow-lg glassmorphic">
               <CardContent className="p-4 flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <span className="font-bold text-lg">2,345</span>

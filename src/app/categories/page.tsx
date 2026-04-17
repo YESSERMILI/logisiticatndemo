@@ -83,7 +83,7 @@ export default function CategoriesPage() {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filteredCategories.map((category) => (
           <Link key={category.slug} href={`/quiz/${category.slug}`} passHref>
-            <Card className="flex h-full transform-gpu flex-col justify-between text-card-foreground transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl glow-on-hover bg-card/30 backdrop-blur-lg border-primary/20">
+            <Card className="flex h-full transform-gpu flex-col justify-between text-card-foreground transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl glow-on-hover glassmorphic">
               <CardHeader className="flex-row items-start gap-4 space-y-0">
                 <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <category.icon className="h-6 w-6" />

@@ -58,12 +58,13 @@ export default function QuizPage(props: QuizPageProps) {
 
     return (
         <div>
-            <div className="bg-secondary">
-                <div className="container mx-auto py-6 text-center">
-                    <h1 className="font-heading text-3xl font-bold">
-                        {category?.name.fr || props.params.topic}
+            <div className="py-12 bg-secondary text-center">
+                <div className="container">
+                    <p className="text-primary font-semibold">{category?.name.fr || props.params.topic}</p>
+                    <h1 className="font-heading text-4xl font-bold tracking-tight lg:text-5xl text-glow mt-2">
+                        {category?.name.fr || props.params.topic} Quiz
                     </h1>
-                     <p className="text-muted-foreground">{category?.name.ar || ''}</p>
+                     <p className="mt-2 text-lg text-muted-foreground">{category?.name.ar || ''}</p>
                 </div>
             </div>
             <Suspense fallback={<LoadingState />}>
@@ -86,6 +87,3 @@ function LoadingState() {
     </div>
   );
 }
-
-//This is a temporary fix to remove `app/page.tsx` that was created by default
-//and is no longer needed.

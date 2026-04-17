@@ -5,13 +5,13 @@ export const Logo = ({ className }: { className?: string }) => (
   <div className={cn("flex items-center gap-2", className)}>
     <Trophy className="h-6 w-6 text-primary" />
     <span className="font-heading text-xl font-bold tracking-tight">
-      QuizVerse
+      3ez El Mondial
     </span>
   </div>
 );
 
 export const AppName = ({ className }: { className?: string }) => (
-  <div className={cn("flex items-center gap-3", className)}>
+  <div className={cn("flex items-center justify-center gap-3", className)}>
     <Trophy className="h-8 w-8 text-accent" />
     <h1 className="font-heading text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
       3ez El Mondial
