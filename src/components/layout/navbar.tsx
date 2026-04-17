@@ -14,6 +14,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -91,16 +92,6 @@ export function Navbar() {
                  <Link href="/create">{t('create_quiz')}</Link>
               </Button>
            </div>
-          <div className="flex items-center gap-2 border-border ps-2 sm:ps-4 sm:border-s sm:ms-2">
-              <div className="flex items-center gap-2 rounded-lg bg-secondary px-3 py-1.5 text-sm font-semibold">
-                  <Trophy className="h-4 w-4 text-accent"/>
-                  <span>15,750</span>
-              </div>
-               <div className="flex items-center gap-1 rounded-lg bg-secondary px-2 py-1.5 text-sm font-semibold">
-                  <Flame className="h-4 w-4 text-orange-400"/>
-                  <span>7</span>
-              </div>
-          </div>
           
           <LanguageToggle />
 
@@ -122,6 +113,17 @@ export function Navbar() {
                   </p>
                 </div>
               </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                    <Trophy className="me-2 h-4 w-4 text-accent" />
+                    <span>15,750 {t('leaderboard_points')}</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                    <Flame className="me-2 h-4 w-4 text-orange-400" />
+                    <span>7 {t('leaderboard_streak')}</span>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
               <DropdownMenuSeparator />
                 <DropdownMenuItem asChild className="cursor-pointer">
                     <Link href="/profile">
