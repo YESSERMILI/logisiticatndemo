@@ -93,8 +93,8 @@ export function FeaturedQuizzes() {
                 )
             })}
           </CarouselContent>
-          <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 ltr:-left-4 rtl:-right-4 hidden md:flex" />
-          <CarouselNext className="absolute top-1/2 -translate-y-1/2 ltr:-right-4 rtl:-left-4 hidden md:flex" />
+          <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 ltr:left-2 rtl:right-2 z-10 h-10 w-10 rounded-full bg-card/50 hover:bg-card border border-primary/20 text-primary hover:text-accent hidden md:flex" />
+          <CarouselNext className="absolute top-1/2 -translate-y-1/2 ltr:right-2 rtl:left-2 z-10 h-10 w-10 rounded-full bg-card/50 hover:bg-card border border-primary/20 text-primary hover:text-accent hidden md:flex" />
         </Carousel>
     </section>
   );
