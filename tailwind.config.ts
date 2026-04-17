@@ -19,8 +19,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-sora)"],
-        heading: ["var(--font-space-grotesk)"],
+        sans: ["var(--font-sora)", "var(--font-tajawal)"],
+        heading: ["var(--font-space-grotesk)", "var(--font-tajawal)"],
       },
       colors: {
         border: "hsl(var(--border))",
