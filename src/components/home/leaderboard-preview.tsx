@@ -12,13 +12,13 @@ export function FriendsActivity() {
   return (
     <div>
         <div className="flex items-center justify-between mb-4">
-             <h3 className="text-xl text-glow">
+             <h3 className="text-xl text-glow font-bold">
                 {t('friends_activity')}
             </h3>
             <Users className="text-accent" />
         </div>
         <ul className="space-y-4">
-            {friendsActivity.slice(0, 2).map(activity => {
+            {friendsActivity.slice(0, 3).map(activity => {
                 const avatarImage = PlaceHolderImages.find(p => p.id === activity.avatar);
                 return (
                     <li key={activity.id} className="flex items-start gap-3">

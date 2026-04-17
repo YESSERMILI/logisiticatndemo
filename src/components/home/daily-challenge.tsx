@@ -8,12 +8,12 @@ import { Progress } from "../ui/progress";
 import { Flame } from "lucide-react";
 
 export function DailyQuests() {
-  const { t, language } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Card className="glassmorphic h-full">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-xl text-glow">
+        <CardTitle className="flex items-center gap-2 text-xl font-bold text-glow">
           <Flame className="text-accent" />
           {t('daily_quests')}
         </CardTitle>

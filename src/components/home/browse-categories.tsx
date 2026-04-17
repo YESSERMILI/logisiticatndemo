@@ -14,7 +14,7 @@ export function BrowseCategories() {
     <section dir={language === "ar" ? "rtl" : "ltr"}>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h2 className="text-3xl font-bold text-glow">
+          <h2 className="text-3xl font-black text-glow">
             {t("browse_categories")}
           </h2>
           <p className="text-muted-foreground">{t('find_next_challenge')}</p>
@@ -25,7 +25,7 @@ export function BrowseCategories() {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-6">
         {featured.map((category) => (
-          <Link key={category.slug} href={`/quiz/${category.slug}`} passHref>
+          <Link key={category.slug} href={`/quiz/${category.slug}?difficulty=${category.avgDifficulty}`} passHref>
             <div className="group flex flex-col items-center gap-4 transition-transform duration-300 ease-in-out hover:-translate-y-2">
               <div className="flex h-24 w-24 items-center justify-center rounded-2xl glassmorphic glow-on-hover transition-all duration-300 group-hover:bg-primary/20 group-hover:border-primary/50">
                 <Icon name={category.icon as any} className="h-10 w-10 text-primary transition-colors group-hover:text-accent" />

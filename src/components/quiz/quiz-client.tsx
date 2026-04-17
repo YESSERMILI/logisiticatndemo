@@ -79,9 +79,9 @@ export function QuizClient({ quiz, topic }: QuizClientProps) {
   if (isFinished) {
     return (
       <div className="container mx-auto max-w-2xl py-12">
-        <Card className="text-center">
+        <Card className="text-center glassmorphic">
           <CardHeader>
-            <CardTitle className="flex flex-col items-center gap-4 text-3xl">
+            <CardTitle className="flex flex-col items-center gap-4 text-3xl font-black">
               <Trophy className="h-16 w-16 text-accent" />
               {t("quiz_results")}
             </CardTitle>
@@ -92,7 +92,7 @@ export function QuizClient({ quiz, topic }: QuizClientProps) {
               {score} / {quiz.length}
             </p>
             <p className="text-muted-foreground">
-              {t("quiz_correct_answers")}
+              {score} {t("quiz_correct_answers")}
             </p>
           </CardContent>
           <CardFooter className="flex flex-col gap-4 sm:flex-row">
@@ -123,12 +123,12 @@ export function QuizClient({ quiz, topic }: QuizClientProps) {
     const isSelected = index === selectedOption;
 
     if (isCorrect) {
-      return "bg-green-500/10 border-green-500 text-green-700 dark:text-green-400";
+      return "bg-green-500/20 border-green-500 text-green-400";
     }
     if (isSelected && !isCorrect) {
-      return "bg-red-500/10 border-red-500 text-red-700 dark:text-red-400";
+      return "bg-red-500/20 border-red-500 text-red-400";
     }
-    return "opacity-70";
+    return "opacity-60";
   };
   
   const timerProgress = (timeLeft / QUESTION_TIME) * 100;
@@ -138,20 +138,40 @@ export function QuizClient({ quiz, topic }: QuizClientProps) {
       className="container mx-auto max-w-2xl py-8"
       dir={language === "ar" ? "rtl" : "ltr"}
     >
-      <Card>
+      <Card className="glassmorphic">
         <CardHeader>
           <div className="flex items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm font-bold text-muted-foreground tabular-nums">
               {currentQuestionIndex + 1} / {quiz.length}
             </p>
-            <div className="flex h-16 w-16 flex-col items-center justify-center rounded-full border-4 border-primary bg-secondary p-2 font-mono font-bold text-primary">
-              <span className="text-2xl">{timeLeft}</span>
-              <span className="text-xs">s</span>
+            <div className="relative flex h-20 w-20 flex-col items-center justify-center rounded-full border-4 border-primary bg-secondary p-2 font-mono font-bold text-primary">
+               <svg className="absolute inset-0 h-full w-full -rotate-90 transform">
+                <circle
+                    className="text-secondary"
+                    strokeWidth="4"
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="34"
+                    cx="40"
+                    cy="40"
+                />
+                <circle
+                    className="text-primary transition-all duration-1000 ease-linear"
+                    strokeWidth="4"
+                    strokeDasharray={213.5}
+                    strokeDashoffset={213.5 - (timerProgress / 100) * 213.5}
+                    stroke="currentColor"
+                    fill="transparent"
+                    r="34"
+                    cx="40"
+                    cy="40"
+                />
+              </svg>
+              <span className="z-10 text-3xl">{timeLeft}</span>
             </div>
-            <p className="text-sm text-muted-foreground">{t("quiz_score")}: {score}</p>
+            <p className="text-sm font-bold text-muted-foreground">{t("quiz_score")}: {score}</p>
           </div>
-          <Progress value={timerProgress} className="mt-4 h-2" />
-          <CardTitle className="pt-6 text-center text-2xl md:text-3xl">
+          <CardTitle className="pt-8 text-center text-2xl font-bold md:text-3xl">
             {questionText}
           </CardTitle>
         </CardHeader>
@@ -162,18 +182,19 @@ export function QuizClient({ quiz, topic }: QuizClientProps) {
                 key={index}
                 variant="outline"
                 className={cn(
-                  "h-auto min-h-16 w-full justify-start whitespace-normal rounded-lg border-2 p-4 text-left font-semibold md:text-lg",
+                  "h-auto min-h-16 w-full justify-start whitespace-normal rounded-lg border-2 p-4 text-left font-semibold md:text-lg transition-all duration-300",
                   getOptionClasses(index)
                 )}
                 onClick={() => handleOptionSelect(index)}
+                disabled={isAnswered}
               >
                 <div className="flex w-full items-center justify-between">
-                    <span>{option}</span>
+                    <span className="flex-1">{option}</span>
                     {isAnswered && index === currentQuestion.correct_answer_index && (
-                        <CheckCircle className="h-6 w-6 text-green-500" />
+                        <CheckCircle className="ms-2 h-6 w-6 flex-shrink-0 text-green-500" />
                     )}
                     {isAnswered && index === selectedOption && index !== currentQuestion.correct_answer_index && (
-                        <XCircle className="h-6 w-6 text-red-500" />
+                        <XCircle className="ms-2 h-6 w-6 flex-shrink-0 text-red-500" />
                     )}
                 </div>
               </Button>

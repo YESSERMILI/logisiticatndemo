@@ -6,7 +6,7 @@ import { featuredQuizzes } from "@/lib/data";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Badge } from "../ui/badge";
-import { Star, Users, ArrowLeft, ArrowRight } from "lucide-react";
+import { Star, Users } from "lucide-react";
 import Link from "next/link";
 import {
   Carousel,
@@ -28,15 +28,15 @@ export function FeaturedQuizzes() {
   }
 
   const difficultyTranslations = {
-    easy: language === 'ar' ? 'سهل' : 'Facile',
-    medium: language === 'ar' ? 'متوسط' : 'Moyen',
-    hard: language === 'ar' ? 'صعب' : 'Difficile',
+    easy: t('categories_easy'),
+    medium: t('categories_medium'),
+    hard: t('categories_hard'),
   }
 
   return (
     <section dir={language === "ar" ? "rtl" : "ltr"}>
         <div className="mb-8">
-            <h2 className="text-3xl font-bold text-glow">{t('featured_quizzes')}</h2>
+            <h2 className="text-3xl font-black text-glow">{t('featured_quizzes')}</h2>
             <p className="text-muted-foreground">{t('handpicked_by_team')}</p>
         </div>
         <Carousel
@@ -47,14 +47,14 @@ export function FeaturedQuizzes() {
           }}
           className="w-full"
         >
-          <CarouselContent>
+          <CarouselContent className="-ml-4">
             {featuredQuizzes.map(quiz => {
                 const image = PlaceHolderImages.find(p => p.id === quiz.imageId);
                 return (
-                    <CarouselItem key={quiz.id} className="md:basis-1/2 lg:basis-1/4">
+                    <CarouselItem key={quiz.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
                        <div className="p-1">
-                        <Link href={`/quiz/${quiz.id}`} passHref>
-                            <Card className="glassmorphic group overflow-hidden h-full flex flex-col">
+                        <Link href={`/quiz/${quiz.id}?difficulty=${quiz.difficulty}`} passHref>
+                            <Card className="glassmorphic group overflow-hidden h-full flex flex-col glow-on-hover">
                                 <CardHeader className="p-0 relative h-48">
                                     {image && (
                                         <Image 
@@ -65,11 +65,11 @@ export function FeaturedQuizzes() {
                                             data-ai-hint={image.imageHint}
                                         />
                                     )}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                    <Badge variant={getDifficultyVariant(quiz.difficulty)} className="absolute top-3 end-3">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                    <Badge variant={getDifficultyVariant(quiz.difficulty)} className="absolute top-3 right-3">
                                         {difficultyTranslations[quiz.difficulty]}
                                     </Badge>
-                                     <CardTitle className="text-lg font-bold text-white absolute bottom-3 start-4">{quiz.title}</CardTitle>
+                                     <CardTitle className="text-xl font-bold text-white absolute bottom-3 left-4 right-4">{quiz.title}</CardTitle>
                                 </CardHeader>
                                 <CardContent className="p-4 flex-grow">
                                     <p className="text-sm text-primary font-semibold">{quiz.category}</p>

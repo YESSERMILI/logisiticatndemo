@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Gem, Flame, User, Trophy, LogOut } from "lucide-react";
+import { Menu, LogOut, User, Flame, Trophy } from "lucide-react";
 import { Logo } from "../logo";
 import { useTranslation } from "@/hooks/use-translation";
 import { LanguageToggle } from "../language-toggle";
@@ -33,7 +33,7 @@ export function Navbar() {
   const userAvatar = PlaceHolderImages.find(p => p.id === 'avatar-1');
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm">
       <div className="container flex h-16 max-w-screen-2xl items-center">
         <div className="hidden md:flex md:flex-1">
           <Link href="/" className="me-6 flex items-center space-x-2">
@@ -59,17 +59,19 @@ export function Navbar() {
               <span className="sr-only">Toggle Menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className={cn("pe-0", language === 'ar' && 'ps-0')}>
-            <Link href="/" className="flex items-center space-x-2 px-6">
-              <Logo />
-            </Link>
-            <div className="my-4 h-[calc(100vh-8rem)] px-6">
+          <SheetContent side={language === 'ar' ? 'right' : 'left'} className={cn("p-0")}>
+            <div className="p-6">
+                <Link href="/" className="flex items-center space-x-2">
+                <Logo />
+                </Link>
+            </div>
+            <div className="h-[calc(100vh-8rem)] p-6 pt-0">
               <div className="flex flex-col space-y-3">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="transition-colors hover:text-foreground/80 text-foreground/80"
+                    className="text-lg transition-colors hover:text-foreground text-muted-foreground"
                   >
                     {t(link.label as any)}
                   </Link>
@@ -79,10 +81,13 @@ export function Navbar() {
           </SheetContent>
         </Sheet>
 
+        <div className="flex flex-1 md:hidden items-center justify-center">
+            <Logo />
+        </div>
 
-        <div className="flex flex-1 items-center justify-end gap-4">
+        <div className="flex flex-1 items-center justify-end gap-2 sm:gap-4">
            <div className="hidden sm:flex items-center">
-              <Button asChild className="font-bold">
+              <Button asChild className="font-bold glow-on-hover">
                  <Link href="/create">{t('create_quiz')}</Link>
               </Button>
            </div>
@@ -91,7 +96,7 @@ export function Navbar() {
                   <Trophy className="h-4 w-4 text-accent"/>
                   <span>15,750</span>
               </div>
-               <div className="flex items-center gap-2 rounded-lg bg-secondary px-3 py-1.5 text-sm font-semibold">
+               <div className="flex items-center gap-1 rounded-lg bg-secondary px-2 py-1.5 text-sm font-semibold">
                   <Flame className="h-4 w-4 text-orange-400"/>
                   <span>7</span>
               </div>
@@ -104,7 +109,7 @@ export function Navbar() {
               <Button variant="ghost" className="relative h-10 w-10 rounded-full">
                 <Avatar>
                   {userAvatar && <AvatarImage src={userAvatar.imageUrl} />}
-                  <AvatarFallback>A</AvatarFallback>
+                  <AvatarFallback>Z</AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
@@ -118,12 +123,12 @@ export function Navbar() {
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-               <Link href="/profile">
-                  <DropdownMenuItem className="cursor-pointer">
-                    <User className="me-2 h-4 w-4" />
-                    <span>{t('nav_profile')}</span>
-                  </DropdownMenuItem>
-               </Link>
+                <DropdownMenuItem asChild className="cursor-pointer">
+                    <Link href="/profile">
+                        <User className="me-2 h-4 w-4" />
+                        <span>{t('nav_profile')}</span>
+                    </Link>
+                </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="cursor-pointer">
                 <LogOut className="me-2 h-4 w-4" />

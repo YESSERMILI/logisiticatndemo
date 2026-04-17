@@ -1,22 +1,27 @@
 import type { Category, Guild, LeaderboardUser, FeaturedQuiz, TrendingQuiz, DailyQuest, FriendActivity } from "./types";
 
 export const categories: Category[] = [
-  { name: { ar: "علوم", fr: "Science" }, slug: "science", icon: "FlaskConical" },
-  { name: { ar: "تاريخ", fr: "History" }, slug: "history", icon: "Scroll" },
-  { name: { ar: "جغرافيا", fr: "Geography" }, slug: "geography", icon: "Globe" },
-  { name: { ar: "ترفيه", fr: "Entertainment" }, slug: "entertainment", icon: "Film" },
-  { name: { ar: "رياضة", fr: "Sports" }, slug: "sports", icon: "Trophy" },
-  { name: { ar: "تكنولوجيا", fr: "Technology" }, slug: "technology", icon: "Cpu" },
-  { name: { ar: "فنون", fr: "Arts & Literature" }, slug: "arts-literature", icon: "BookOpen" },
-  { name: { ar: "طبيعة", fr: "Nature" }, slug: "nature", icon: "Leaf" },
+    { name: { ar: "كرة القدم التونسية", fr: "Football Tunisien" }, slug: "tunisian-football", icon: "Trophy", avgDifficulty: "medium", quizCount: 28 },
+    { name: { ar: "تاريخ قرطاج", fr: "Histoire de Carthage" }, slug: "carthage-history", icon: "Scroll", avgDifficulty: "hard", quizCount: 15 },
+    { name: { ar: "سينما تونسية", fr: "Cinéma Tunisien" }, slug: "tunisian-cinema", icon: "Film", avgDifficulty: "easy", quizCount: 22 },
+    { name: { ar: "المطبخ التونسي", fr: "Cuisine Tunisienne" }, slug: "tunisian-cuisine", icon: "ChefHat", avgDifficulty: "easy", quizCount: 18 },
+    { name: { ar: "موسيقى تونسية", fr: "Musique Tunisienne" }, slug: "tunisian-music", icon: "Music", avgDifficulty: "medium", quizCount: 25 },
+    { name: { ar: "جغرافيا تونس", fr: "Géographie de la Tunisie" }, slug: "tunisian-geography", icon: "Globe", avgDifficulty: "medium", quizCount: 12 },
+    { name: { ar: "أدب تونسي", fr: "Littérature Tunisienne" }, slug: "tunisian-literature", icon: "BookOpen", avgDifficulty: "hard", quizCount: 10 },
+    { name: { ar: "العلوم والتكنولوجيا", fr: "Science & Tech" }, slug: "science-and-tech", icon: "FlaskConical", avgDifficulty: "medium", quizCount: 30 },
 ];
 
 export const leaderboardUsers: LeaderboardUser[] = [
-  { rank: 1, avatar: "avatar-1", username: "Zied_TN", points: 12580, streak: 15 },
-  { rank: 2, avatar: "avatar-2", username: "Fatma_Gamer", points: 11920, streak: 12, },
-  { rank: 3, avatar: "avatar-3", username: "Houssem_23", points: 11500, streak: 20 },
-  { rank: 4, avatar: "avatar-4", username: "Sara_Beast", points: 10850, streak: 8 },
-  { rank: 5, avatar: "avatar-5", username: "Amine_FTW", points: 10200, streak: 5 },
+  { rank: 1, avatar: "avatar-1", username: "Zied_TN", points: 15750, streak: 7 },
+  { rank: 2, avatar: "avatar-2", username: "Fatma_Gamer", points: 14920, streak: 12, },
+  { rank: 3, avatar: "avatar-3", username: "Houssem_23", points: 13500, streak: 20 },
+  { rank: 4, avatar: "avatar-4", username: "Sara_Beast", points: 12850, streak: 8 },
+  { rank: 5, avatar: "avatar-5", username: "Amine_FTW", points: 11200, streak: 5 },
+  { rank: 6, username: "Player6", points: 10500, streak: 3, avatar: "avatar-1" },
+  { rank: 7, username: "Player7", points: 9800, streak: 9, avatar: "avatar-2" },
+  { rank: 8, username: "Player8", points: 9500, streak: 2, avatar: "avatar-3" },
+  { rank: 9, username: "Player9", points: 9200, streak: 11, avatar: "avatar-4" },
+  { rank: 10, username: "Player10", points: 8900, streak: 1, avatar: "avatar-5" },
 ];
 
 export const guilds: Guild[] = [
@@ -25,28 +30,27 @@ export const guilds: Guild[] = [
 ];
 
 export const featuredQuizzes: FeaturedQuiz[] = [
-  { id: "space-explorer", title: "The Ultimate Space Explorer", category: "Science", author: "CosmoMind", imageId: "quiz-space", difficulty: "hard", rating: 4.8, questionCount: 200 },
-  { id: "world-capitals", title: "World Capitals Challenge", category: "Geography", author: "GeoWizard", imageId: "quiz-capitals", difficulty: "medium", rating: 4.7, questionCount: 150 },
-  { id: "90s-mania", title: "90s Movie Mania", category: "Entertainment", author: "CinemaFan", imageId: "quiz-movies", difficulty: "easy", rating: 4.9, questionCount: 250 },
-  { id: "ancient-civilizations", title: "Ancient Civilizations", category: "History", author: "TimeTraveler", imageId: "quiz-history", difficulty: "hard", rating: 4.6, questionCount: 200 },
+  { id: "derby-de-tunis", title: "ديربي العاصمة", category: "كرة القدم التونسية", author: "Admin", imageId: "quiz-football-derby", difficulty: "hard", rating: 4.9, questionCount: 15 },
+  { id: "hannibal-barca", title: "حنبعل برقا: الأسطورة", category: "تاريخ قرطاج", author: "HistoryBuff", imageId: "quiz-hannibal", difficulty: "hard", rating: 4.8, questionCount: 20 },
+  { id: "un-ete-a-la-goulette", title: "صيف حلق الوادي", category: "سينما تونسية", author: "Cinephile", imageId: "quiz-la-goulette", difficulty: "easy", rating: 4.7, questionCount: 10 },
+  { id: "plats-tunisiens", title: "أشهر الأطباق التونسية", category: "المطبخ التونسي", author: "Gourmet", imageId: "quiz-couscous", difficulty: "medium", rating: 4.9, questionCount: 12 },
 ];
 
 export const trendingQuizzes: TrendingQuiz[] = [
-  { rank: 1, title: "AI Revolution Quiz", category: "Technology", points: 8700, rating: 4.5, difficulty: "medium" },
-  { rank: 2, title: "Premier League Legends", category: "Sports", points: 15300, rating: 4.8, difficulty: "hard" },
-  { rank: 3, title: "Famous Paintings", category: "Arts", points: 9200, rating: 4.4, difficulty: "easy" },
-  { rank: 4, title: "Wild Animals Safari", category: "Nature", points: 11500, rating: 4.7, difficulty: "medium" },
+  { rank: 1, title: "أبطال دوري أبطال أفريقيا", category: "كرة القدم التونسية", points: 18200, rating: 4.8, difficulty: "hard" },
+  { rank: 2, title: "مواقع التراث العالمي في تونس", category: "جغرافيا تونس", points: 15300, rating: 4.7, difficulty: "medium" },
+  { rank: 3, title: "من هو الممثل؟", category: "سينما تونسية", points: 12500, rating: 4.5, difficulty: "easy" },
+  { rank: 4, title: "ألحان خالدة", category: "موسيقى تونسية", points: 9800, rating: 4.6, difficulty: "medium" },
 ];
 
 export const dailyQuests: DailyQuest[] = [
-  { id: 'specialist', title: 'The Specialist', progress: 0, goal: 1, reward: 100 },
-  { id: 'speed-demon', title: 'Speed Demon', progress: 0, goal: 1, reward: 50 },
-  { id: 'creators-eye', title: 'Creator\'s Eye', progress: 2, goal: 3, reward: 150 },
+  { id: 'play-three', title: 'لاعب نشيط', progress: 1, goal: 3, reward: 50 },
+  { id: 'history-buff', title: 'عاشق التاريخ', progress: 0, goal: 1, reward: 100 },
+  { id: 'perfect-score', title: 'العلامة الكاملة', progress: 0, goal: 1, reward: 200 },
 ];
 
 export const friendsActivity: FriendActivity[] = [
-  { id: 1, text: "<strong>Sarah</strong> aced the 'World Capitals' quiz", timestamp: "5m ago", avatar: "avatar-4" },
-  { id: 2, text: "<strong>Mike</strong> reached Level 45", timestamp: "1h ago", avatar: "avatar-5" },
-  { id: 3, text: "<strong>Emma</strong> created a new quiz 'Music of the 80s'", timestamp: "3h ago", avatar: "avatar-2" },
-  { id: 4, text: "<strong>John</strong> won the Science Tournament", timestamp: "2h ago", avatar: "avatar-3" },
+  { id: 1, text: "<strong>سارة</strong> اجتازت اختبار 'السينما التونسية' بنجاح", timestamp: "منذ 5 دقائق", avatar: "avatar-4" },
+  { id: 2, text: "<strong>أمين</strong> وصل إلى المستوى 12", timestamp: "منذ ساعة", avatar: "avatar-5" },
+  { id: 3, text: "<strong>فاطمة</strong> أنشأت اختبارًا جديدًا: 'ألغاز تاريخية'", timestamp: "منذ 3 ساعات", avatar: "avatar-2" },
 ];

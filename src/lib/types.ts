@@ -2,12 +2,13 @@ import type {
   GenerateLocalizedQuizContentOutput,
   GenerateLocalizedQuizContentInput,
 } from "@/ai/flows/generate-localized-quiz-content-flow";
-import type { LucideIcon } from "lucide-react";
 
 export type Category = {
   name: Record<"ar" | "fr", string>;
   slug: string;
   icon: string;
+  avgDifficulty: "easy" | "medium" | "hard";
+  quizCount: number;
 };
 
 export type LeaderboardUser = {

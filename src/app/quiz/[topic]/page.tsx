@@ -3,6 +3,7 @@ import { QuizClient } from "@/components/quiz/quiz-client";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { categories } from "@/lib/data";
+import { useTranslation } from "@/hooks/use-translation";
 import { AlertTriangle, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -21,8 +22,11 @@ async function QuizGenerator({ params, searchParams }: QuizPageProps) {
   const numQuestions = 10;
   
   try {
+    const category = categories.find(c => c.slug === params.topic);
+    const topicName = category ? category.name.fr : params.topic.replace(/-/g, ' ');
+
     const quizContent = await generateLocalizedQuizContent({
-      topic: params.topic.replace("-", " "),
+      topic: topicName,
       difficulty,
       numQuestions,
     });
@@ -55,16 +59,20 @@ async function QuizGenerator({ params, searchParams }: QuizPageProps) {
 
 export default function QuizPage(props: QuizPageProps) {
     const category = categories.find(c => c.slug === props.params.topic);
+    // This is a server component, so we can't use the useTranslation hook
+    // We'll pass the names to the client component if needed or just display one lang
+    const topicTitleFr = category?.name.fr || props.params.topic.replace(/-/g, ' ');
+    const topicTitleAr = category?.name.ar || '';
 
     return (
         <div>
             <div className="py-12 bg-secondary text-center">
                 <div className="container">
-                    <p className="text-primary font-semibold">{category?.name.fr || props.params.topic}</p>
-                    <h1 className="text-4xl font-bold tracking-tight lg:text-5xl text-glow mt-2">
-                        {category?.name.fr || props.params.topic} Quiz
+                    <p className="text-primary font-semibold">{topicTitleFr}</p>
+                    <h1 className="text-4xl font-black tracking-tight lg:text-5xl text-glow mt-2">
+                        {topicTitleFr} Quiz
                     </h1>
-                     <p className="mt-2 text-lg text-muted-foreground">{category?.name.ar || ''}</p>
+                     <p className="mt-2 text-lg text-muted-foreground">{topicTitleAr}</p>
                 </div>
             </div>
             <Suspense fallback={<LoadingState />}>
@@ -79,10 +87,10 @@ function LoadingState() {
     <div className="container mx-auto flex flex-col items-center justify-center py-20 text-center">
       <Loader2 className="h-12 w-12 animate-spin text-primary" />
       <h2 className="mt-6 text-2xl font-semibold">
-        Generating Your Quiz...
+        جاري إنشاء اختبارك...
       </h2>
       <p className="mt-2 text-muted-foreground">
-        Please wait while our AI prepares your challenge!
+        الرجاء الانتظار بينما يقوم الذكاء الاصطناعي بإعداد تحديك!
       </p>
     </div>
   );

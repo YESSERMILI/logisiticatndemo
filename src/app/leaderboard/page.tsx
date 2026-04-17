@@ -30,10 +30,10 @@ export default function LeaderboardPage() {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[80px] text-center">{language === "ar" ? "الترتيب" : "Rang"}</TableHead>
-          <TableHead>{language === "ar" ? "اللاعب" : "Joueur"}</TableHead>
-          <TableHead className="text-right">{language === "ar" ? "النقاط" : "Points"}</TableHead>
-          <TableHead className="hidden text-right md:table-cell">{language === "ar" ? "سلسلة" : "Série"}</TableHead>
+          <TableHead className="w-[80px] text-center">{t('leaderboard_rank')}</TableHead>
+          <TableHead>{t('leaderboard_player')}</TableHead>
+          <TableHead className="text-right">{t('leaderboard_points')}</TableHead>
+          <TableHead className="hidden text-right md:table-cell">{t('leaderboard_streak')}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -41,7 +41,7 @@ export default function LeaderboardPage() {
           const avatarImage = PlaceHolderImages.find((p) => p.id === user.avatar);
           return (
             <TableRow key={user.rank} className={user.rank <=3 ? "bg-secondary/50" : ""}>
-              <TableCell className="text-center font-bold">{getRankIndicator(user.rank)}</TableCell>
+              <TableCell className="text-center font-black">{getRankIndicator(user.rank)}</TableCell>
               <TableCell>
                 <div className="flex items-center gap-3">
                   <Avatar>
@@ -57,7 +57,7 @@ export default function LeaderboardPage() {
               <TableCell className="hidden text-right text-muted-foreground md:table-cell">
                 <div className="flex items-center justify-end gap-1">
                   <span>{user.streak}</span>
-                  <span>🔥</span>
+                  <span className="text-base">🔥</span>
                 </div>
               </TableCell>
             </TableRow>
@@ -70,11 +70,11 @@ export default function LeaderboardPage() {
   return (
     <div className="container mx-auto py-8" dir={language === "ar" ? "rtl" : "ltr"}>
       <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl text-glow">
+        <h1 className="text-4xl font-black tracking-tight lg:text-5xl text-glow">
           {t("nav_leaderboard")}
         </h1>
         <p className="mt-2 text-lg text-muted-foreground">
-          {language === "ar" ? "من هو بطل عز المونديال؟" : "Qui est le champion de 3ez El Mondial?"}
+          {t('leaderboard_who_is_champion')}
         </p>
       </div>
       
@@ -82,19 +82,19 @@ export default function LeaderboardPage() {
         <CardHeader>
             <CardTitle className="flex items-center gap-2 text-primary">
                 <Star className="text-accent" />
-                {language === "ar" ? "جوائز TT" : "Récompenses TT"}
+                {t('leaderboard_rewards_title')}
             </CardTitle>
             <CardDescription>
-                {language === "ar" ? "أفضل 10 لاعبين كل أسبوع يفوزون بباقات إنترنت مجانية!" : "Le Top 10 de chaque semaine gagne des forfaits internet gratuits!"}
+                {t('leaderboard_rewards_desc')}
             </CardDescription>
         </CardHeader>
       </Card>
 
       <Tabs defaultValue="weekly" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="daily">{language === "ar" ? "يومي" : "Journalier"}</TabsTrigger>
-          <TabsTrigger value="weekly">{language === "ar" ? "أسبوعي" : "Hebdomadaire"}</TabsTrigger>
-          <TabsTrigger value="all-time">{language === "ar" ? "إجمالي" : "Total"}</TabsTrigger>
+          <TabsTrigger value="daily">{t('leaderboard_daily')}</TabsTrigger>
+          <TabsTrigger value="weekly">{t('leaderboard_weekly')}</TabsTrigger>
+          <TabsTrigger value="all-time">{t('leaderboard_all_time')}</TabsTrigger>
         </TabsList>
         <TabsContent value="daily">
             <Card className="glassmorphic"><CardContent className="p-0">{renderTable(leaderboardUsers)}</CardContent></Card>
@@ -108,10 +108,10 @@ export default function LeaderboardPage() {
       </Tabs>
       
       <div className="sticky bottom-0 mt-8 py-4 bg-background/80 backdrop-blur-lg">
-          <Card className="border-accent shadow-lg glassmorphic">
+          <Card className="border-accent shadow-lg glassmorphic glow-on-hover">
               <CardContent className="p-4 flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <span className="font-bold text-lg">2,345</span>
+                    <span className="font-bold text-lg">#2,345</span>
                     <div>
                         <p className="font-bold">{t("profile_rank")}</p>
                         <p className="text-sm text-muted-foreground">{t("leaderboard_you")}</p>

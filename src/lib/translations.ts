@@ -17,9 +17,10 @@ export const translations = {
     continue_playing: "مواصلة اللعب",
     explore_quizzes: "استكشف الاختبارات",
     continue_where_you_left_off: "أكمل من حيث توقفت",
-    hero_greeting: "صباح الخير،",
-    hero_alex: "أليكس!",
-
+    hero_greeting: "مساء الخير،",
+    hero_alex: "زياد!",
+    last_played_quiz: "تاريخ تونس الحديث",
+    
     // Browse Categories
     browse_categories: "تصفح الأقسام",
     find_next_challenge: "ابحث عن تحديك القادم",
@@ -44,17 +45,17 @@ export const translations = {
 
     // Create Your Own Quiz
     create_your_own_quiz: "أنشئ اختبارك الخاص",
-    create_your_own_quiz_desc: "انضم إلى آلاف من مصممي الاختبارات! استخدم أدواتنا القوية لإنشاء اختبارات جذابة ومشاركتها مع العالم وكسب أرصدة المبدعين.",
+    create_your_own_quiz_desc: "أطلق العنان لإبداعك وشارك معرفتك مع العالم.",
     start_creating: "ابدأ الإنشاء",
     learn_more: "اعرف المزيد",
     quiz_types: "أنواع الاختبارات",
-    quiz_types_desc: "اختيار من متعدد، صح/خطأ، صورة",
+    quiz_types_desc: "خيارات متعددة، صور، والمزيد",
     ai_assistant: "مساعد الذكاء الاصطناعي",
-    ai_assistant_desc: "توليد إجابات معقولة",
+    ai_assistant_desc: "لإنشاء أسئلة مبتكرة",
     collaboration: "تعاون",
     collaboration_desc: "شارك في الإنشاء مع الأصدقاء",
     analytics: "تحليلات",
-    analytics_desc: "تتبع أدائك",
+    analytics_desc: "تتبع أداء اختباراتك",
 
     // Guilds page
     guilds_title: "الفرق",
@@ -66,6 +67,16 @@ export const translations = {
 
     // Leaderboard page
     leaderboard_you: "أنت",
+    leaderboard_rank: "الترتيب",
+    leaderboard_player: "اللاعب",
+    leaderboard_points: "النقاط",
+    leaderboard_streak: "سلسلة",
+    leaderboard_daily: "يومي",
+    leaderboard_weekly: "أسبوعي",
+    leaderboard_all_time: "إجمالي",
+    leaderboard_rewards_title: "جوائز TT",
+    leaderboard_rewards_desc: "أفضل 10 لاعبين كل أسبوع يفوزون بباقات إنترنت مجانية!",
+    leaderboard_who_is_champion: "من هو بطل عز المونديال؟",
 
     // Login page
     login_welcome: "مرحبا بعودتك!",
@@ -83,7 +94,7 @@ export const translations = {
     profile_rank: "الترتيب",
     profile_points: "النقاط",
     profile_achievements: "الإنجازات",
-    profile_quiz_history: "تاريخ الاختبارات (قريباً)",
+    profile_quiz_history: "تاريخ الاختبارات",
     profile_quiz_history_desc: "سيظهر أداءك الأخير في الاختبارات هنا.",
 
     // Register page
@@ -101,6 +112,7 @@ export const translations = {
     footer_contact: "اتصل بنا",
     footer_legal: "قانوني",
     footer_rights: "جميع الحقوق محفوظة.",
+    footer_navigation: "التنقل",
 
 
     // Other
@@ -113,7 +125,6 @@ export const translations = {
     stats_top_player: "أفضل لاعب اليوم",
     leaderboard_preview_title: "أفضل اللاعبين",
     leaderboard_preview_cta: "عرض الترتيب الكامل",
-    leaderboard_points: "نقطة",
     guild_highlight_title: "انضم إلى فريق وهيمن على المنافسة",
     guild_highlight_subtitle: "كوّن فريقًا مع أصدقائك وتنافسوا معًا للصعود في الترتيب والفوز بجوائز حصرية.",
     guild_highlight_cta: "استكشف الفرق",
@@ -126,6 +137,20 @@ export const translations = {
     quiz_back_to_categories: "العودة إلى الأقسام",
     quiz_next_question: "السؤال التالي",
     quiz_submit: "تأكيد",
+    quiz_generating: "جاري إنشاء اختبارك...",
+    quiz_generating_desc: "الرجاء الانتظار بينما يقوم الذكاء الاصطناعي بإعداد تحديك!",
+
+    // Categories page
+    categories_title: "الأقسام",
+    categories_subtitle: "اختر موضوعًا واختبر معلوماتك.",
+    categories_search: "ابحث عن فئة...",
+    categories_difficulty: "الصعوبة",
+    categories_all: "الكل",
+    categories_easy: "سهل",
+    categories_medium: "متوسط",
+    categories_hard: "صعب",
+    categories_no_results: "لم يتم العثور على فئات تطابق بحثك.",
+    categories_quiz_count: "اختبار",
   },
   fr: {
     // Navbar
@@ -143,8 +168,9 @@ export const translations = {
     continue_playing: "Continuer à jouer",
     explore_quizzes: "Explorer les Quiz",
     continue_where_you_left_off: "Reprendre là où vous vous êtes arrêté",
-    hero_greeting: "Bonjour,",
-    hero_alex: "Alex !",
+    hero_greeting: "Bonsoir,",
+    hero_alex: "Zied !",
+    last_played_quiz: "Histoire Moderne de la Tunisie",
 
     // Browse Categories
     browse_categories: "Parcourir les catégories",
@@ -170,17 +196,17 @@ export const translations = {
 
     // Create Your Own Quiz
     create_your_own_quiz: "Créez votre propre Quiz",
-    create_your_own_quiz_desc: "Rejoignez des milliers de créateurs de quiz ! Utilisez nos outils puissants pour créer des quiz captivants, les partager avec le monde et gagner des crédits de créateur.",
+    create_your_own_quiz_desc: "Libérez votre créativité et partagez vos connaissances avec le monde.",
     start_creating: "Commencer à créer",
     learn_more: "En savoir plus",
     quiz_types: "Types de Quiz",
-    quiz_types_desc: "Choix multiple, Vrai/Faux, Image",
+    quiz_types_desc: "Choix multiples, images, et plus",
     ai_assistant: "Assistant IA",
-    ai_assistant_desc: "Générer des réponses plausibles",
+    ai_assistant_desc: "Pour générer des questions innovantes",
     collaboration: "Collaboration",
     collaboration_desc: "Co-créer avec des amis",
     analytics: "Analyses",
-    analytics_desc: "Suivez vos performances",
+    analytics_desc: "Suivez les performances de vos quiz",
 
     // Guilds page
     guilds_title: "Guildes",
@@ -192,6 +218,16 @@ export const translations = {
 
     // Leaderboard page
     leaderboard_you: "Vous",
+    leaderboard_rank: "Rang",
+    leaderboard_player: "Joueur",
+    leaderboard_points: "Points",
+    leaderboard_streak: "Série",
+    leaderboard_daily: "Journalier",
+    leaderboard_weekly: "Hebdomadaire",
+    leaderboard_all_time: "Total",
+    leaderboard_rewards_title: "Récompenses TT",
+    leaderboard_rewards_desc: "Le Top 10 de chaque semaine gagne des forfaits internet gratuits!",
+    leaderboard_who_is_champion: "Qui est le champion de 3ez El Mondial?",
 
     // Login page
     login_welcome: "Content de vous revoir !",
@@ -209,7 +245,7 @@ export const translations = {
     profile_rank: "Rang",
     profile_points: "Points",
     profile_achievements: "Succès",
-    profile_quiz_history: "Historique des Quiz (Bientôt)",
+    profile_quiz_history: "Historique des Quiz",
     profile_quiz_history_desc: "Vos performances récentes aux quiz apparaîtront ici.",
 
     // Register page
@@ -227,6 +263,7 @@ export const translations = {
     footer_contact: "Contact",
     footer_legal: "Légal",
     footer_rights: "Tous droits réservés.",
+    footer_navigation: "Navigation",
 
     // Other
     nav_login: "Connexion",
@@ -238,7 +275,6 @@ export const translations = {
     stats_top_player: "Meilleur joueur du jour",
     leaderboard_preview_title: "Meilleurs joueurs",
     leaderboard_preview_cta: "Voir le classement complet",
-    leaderboard_points: "points",
     guild_highlight_title: "Rejoignez une guilde et dominez",
     guild_highlight_subtitle: "Faites équipe avec vos amis, grimpez dans le classement et gagnez des récompenses exclusives.",
     guild_highlight_cta: "Explorer les guildes",
@@ -251,5 +287,19 @@ export const translations = {
     quiz_back_to_categories: "Retour aux catégories",
     quiz_next_question: "Question suivante",
     quiz_submit: "Valider",
+    quiz_generating: "Génération de votre quiz...",
+    quiz_generating_desc: "Veuillez patienter pendant que notre IA prépare votre défi !",
+
+    // Categories page
+    categories_title: "Catégories",
+    categories_subtitle: "Choisissez un sujet et testez vos connaissances.",
+    categories_search: "Rechercher une catégorie...",
+    categories_difficulty: "Difficulté",
+    categories_all: "Toutes",
+    categories_easy: "Facile",
+    categories_medium: "Moyen",
+    categories_hard: "Difficile",
+    categories_no_results: "Aucune catégorie ne correspond à votre recherche.",
+    categories_quiz_count: "quiz",
   },
 };

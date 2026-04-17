@@ -14,7 +14,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 const cairo = Cairo({
-  subsets: ["arabic"],
+  subsets: ["arabic", "latin"],
   weight: ["400", "700", "900"],
   variable: "--font-cairo",
 });
@@ -37,8 +37,8 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          spaceGrotesk.variable,
-          cairo.variable
+          cairo.variable,
+          spaceGrotesk.variable
         )}
       >
         <Providers>

@@ -49,28 +49,28 @@
       "imageHint": "geometric shape"
     },
     {
-      "id": "quiz-space",
-      "description": "An image of space for the space explorer quiz.",
+      "id": "quiz-football-derby",
+      "description": "An image of a football derby for a quiz",
       "imageUrl": "https://picsum.photos/seed/401/600/400",
-      "imageHint": "nebula galaxy"
+      "imageHint": "football match"
     },
     {
-      "id": "quiz-capitals",
-      "description": "An image of a cityscape for the world capitals quiz.",
+      "id": "quiz-hannibal",
+      "description": "An image for a quiz about Hannibal Barca",
       "imageUrl": "https://picsum.photos/seed/402/600/400",
-      "imageHint": "london street"
+      "imageHint": "ancient warrior"
     },
     {
-      "id": "quiz-movies",
-      "description": "An image representing 90s movies.",
+      "id": "quiz-la-goulette",
+      "description": "An image from the movie 'Un été à la Goulette'",
       "imageUrl": "https://picsum.photos/seed/403/600/400",
-      "imageHint": "retro cinema"
+      "imageHint": "summer beach"
     },
     {
-      "id": "quiz-history",
-      "description": "An image for the ancient civilizations quiz.",
+      "id": "quiz-couscous",
+      "description": "An image of Tunisian couscous",
       "imageUrl": "https://picsum.photos/seed/404/600/400",
-      "imageHint": "egyptian pyramids"
+      "imageHint": "food dish"
     }
   ]
 }

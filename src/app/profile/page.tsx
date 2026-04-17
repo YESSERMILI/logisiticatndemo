@@ -1,34 +1,33 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslation } from "@/hooks/use-translation";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Award, BarChart2, Edit, Shield, Trophy } from "lucide-react";
+import { Award, BarChart2, Edit, Shield, Star, Trophy } from "lucide-react";
 
 export default function ProfilePage() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const user = {
     name: "Zied_TN",
     avatar: "avatar-1",
-    points: 12580,
+    points: 15750,
     rank: 1,
   };
   const avatarImage = PlaceHolderImages.find((p) => p.id === user.avatar);
 
   const achievements = [
-    { icon: Trophy, name: "Football Expert", color: "text-yellow-500" },
-    { icon: Award, name: "Tunisia Master", color: "text-red-500" },
-    { icon: BarChart2, name: "Top 10 Weekly", color: "text-primary" },
-    { icon: Shield, name: "Carthage Eagle", color: "text-blue-400" },
+    { icon: Trophy, name: "خبير كرة القدم", color: "text-yellow-500" },
+    { icon: Award, name: "محترف تونسي", color: "text-red-500" },
+    { icon: Star, name: "أفضل 10 أسبوعيا", color: "text-primary" },
+    { icon: Shield, name: "نسر قرطاج", color: "text-blue-400" },
   ];
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8" dir={language === "ar" ? "rtl" : "ltr"}>
       <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl text-glow">
+        <h1 className="text-4xl font-black tracking-tight lg:text-5xl text-glow">
           {t("profile_title")}
         </h1>
         <p className="mt-2 text-lg text-muted-foreground">
@@ -51,7 +50,7 @@ export default function ProfilePage() {
                 <Edit className="h-4 w-4" />
               </Button>
             </div>
-            <div className="flex-1 text-center sm:text-left">
+            <div className="flex-1 text-center sm:text-start">
               <h1 className="text-3xl font-bold">{user.name}</h1>
               <div className="mt-4 flex flex-wrap justify-center gap-6 sm:justify-start">
                 <div>
@@ -81,7 +80,7 @@ export default function ProfilePage() {
             {achievements.map((ach, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center rounded-lg border border-primary/20 bg-card/50 p-4 text-center"
+                className="flex flex-col items-center rounded-lg border border-primary/20 bg-card/50 p-4 text-center transition-transform hover:-translate-y-1"
               >
                 <ach.icon className={`h-10 w-10 ${ach.color}`} />
                 <p className="mt-2 font-semibold">{ach.name}</p>
@@ -96,7 +95,8 @@ export default function ProfilePage() {
           <CardTitle>{t("profile_quiz_history")}</CardTitle>
         </CardHeader>
         <CardContent className="text-center text-muted-foreground pt-6">
-          <p>{t("profile_quiz_history_desc")}</p>
+          <BarChart2 className="h-16 w-16 mx-auto text-muted-foreground/50" />
+          <p className="mt-4">{t("profile_quiz_history_desc")}</p>
         </CardContent>
       </Card>
     </div>

@@ -41,7 +41,7 @@ export function Hero() {
           </div>
           
           <Link href="#">
-            <Card className="mt-8 text-start glassmorphic transition-all duration-300 hover:border-primary/60 hover:-translate-y-1">
+            <Card className="mt-8 text-start glassmorphic transition-all duration-300 hover:border-primary/60 hover:-translate-y-1 glow-on-hover">
               <CardContent className="p-4 flex items-center justify-between">
                   <div className="flex items-center gap-4">
                       <div className="h-12 w-12 rounded-lg bg-secondary flex items-center justify-center">
@@ -49,10 +49,10 @@ export function Hero() {
                       </div>
                       <div>
                           <p className="text-sm text-muted-foreground">{t('continue_where_you_left_off')}</p>
-                          <p className="font-bold">The Ultimate Space Explorer</p>
+                          <p className="font-bold">{t('last_played_quiz')}</p>
                       </div>
                   </div>
-                  <ArrowRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
               </CardContent>
             </Card>
           </Link>
