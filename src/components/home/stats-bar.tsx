@@ -26,7 +26,7 @@ export function StatsBar() {
   ];
 
   return (
-    <div className="bg-secondary">
+    <div className="bg-secondary/30 backdrop-blur-md">
       <div
         className="container mx-auto"
         dir={language === "ar" ? "rtl" : "ltr"}

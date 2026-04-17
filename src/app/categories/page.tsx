@@ -49,7 +49,7 @@ export default function CategoriesPage() {
       dir={language === "ar" ? "rtl" : "ltr"}
     >
       <div className="mb-8 text-center">
-        <h1 className="font-heading text-4xl font-bold tracking-tight lg:text-5xl">
+        <h1 className="font-heading text-4xl font-bold tracking-tight lg:text-5xl text-glow">
           {t("nav_categories")}
         </h1>
         <p className="mt-2 text-lg text-muted-foreground">
@@ -62,13 +62,13 @@ export default function CategoriesPage() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input
             placeholder={language === 'ar' ? "ابحث عن فئة..." : "Rechercher une catégorie..."}
-            className="pl-10"
+            className="pl-10 bg-transparent"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
         <Select value={difficulty} onValueChange={setDifficulty}>
-          <SelectTrigger className="w-full md:w-[180px]">
+          <SelectTrigger className="w-full md:w-[180px] bg-transparent">
             <SelectValue placeholder={language === 'ar' ? "الصعوبة" : "Difficulté"} />
           </SelectTrigger>
           <SelectContent>
@@ -83,7 +83,7 @@ export default function CategoriesPage() {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filteredCategories.map((category) => (
           <Link key={category.slug} href={`/quiz/${category.slug}`} passHref>
-            <Card className="flex h-full transform-gpu flex-col justify-between bg-card text-card-foreground transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl glow-on-hover">
+            <Card className="flex h-full transform-gpu flex-col justify-between text-card-foreground transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl glow-on-hover bg-card/30 backdrop-blur-lg border-primary/20">
               <CardHeader className="flex-row items-start gap-4 space-y-0">
                 <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <category.icon className="h-6 w-6" />

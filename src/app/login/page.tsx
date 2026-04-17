@@ -14,8 +14,8 @@ import { Trophy } from "lucide-react";
 
 export default function LoginPage() {
   return (
-    <div className="flex min-h-[80vh] items-center justify-center bg-background px-4 py-12">
-      <Card className="w-full max-w-sm">
+    <div className="flex min-h-[80vh] items-center justify-center bg-transparent px-4 py-12">
+      <Card className="w-full max-w-sm bg-card/30 backdrop-blur-lg border-primary/20">
         <CardHeader className="text-center">
           <Trophy className="mx-auto h-12 w-12 text-primary" />
           <CardTitle className="mt-4 font-heading text-2xl">
@@ -28,7 +28,7 @@ export default function LoginPage() {
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="m@example.com" required />
+            <Input id="email" type="email" placeholder="m@example.com" required className="bg-transparent" />
           </div>
           <div className="grid gap-2">
             <div className="flex items-center">
@@ -40,7 +40,7 @@ export default function LoginPage() {
                 Forgot your password?
               </Link>
             </div>
-            <Input id="password" type="password" required />
+            <Input id="password" type="password" required className="bg-transparent"/>
           </div>
         </CardContent>
         <CardFooter className="flex flex-col">

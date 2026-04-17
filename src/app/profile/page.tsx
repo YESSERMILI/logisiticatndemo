@@ -17,12 +17,12 @@ export default function ProfilePage() {
   const achievements = [
     { icon: Trophy, name: "Football Expert", color: "text-yellow-500" },
     { icon: Award, name: "Tunisia Master", color: "text-red-500" },
-    { icon: BarChart2, name: "Top 10 Weekly", color: "text-blue-500" },
+    { icon: BarChart2, name: "Top 10 Weekly", color: "text-primary" },
   ];
 
   return (
     <div className="container mx-auto py-8">
-      <Card className="mx-auto max-w-3xl">
+      <Card className="mx-auto max-w-3xl bg-card/30 backdrop-blur-lg border-primary/20">
         <CardContent className="p-6">
           <div className="flex flex-col items-center gap-6 sm:flex-row">
             <div className="relative">
@@ -51,14 +51,14 @@ export default function ProfilePage() {
         </CardContent>
       </Card>
 
-      <Card className="mx-auto mt-8 max-w-3xl">
+      <Card className="mx-auto mt-8 max-w-3xl bg-card/30 backdrop-blur-lg border-primary/20">
         <CardHeader>
-          <CardTitle className="font-heading">Achievements</CardTitle>
+          <CardTitle className="font-heading text-glow">Achievements</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
             {achievements.map((ach, index) => (
-              <div key={index} className="flex flex-col items-center rounded-lg border p-4 text-center">
+              <div key={index} className="flex flex-col items-center rounded-lg border border-primary/20 bg-card/50 p-4 text-center">
                 <ach.icon className={`h-10 w-10 ${ach.color}`} />
                 <p className="mt-2 font-semibold">{ach.name}</p>
               </div>
@@ -67,7 +67,7 @@ export default function ProfilePage() {
         </CardContent>
       </Card>
       
-       <Card className="mx-auto mt-8 max-w-3xl">
+       <Card className="mx-auto mt-8 max-w-3xl bg-card/30 backdrop-blur-lg border-primary/20">
         <CardHeader>
           <CardTitle className="font-heading">Quiz History (Coming Soon)</CardTitle>
         </CardHeader>

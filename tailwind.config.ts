@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        sans: ["var(--font-sora)"],
         heading: ["var(--font-space-grotesk)"],
       },
       colors: {
