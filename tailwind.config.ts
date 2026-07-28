@@ -19,7 +19,9 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-cairo)", "var(--font-space-grotesk)"],
+        sans: ["Inter", "sans-serif"],
+        orbitron: ["Orbitron", "sans-serif"],
+        space: ["Space Grotesk", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
