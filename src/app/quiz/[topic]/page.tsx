@@ -4,28 +4,30 @@ import { categories, trendingQuizzes, featuredQuizzes } from "@/lib/data";
 import { staticQuizData } from "@/lib/quiz-data";
 
 type QuizPageProps = {
-  params: {
+  params: Promise<{
     topic: string;
-  };
-  searchParams: {
+  }>;
+  searchParams: Promise<{
     difficulty?: "easy" | "medium" | "hard";
-  };
+  }>;
 };
 
-function QuizPlayer({ params }: { params: { topic: string } }) {
-  const quizContent = staticQuizData[params.topic];
+async function QuizPlayer({ topic }: { topic: string }) {
+  const quizContent = staticQuizData[topic];
 
   if (!quizContent || quizContent.length === 0) {
     return <QuizError />;
   }
 
-  return <QuizClient quiz={quizContent} topic={params.topic} />;
+  return <QuizClient quiz={quizContent} topic={topic} />;
 }
 
-export default function QuizPage({ params }: QuizPageProps) {
+export default async function QuizPage({ params }: QuizPageProps) {
+  const { topic } = await params;
+  
   const allTopics = [...categories, ...trendingQuizzes, ...featuredQuizzes];
   const category = allTopics.find(
-    (c) => (c as any).slug === params.topic || (c as any).id === params.topic
+    (c) => (c as any).slug === topic || (c as any).id === topic
   );
 
   let topicTitleFr: string;
@@ -33,16 +35,14 @@ export default function QuizPage({ params }: QuizPageProps) {
 
   if (category) {
     if ("name" in category) {
-      // It's a Category
       topicTitleFr = category.name.fr;
       topicTitleAr = category.name.ar;
     } else {
-      // It's a TrendingQuiz or FeaturedQuiz
       topicTitleFr = category.title;
-      topicTitleAr = category.title; // Assuming title is the same for now
+      topicTitleAr = category.title;
     }
   } else {
-    topicTitleFr = params.topic.replace(/-/g, " ");
+    topicTitleFr = topic.replace(/-/g, " ");
     topicTitleAr = "";
   }
 
@@ -57,7 +57,7 @@ export default function QuizPage({ params }: QuizPageProps) {
           <p className="mt-2 text-lg text-muted-foreground">{topicTitleAr}</p>
         </div>
       </div>
-      <QuizPlayer params={params} />
+      <QuizPlayer topic={topic} />
     </div>
   );
 }
