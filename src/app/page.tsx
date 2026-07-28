@@ -1,26 +1,27 @@
-import { BrowseCategories } from "@/components/home/browse-categories";
-import { CommunityAndCreationSection } from "@/components/home/community-and-creation";
-import { DailyQuests } from "@/components/home/daily-challenge";
-import { FeaturedQuizzes } from "@/components/home/featured-quizzes";
-import { Hero } from "@/components/home/hero";
-import { TrendingNow } from "@/components/home/trending-now";
-
 export default function Home() {
   return (
-    <div className="flex flex-col space-y-20 md:space-y-32">
-      <Hero />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-20 md:space-y-32">
-        <BrowseCategories />
-        <FeaturedQuizzes />
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2">
-                <TrendingNow />
-            </div>
-            <div>
-                <DailyQuests />
-            </div>
+    <div className="flex min-h-[80vh] flex-col items-center justify-center px-4 text-center">
+      <div className="space-y-4">
+        <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
+          A Fresh Start
+        </h1>
+        <p className="mx-auto max-w-[700px] text-lg text-muted-foreground sm:text-xl">
+          The previous project has been cleared. I'm ready to help you build something entirely new. What are we creating today?
+        </p>
+      </div>
+      <div className="mt-10 flex flex-wrap justify-center gap-4">
+        <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm transition-all hover:shadow-md">
+          <h3 className="text-xl font-bold">Responsive Layout</h3>
+          <p className="mt-2 text-sm text-muted-foreground">Tailwind CSS and ShadCN components are ready.</p>
         </div>
-        <CommunityAndCreationSection />
+        <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm transition-all hover:shadow-md">
+          <h3 className="text-xl font-bold">Ready for GenAI</h3>
+          <p className="mt-2 text-sm text-muted-foreground">Genkit is configured for your intelligent features.</p>
+        </div>
+        <div className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm transition-all hover:shadow-md">
+          <h3 className="text-xl font-bold">Firebase Support</h3>
+          <p className="mt-2 text-sm text-muted-foreground">Authentication and Firestore can be added anytime.</p>
+        </div>
       </div>
     </div>
   );
