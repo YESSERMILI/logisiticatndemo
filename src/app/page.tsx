@@ -49,35 +49,35 @@ const Hero = () => {
 
   return (
     <SectionContainer className="grid-background flex flex-col items-center justify-start min-h-screen pt-12">
-      <div className="w-full flex justify-center items-center mb-24">
-         <div className="flex items-center gap-12 px-12 py-8 bg-black/40 backdrop-blur-md rounded-full border border-white/5">
+      <div className="w-full flex justify-center items-center mb-32">
+         <div className="flex items-center gap-16">
            <Image 
               src={esportsLogo} 
               alt="Esports.tn" 
-              width={600} 
-              height={200} 
-              className="object-contain h-24 w-auto" 
+              width={800} 
+              height={300} 
+              className="object-contain h-32 w-auto" 
            />
-           <div className="h-12 w-[1px] bg-white/10 mx-4"></div>
+           <div className="h-16 w-[1px] bg-white/10"></div>
            <Image 
               src={spacenetLogo} 
               alt="Spacenet" 
-              width={400} 
-              height={200} 
-              className="object-contain h-24 w-auto" 
+              width={600} 
+              height={300} 
+              className="object-contain h-28 w-auto" 
            />
          </div>
       </div>
 
       <div className="text-center max-w-5xl mx-auto">
         <div>
-          <span className="inline-block py-2 px-6 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-wider mb-8 uppercase">
+          <span className="inline-block py-1.5 px-4 rounded-md border border-white/10 bg-white/5 text-white/60 text-xs font-semibold tracking-tight mb-8 uppercase">
             Partnership Proposal 2026
           </span>
           <h1 className="text-5xl md:text-7xl lg:text-[90px] font-black leading-[1.05] mb-12 tracking-tighter">
-            Transformer le <span className="text-primary glow-text-cyan">gaming</span> <br />
+            Transformer le <span className="text-primary">gaming</span> <br />
             en récompenses <br />
-            <span className="text-secondary drop-shadow-[0_0_15px_rgba(0,255,136,0.3)]">réelles</span>
+            <span className="text-secondary">réelles</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-16 font-medium leading-relaxed opacity-80">
             Proposition de collaboration stratégique entre Esports.tn et Spacenet : Intégration API Stock & Partenariat Fournisseur pour l'écosystème compétitif tunisien.
@@ -108,7 +108,6 @@ const WhoAreWe = () => {
     <SectionContainer id="about">
       <div className="grid lg:grid-cols-2 gap-24 items-center">
         <div className="order-2 lg:order-1 relative">
-           <div className="absolute -inset-6 bg-gradient-to-r from-primary/10 to-accent/10 blur-3xl opacity-50"></div>
            <div className="relative glassmorphic rounded-3xl p-10 space-y-10">
               <div className="flex items-center gap-6">
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
@@ -128,7 +127,7 @@ const WhoAreWe = () => {
                     { icon: Zap, label: "Objectifs", color: "text-secondary" },
                     { icon: TrendingUp, label: "Global", color: "text-accent" }
                   ].map((item, i) => (
-                    <div key={i} className="p-5 rounded-xl bg-white/5 border border-white/5 text-center hover:bg-white/10 transition-colors">
+                    <div key={i} className="p-5 rounded-xl bg-white/5 border border-white/5 text-center transition-colors">
                       <item.icon className={`mx-auto mb-3 ${item.color}`} size={24} />
                       <span className="block text-[11px] font-black text-muted-foreground uppercase tracking-widest">{item.label}</span>
                     </div>
@@ -145,7 +144,7 @@ const WhoAreWe = () => {
             </h2>
             <div className="space-y-12">
                <div className="flex flex-col gap-12 relative pl-4">
-                  <div className="absolute left-[34px] top-6 bottom-6 w-[2px] bg-primary/20 shadow-[0_0_10px_rgba(0,229,255,0.2)]"></div>
+                  <div className="absolute left-[26px] top-6 bottom-6 w-[2px] bg-white/5"></div>
                   
                   {[
                     { label: "Joueur", desc: "Le gamer rejoint la plateforme" },
@@ -155,7 +154,7 @@ const WhoAreWe = () => {
                     { label: "Récompenses Spacenet", desc: "Livraison de produits gaming premium" }
                   ].map((step, i) => (
                     <div key={i} className="flex items-center gap-10 relative z-10">
-                      <div className="w-11 h-11 rounded-full bg-[#050816] border-2 border-primary flex items-center justify-center font-black text-sm text-white shadow-[0_0_20px_rgba(0,229,255,0.4)] ring-4 ring-primary/5 transition-transform hover:scale-110">
+                      <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center font-black text-xl text-primary shadow-inner">
                         {i + 1}
                       </div>
                       <div>
@@ -227,7 +226,7 @@ const Problematic = () => {
          <div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-12 tracking-tighter leading-[1.1] uppercase">
               Notre problématique <br />
-              <span className="text-destructive drop-shadow-[0_0_15px_rgba(255,0,0,0.4)]">actuelle</span>
+              <span className="text-destructive">actuelle</span>
             </h2>
             <div className="space-y-5">
               {[
@@ -255,7 +254,7 @@ const Problematic = () => {
                   <div className="text-muted-foreground/30">↓</div>
                   <div className="px-8 py-4 rounded-xl bg-white/5 border border-white/5 w-full text-center font-bold">Vérification stock</div>
                   <div className="text-muted-foreground/30">↓</div>
-                  <div className="px-8 py-5 rounded-xl bg-destructive/80 text-white font-black w-full text-center shadow-lg uppercase tracking-tight">Catalogue Fragmenté</div>
+                  <div className="px-8 py-5 rounded-xl bg-destructive/80 text-white font-black w-full text-center uppercase tracking-tight">Catalogue Fragmenté</div>
                </div>
             </div>
          </div>
@@ -267,8 +266,6 @@ const Problematic = () => {
 const Solution = () => {
   return (
     <SectionContainer className="overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[120px] pointer-events-none"></div>
-      
       <div className="text-center mb-24">
         <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter">La Solution <span className="text-primary">API</span></h2>
         <p className="text-muted-foreground text-lg font-medium">Connecter Esports.tn directement à l'inventaire Spacenet.</p>
@@ -276,14 +273,13 @@ const Solution = () => {
 
       <div className="relative mb-32 max-w-2xl mx-auto">
          <div className="flex flex-col items-center space-y-16">
-            <div className="glassmorphic px-10 py-6 rounded-2xl w-full text-center font-black text-primary border-primary/30 shadow-[0_0_40px_rgba(0,229,255,0.15)] text-lg uppercase tracking-widest">
+            <div className="glassmorphic px-10 py-6 rounded-2xl w-full text-center font-black text-primary border-primary/30 text-lg uppercase tracking-widest">
                SPACENET STOCK API
             </div>
             
             <div className="relative h-28 w-1 flex items-center justify-center">
-               <div className="absolute inset-0 bg-primary/10 blur-xl"></div>
                <div className="h-full w-[2px] bg-gradient-to-b from-primary to-secondary relative">
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-primary rounded-full shadow-[0_0_15px_rgba(0,229,255,0.8)]" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-sm" />
                </div>
             </div>
 
@@ -293,11 +289,11 @@ const Solution = () => {
 
             <div className="relative h-28 w-1 flex items-center justify-center">
                <div className="h-full w-[2px] bg-gradient-to-b from-secondary to-accent relative">
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-secondary rounded-full shadow-[0_0_15px_rgba(0,255,136,0.8)]" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-secondary rounded-sm" />
                </div>
             </div>
 
-            <div className="glassmorphic px-10 py-6 rounded-2xl w-full text-center font-black text-secondary border-secondary/30 shadow-[0_0_40px_rgba(0,255,136,0.1)] text-lg uppercase tracking-widest">
+            <div className="glassmorphic px-10 py-6 rounded-2xl w-full text-center font-black text-secondary border-secondary/30 text-lg uppercase tracking-widest">
                PLAYER REWARD STORE
             </div>
          </div>
@@ -342,7 +338,7 @@ const WinWin = () => {
                   "Commandes récurrentes et automatisées",
                   "Visibilité premium auprès des gamers tunisiens"
                 ].map((item, i) => (
-                  <div key={i} className="glassmorphic p-7 rounded-2xl border-l-4 border-l-primary flex items-center gap-6 hover:translate-x-2 transition-transform">
+                  <div key={i} className="glassmorphic p-7 rounded-2xl border-l-4 border-l-primary flex items-center gap-6 transition-transform">
                      <TrendingUp className="text-primary flex-shrink-0" size={24} />
                      <span className="font-black text-lg">{item}</span>
                   </div>
@@ -362,7 +358,7 @@ const WinWin = () => {
                   "Expérience utilisateur haut de gamme",
                   "Croissance scalable sans friction"
                 ].map((item, i) => (
-                  <div key={i} className="glassmorphic p-7 rounded-2xl border-l-4 border-l-secondary flex items-center gap-6 hover:translate-x-2 transition-transform">
+                  <div key={i} className="glassmorphic p-7 rounded-2xl border-l-4 border-l-secondary flex items-center gap-6 transition-transform">
                      <CheckCircle2 className="text-secondary flex-shrink-0" size={24} />
                      <span className="font-black text-lg">{item}</span>
                   </div>
@@ -392,7 +388,7 @@ const Roadmap = () => {
                { phase: "Phase 4", title: "Lancement", desc: "Déploiement officiel et communication conjointe." }
              ].map((item, i) => (
                <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left">
-                  <div className="w-8 h-8 rounded-full bg-primary mb-10 shadow-[0_0_20px_rgba(0,229,255,0.5)] relative">
+                  <div className="w-8 h-8 rounded-full bg-primary mb-10 relative">
                   </div>
                   <h4 className="text-primary font-black text-[12px] mb-3 uppercase tracking-widest">{item.phase}</h4>
                   <h5 className="text-2xl font-black mb-5 tracking-tight">{item.title}</h5>
@@ -432,18 +428,18 @@ const FinalCTA = () => {
                 <Image 
                   src={esportsLogo} 
                   alt="Esports.tn" 
-                  width={600} 
-                  height={200} 
-                  className="object-contain h-32 w-auto" 
+                  width={800} 
+                  height={300} 
+                  className="object-contain h-40 w-auto" 
                 />
                 <div className="h-10 w-[1px] bg-white/20 mx-4"></div>
                 <Image src={spacenetLogo} alt="Spacenet" width={400} height={200} className="object-contain h-24 w-auto" />
              </div>
              
-             <div className="glassmorphic p-10 rounded-[2.5rem] max-w-lg w-full border-primary/20 shadow-2xl">
+             <div className="glassmorphic p-10 rounded-[2.5rem] max-w-lg w-full border-primary/20">
                 <div className="flex items-center justify-center gap-5 mb-5 text-primary">
                    <Mail size={28} />
-                   <span className="font-black text-lg md:text-2xl tracking-tight text-glow">ala.yacoub@digmaco.com</span>
+                   <span className="font-black text-lg md:text-2xl tracking-tight">ala.yacoub@digmaco.com</span>
                 </div>
                 <p className="text-muted-foreground text-[10px] uppercase tracking-widest font-black">Contact Stratégique</p>
              </div>
