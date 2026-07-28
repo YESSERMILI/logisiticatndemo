@@ -62,94 +62,59 @@ const Hero = () => {
   const spacenetLogo = PlaceHolderImages.find(p => p.id === 'spacenet-logo')?.imageUrl || "";
 
   return (
-    <SectionContainer className="grid-background flex flex-col items-start min-h-screen">
-      {/* Logos Header - Integrated into flow to prevent overlap */}
+    <SectionContainer className="grid-background flex flex-col items-center justify-start min-h-screen pt-12">
+      {/* Sleek Header Bar */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="flex items-center gap-8 z-20 bg-black/40 backdrop-blur-xl px-10 py-6 rounded-3xl border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] mb-20"
+        className="w-full bg-black/60 backdrop-blur-2xl px-8 py-5 rounded-[2rem] border border-white/5 shadow-2xl mb-24 flex items-center"
       >
-         <Image 
-            src={esportsLogo} 
-            alt="Esports.tn" 
-            width={200} 
-            height={60} 
-            className="object-contain h-10 w-auto" 
-         />
-         <div className="h-10 w-[1px] bg-white/20"></div>
-         <Image 
-            src={spacenetLogo} 
-            alt="Spacenet" 
-            width={70} 
-            height={70} 
-            className="object-contain h-12 w-auto" 
-         />
+         <div className="flex items-center gap-6">
+           <Image 
+              src={esportsLogo} 
+              alt="Esports.tn" 
+              width={140} 
+              height={40} 
+              className="object-contain h-6 w-auto" 
+           />
+           <div className="h-6 w-[1px] bg-white/10"></div>
+           <Image 
+              src={spacenetLogo} 
+              alt="Spacenet" 
+              width={45} 
+              height={45} 
+              className="object-contain h-9 w-auto" 
+           />
+         </div>
       </motion.div>
 
-      <div className="grid lg:grid-cols-12 gap-12 items-center w-full">
-        <div className="lg:col-span-8 text-left">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <span className="inline-block py-1 px-4 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] font-black tracking-[0.3em] mb-8 uppercase">
-              Partnership Proposal 2026
-            </span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.1] mb-10 tracking-tight">
-              Transformer le <span className="text-primary glow-text-cyan">gaming</span> <br />
-              en récompenses <br />
-              <span className="text-secondary drop-shadow-[0_0_15px_rgba(0,255,136,0.3)]">réelles</span>
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 font-medium leading-relaxed opacity-80">
-              Proposition de collaboration stratégique entre Esports.tn et Spacenet : Intégration API Stock & Partenariat Fournisseur pour l'écosystème compétitif tunisien.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-start">
-              <button className="px-10 py-5 bg-primary text-background font-black rounded-lg hover:glow-cyan transition-all transform hover:-translate-y-1 uppercase tracking-wider text-sm">
-                Découvrir la proposition
-              </button>
-              <button className="px-10 py-5 border border-white/20 hover:bg-white/5 font-black rounded-lg transition-all uppercase tracking-wider text-sm">
-                Nous contacter
-              </button>
-            </div>
-          </motion.div>
-        </div>
-
-        <div className="lg:col-span-4 hidden lg:block">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="glassmorphic p-10 rounded-3xl relative overflow-hidden border-white/5"
-          >
-            <div className="absolute -top-10 -right-10 p-4 opacity-5 pointer-events-none">
-               <Cpu size={240} />
-            </div>
-            <div className="space-y-8 relative z-10 text-sm">
-              <div className="space-y-2">
-                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Destinataire</span>
-                <div className="flex justify-between items-center">
-                  <span className="font-black text-lg">Spacenet Tunisie</span>
-                </div>
-              </div>
-              <div className="h-[1px] bg-white/10 w-full"></div>
-              <div className="space-y-2">
-                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Expéditeur</span>
-                <div className="flex justify-between items-center">
-                  <span className="font-black text-lg">Esports.tn</span>
-                </div>
-              </div>
-              <div className="h-[1px] bg-white/10 w-full"></div>
-              <div className="space-y-2">
-                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Date d'émission</span>
-                <div className="flex justify-between items-center">
-                  <span className="font-black text-lg">Juillet 2026</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+      <div className="text-center max-w-5xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <span className="inline-block py-1 px-4 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] font-black tracking-[0.3em] mb-8 uppercase">
+            Partnership Proposal 2026
+          </span>
+          <h1 className="text-5xl md:text-7xl lg:text-[100px] font-black leading-[1] mb-12 tracking-tighter">
+            Transformer le <span className="text-primary glow-text-cyan">gaming</span> <br />
+            en récompenses <br />
+            <span className="text-secondary drop-shadow-[0_0_15px_rgba(0,255,136,0.3)]">réelles</span>
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-14 font-medium leading-relaxed opacity-80">
+            Proposition de collaboration stratégique entre Esports.tn et Spacenet : Intégration API Stock & Partenariat Fournisseur pour l'écosystème compétitif tunisien.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <button className="px-12 py-5 bg-primary text-background font-black rounded-xl hover:glow-cyan transition-all transform hover:-translate-y-1 uppercase tracking-wider text-sm">
+              Découvrir la proposition
+            </button>
+            <button className="px-12 py-5 border border-white/10 hover:bg-white/5 font-black rounded-xl transition-all uppercase tracking-wider text-sm backdrop-blur-sm">
+              Nous contacter
+            </button>
+          </div>
+        </motion.div>
       </div>
     </SectionContainer>
   );
