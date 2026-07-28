@@ -50,21 +50,21 @@ const Hero = () => {
   return (
     <SectionContainer className="grid-background flex flex-col items-center justify-start min-h-screen pt-12">
       <div className="w-full flex justify-center items-center mb-32">
-         <div className="flex items-center gap-12 bg-black/40 px-12 py-6 rounded-full border border-white/5 backdrop-blur-md">
+         <div className="flex items-center gap-10">
            <Image 
               src={esportsLogo} 
               alt="Esports.tn" 
-              width={800} 
-              height={300} 
-              className="object-contain h-64 w-auto" 
+              width={400} 
+              height={150} 
+              className="object-contain h-32 w-auto" 
            />
-           <div className="h-16 w-[1px] bg-white/10 mx-4"></div>
+           <div className="h-12 w-[1px] bg-white/10 mx-4"></div>
            <Image 
               src={spacenetLogo} 
               alt="Spacenet" 
-              width={600} 
-              height={300} 
-              className="object-contain h-32 w-auto" 
+              width={300} 
+              height={150} 
+              className="object-contain h-20 w-auto" 
            />
          </div>
       </div>
@@ -108,7 +108,7 @@ const WhoAreWe = () => {
     <SectionContainer id="about">
       <div className="grid lg:grid-cols-2 gap-24 items-center">
         <div className="order-2 lg:order-1 relative">
-           <div className="relative glassmorphic rounded-3xl p-10 space-y-10">
+           <div className="relative glassmorphic rounded-3xl p-10 space-y-10 border-white/5">
               <div className="flex items-center gap-6">
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
                   <Gamepad2 size={32} />
@@ -143,7 +143,7 @@ const WhoAreWe = () => {
               Une nouvelle façon de <span className="text-primary">récompenser</span> les joueurs
             </h2>
             <div className="space-y-12">
-               <div className="flex flex-col gap-12 relative">
+               <div className="flex flex-col gap-10 relative">
                   {[
                     { label: "Joueur", desc: "Le gamer rejoint la plateforme" },
                     { label: "Match Compétitif", desc: "Session de jeu analysée en temps réel" },
@@ -152,7 +152,7 @@ const WhoAreWe = () => {
                     { label: "Récompenses Spacenet", desc: "Livraison de produits gaming premium" }
                   ].map((step, i) => (
                     <div key={i} className="flex items-center gap-10 relative z-10">
-                      <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center font-black text-xl text-primary">
+                      <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center font-black text-xl text-primary flex-shrink-0">
                         {i + 1}
                       </div>
                       <div>
@@ -222,9 +222,9 @@ const Problematic = () => {
     <SectionContainer>
        <div className="grid lg:grid-cols-2 gap-20 items-center">
          <div>
-            <h2 className="text-4xl md:text-5xl lg:text-5xl font-black mb-12 tracking-tighter leading-[1.1] uppercase">
+            <h2 className="text-3xl md:text-5xl font-black mb-12 tracking-tighter leading-[1.1] uppercase">
               Notre problématique <br />
-              <span className="text-destructive drop-shadow-[0_0_15px_rgba(239,68,68,0.3)]">actuelle</span>
+              <span className="text-destructive">actuelle</span>
             </h2>
             <div className="space-y-5">
               {[
@@ -422,16 +422,16 @@ const FinalCTA = () => {
           </h2>
           
           <div className="flex flex-col items-center gap-10">
-             <div className="flex items-center gap-8 md:gap-12 mb-10">
+             <div className="flex items-center gap-8 md:gap-10 mb-10">
                 <Image 
                   src={esportsLogo} 
                   alt="Esports.tn" 
-                  width={800} 
-                  height={300} 
-                  className="object-contain h-72 w-auto" 
+                  width={400} 
+                  height={150} 
+                  className="object-contain h-32 w-auto" 
                 />
                 <div className="h-10 w-[1px] bg-white/20 mx-4"></div>
-                <Image src={spacenetLogo} alt="Spacenet" width={400} height={200} className="object-contain h-24 w-auto" />
+                <Image src={spacenetLogo} alt="Spacenet" width={300} height={150} className="object-contain h-20 w-auto" />
              </div>
              
              <div className="glassmorphic p-10 rounded-[2.5rem] max-w-lg w-full border-primary/20">
