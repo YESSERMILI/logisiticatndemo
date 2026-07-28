@@ -50,20 +50,20 @@ const Hero = () => {
   return (
     <SectionContainer className="grid-background flex flex-col items-center justify-start min-h-screen pt-12">
       <div className="w-full flex justify-center items-center mb-24">
-         <div className="flex items-center gap-12 px-12 py-6">
+         <div className="flex items-center gap-12 px-12 py-8 bg-black/40 backdrop-blur-md rounded-full border border-white/5">
            <Image 
               src={esportsLogo} 
               alt="Esports.tn" 
-              width={400} 
-              height={150} 
+              width={600} 
+              height={200} 
               className="object-contain h-24 w-auto" 
            />
-           <div className="h-12 w-[1px] bg-white/20 mx-4"></div>
+           <div className="h-12 w-[1px] bg-white/10 mx-4"></div>
            <Image 
               src={spacenetLogo} 
               alt="Spacenet" 
-              width={240} 
-              height={150} 
+              width={400} 
+              height={200} 
               className="object-contain h-24 w-auto" 
            />
          </div>
@@ -71,30 +71,30 @@ const Hero = () => {
 
       <div className="text-center max-w-5xl mx-auto">
         <div>
-          <span className="inline-block py-2 px-6 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold tracking-wide mb-8 uppercase">
+          <span className="inline-block py-2 px-6 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-wider mb-8 uppercase">
             Partnership Proposal 2026
           </span>
-          <h1 className="text-5xl md:text-7xl lg:text-[90px] font-black leading-[1.05] mb-12 tracking-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-[90px] font-black leading-[1.05] mb-12 tracking-tighter">
             Transformer le <span className="text-primary glow-text-cyan">gaming</span> <br />
             en récompenses <br />
             <span className="text-secondary drop-shadow-[0_0_15px_rgba(0,255,136,0.3)]">réelles</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-16 font-normal leading-relaxed opacity-70">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-16 font-medium leading-relaxed opacity-80">
             Proposition de collaboration stratégique entre Esports.tn et Spacenet : Intégration API Stock & Partenariat Fournisseur pour l'écosystème compétitif tunisien.
           </p>
           
-          <div className="flex flex-wrap justify-center items-center gap-x-20 gap-y-8 mt-20 pt-10 border-t border-white/5 text-xs font-semibold uppercase text-muted-foreground">
+          <div className="flex flex-wrap justify-center items-center gap-x-20 gap-y-8 mt-20 pt-10 border-t border-white/5 text-xs font-bold uppercase text-muted-foreground tracking-widest">
              <div className="flex flex-col items-center md:items-start gap-1">
                 <span className="opacity-40 text-[10px]">Préparé pour</span>
-                <span className="text-foreground">Spacenet</span>
+                <span className="text-foreground text-sm">Spacenet</span>
              </div>
              <div className="flex flex-col items-center md:items-start gap-1">
                 <span className="opacity-40 text-[10px]">Préparé par</span>
-                <span className="text-foreground">Esports.tn</span>
+                <span className="text-foreground text-sm">Esports.tn</span>
              </div>
              <div className="flex flex-col items-center md:items-start gap-1">
                 <span className="opacity-40 text-[10px]">Date</span>
-                <span className="text-foreground">Juillet 2026</span>
+                <span className="text-foreground text-sm">Juillet 2026</span>
              </div>
           </div>
         </div>
@@ -114,12 +114,12 @@ const WhoAreWe = () => {
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
                   <Gamepad2 size={32} />
                 </div>
-                <h3 className="text-3xl font-bold tracking-tight">L'Écosystème Esports.tn</h3>
+                <h3 className="text-3xl font-black tracking-tight">L'Écosystème Esports.tn</h3>
               </div>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="mt-1.5 text-secondary"><CheckCircle2 size={20} /></div>
-                  <p className="text-muted-foreground text-lg leading-relaxed">Plateforme leader en Tunisie transformant les performances gaming en récompenses concrètes.</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed font-medium">Plateforme leader en Tunisie transformant les performances gaming en récompenses concrètes.</p>
                 </div>
                 <div className="grid grid-cols-2 gap-5">
                   {[
@@ -130,7 +130,7 @@ const WhoAreWe = () => {
                   ].map((item, i) => (
                     <div key={i} className="p-5 rounded-xl bg-white/5 border border-white/5 text-center hover:bg-white/10 transition-colors">
                       <item.icon className={`mx-auto mb-3 ${item.color}`} size={24} />
-                      <span className="block text-[11px] font-bold text-muted-foreground uppercase tracking-wider">{item.label}</span>
+                      <span className="block text-[11px] font-black text-muted-foreground uppercase tracking-widest">{item.label}</span>
                     </div>
                   ))}
                 </div>
@@ -140,12 +140,12 @@ const WhoAreWe = () => {
 
         <div className="order-1 lg:order-2">
           <Reveal>
-            <h2 className="text-4xl md:text-5xl font-black mb-10 leading-[1.2] tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-black mb-10 leading-[1.2] tracking-tighter">
               Une nouvelle façon de <span className="text-primary">récompenser</span> les joueurs
             </h2>
             <div className="space-y-12">
-               <div className="flex flex-col gap-8 relative">
-                  <div className="absolute left-[21px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary via-secondary to-accent opacity-30"></div>
+               <div className="flex flex-col gap-12 relative pl-4">
+                  <div className="absolute left-[34px] top-6 bottom-6 w-[2px] bg-primary/20 shadow-[0_0_10px_rgba(0,229,255,0.2)]"></div>
                   
                   {[
                     { label: "Joueur", desc: "Le gamer rejoint la plateforme" },
@@ -154,13 +154,13 @@ const WhoAreWe = () => {
                     { label: "Coins générés", desc: "Crédit immédiat sur le compte joueur" },
                     { label: "Récompenses Spacenet", desc: "Livraison de produits gaming premium" }
                   ].map((step, i) => (
-                    <div key={i} className="flex items-center gap-8 relative z-10 group">
-                      <div className="w-11 h-11 rounded-full bg-[#050816] border-2 border-primary flex items-center justify-center font-bold text-sm shadow-[0_0_15px_rgba(0,229,255,0.2)]">
+                    <div key={i} className="flex items-center gap-10 relative z-10">
+                      <div className="w-11 h-11 rounded-full bg-[#050816] border-2 border-primary flex items-center justify-center font-black text-sm text-white shadow-[0_0_20px_rgba(0,229,255,0.4)] ring-4 ring-primary/5 transition-transform hover:scale-110">
                         {i + 1}
                       </div>
                       <div>
-                        <h4 className="font-bold text-xl tracking-tight mb-1">{step.label}</h4>
-                        <p className="text-muted-foreground text-base">{step.desc}</p>
+                        <h4 className="font-black text-2xl tracking-tight mb-1">{step.label}</h4>
+                        <p className="text-muted-foreground/80 text-lg font-medium">{step.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -184,8 +184,8 @@ const HowItWorks = () => {
   return (
     <SectionContainer className="bg-white/[0.01]">
       <div className="text-center mb-24">
-        <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">Comment ça fonctionne ?</h2>
-        <p className="text-muted-foreground text-lg">Une boucle d'engagement simple et puissante pour le gamer.</p>
+        <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter">Comment ça fonctionne ?</h2>
+        <p className="text-muted-foreground text-lg font-medium">Une boucle d'engagement simple et puissante pour le gamer.</p>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {cards.map((card, i) => (
@@ -193,15 +193,15 @@ const HowItWorks = () => {
             key={i}
             className="glassmorphic p-10 rounded-3xl text-center group cursor-default"
           >
-            <div className={`w-20 h-20 mx-auto rounded-2xl bg-white/5 flex items-center justify-center mb-8 ${card.color} transition-transform shadow-inner`}>
+            <div className={`w-20 h-20 mx-auto rounded-2xl bg-white/5 flex items-center justify-center mb-8 ${card.color} shadow-inner`}>
               <card.icon size={40} />
             </div>
-            <h3 className="text-2xl font-bold mb-5 tracking-tight">{card.title}</h3>
-            <p className="text-muted-foreground leading-relaxed text-base">{card.desc}</p>
+            <h3 className="text-2xl font-black mb-5 tracking-tight">{card.title}</h3>
+            <p className="text-muted-foreground font-medium leading-relaxed text-base">{card.desc}</p>
           </div>
         ))}
       </div>
-      <div className="mt-24 grid grid-cols-3 md:grid-cols-6 gap-8 opacity-40 hover:opacity-100 transition-opacity duration-500 max-w-4xl mx-auto">
+      <div className="mt-24 grid grid-cols-3 md:grid-cols-6 gap-8 opacity-40 max-w-4xl mx-auto">
          {[
            { icon: MousePointer2, label: "Souris" },
            { icon: Keyboard, label: "Claviers" },
@@ -212,7 +212,7 @@ const HowItWorks = () => {
          ].map((item, i) => (
            <div key={i} className="flex flex-col items-center gap-3">
               <item.icon size={28} />
-              <span className="text-[11px] font-bold tracking-tight uppercase">{item.label}</span>
+              <span className="text-[11px] font-black tracking-widest uppercase">{item.label}</span>
            </div>
          ))}
       </div>
@@ -225,7 +225,7 @@ const Problematic = () => {
     <SectionContainer>
        <div className="grid lg:grid-cols-2 gap-20 items-center">
          <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-12 tracking-tight leading-[1.1] uppercase">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-12 tracking-tighter leading-[1.1] uppercase">
               Notre problématique <br />
               <span className="text-destructive drop-shadow-[0_0_15px_rgba(255,0,0,0.4)]">actuelle</span>
             </h2>
@@ -238,24 +238,24 @@ const Problematic = () => {
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-5 p-5 rounded-2xl bg-destructive/5 border border-destructive/10 text-destructive/80">
                    <AlertCircle size={24} />
-                   <span className="font-bold text-lg">{item}</span>
+                   <span className="font-black text-lg">{item}</span>
                 </div>
               ))}
             </div>
          </div>
          <div className="relative">
             <div className="glassmorphic p-10 rounded-[2rem] border-destructive/20">
-               <h4 className="text-center font-bold mb-10 text-[11px] text-muted-foreground uppercase tracking-widest">Workflow Manuel (Inefficace)</h4>
+               <h4 className="text-center font-black mb-10 text-[11px] text-muted-foreground uppercase tracking-widest">Workflow Manuel (Inefficace)</h4>
                <div className="flex flex-col items-center gap-7">
-                  <div className="px-8 py-4 rounded-xl bg-white/5 border border-white/5 w-full text-center font-semibold">Magasins</div>
+                  <div className="px-8 py-4 rounded-xl bg-white/5 border border-white/5 w-full text-center font-bold">Magasins</div>
                   <div className="text-muted-foreground/30">↓</div>
-                  <div className="px-8 py-4 rounded-xl bg-white/5 border border-white/5 w-full text-center font-semibold">Recherche manuelle</div>
+                  <div className="px-8 py-4 rounded-xl bg-white/5 border border-white/5 w-full text-center font-bold">Recherche manuelle</div>
                   <div className="text-muted-foreground/30">↓</div>
-                  <div className="px-8 py-4 rounded-xl bg-white/5 border border-white/5 w-full text-center font-semibold">Ajout produit</div>
+                  <div className="px-8 py-4 rounded-xl bg-white/5 border border-white/5 w-full text-center font-bold">Ajout produit</div>
                   <div className="text-muted-foreground/30">↓</div>
-                  <div className="px-8 py-4 rounded-xl bg-white/5 border border-white/5 w-full text-center font-semibold">Vérification stock</div>
+                  <div className="px-8 py-4 rounded-xl bg-white/5 border border-white/5 w-full text-center font-bold">Vérification stock</div>
                   <div className="text-muted-foreground/30">↓</div>
-                  <div className="px-8 py-5 rounded-xl bg-destructive/80 text-white font-black w-full text-center shadow-lg">Catalogue Fragmenté</div>
+                  <div className="px-8 py-5 rounded-xl bg-destructive/80 text-white font-black w-full text-center shadow-lg uppercase tracking-tight">Catalogue Fragmenté</div>
                </div>
             </div>
          </div>
@@ -270,13 +270,13 @@ const Solution = () => {
       <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[120px] pointer-events-none"></div>
       
       <div className="text-center mb-24">
-        <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">La Solution <span className="text-primary">API</span></h2>
-        <p className="text-muted-foreground text-lg">Connecter Esports.tn directement à l'inventaire Spacenet.</p>
+        <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter">La Solution <span className="text-primary">API</span></h2>
+        <p className="text-muted-foreground text-lg font-medium">Connecter Esports.tn directement à l'inventaire Spacenet.</p>
       </div>
 
       <div className="relative mb-32 max-w-2xl mx-auto">
          <div className="flex flex-col items-center space-y-16">
-            <div className="glassmorphic px-10 py-6 rounded-2xl w-full text-center font-black text-primary border-primary/30 shadow-[0_0_40px_rgba(0,229,255,0.15)] text-lg uppercase tracking-tight">
+            <div className="glassmorphic px-10 py-6 rounded-2xl w-full text-center font-black text-primary border-primary/30 shadow-[0_0_40px_rgba(0,229,255,0.15)] text-lg uppercase tracking-widest">
                SPACENET STOCK API
             </div>
             
@@ -287,7 +287,7 @@ const Solution = () => {
                </div>
             </div>
 
-            <div className="glassmorphic px-10 py-6 rounded-2xl w-full text-center font-black border-white/10 text-lg uppercase tracking-tight">
+            <div className="glassmorphic px-10 py-6 rounded-2xl w-full text-center font-black border-white/10 text-lg uppercase tracking-widest">
                ESPORTS.TN PLATFORM
             </div>
 
@@ -297,7 +297,7 @@ const Solution = () => {
                </div>
             </div>
 
-            <div className="glassmorphic px-10 py-6 rounded-2xl w-full text-center font-black text-secondary border-secondary/30 shadow-[0_0_40px_rgba(0,255,136,0.1)] text-lg uppercase tracking-tight">
+            <div className="glassmorphic px-10 py-6 rounded-2xl w-full text-center font-black text-secondary border-secondary/30 shadow-[0_0_40px_rgba(0,255,136,0.1)] text-lg uppercase tracking-widest">
                PLAYER REWARD STORE
             </div>
          </div>
@@ -313,8 +313,8 @@ const Solution = () => {
              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8 shadow-inner">
                 <item.icon size={32} />
              </div>
-             <h4 className="text-2xl font-bold mb-5 tracking-tight">{item.title}</h4>
-             <p className="text-muted-foreground leading-relaxed text-base">{item.desc}</p>
+             <h4 className="text-2xl font-black mb-5 tracking-tight">{item.title}</h4>
+             <p className="text-muted-foreground font-medium leading-relaxed text-base">{item.desc}</p>
           </div>
         ))}
       </div>
@@ -326,7 +326,7 @@ const WinWin = () => {
   return (
     <SectionContainer className="bg-white/[0.005]">
        <div className="text-center mb-24">
-         <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">Collaboration <span className="text-accent">Gagnant-Gagnant</span></h2>
+         <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter">Collaboration <span className="text-accent">Gagnant-Gagnant</span></h2>
        </div>
        
        <div className="grid lg:grid-cols-2 gap-16">
@@ -344,7 +344,7 @@ const WinWin = () => {
                 ].map((item, i) => (
                   <div key={i} className="glassmorphic p-7 rounded-2xl border-l-4 border-l-primary flex items-center gap-6 hover:translate-x-2 transition-transform">
                      <TrendingUp className="text-primary flex-shrink-0" size={24} />
-                     <span className="font-bold text-lg">{item}</span>
+                     <span className="font-black text-lg">{item}</span>
                   </div>
                 ))}
              </div>
@@ -364,7 +364,7 @@ const WinWin = () => {
                 ].map((item, i) => (
                   <div key={i} className="glassmorphic p-7 rounded-2xl border-l-4 border-l-secondary flex items-center gap-6 hover:translate-x-2 transition-transform">
                      <CheckCircle2 className="text-secondary flex-shrink-0" size={24} />
-                     <span className="font-bold text-lg">{item}</span>
+                     <span className="font-black text-lg">{item}</span>
                   </div>
                 ))}
              </div>
@@ -378,7 +378,7 @@ const Roadmap = () => {
   return (
     <SectionContainer>
        <div className="text-center mb-24">
-         <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">Roadmap Partenariat</h2>
+         <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter">Roadmap Partenariat</h2>
        </div>
 
        <div className="relative pt-16">
@@ -394,9 +394,9 @@ const Roadmap = () => {
                <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left">
                   <div className="w-8 h-8 rounded-full bg-primary mb-10 shadow-[0_0_20px_rgba(0,229,255,0.5)] relative">
                   </div>
-                  <h4 className="text-primary font-black text-[12px] mb-3 uppercase tracking-tight">{item.phase}</h4>
-                  <h5 className="text-2xl font-bold mb-5 tracking-tight">{item.title}</h5>
-                  <p className="text-muted-foreground text-base leading-relaxed">{item.desc}</p>
+                  <h4 className="text-primary font-black text-[12px] mb-3 uppercase tracking-widest">{item.phase}</h4>
+                  <h5 className="text-2xl font-black mb-5 tracking-tight">{item.title}</h5>
+                  <p className="text-muted-foreground font-medium text-base leading-relaxed">{item.desc}</p>
                </div>
              ))}
           </div>
@@ -423,7 +423,7 @@ const FinalCTA = () => {
        </div>
 
        <div className="relative z-10 space-y-16">
-          <h2 className="text-5xl md:text-7xl font-black leading-tight max-w-5xl mx-auto tracking-tight">
+          <h2 className="text-5xl md:text-7xl font-black leading-tight max-w-5xl mx-auto tracking-tighter">
             Construisons ensemble le <span className="text-primary">futur</span> du gaming tunisien
           </h2>
           
@@ -432,18 +432,18 @@ const FinalCTA = () => {
                 <Image 
                   src={esportsLogo} 
                   alt="Esports.tn" 
-                  width={400} 
-                  height={150} 
-                  className="object-contain h-24 w-auto" 
+                  width={600} 
+                  height={200} 
+                  className="object-contain h-32 w-auto" 
                 />
                 <div className="h-10 w-[1px] bg-white/20 mx-4"></div>
-                <Image src={spacenetLogo} alt="Spacenet" width={240} height={150} className="object-contain h-24 w-auto" />
+                <Image src={spacenetLogo} alt="Spacenet" width={400} height={200} className="object-contain h-24 w-auto" />
              </div>
              
              <div className="glassmorphic p-10 rounded-[2.5rem] max-w-lg w-full border-primary/20 shadow-2xl">
                 <div className="flex items-center justify-center gap-5 mb-5 text-primary">
                    <Mail size={28} />
-                   <span className="font-bold text-lg md:text-xl tracking-tight text-glow">ala.yacoub@digmaco.com</span>
+                   <span className="font-black text-lg md:text-2xl tracking-tight text-glow">ala.yacoub@digmaco.com</span>
                 </div>
                 <p className="text-muted-foreground text-[10px] uppercase tracking-widest font-black">Contact Stratégique</p>
              </div>
@@ -470,7 +470,7 @@ export default function PartnershipPage() {
           <div className="absolute top-0 right-0 p-12 opacity-[0.03]">
              <LinkIcon size={300} />
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-12 tracking-tight">Notre Proposition Commerciale</h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-12 tracking-tighter">Notre Proposition Commerciale</h2>
           <div className="grid md:grid-cols-2 gap-10 text-left max-w-3xl mx-auto mb-16">
             {[
               "Accès API Stock Spacenet",
@@ -480,10 +480,10 @@ export default function PartnershipPage() {
               "Suivi technique dédié"
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-6 group">
-                 <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
+                 <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-colors">
                     <CheckCircle2 size={20} />
                  </div>
-                 <span className="text-lg md:text-xl font-medium tracking-tight">{item}</span>
+                 <span className="text-lg md:text-xl font-black tracking-tight">{item}</span>
               </div>
             ))}
           </div>
@@ -493,7 +493,7 @@ export default function PartnershipPage() {
       <Roadmap />
       <FinalCTA />
       
-      <footer className="py-16 border-t border-white/5 text-center text-muted-foreground text-[11px] uppercase tracking-widest font-medium opacity-50">
+      <footer className="py-16 border-t border-white/5 text-center text-muted-foreground text-[11px] uppercase tracking-widest font-black opacity-50">
          © 2026 Esports.tn × Spacenet | All Rights Reserved
       </footer>
     </main>
