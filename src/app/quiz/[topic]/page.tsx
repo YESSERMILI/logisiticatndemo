@@ -1,3 +1,4 @@
+
 import { QuizClient } from "@/components/quiz/quiz-client";
 import { QuizError } from "@/components/quiz/quiz-error";
 import { categories, trendingQuizzes, featuredQuizzes } from "@/lib/data";
@@ -38,8 +39,8 @@ export default async function QuizPage({ params }: QuizPageProps) {
       topicTitleFr = category.name.fr;
       topicTitleAr = category.name.ar;
     } else {
-      topicTitleFr = category.title;
-      topicTitleAr = category.title;
+      topicTitleFr = (category as any).title || topic.replace(/-/g, " ");
+      topicTitleAr = (category as any).title || "";
     }
   } else {
     topicTitleFr = topic.replace(/-/g, " ");
@@ -47,17 +48,19 @@ export default async function QuizPage({ params }: QuizPageProps) {
   }
 
   return (
-    <div>
-      <div className="py-12 bg-secondary text-center">
-        <div className="container">
-          <p className="text-primary font-semibold">{topicTitleFr}</p>
-          <h1 className="text-4xl font-black tracking-tight lg:text-5xl text-glow mt-2">
-            {topicTitleFr} Quiz
+    <div className="min-h-screen bg-background">
+      <div className="py-12 bg-secondary/30 backdrop-blur-md border-b border-primary/10 text-center">
+        <div className="container px-4">
+          <p className="text-primary font-bold uppercase tracking-widest text-sm">{topicTitleFr}</p>
+          <h1 className="text-4xl font-black tracking-tight lg:text-6xl text-glow mt-4 mb-2">
+            {topicTitleFr}
           </h1>
-          <p className="mt-2 text-lg text-muted-foreground">{topicTitleAr}</p>
+          <p className="mt-2 text-xl text-muted-foreground font-arabic">{topicTitleAr}</p>
         </div>
       </div>
-      <QuizPlayer topic={topic} />
+      <div className="container px-4 -mt-8 relative z-10 pb-20">
+        <QuizPlayer topic={topic} />
+      </div>
     </div>
   );
 }
