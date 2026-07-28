@@ -63,28 +63,28 @@ const Hero = () => {
 
   return (
     <SectionContainer className="grid-background flex flex-col items-center justify-start min-h-screen pt-12">
-      {/* Premium Pill Header Bar */}
+      {/* Clean Logo Header */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full bg-black/90 backdrop-blur-3xl px-12 py-6 rounded-full border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.6)] mb-24 flex items-center"
+        className="w-full flex justify-center items-center mb-24"
       >
-         <div className="flex items-center gap-10">
+         <div className="flex items-center gap-12 md:gap-16">
            <Image 
               src={esportsLogo} 
               alt="Esports.tn" 
-              width={220} 
-              height={60} 
-              className="object-contain h-8 w-auto brightness-110" 
+              width={300} 
+              height={100} 
+              className="object-contain h-16 md:h-20 w-auto brightness-110" 
            />
-           <div className="h-10 w-[1px] bg-white/20"></div>
+           <div className="h-16 w-[2px] bg-white/10"></div>
            <Image 
               src={spacenetLogo} 
               alt="Spacenet" 
-              width={120} 
-              height={120} 
-              className="object-contain h-24 w-auto" 
+              width={200} 
+              height={200} 
+              className="object-contain h-16 md:h-20 w-auto" 
            />
          </div>
       </motion.div>
@@ -106,6 +106,23 @@ const Hero = () => {
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-14 font-medium leading-relaxed opacity-80">
             Proposition de collaboration stratégique entre Esports.tn et Spacenet : Intégration API Stock & Partenariat Fournisseur pour l'écosystème compétitif tunisien.
           </p>
+          
+          <div className="flex flex-col md:flex-row justify-center items-center gap-8 mt-12 text-[10px] font-black tracking-[0.2em] text-muted-foreground uppercase">
+             <div className="flex flex-col items-center">
+                <span className="text-primary/50 mb-1">Préparé pour</span>
+                <span className="text-foreground">Spacenet</span>
+             </div>
+             <div className="hidden md:block h-4 w-[1px] bg-white/20"></div>
+             <div className="flex flex-col items-center">
+                <span className="text-primary/50 mb-1">Préparé par</span>
+                <span className="text-foreground">Esports.tn</span>
+             </div>
+             <div className="hidden md:block h-4 w-[1px] bg-white/20"></div>
+             <div className="flex flex-col items-center">
+                <span className="text-primary/50 mb-1">Date</span>
+                <span className="text-foreground">Juillet 2026</span>
+             </div>
+          </div>
         </motion.div>
       </div>
     </SectionContainer>
@@ -162,7 +179,7 @@ const WhoAreWe = () => {
                   <div className="absolute left-[19px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary via-secondary to-accent"></div>
                   
                   {[
-                    { label: "Joueur", desc: "Le gamer rejoint the plateforme" },
+                    { label: "Joueur", desc: "Le gamer rejoint la plateforme" },
                     { label: "Match League of Legends", desc: "Session de jeu compétitive" },
                     { label: "Statistiques analysées", desc: "Traitement des données en temps réel" },
                     { label: "Coins gagnés", desc: "Crédit immédiat sur le compte" },
@@ -441,10 +458,10 @@ const FinalCTA = () => {
           </h2>
           
           <div className="flex flex-col items-center gap-6">
-             <div className="flex items-center gap-12 mb-8 bg-black/90 px-12 py-6 rounded-full border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.6)] backdrop-blur-xl">
-                <Image src={esportsLogo} alt="Esports.tn" width={220} height={60} className="object-contain h-8 w-auto" />
-                <div className="h-10 w-[1px] bg-white/20"></div>
-                <Image src={spacenetLogo} alt="Spacenet" width={120} height={120} className="object-contain h-24 w-auto" />
+             <div className="flex items-center gap-12 mb-8">
+                <Image src={esportsLogo} alt="Esports.tn" width={300} height={100} className="object-contain h-16 md:h-20 w-auto" />
+                <div className="h-16 w-[2px] bg-white/10"></div>
+                <Image src={spacenetLogo} alt="Spacenet" width={200} height={200} className="object-contain h-16 md:h-20 w-auto" />
              </div>
              
              <div className="glassmorphic p-8 rounded-3xl max-w-md w-full border-primary/20">
@@ -452,7 +469,7 @@ const FinalCTA = () => {
                    <Mail size={24} />
                    <span className="font-bold text-lg">ala.yacoub@digmaco.com</span>
                 </div>
-                <p className="text-muted-foreground text-sm uppercase tracking-widest font-bold">Contact Strategique</p>
+                <p className="text-muted-foreground text-sm uppercase tracking-widest font-bold">Contact Stratégique</p>
              </div>
           </div>
        </div>
