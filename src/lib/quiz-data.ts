@@ -1,4 +1,3 @@
-
 import type { Quiz } from "./types";
 
 export const staticQuizData: Record<string, Quiz> = {
@@ -20,15 +19,6 @@ export const staticQuizData: Record<string, Quiz> = {
       options_ar: ["1978", "1998", "2002", "1982"],
       question_fr: "En quelle année l'équipe nationale tunisienne s'est-elle qualifiée pour la première fois à la Coupe du Monde de la FIFA ?",
       options_fr: ["1978", "1998", "2002", "1982"],
-    },
-    {
-      question_en: "Who is the all-time top scorer for the Tunisian national team?",
-      options_en: ["Issam Jemâa", "Wahbi Khazri", "Youssef Msakni", "Francileudo Santos"],
-      correct_answer_index: 0,
-      question_ar: "من هو الهداف التاريخي للمنتخب التونسي؟",
-      options_ar: ["عصام جمعة", "وهبي الخزري", "يوسف المساكني", "فرانسيلودو سانتوس"],
-      question_fr: "Qui est le meilleur buteur de tous les temps de l'équipe nationale tunisienne ?",
-      options_fr: ["Issam Jemâa", "Wahbi Khazri", "Youssef Msakni", "Francileudo Santos"],
     }
   ],
   "carthage-history": [
@@ -40,37 +30,39 @@ export const staticQuizData: Record<string, Quiz> = {
       options_ar: ["عليسة", "كليوباترا", "زنوبيا", "بوديكا"],
       question_fr: "Qui était la fondatrice légendaire et première reine de Carthage ?",
       options_fr: ["Didon", "Cléopâtre", "Zénobie", "Boudicca"],
-    },
-    {
-      question_en: "The Punic Wars were fought between Carthage and which other major power?",
-      options_en: ["Rome", "Greece", "Egypt", "Persia"],
-      correct_answer_index: 0,
-      question_ar: "دارت الحروب البونيقية بين قرطاج وأي قوة كبرى أخرى؟",
-      options_ar: ["روما", "اليونان", "مصر", "بلاد فارس"],
-      question_fr: "Les guerres puniques ont opposé Carthage à quelle autre puissance majeure ?",
-      options_fr: ["Rome", "Grèce", "Égypte", "Perse"],
     }
   ],
   "tunisian-cinema": [
     {
-      question_en: "Which film by Ferid Boughedir is a classic of Tunisian cinema, depicting life in Tunis in the 1960s?",
-      options_en: ["Halfaouine: Boy of the Terraces", "The Silences of the Palace", "A Summer in La Goulette", "Dachra"],
+      question_en: "Which film by Ferid Boughedir is a classic of Tunisian cinema?",
+      options_en: ["Halfaouine: Boy of the Terraces", "The Silences of the Palace", "Dachra", "Fataria"],
       correct_answer_index: 0,
       question_ar: "أي فيلم لفريد بوغدير يعتبر من كلاسيكيات السينما التونسية؟",
-      options_ar: ["عصفور سطح", "صمت القصور", "صيف في حلق الوادي", "دشرة"],
+      options_ar: ["عصفور سطح", "صمت القصور", "دشرة", "فطارية"],
       question_fr: "Quel film de Ferid Boughedir est un classique du cinéma tunisien ?",
-      options_fr: ["Halfaouine, l'enfant des terrasses", "Les Silences du palais", "Un été à La Goulette", "Dachra"],
+      options_fr: ["Halfaouine, l'enfant des terrasses", "Les Silences du palais", "Dachra", "Fataria"],
+    }
+  ],
+  "un-ete-a-la-goulette": [
+    {
+      question_en: "Who directed the iconic Tunisian film 'A Summer in La Goulette'?",
+      options_en: ["Férid Boughedir", "Nouri Bouzid", "Moufida Tlatli", "Abdellatif Kechiche"],
+      correct_answer_index: 0,
+      question_ar: "من أخرج الفيلم التونسي الشهير 'صيف في حلق الوادي'؟",
+      options_ar: ["فريد بوغدير", "نوري بوزيد", "مفيدة التلاتلي", "عبد اللطيف كشيش"],
+      question_fr: "Qui a réalisé le film tunisien emblématique 'Un été à La Goulette' ?",
+      options_fr: ["Férid Boughedir", "Nouri Bouzid", "Moufida Tlatli", "Abdellatif Kechiche"],
     }
   ],
   "plats-tunisiens": [
     {
-      question_en: "What is the name of the famous Tunisian spicy paste made from red peppers?",
-      options_en: ["Harissa", "Shakshouka", "Brik", "Mechouia"],
+      question_en: "What is the base ingredient of the famous Tunisian dish 'Brik'?",
+      options_en: ["Malsouka pastry", "Bread", "Rice", "Couscous"],
       correct_answer_index: 0,
-      question_ar: "ما اسم المعجونة التونسية الحارة الشهيرة المصنوعة من الفلفل الأحمر؟",
-      options_ar: ["هريسة", "شكشوكة", "بريك", "مشوية"],
-      question_fr: "Quel est le nom de la fameuse pâte pimentée tunisienne à base de piments rouges ?",
-      options_fr: ["Harissa", "Shakshouka", "Brik", "Mechouia"],
+      question_ar: "ما هو المكون الأساسي للطبق التونسي الشهير 'بريك'؟",
+      options_ar: ["ورقة الملسوقة", "الخبز", "الأرز", "الكسكسي"],
+      question_fr: "Quel est l'ingrédient de base du célèbre plat tunisien 'Brik' ?",
+      options_fr: ["Feuille de Malsouka", "Pain", "Riz", "Couscous"],
     }
   ],
   "timeless-melodies": [
@@ -86,13 +78,13 @@ export const staticQuizData: Record<string, Quiz> = {
   ],
   "tunisia-world-heritage-sites": [
     {
-      question_en: "Which ancient Roman amphitheater in Tunisia is one of the largest in the world?",
-      options_en: ["Amphitheatre of El Jem", "Carthage", "Dougga", "Bulla Regia"],
+      question_en: "Which city is home to the Great Mosque, a UNESCO World Heritage site?",
+      options_en: ["Kairouan", "Sousse", "Monastir", "Mahdia"],
       correct_answer_index: 0,
-      question_ar: "أي مدرج روماني قديم في تونس هو واحد من أكبر المدرجات في العالم؟",
-      options_ar: ["مدرج الجم", "قرطاج", "دقة", "بلاريجيا"],
-      question_fr: "Quel ancien amphithéâtre romain en Tunisie est l'un des plus grands au monde ?",
-      options_fr: ["Amphithéâtre d'El Jem", "Carthage", "Dougga", "Bulla Regia"],
+      question_ar: "أي مدينة تضم الجامع الكبير، وهو موقع تراث عالمي لليونسكو؟",
+      options_ar: ["القيروان", "سوسة", "المنستير", "المهدية"],
+      question_fr: "Quelle ville abrite la Grande Mosquée, un site classé au patrimoine mondial de l'UNESCO ?",
+      options_fr: ["Kairouan", "Sousse", "Monastir", "Mahdia"],
     }
   ],
   "modern-tunisian-history": [
@@ -119,13 +111,13 @@ export const staticQuizData: Record<string, Quiz> = {
   ],
   "african-champions-league": [
     {
-      question_en: "Which club has won the most CAF Champions League titles?",
-      options_en: ["Al Ahly SC", "Zamalek SC", "TP Mazembe", "Espérance de Tunis"],
+      question_en: "Which Tunisian club won the CAF Champions League in 2011, 2018, and 2019?",
+      options_en: ["Espérance de Tunis", "Étoile du Sahel", "Club Africain", "CS Sfaxien"],
       correct_answer_index: 0,
-      question_ar: "أي نادٍ فاز بأكبر عدد من ألقاب دوري أبطال أفريقيا؟",
-      options_ar: ["الأهلي", "الزمالك", "تي بي مازيمبي", "الترجي الرياضي التونسي"],
-      question_fr: "Quel club a remporté le plus de titres de la Ligue des champions de la CAF ?",
-      options_fr: ["Al Ahly SC", "Zamalek SC", "TP Mazembe", "Espérance de Tunis"],
+      question_ar: "أي نادٍ تونسي فاز بدوري أبطال أفريقيا في 2011 و2018 و2019؟",
+      options_ar: ["الترجي الرياضي التونسي", "النجم الساحلي", "النادي الإفريقي", "النادي الصفاقسي"],
+      question_fr: "Quel club tunisien a remporté la Ligue des champions de la CAF en 2011, 2018 et 2019 ?",
+      options_fr: ["Espérance de Tunis", "Étoile du Sahel", "Club Africain", "CS Sfaxien"],
     }
   ],
   "hannibal-barca": [
