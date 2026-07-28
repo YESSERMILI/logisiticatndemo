@@ -64,10 +64,22 @@ const Hero = () => {
   return (
     <SectionContainer className="grid-background flex items-center min-h-[90vh]">
       {/* Logos Header */}
-      <div className="absolute top-10 left-6 md:left-12 flex items-center gap-6 z-20 bg-black/40 backdrop-blur-md px-5 py-3 rounded-xl border border-white/10">
-         <Image src={esportsLogo} alt="Esports.tn" width={100} height={32} className="object-contain" />
-         <div className="h-6 w-[1px] bg-white/20"></div>
-         <Image src={spacenetLogo} alt="Spacenet" width={40} height={40} className="object-contain" />
+      <div className="absolute top-10 left-6 md:left-12 flex items-center gap-8 z-20 bg-black/40 backdrop-blur-xl px-8 py-5 rounded-2xl border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+         <Image 
+            src={esportsLogo} 
+            alt="Esports.tn" 
+            width={140} 
+            height={48} 
+            className="object-contain" 
+         />
+         <div className="h-10 w-[1px] bg-white/20"></div>
+         <Image 
+            src={spacenetLogo} 
+            alt="Spacenet" 
+            width={55} 
+            height={55} 
+            className="object-contain" 
+         />
       </div>
 
       <div className="grid lg:grid-cols-12 gap-12 items-center mt-32 lg:mt-0">
@@ -467,7 +479,7 @@ const FinalCTA = () => {
           </h2>
           
           <div className="flex flex-col items-center gap-6">
-             <div className="flex items-center gap-12 mb-8 bg-white/5 p-8 rounded-3xl backdrop-blur-xl border border-white/10">
+             <div className="flex items-center gap-12 mb-8 bg-white/5 p-8 rounded-3xl backdrop-blur-xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
                 <Image src={esportsLogo} alt="Esports.tn" width={220} height={75} className="object-contain drop-shadow-lg" />
                 <span className="text-4xl font-light text-white/20">×</span>
                 <Image src={spacenetLogo} alt="Spacenet" width={110} height={110} className="object-contain" />
