@@ -56,15 +56,15 @@ const Hero = () => {
               alt="Esports.tn" 
               width={800} 
               height={300} 
-              className="object-contain h-32 w-auto" 
+              className="object-contain h-48 w-auto" 
            />
-           <div className="h-16 w-[1px] bg-white/10"></div>
+           <div className="h-20 w-[1px] bg-white/10"></div>
            <Image 
               src={spacenetLogo} 
               alt="Spacenet" 
               width={600} 
               height={300} 
-              className="object-contain h-28 w-auto" 
+              className="object-contain h-32 w-auto" 
            />
          </div>
       </div>
@@ -143,8 +143,9 @@ const WhoAreWe = () => {
               Une nouvelle façon de <span className="text-primary">récompenser</span> les joueurs
             </h2>
             <div className="space-y-12">
-               <div className="flex flex-col gap-12 relative pl-4">
-                  <div className="absolute left-[26px] top-6 bottom-6 w-[2px] bg-white/5"></div>
+               <div className="flex flex-col gap-12 relative">
+                  {/* Vertical line perfectly centered behind boxes */}
+                  <div className="absolute left-7 top-7 bottom-7 w-[1px] bg-white/10 -translate-x-1/2"></div>
                   
                   {[
                     { label: "Joueur", desc: "Le gamer rejoint la plateforme" },
@@ -224,7 +225,7 @@ const Problematic = () => {
     <SectionContainer>
        <div className="grid lg:grid-cols-2 gap-20 items-center">
          <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-12 tracking-tighter leading-[1.1] uppercase">
+            <h2 className="text-3xl md:text-4xl lg:text-4xl font-black mb-12 tracking-tighter leading-[1.1] uppercase">
               Notre problématique <br />
               <span className="text-destructive">actuelle</span>
             </h2>
@@ -430,7 +431,7 @@ const FinalCTA = () => {
                   alt="Esports.tn" 
                   width={800} 
                   height={300} 
-                  className="object-contain h-40 w-auto" 
+                  className="object-contain h-56 w-auto" 
                 />
                 <div className="h-10 w-[1px] bg-white/20 mx-4"></div>
                 <Image src={spacenetLogo} alt="Spacenet" width={400} height={200} className="object-contain h-24 w-auto" />
