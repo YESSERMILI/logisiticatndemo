@@ -63,10 +63,10 @@ const Hero = () => {
 
   return (
     <SectionContainer className="grid-background flex items-center">
-      <div className="absolute top-10 left-10 flex items-center gap-6 z-20 bg-background/40 backdrop-blur-md p-3 rounded-xl border border-white/10">
-         <Image src={esportsLogo} alt="Esports.tn" width={50} height={50} className="drop-shadow-[0_0_8px_rgba(0,229,255,0.4)]" />
+      <div className="absolute top-10 left-10 flex items-center gap-6 z-20 bg-background/40 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
+         <Image src={esportsLogo} alt="Esports.tn" width={110} height={35} className="object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]" />
          <div className="h-8 w-[1px] bg-white/20"></div>
-         <Image src={spacenetLogo} alt="Spacenet" width={120} height={40} className="object-contain" />
+         <Image src={spacenetLogo} alt="Spacenet" width={45} height={45} className="object-contain" />
       </div>
 
       <div className="relative z-10 text-center lg:text-left mt-20">
@@ -450,9 +450,9 @@ const FinalCTA = () => {
           
           <div className="flex flex-col items-center gap-6">
              <div className="flex items-center gap-12 mb-8 bg-white/5 p-8 rounded-3xl backdrop-blur-xl border border-white/10">
-                <Image src={esportsLogo} alt="Esports.tn" width={100} height={100} className="drop-shadow-lg" />
+                <Image src={esportsLogo} alt="Esports.tn" width={220} height={75} className="object-contain drop-shadow-lg" />
                 <span className="text-4xl font-light text-white/20">×</span>
-                <Image src={spacenetLogo} alt="Spacenet" width={180} height={60} className="object-contain" />
+                <Image src={spacenetLogo} alt="Spacenet" width={110} height={110} className="object-contain" />
              </div>
              
              <div className="glassmorphic p-8 rounded-3xl max-w-md w-full border-primary/20">
