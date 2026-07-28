@@ -62,58 +62,76 @@ const Hero = () => {
   const spacenetLogo = PlaceHolderImages.find(p => p.id === 'spacenet-logo')?.imageUrl || "";
 
   return (
-    <SectionContainer className="grid-background flex items-center">
-      <div className="absolute top-10 left-10 flex items-center gap-6 z-20 bg-background/40 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
-         <Image src={esportsLogo} alt="Esports.tn" width={110} height={35} className="object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]" />
-         <div className="h-8 w-[1px] bg-white/20"></div>
-         <Image src={spacenetLogo} alt="Spacenet" width={45} height={45} className="object-contain" />
+    <SectionContainer className="grid-background flex items-center min-h-[90vh]">
+      {/* Logos Header */}
+      <div className="absolute top-10 left-6 md:left-12 flex items-center gap-6 z-20 bg-black/40 backdrop-blur-md px-5 py-3 rounded-xl border border-white/10">
+         <Image src={esportsLogo} alt="Esports.tn" width={100} height={32} className="object-contain" />
+         <div className="h-6 w-[1px] bg-white/20"></div>
+         <Image src={spacenetLogo} alt="Spacenet" width={40} height={40} className="object-contain" />
       </div>
 
-      <div className="relative z-10 text-center lg:text-left mt-20">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="inline-block py-1 px-3 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold tracking-[0.2em] mb-6 uppercase">
-            Partnership Proposal 2026
-          </span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-8">
-            Transformer le <span className="text-primary glow-text-cyan">gaming</span> en récompenses <span className="text-secondary">réelles</span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 font-light leading-relaxed">
-            Proposition de collaboration stratégique entre Esports.tn et Spacenet : Intégration API Stock & Partenariat Fournisseur pour l'écosystème compétitif tunisien.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-            <button className="px-8 py-4 bg-primary text-background font-bold rounded-lg hover:glow-cyan transition-all transform hover:-translate-y-1">
-              Découvrir la proposition
-            </button>
-            <button className="px-8 py-4 border border-white/20 hover:bg-white/5 font-bold rounded-lg transition-all">
-              Nous contacter
-            </button>
-          </div>
-        </motion.div>
-      </div>
+      <div className="grid lg:grid-cols-12 gap-12 items-center mt-32 lg:mt-0">
+        <div className="lg:col-span-8 text-center lg:text-left">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="inline-block py-1 px-4 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] font-black tracking-[0.3em] mb-8 uppercase">
+              Partnership Proposal 2026
+            </span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.1] mb-10 tracking-tight">
+              Transformer le <span className="text-primary glow-text-cyan">gaming</span> <br />
+              en récompenses <br />
+              <span className="text-secondary drop-shadow-[0_0_15px_rgba(0,255,136,0.3)]">réelles</span>
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 font-medium leading-relaxed opacity-80">
+              Proposition de collaboration stratégique entre Esports.tn et Spacenet : Intégration API Stock & Partenariat Fournisseur pour l'écosystème compétitif tunisien.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+              <button className="px-10 py-5 bg-primary text-background font-black rounded-lg hover:glow-cyan transition-all transform hover:-translate-y-1 uppercase tracking-wider text-sm">
+                Découvrir la proposition
+              </button>
+              <button className="px-10 py-5 border border-white/20 hover:bg-white/5 font-black rounded-lg transition-all uppercase tracking-wider text-sm">
+                Nous contacter
+              </button>
+            </div>
+          </motion.div>
+        </div>
 
-      <div className="mt-20 lg:mt-0 lg:absolute lg:right-12 lg:top-1/2 lg:-translate-y-1/2 w-full lg:w-[500px]">
-        <div className="glassmorphic p-8 rounded-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10">
-             <Cpu size={120} />
-          </div>
-          <div className="space-y-4 relative z-10 text-sm">
-            <div className="flex justify-between border-b border-white/10 pb-4">
-              <span className="text-muted-foreground">Préparé pour :</span>
-              <span className="font-bold">Spacenet Tunisie</span>
+        <div className="lg:col-span-4 hidden lg:block">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="glassmorphic p-10 rounded-3xl relative overflow-hidden border-white/5"
+          >
+            <div className="absolute -top-10 -right-10 p-4 opacity-5 pointer-events-none">
+               <Cpu size={240} />
             </div>
-            <div className="flex justify-between border-b border-white/10 pb-4">
-              <span className="text-muted-foreground">Préparé par :</span>
-              <span className="font-bold">Esports.tn</span>
+            <div className="space-y-8 relative z-10 text-sm">
+              <div className="space-y-2">
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Destinataire</span>
+                <div className="flex justify-between items-center">
+                  <span className="font-black text-lg">Spacenet Tunisie</span>
+                </div>
+              </div>
+              <div className="h-[1px] bg-white/10 w-full"></div>
+              <div className="space-y-2">
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Expéditeur</span>
+                <div className="flex justify-between items-center">
+                  <span className="font-black text-lg">Esports.tn</span>
+                </div>
+              </div>
+              <div className="h-[1px] bg-white/10 w-full"></div>
+              <div className="space-y-2">
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Date d'émission</span>
+                <div className="flex justify-between items-center">
+                  <span className="font-black text-lg">Juillet 2026</span>
+                </div>
+              </div>
             </div>
-            <div className="flex justify-between pt-2">
-              <span className="text-muted-foreground">Date :</span>
-              <span className="font-bold">Juillet 2026</span>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </SectionContainer>
