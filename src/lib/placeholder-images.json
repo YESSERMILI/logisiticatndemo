@@ -2,75 +2,21 @@
   "placeholderImages": [
     {
       "id": "main-logo",
-      "description": "Main App Logo",
+      "description": "Esports.tn Logo",
       "imageUrl": "https://i.imgur.com/oovjwlr.png",
-      "imageHint": "company logo"
+      "imageHint": "esports logo"
     },
     {
-      "id": "hero-stadium",
-      "description": "A brightly lit football stadium at night",
-      "imageUrl": "https://picsum.photos/seed/101/1600/900",
-      "imageHint": "stadium lights"
+      "id": "spacenet-logo",
+      "description": "Spacenet Logo",
+      "imageUrl": "https://picsum.photos/seed/spacenet/200/200",
+      "imageHint": "technology logo"
     },
     {
-      "id": "tt-logo",
-      "description": "Tunisie Telecom Logo Placeholder",
-      "imageUrl": "https://picsum.photos/seed/tt/200/200",
-      "imageHint": "telecom logo"
-    },
-    {
-      "id": "avatar-1",
-      "description": "User avatar 1",
-      "imageUrl": "https://picsum.photos/seed/201/100/100",
-      "imageHint": "profile portrait"
-    },
-    {
-      "id": "avatar-2",
-      "description": "User avatar 2",
-      "imageUrl": "https://picsum.photos/seed/202/100/100",
-      "imageHint": "person smiling"
-    },
-    {
-      "id": "avatar-3",
-      "description": "User avatar 3",
-      "imageUrl": "https://picsum.photos/seed/203/100/100",
-      "imageHint": "woman face"
-    },
-    {
-      "id": "avatar-4",
-      "description": "User avatar 4",
-      "imageUrl": "https://picsum.photos/seed/204/100/100",
-      "imageHint": "man portrait"
-    },
-    {
-      "id": "avatar-5",
-      "description": "User avatar 5",
-      "imageUrl": "https://picsum.photos/seed/205/100/100",
-      "imageHint": "person happy"
-    },
-    {
-      "id": "quiz-football-derby",
-      "description": "An image of a football derby for a quiz",
-      "imageUrl": "https://picsum.photos/seed/401/600/400",
-      "imageHint": "football match"
-    },
-    {
-      "id": "quiz-hannibal",
-      "description": "An image for a quiz about Hannibal Barca",
-      "imageUrl": "https://picsum.photos/seed/402/600/400",
-      "imageHint": "ancient warrior"
-    },
-    {
-      "id": "quiz-la-goulette",
-      "description": "An image from the movie 'Un été à la Goulette'",
-      "imageUrl": "https://picsum.photos/seed/403/600/400",
-      "imageHint": "summer beach"
-    },
-    {
-      "id": "quiz-couscous",
-      "description": "An image of Tunisian couscous",
-      "imageUrl": "https://picsum.photos/seed/404/600/400",
-      "imageHint": "food dish"
+      "id": "hero-bg",
+      "description": "Futuristic gaming arena background",
+      "imageUrl": "https://picsum.photos/seed/gaming/1920/1080",
+      "imageHint": "esports arena stadium"
     }
   ]
 }
