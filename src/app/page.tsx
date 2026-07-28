@@ -458,7 +458,7 @@ const FinalCTA = () => {
              <div className="glassmorphic p-8 rounded-3xl max-w-md w-full border-primary/20">
                 <div className="flex items-center justify-center gap-4 mb-4 text-primary">
                    <Mail size={24} />
-                   <span className="font-bold text-lg">ala44yacoub@gmail.com</span>
+                   <span className="font-bold text-lg">ala.yacoub@digmaco.com</span>
                 </div>
                 <p className="text-muted-foreground text-sm uppercase tracking-widest font-bold">Contact Strategique</p>
              </div>
