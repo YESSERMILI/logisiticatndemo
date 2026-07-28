@@ -1,6 +1,12 @@
 {
   "placeholderImages": [
     {
+      "id": "main-logo",
+      "description": "Main App Logo",
+      "imageUrl": "https://i.imgur.com/p5A5v6T.png",
+      "imageHint": "company logo"
+    },
+    {
       "id": "hero-stadium",
       "description": "A brightly lit football stadium at night",
       "imageUrl": "https://picsum.photos/seed/101/1600/900",

@@ -4,15 +4,13 @@ export const categories: Category[] = [
     { name: { ar: "كرة القدم التونسية", fr: "Football Tunisien" }, slug: "tunisian-football", icon: "Trophy", avgDifficulty: "medium", quizCount: 28 },
     { name: { ar: "تاريخ قرطاج", fr: "Histoire de Carthage" }, slug: "carthage-history", icon: "Scroll", avgDifficulty: "hard", quizCount: 15 },
     { name: { ar: "سينما تونسية", fr: "Cinéma Tunisien" }, slug: "tunisian-cinema", icon: "Film", avgDifficulty: "easy", quizCount: 22 },
-    { name: { ar: "المطبخ التونسي", fr: "Cuisine Tunisienne" }, slug: "tunisian-cuisine", icon: "ChefHat", avgDifficulty: "easy", quizCount: 18 },
-    { name: { ar: "موسيقى تونسية", fr: "Musique Tunisienne" }, slug: "tunisian-music", icon: "Music", avgDifficulty: "medium", quizCount: 25 },
-    { name: { ar: "جغرافيا تونس", fr: "Géographie de la Tunisie" }, slug: "tunisian-geography", icon: "Globe", avgDifficulty: "medium", quizCount: 12 },
-    { name: { ar: "أدب تونسي", fr: "Littérature Tunisienne" }, slug: "tunisian-literature", icon: "BookOpen", avgDifficulty: "hard", quizCount: 10 },
-    { name: { ar: "العلوم والتكنولوجيا", fr: "Science & Tech" }, slug: "science-and-tech", icon: "FlaskConical", avgDifficulty: "medium", quizCount: 30 },
+    { name: { ar: "المطبخ التونسي", fr: "Cuisine Tunisienne" }, slug: "plats-tunisiens", icon: "ChefHat", avgDifficulty: "medium", quizCount: 18 },
+    { name: { ar: "موسيقى تونسية", fr: "Musique Tunisienne" }, slug: "timeless-melodies", icon: "Music", avgDifficulty: "medium", quizCount: 25 },
+    { name: { ar: "جغرافيا تونس", fr: "Géographie de la Tunisie" }, slug: "tunisia-world-heritage-sites", icon: "Globe", avgDifficulty: "medium", quizCount: 12 },
     { name: { ar: "تاريخ تونس الحديث", fr: "Histoire Moderne de la Tunisie" }, slug: "modern-tunisian-history", icon: "History", avgDifficulty: "medium", quizCount: 9 },
-    { name: { ar: "مدرجات تونس الأثرية", fr: "Amphithéâtres de Tunisie" }, slug: "tunisian-amphitheaters", icon: "Landmark", avgDifficulty: "hard", quizCount: 8 },
-    { name: { ar: "أمثال تونسية", fr: "Proverbes Tunisiens" }, slug: "tunisian-proverbs", icon: "Quote", avgDifficulty: "easy", quizCount: 14 },
-    { name: { ar: "رحلات صحراوية", fr: "Expéditions au Sahara" }, slug: "sahara-expeditions", icon: "Mountain", avgDifficulty: "medium", quizCount: 11 },
+    { name: { ar: "ديربي العاصمة", fr: "Derby de Tunis" }, slug: "derby-de-tunis", icon: "Target", avgDifficulty: "hard", quizCount: 15 },
+    { name: { ar: "أبطال أفريقيا", fr: "Champions d'Afrique" }, slug: "african-champions-league", icon: "Star", avgDifficulty: "hard", quizCount: 20 },
+    { name: { ar: "حنبعل برقا", fr: "Hannibal Barca" }, slug: "hannibal-barca", icon: "Shield", avgDifficulty: "hard", quizCount: 10 },
 ];
 
 export const leaderboardUsers: LeaderboardUser[] = [

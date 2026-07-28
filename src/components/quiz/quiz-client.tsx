@@ -12,7 +12,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 import { CheckCircle, XCircle, Trophy, ArrowRight, RefreshCw } from "lucide-react";
 import Link from "next/link";
@@ -79,33 +78,33 @@ export function QuizClient({ quiz, topic }: QuizClientProps) {
   if (isFinished) {
     return (
       <div className="container mx-auto max-w-2xl py-12">
-        <Card className="text-center glassmorphic">
+        <Card className="text-center glassmorphic border-accent/30 shadow-2xl">
           <CardHeader>
             <CardTitle className="flex flex-col items-center gap-4 text-3xl font-black">
-              <Trophy className="h-16 w-16 text-accent" />
+              <Trophy className="h-16 w-16 text-accent animate-bounce" />
               {t("quiz_results")}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-lg text-muted-foreground">{t("quiz_score")}:</p>
-            <p className="my-4 text-6xl font-bold text-primary">
+            <p className="my-4 text-7xl font-black text-primary text-glow">
               {score} / {quiz.length}
             </p>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground font-medium">
               {score} {t("quiz_correct_answers")}
             </p>
           </CardContent>
-          <CardFooter className="flex flex-col gap-4 sm:flex-row">
+          <CardFooter className="flex flex-col gap-4 sm:flex-row pt-6">
             <Button
-              className="w-full font-bold"
+              className="w-full font-bold h-12 glow-on-hover"
               onClick={() => router.refresh()}
             >
-              <RefreshCw className="mr-2 h-4 w-4" />
+              <RefreshCw className="mr-2 h-5 w-5" />
               {t("quiz_play_again")}
             </Button>
-            <Button variant="outline" className="w-full font-bold" asChild>
+            <Button variant="outline" className="w-full font-bold h-12 border-primary/40" asChild>
               <Link href="/categories">
-                <ArrowRight className="mr-2 h-4 w-4" />
+                <ArrowRight className="mr-2 h-5 w-5" />
                 {t("quiz_back_to_categories")}
               </Link>
             </Button>
@@ -117,107 +116,129 @@ export function QuizClient({ quiz, topic }: QuizClientProps) {
 
   const getOptionClasses = (index: number) => {
     if (!isAnswered) {
-      return "hover:bg-secondary/80 hover:border-primary";
+      return "hover:bg-primary/10 hover:border-primary/60 border-primary/20 bg-card/40";
     }
     const isCorrect = index === currentQuestion.correct_answer_index;
     const isSelected = index === selectedOption;
 
     if (isCorrect) {
-      return "bg-green-500/20 border-green-500 text-green-400";
+      return "bg-green-500/20 border-green-500 text-green-400 shadow-[0_0_15px_rgba(34,197,94,0.3)]";
     }
     if (isSelected && !isCorrect) {
       return "bg-red-500/20 border-red-500 text-red-400";
     }
-    return "opacity-60";
+    return "opacity-40 grayscale";
   };
   
   const timerProgress = (timeLeft / QUESTION_TIME) * 100;
   
   return (
     <div
-      className="container mx-auto max-w-2xl py-8"
+      className="container mx-auto max-w-2xl py-8 px-4"
       dir={language === "ar" ? "rtl" : "ltr"}
     >
-      <Card className="glassmorphic">
-        <CardHeader>
+      <Card className="glassmorphic overflow-hidden border-primary/30 shadow-2xl">
+        <CardHeader className="pb-2">
           <div className="flex items-center justify-between gap-4">
-            <p className="text-sm font-bold text-muted-foreground tabular-nums">
-              {currentQuestionIndex + 1} / {quiz.length}
-            </p>
-            <div className="relative flex h-24 w-24 items-center justify-center">
-                <svg className="absolute inset-0" viewBox="0 0 100 100">
-                <circle
-                    className="text-primary/10"
-                    strokeWidth="10"
-                    stroke="currentColor"
-                    fill="transparent"
-                    r="45"
-                    cx="50"
-                    cy="50"
-                />
-                <circle
-                    className="text-primary -rotate-90 origin-center transform-gpu transition-all duration-1000 ease-linear"
-                    strokeWidth="10"
-                    strokeDasharray="283"
-                    strokeDashoffset={283 - (timerProgress / 100) * 283}
-                    strokeLinecap="round"
-                    stroke="currentColor"
-                    fill="transparent"
-                    r="45"
-                    cx="50"
-                    cy="50"
-                />
-                </svg>
-                <span className="z-10 font-mono text-4xl font-extrabold text-primary text-glow">
-                {timeLeft}
-                </span>
+            <div className="flex flex-col">
+              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">
+                Question
+              </p>
+              <p className="text-xl font-black text-foreground tabular-nums">
+                {currentQuestionIndex + 1} <span className="text-muted-foreground text-sm font-bold">/ {quiz.length}</span>
+              </p>
             </div>
-            <p className="text-sm font-bold text-muted-foreground">{t("quiz_score")}: {score}</p>
+
+            <div className="relative flex h-24 w-24 items-center justify-center">
+                <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100">
+                  <circle
+                      className="text-white/5"
+                      strokeWidth="8"
+                      stroke="currentColor"
+                      fill="transparent"
+                      r="40"
+                      cx="50"
+                      cy="50"
+                  />
+                  <circle
+                      className={cn(
+                        "transition-all duration-1000 ease-linear origin-center -rotate-90 transform-gpu",
+                        timeLeft <= 5 ? "text-destructive" : "text-primary"
+                      )}
+                      strokeWidth="8"
+                      strokeDasharray="251.2"
+                      strokeDashoffset={251.2 - (timerProgress / 100) * 251.2}
+                      strokeLinecap="round"
+                      stroke="currentColor"
+                      fill="transparent"
+                      r="40"
+                      cx="50"
+                      cy="50"
+                  />
+                </svg>
+                <div className="flex flex-col items-center justify-center z-10">
+                  <span className={cn(
+                    "font-mono text-3xl font-black text-glow tabular-nums",
+                    timeLeft <= 5 ? "text-destructive" : "text-primary"
+                  )}>
+                    {timeLeft}
+                  </span>
+                </div>
+            </div>
+
+            <div className="flex flex-col items-end">
+              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">
+                {t("quiz_score")}
+              </p>
+              <p className="text-xl font-black text-accent text-glow tabular-nums">
+                {score}
+              </p>
+            </div>
           </div>
-          <CardTitle className="pt-8 text-center text-2xl font-bold md:text-3xl">
+          <CardTitle className="pt-8 text-center text-2xl font-black leading-snug md:text-3xl">
             {questionText}
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <CardContent className="pt-6">
+          <div className="grid grid-cols-1 gap-4">
             {options.map((option, index) => (
               <Button
                 key={index}
                 variant="outline"
                 className={cn(
-                  "h-auto min-h-16 w-full justify-start whitespace-normal rounded-lg border-2 p-4 text-left font-semibold md:text-lg transition-all duration-300",
+                  "h-auto min-h-[4.5rem] w-full justify-start whitespace-normal rounded-xl border-2 p-5 text-start font-bold text-lg transition-all duration-300 transform-gpu active:scale-[0.98]",
                   getOptionClasses(index)
                 )}
                 onClick={() => handleOptionSelect(index)}
                 disabled={isAnswered}
               >
-                <div className="flex w-full items-center justify-between">
+                <div className="flex w-full items-center justify-between gap-4">
                     <span className="flex-1">{option}</span>
                     {isAnswered && index === currentQuestion.correct_answer_index && (
-                        <CheckCircle className="ms-2 h-6 w-6 flex-shrink-0 text-green-500" />
+                        <CheckCircle className="h-6 w-6 flex-shrink-0 text-green-500 animate-in zoom-in duration-300" />
                     )}
                     {isAnswered && index === selectedOption && index !== currentQuestion.correct_answer_index && (
-                        <XCircle className="ms-2 h-6 w-6 flex-shrink-0 text-red-500" />
+                        <XCircle className="h-6 w-6 flex-shrink-0 text-red-500 animate-in zoom-in duration-300" />
                     )}
                 </div>
               </Button>
             ))}
           </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="bg-primary/5 p-6 border-t border-primary/10">
           {isAnswered ? (
             <Button
-              className="w-full font-bold"
+              className="w-full font-black text-lg h-14 glow-on-hover shadow-lg"
               onClick={handleNextQuestion}
               size="lg"
             >
               {currentQuestionIndex < quiz.length - 1
                 ? t("quiz_next_question")
                 : t("quiz_results")}
-              <ArrowRight className="mx-2 h-5 w-5" />
+              <ArrowRight className="ms-2 h-6 w-6" />
             </Button>
           ) : (
-            <Button className="w-full font-bold" disabled size="lg">
+            <Button className="w-full font-black text-lg h-14 bg-white/5 border border-white/10 text-muted-foreground cursor-not-allowed" disabled size="lg">
               {t("quiz_submit")}
             </Button>
           )}
