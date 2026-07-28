@@ -68,7 +68,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full bg-black/90 backdrop-blur-3xl px-12 py-8 rounded-full border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.6)] mb-24 flex items-center"
+        className="w-full bg-black/90 backdrop-blur-3xl px-12 py-6 rounded-full border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.6)] mb-24 flex items-center"
       >
          <div className="flex items-center gap-10">
            <Image 
@@ -76,15 +76,15 @@ const Hero = () => {
               alt="Esports.tn" 
               width={220} 
               height={60} 
-              className="object-contain h-12 w-auto brightness-110" 
+              className="object-contain h-8 w-auto brightness-110" 
            />
-           <div className="h-12 w-[1px] bg-white/20"></div>
+           <div className="h-10 w-[1px] bg-white/20"></div>
            <Image 
               src={spacenetLogo} 
               alt="Spacenet" 
-              width={100} 
-              height={100} 
-              className="object-contain h-20 w-auto scale-110" 
+              width={120} 
+              height={120} 
+              className="object-contain h-24 w-auto" 
            />
          </div>
       </motion.div>
@@ -441,10 +441,10 @@ const FinalCTA = () => {
           </h2>
           
           <div className="flex flex-col items-center gap-6">
-             <div className="flex items-center gap-12 mb-8 bg-black/90 px-12 py-8 rounded-full border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.6)] backdrop-blur-xl">
-                <Image src={esportsLogo} alt="Esports.tn" width={220} height={60} className="object-contain h-12 w-auto" />
-                <div className="h-12 w-[1px] bg-white/20"></div>
-                <Image src={spacenetLogo} alt="Spacenet" width={100} height={100} className="object-contain h-20 w-auto" />
+             <div className="flex items-center gap-12 mb-8 bg-black/90 px-12 py-6 rounded-full border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.6)] backdrop-blur-xl">
+                <Image src={esportsLogo} alt="Esports.tn" width={220} height={60} className="object-contain h-8 w-auto" />
+                <div className="h-10 w-[1px] bg-white/20"></div>
+                <Image src={spacenetLogo} alt="Spacenet" width={120} height={120} className="object-contain h-24 w-auto" />
              </div>
              
              <div className="glassmorphic p-8 rounded-3xl max-w-md w-full border-primary/20">
