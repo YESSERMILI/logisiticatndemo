@@ -69,21 +69,21 @@ const Hero = () => {
         transition={{ duration: 0.8 }}
         className="w-full flex justify-center items-center mb-24"
       >
-         <div className="flex items-center gap-8 md:gap-12">
+         <div className="flex items-center gap-12 px-12 py-6">
            <Image 
               src={esportsLogo} 
               alt="Esports.tn" 
               width={260} 
               height={100} 
-              className="object-contain h-14 md:h-16 w-auto" 
+              className="object-contain h-14 w-auto" 
            />
-           <div className="h-8 md:h-10 w-[1px] bg-white/20"></div>
+           <div className="h-10 w-[1px] bg-white/20 mx-4"></div>
            <Image 
               src={spacenetLogo} 
               alt="Spacenet" 
               width={200} 
               height={100} 
-              className="object-contain h-14 md:h-16 w-auto" 
+              className="object-contain h-20 w-auto" 
            />
          </div>
       </motion.div>
@@ -94,7 +94,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="inline-block py-1.5 px-4 rounded-full border border-primary/20 bg-primary/5 text-primary text-[11px] font-bold tracking-widest mb-8 uppercase">
+          <span className="inline-block py-2 px-6 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold tracking-wide mb-8 uppercase">
             Partnership Proposal 2026
           </span>
           <h1 className="text-5xl md:text-7xl lg:text-[90px] font-black leading-[1.05] mb-12 tracking-tight">
@@ -106,7 +106,7 @@ const Hero = () => {
             Proposition de collaboration stratégique entre Esports.tn et Spacenet : Intégration API Stock & Partenariat Fournisseur pour l'écosystème compétitif tunisien.
           </p>
           
-          <div className="flex flex-wrap justify-center items-center gap-x-20 gap-y-8 mt-20 pt-10 border-t border-white/5 text-[12px] font-bold tracking-widest uppercase text-muted-foreground">
+          <div className="flex flex-wrap justify-center items-center gap-x-20 gap-y-8 mt-20 pt-10 border-t border-white/5 text-xs font-semibold uppercase text-muted-foreground">
              <div className="flex flex-col items-center md:items-start gap-1">
                 <span className="opacity-40 text-[10px]">Préparé pour</span>
                 <span className="text-foreground">Spacenet</span>
@@ -118,10 +118,6 @@ const Hero = () => {
              <div className="flex flex-col items-center md:items-start gap-1">
                 <span className="opacity-40 text-[10px]">Date</span>
                 <span className="text-foreground">Juillet 2026</span>
-             </div>
-             <div className="flex flex-col items-center md:items-start gap-1">
-                <span className="opacity-40 text-[10px]">Lieu</span>
-                <span className="text-foreground">Tunis, Tunisie</span>
              </div>
           </div>
         </motion.div>
@@ -253,7 +249,7 @@ const Problematic = () => {
     <SectionContainer>
        <div className="grid lg:grid-cols-2 gap-20 items-center">
          <div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-12 tracking-tight leading-[1] uppercase">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-12 tracking-tight leading-[1.1] uppercase">
               Notre problématique <br />
               <span className="text-destructive drop-shadow-[0_0_15px_rgba(255,0,0,0.4)]">actuelle</span>
             </h2>
@@ -466,15 +462,15 @@ const FinalCTA = () => {
           
           <div className="flex flex-col items-center gap-10">
              <div className="flex items-center gap-8 md:gap-12 mb-10">
-                <Image src={esportsLogo} alt="Esports.tn" width={260} height={100} className="object-contain h-14 md:h-16 w-auto" />
-                <div className="h-10 w-[1px] bg-white/20"></div>
-                <Image src={spacenetLogo} alt="Spacenet" width={200} height={100} className="object-contain h-14 md:h-16 w-auto" />
+                <Image src={esportsLogo} alt="Esports.tn" width={260} height={100} className="object-contain h-14 w-auto" />
+                <div className="h-10 w-[1px] bg-white/20 mx-4"></div>
+                <Image src={spacenetLogo} alt="Spacenet" width={200} height={100} className="object-contain h-20 w-auto" />
              </div>
              
              <div className="glassmorphic p-10 rounded-[2.5rem] max-w-lg w-full border-primary/20 shadow-2xl">
                 <div className="flex items-center justify-center gap-5 mb-5 text-primary">
                    <Mail size={28} />
-                   <span className="font-bold text-lg md:text-xl tracking-tight">ala.yacoub@digmaco.com</span>
+                   <span className="font-bold text-lg md:text-xl tracking-tight text-glow">ala.yacoub@digmaco.com</span>
                 </div>
                 <p className="text-muted-foreground text-[10px] uppercase tracking-widest font-black">Contact Stratégique</p>
              </div>
