@@ -69,7 +69,6 @@ const Hero = () => {
         className="w-full flex justify-center items-center mb-24"
       >
          <div className="flex items-center gap-10 md:gap-14">
-           {/* Visual balance: Esports logo is wide, so we give it slightly more height context */}
            <Image 
               src={esportsLogo} 
               alt="Esports.tn" 
@@ -83,7 +82,7 @@ const Hero = () => {
               alt="Spacenet" 
               width={200} 
               height={100} 
-              className="object-contain h-16 w-auto" 
+              className="object-contain h-20 w-auto" 
            />
          </div>
       </motion.div>
@@ -106,20 +105,22 @@ const Hero = () => {
             Proposition de collaboration stratégique entre Esports.tn et Spacenet : Intégration API Stock & Partenariat Fournisseur pour l'écosystème compétitif tunisien.
           </p>
           
-          <div className="flex flex-col md:flex-row justify-center items-center gap-12 mt-12 text-[12px] font-medium tracking-normal text-muted-foreground">
-             <div className="flex flex-col items-center gap-1.5">
-                <span className="opacity-50">Préparé pour</span>
-                <span className="text-foreground font-bold">Spacenet</span>
+          <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-6 mt-20 pt-10 border-t border-white/5 text-[11px] font-medium tracking-[0.15em] uppercase text-muted-foreground">
+             <div className="flex flex-col items-center md:items-start gap-1">
+                <span className="opacity-40">Client</span>
+                <span className="text-foreground font-black">Spacenet</span>
              </div>
-             <div className="hidden md:block h-5 w-[1px] bg-white/10"></div>
-             <div className="flex flex-col items-center gap-1.5">
-                <span className="opacity-50">Préparé par</span>
-                <span className="text-foreground font-bold">Esports.tn</span>
+             <div className="flex flex-col items-center md:items-start gap-1">
+                <span className="opacity-40">Auteur</span>
+                <span className="text-foreground font-black">Esports.tn</span>
              </div>
-             <div className="hidden md:block h-5 w-[1px] bg-white/10"></div>
-             <div className="flex flex-col items-center gap-1.5">
-                <span className="opacity-50">Date</span>
-                <span className="text-foreground font-bold">Juillet 2026</span>
+             <div className="flex flex-col items-center md:items-start gap-1">
+                <span className="opacity-40">Date</span>
+                <span className="text-foreground font-black">Juillet 2026</span>
+             </div>
+             <div className="flex flex-col items-center md:items-start gap-1">
+                <span className="opacity-40">Lieu</span>
+                <span className="text-foreground font-black">Tunis, Tunisie</span>
              </div>
           </div>
         </motion.div>
@@ -251,7 +252,10 @@ const Problematic = () => {
     <SectionContainer>
        <div className="grid lg:grid-cols-2 gap-20 items-center">
          <div>
-            <h2 className="text-4xl md:text-5xl font-black mb-10 tracking-tight">Notre problématique <span className="text-destructive">actuelle</span></h2>
+            <h2 className="text-5xl md:text-7xl font-black mb-12 tracking-tight leading-[0.9] uppercase">
+              Notre problématique <br />
+              <span className="text-destructive drop-shadow-[0_0_15px_rgba(255,0,0,0.4)]">actuelle</span>
+            </h2>
             <div className="space-y-5">
               {[
                 "Gestion manuelle des produits",
