@@ -62,32 +62,37 @@ const Hero = () => {
   const spacenetLogo = PlaceHolderImages.find(p => p.id === 'spacenet-logo')?.imageUrl || "";
 
   return (
-    <SectionContainer className="grid-background flex items-center min-h-[90vh]">
-      {/* Logos Header */}
-      <div className="absolute top-10 left-6 md:left-12 flex items-center gap-8 z-20 bg-black/40 backdrop-blur-xl px-8 py-5 rounded-2xl border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+    <SectionContainer className="grid-background flex flex-col items-start min-h-screen">
+      {/* Logos Header - Integrated into flow to prevent overlap */}
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="flex items-center gap-8 z-20 bg-black/40 backdrop-blur-xl px-10 py-6 rounded-3xl border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] mb-20"
+      >
          <Image 
             src={esportsLogo} 
             alt="Esports.tn" 
-            width={140} 
-            height={48} 
-            className="object-contain" 
+            width={200} 
+            height={60} 
+            className="object-contain h-10 w-auto" 
          />
          <div className="h-10 w-[1px] bg-white/20"></div>
          <Image 
             src={spacenetLogo} 
             alt="Spacenet" 
-            width={55} 
-            height={55} 
-            className="object-contain" 
+            width={70} 
+            height={70} 
+            className="object-contain h-12 w-auto" 
          />
-      </div>
+      </motion.div>
 
-      <div className="grid lg:grid-cols-12 gap-12 items-center mt-32 lg:mt-0">
-        <div className="lg:col-span-8 text-center lg:text-left">
+      <div className="grid lg:grid-cols-12 gap-12 items-center w-full">
+        <div className="lg:col-span-8 text-left">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
             <span className="inline-block py-1 px-4 rounded-full border border-primary/30 bg-primary/10 text-primary text-[10px] font-black tracking-[0.3em] mb-8 uppercase">
               Partnership Proposal 2026
@@ -100,7 +105,7 @@ const Hero = () => {
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 font-medium leading-relaxed opacity-80">
               Proposition de collaboration stratégique entre Esports.tn et Spacenet : Intégration API Stock & Partenariat Fournisseur pour l'écosystème compétitif tunisien.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-6 justify-start">
               <button className="px-10 py-5 bg-primary text-background font-black rounded-lg hover:glow-cyan transition-all transform hover:-translate-y-1 uppercase tracking-wider text-sm">
                 Découvrir la proposition
               </button>
@@ -115,7 +120,7 @@ const Hero = () => {
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="glassmorphic p-10 rounded-3xl relative overflow-hidden border-white/5"
           >
             <div className="absolute -top-10 -right-10 p-4 opacity-5 pointer-events-none">
