@@ -16,7 +16,6 @@ import {
   AlertCircle, 
   CheckCircle2, 
   Link as LinkIcon, 
-  ArrowRight, 
   Mail, 
   Cpu,
   Layers,
@@ -64,28 +63,28 @@ const Hero = () => {
 
   return (
     <SectionContainer className="grid-background flex flex-col items-center justify-start min-h-screen pt-12">
-      {/* Sleek Header Bar */}
+      {/* Premium Pill Header Bar */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full bg-black/60 backdrop-blur-2xl px-8 py-5 rounded-[2rem] border border-white/5 shadow-2xl mb-24 flex items-center"
+        className="w-full bg-black/90 backdrop-blur-3xl px-12 py-8 rounded-full border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.6)] mb-24 flex items-center"
       >
-         <div className="flex items-center gap-6">
+         <div className="flex items-center gap-10">
            <Image 
               src={esportsLogo} 
               alt="Esports.tn" 
-              width={140} 
-              height={40} 
-              className="object-contain h-6 w-auto" 
+              width={220} 
+              height={60} 
+              className="object-contain h-12 w-auto brightness-110" 
            />
-           <div className="h-6 w-[1px] bg-white/10"></div>
+           <div className="h-12 w-[1px] bg-white/20"></div>
            <Image 
               src={spacenetLogo} 
               alt="Spacenet" 
-              width={45} 
-              height={45} 
-              className="object-contain h-9 w-auto" 
+              width={100} 
+              height={100} 
+              className="object-contain h-20 w-auto scale-110" 
            />
          </div>
       </motion.div>
@@ -442,10 +441,10 @@ const FinalCTA = () => {
           </h2>
           
           <div className="flex flex-col items-center gap-6">
-             <div className="flex items-center gap-12 mb-8 bg-white/5 p-8 rounded-3xl backdrop-blur-xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                <Image src={esportsLogo} alt="Esports.tn" width={220} height={75} className="object-contain drop-shadow-lg" />
-                <span className="text-4xl font-light text-white/20">×</span>
-                <Image src={spacenetLogo} alt="Spacenet" width={110} height={110} className="object-contain" />
+             <div className="flex items-center gap-12 mb-8 bg-black/90 px-12 py-8 rounded-full border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.6)] backdrop-blur-xl">
+                <Image src={esportsLogo} alt="Esports.tn" width={220} height={60} className="object-contain h-12 w-auto" />
+                <div className="h-12 w-[1px] bg-white/20"></div>
+                <Image src={spacenetLogo} alt="Spacenet" width={100} height={100} className="object-contain h-20 w-auto" />
              </div>
              
              <div className="glassmorphic p-8 rounded-3xl max-w-md w-full border-primary/20">
