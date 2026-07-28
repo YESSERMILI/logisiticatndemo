@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useRef } from "react";
@@ -106,14 +107,6 @@ const Hero = () => {
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-14 font-medium leading-relaxed opacity-80">
             Proposition de collaboration stratégique entre Esports.tn et Spacenet : Intégration API Stock & Partenariat Fournisseur pour l'écosystème compétitif tunisien.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="px-12 py-5 bg-primary text-background font-black rounded-xl hover:glow-cyan transition-all transform hover:-translate-y-1 uppercase tracking-wider text-sm">
-              Découvrir la proposition
-            </button>
-            <button className="px-12 py-5 border border-white/10 hover:bg-white/5 font-black rounded-xl transition-all uppercase tracking-wider text-sm backdrop-blur-sm">
-              Nous contacter
-            </button>
-          </div>
         </motion.div>
       </div>
     </SectionContainer>
@@ -170,7 +163,7 @@ const WhoAreWe = () => {
                   <div className="absolute left-[19px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary via-secondary to-accent"></div>
                   
                   {[
-                    { label: "Joueur", desc: "Le gamer rejoint la plateforme" },
+                    { label: "Joueur", desc: "Le gamer rejoint the plateforme" },
                     { label: "Match League of Legends", desc: "Session de jeu compétitive" },
                     { label: "Statistiques analysées", desc: "Traitement des données en temps réel" },
                     { label: "Coins gagnés", desc: "Crédit immédiat sur le compte" },
@@ -504,9 +497,6 @@ export default function PartnershipPage() {
               </div>
             ))}
           </div>
-          <button className="px-12 py-5 bg-white text-background font-black rounded-xl hover:scale-105 transition-transform flex items-center gap-4 mx-auto">
-             VALIDER LE PARTENARIAT <ArrowRight />
-          </button>
         </div>
       </SectionContainer>
 
