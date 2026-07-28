@@ -1,8 +1,7 @@
 
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React from "react";
 import { 
   Zap, 
   Target, 
@@ -34,23 +33,10 @@ const SectionContainer = ({ children, className = "", id = "" }: { children: Rea
   </section>
 );
 
-const Reveal = ({ children, width = "100%" }: { children: React.ReactNode; width?: string }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
+const Reveal = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 75 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        transition={{ duration: 0.5, delay: 0.25 }}
-      >
-        {children}
-      </motion.div>
+    <div style={{ position: "relative", width: "100%" }}>
+      {children}
     </div>
   );
 };
@@ -63,37 +49,28 @@ const Hero = () => {
 
   return (
     <SectionContainer className="grid-background flex flex-col items-center justify-start min-h-screen pt-12">
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="w-full flex justify-center items-center mb-24"
-      >
+      <div className="w-full flex justify-center items-center mb-24">
          <div className="flex items-center gap-12 px-12 py-6">
            <Image 
               src={esportsLogo} 
               alt="Esports.tn" 
-              width={260} 
-              height={100} 
-              className="object-contain h-14 w-auto" 
+              width={400} 
+              height={150} 
+              className="object-contain h-24 w-auto" 
            />
-           <div className="h-10 w-[1px] bg-white/20 mx-4"></div>
+           <div className="h-12 w-[1px] bg-white/20 mx-4"></div>
            <Image 
               src={spacenetLogo} 
               alt="Spacenet" 
-              width={200} 
-              height={100} 
-              className="object-contain h-20 w-auto" 
+              width={240} 
+              height={150} 
+              className="object-contain h-24 w-auto" 
            />
          </div>
-      </motion.div>
+      </div>
 
       <div className="text-center max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
+        <div>
           <span className="inline-block py-2 px-6 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold tracking-wide mb-8 uppercase">
             Partnership Proposal 2026
           </span>
@@ -120,7 +97,7 @@ const Hero = () => {
                 <span className="text-foreground">Juillet 2026</span>
              </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </SectionContainer>
   );
@@ -178,7 +155,7 @@ const WhoAreWe = () => {
                     { label: "Récompenses Spacenet", desc: "Livraison de produits gaming premium" }
                   ].map((step, i) => (
                     <div key={i} className="flex items-center gap-8 relative z-10 group">
-                      <div className="w-11 h-11 rounded-full bg-[#050816] border-2 border-primary flex items-center justify-center font-bold text-sm shadow-[0_0_15px_rgba(0,229,255,0.2)] group-hover:scale-110 transition-transform">
+                      <div className="w-11 h-11 rounded-full bg-[#050816] border-2 border-primary flex items-center justify-center font-bold text-sm shadow-[0_0_15px_rgba(0,229,255,0.2)]">
                         {i + 1}
                       </div>
                       <div>
@@ -212,17 +189,16 @@ const HowItWorks = () => {
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {cards.map((card, i) => (
-          <motion.div
+          <div
             key={i}
-            whileHover={{ y: -10 }}
             className="glassmorphic p-10 rounded-3xl text-center group cursor-default"
           >
-            <div className={`w-20 h-20 mx-auto rounded-2xl bg-white/5 flex items-center justify-center mb-8 ${card.color} group-hover:scale-110 transition-transform shadow-inner`}>
+            <div className={`w-20 h-20 mx-auto rounded-2xl bg-white/5 flex items-center justify-center mb-8 ${card.color} transition-transform shadow-inner`}>
               <card.icon size={40} />
             </div>
             <h3 className="text-2xl font-bold mb-5 tracking-tight">{card.title}</h3>
             <p className="text-muted-foreground leading-relaxed text-base">{card.desc}</p>
-          </motion.div>
+          </div>
         ))}
       </div>
       <div className="mt-24 grid grid-cols-3 md:grid-cols-6 gap-8 opacity-40 hover:opacity-100 transition-opacity duration-500 max-w-4xl mx-auto">
@@ -307,11 +283,7 @@ const Solution = () => {
             <div className="relative h-28 w-1 flex items-center justify-center">
                <div className="absolute inset-0 bg-primary/10 blur-xl"></div>
                <div className="h-full w-[2px] bg-gradient-to-b from-primary to-secondary relative">
-                  <motion.div 
-                    animate={{ top: ["0%", "100%"] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                    className="absolute left-1/2 -translate-x-1/2 w-5 h-5 bg-primary rounded-full shadow-[0_0_15px_rgba(0,229,255,0.8)]"
-                  />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-primary rounded-full shadow-[0_0_15px_rgba(0,229,255,0.8)]" />
                </div>
             </div>
 
@@ -321,11 +293,7 @@ const Solution = () => {
 
             <div className="relative h-28 w-1 flex items-center justify-center">
                <div className="h-full w-[2px] bg-gradient-to-b from-secondary to-accent relative">
-                  <motion.div 
-                    animate={{ top: ["0%", "100%"] }}
-                    transition={{ duration: 1.5, repeat: Infinity, delay: 0.75 }}
-                    className="absolute left-1/2 -translate-x-1/2 w-5 h-5 bg-secondary rounded-full shadow-[0_0_15px_rgba(0,255,136,0.8)]"
-                  />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-secondary rounded-full shadow-[0_0_15px_rgba(0,255,136,0.8)]" />
                </div>
             </div>
 
@@ -425,7 +393,6 @@ const Roadmap = () => {
              ].map((item, i) => (
                <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left">
                   <div className="w-8 h-8 rounded-full bg-primary mb-10 shadow-[0_0_20px_rgba(0,229,255,0.5)] relative">
-                     <div className="absolute -inset-3 border border-primary/20 rounded-full animate-ping"></div>
                   </div>
                   <h4 className="text-primary font-black text-[12px] mb-3 uppercase tracking-tight">{item.phase}</h4>
                   <h5 className="text-2xl font-bold mb-5 tracking-tight">{item.title}</h5>
@@ -462,9 +429,15 @@ const FinalCTA = () => {
           
           <div className="flex flex-col items-center gap-10">
              <div className="flex items-center gap-8 md:gap-12 mb-10">
-                <Image src={esportsLogo} alt="Esports.tn" width={260} height={100} className="object-contain h-14 w-auto" />
+                <Image 
+                  src={esportsLogo} 
+                  alt="Esports.tn" 
+                  width={400} 
+                  height={150} 
+                  className="object-contain h-24 w-auto" 
+                />
                 <div className="h-10 w-[1px] bg-white/20 mx-4"></div>
-                <Image src={spacenetLogo} alt="Spacenet" width={200} height={100} className="object-contain h-20 w-auto" />
+                <Image src={spacenetLogo} alt="Spacenet" width={240} height={150} className="object-contain h-24 w-auto" />
              </div>
              
              <div className="glassmorphic p-10 rounded-[2.5rem] max-w-lg w-full border-primary/20 shadow-2xl">
@@ -483,10 +456,8 @@ const FinalCTA = () => {
 // --- Page Wrapper ---
 
 export default function PartnershipPage() {
-  const containerRef = useRef(null);
-  
   return (
-    <main ref={containerRef} className="bg-[#050816] selection:bg-primary selection:text-background font-sans text-white">
+    <main className="bg-[#050816] selection:bg-primary selection:text-background font-sans text-white">
       <Hero />
       <WhoAreWe />
       <HowItWorks />
