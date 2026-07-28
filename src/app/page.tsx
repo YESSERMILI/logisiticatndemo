@@ -50,15 +50,15 @@ const Hero = () => {
   return (
     <SectionContainer className="grid-background flex flex-col items-center justify-start min-h-screen pt-12">
       <div className="w-full flex justify-center items-center mb-32">
-         <div className="flex items-center gap-16">
+         <div className="flex items-center gap-12 bg-black/40 px-12 py-6 rounded-full border border-white/5 backdrop-blur-md">
            <Image 
               src={esportsLogo} 
               alt="Esports.tn" 
               width={800} 
               height={300} 
-              className="object-contain h-48 w-auto" 
+              className="object-contain h-64 w-auto" 
            />
-           <div className="h-20 w-[1px] bg-white/10"></div>
+           <div className="h-16 w-[1px] bg-white/10 mx-4"></div>
            <Image 
               src={spacenetLogo} 
               alt="Spacenet" 
@@ -71,7 +71,7 @@ const Hero = () => {
 
       <div className="text-center max-w-5xl mx-auto">
         <div>
-          <span className="inline-block py-1.5 px-4 rounded-md border border-white/10 bg-white/5 text-white/60 text-xs font-semibold tracking-tight mb-8 uppercase">
+          <span className="inline-block py-1.5 px-4 rounded-md border border-white/10 bg-white/5 text-white/60 text-xs font-semibold tracking-normal mb-8 uppercase">
             Partnership Proposal 2026
           </span>
           <h1 className="text-5xl md:text-7xl lg:text-[90px] font-black leading-[1.05] mb-12 tracking-tighter">
@@ -79,7 +79,7 @@ const Hero = () => {
             en récompenses <br />
             <span className="text-secondary">réelles</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-16 font-medium leading-relaxed opacity-80">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-20 font-medium leading-relaxed opacity-80">
             Proposition de collaboration stratégique entre Esports.tn et Spacenet : Intégration API Stock & Partenariat Fournisseur pour l'écosystème compétitif tunisien.
           </p>
           
@@ -144,9 +144,6 @@ const WhoAreWe = () => {
             </h2>
             <div className="space-y-12">
                <div className="flex flex-col gap-12 relative">
-                  {/* Vertical line perfectly centered behind boxes */}
-                  <div className="absolute left-7 top-7 bottom-7 w-[1px] bg-white/10 -translate-x-1/2"></div>
-                  
                   {[
                     { label: "Joueur", desc: "Le gamer rejoint la plateforme" },
                     { label: "Match Compétitif", desc: "Session de jeu analysée en temps réel" },
@@ -155,7 +152,7 @@ const WhoAreWe = () => {
                     { label: "Récompenses Spacenet", desc: "Livraison de produits gaming premium" }
                   ].map((step, i) => (
                     <div key={i} className="flex items-center gap-10 relative z-10">
-                      <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center font-black text-xl text-primary shadow-inner">
+                      <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center font-black text-xl text-primary">
                         {i + 1}
                       </div>
                       <div>
@@ -225,9 +222,9 @@ const Problematic = () => {
     <SectionContainer>
        <div className="grid lg:grid-cols-2 gap-20 items-center">
          <div>
-            <h2 className="text-3xl md:text-4xl lg:text-4xl font-black mb-12 tracking-tighter leading-[1.1] uppercase">
+            <h2 className="text-4xl md:text-5xl lg:text-5xl font-black mb-12 tracking-tighter leading-[1.1] uppercase">
               Notre problématique <br />
-              <span className="text-destructive">actuelle</span>
+              <span className="text-destructive drop-shadow-[0_0_15px_rgba(239,68,68,0.3)]">actuelle</span>
             </h2>
             <div className="space-y-5">
               {[
@@ -385,7 +382,7 @@ const Roadmap = () => {
              {[
                { phase: "Phase 1", title: "Validation", desc: "Présentation & validation du partenariat stratégique." },
                { phase: "Phase 2", title: "Connexion API", desc: "Développement et tests de l'intégration technique." },
-               { phase: "Phase 3", title: "Tests Catalogue", desc: "Vérification des données et synchronisation." },
+               { phase: "Phase 3", title: "Catalogue", desc: "Vérification des données et synchronisation." },
                { phase: "Phase 4", title: "Lancement", desc: "Déploiement officiel et communication conjointe." }
              ].map((item, i) => (
                <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left">
@@ -431,7 +428,7 @@ const FinalCTA = () => {
                   alt="Esports.tn" 
                   width={800} 
                   height={300} 
-                  className="object-contain h-56 w-auto" 
+                  className="object-contain h-72 w-auto" 
                 />
                 <div className="h-10 w-[1px] bg-white/20 mx-4"></div>
                 <Image src={spacenetLogo} alt="Spacenet" width={400} height={200} className="object-contain h-24 w-auto" />
