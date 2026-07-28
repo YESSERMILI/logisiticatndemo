@@ -1,8 +1,7 @@
-
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { 
   Zap, 
   Target, 
@@ -20,35 +19,15 @@ import {
   Mail, 
   Cpu,
   Layers,
-  ShoppingBag,
-  Users
+  ShoppingBag
 } from "lucide-react";
 import Image from "next/image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 // --- Components ---
 
-const GlowingLine = () => (
-  <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 0 }}>
-    <motion.path
-      d="M 200 400 Q 400 300 600 400"
-      stroke="url(#gradient)"
-      strokeWidth="2"
-      fill="transparent"
-      initial={{ pathLength: 0, opacity: 0 }}
-      animate={{ pathLength: 1, opacity: 1 }}
-      transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-    />
-    <defs>
-      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#00E5FF" />
-        <stop offset="100%" stopColor="#7C3AED" />
-      </linearGradient>
-    </defs>
-  </svg>
-);
-
-const SectionContainer = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <section className={`min-h-screen py-24 px-6 md:px-12 flex flex-col justify-center relative ${className}`}>
+const SectionContainer = ({ children, className = "", id = "" }: { children: React.ReactNode; className?: string; id?: string }) => (
+  <section id={id} className={`min-h-screen py-24 px-6 md:px-12 flex flex-col justify-center relative ${className}`}>
     <div className="max-w-7xl mx-auto w-full">
       {children}
     </div>
@@ -79,12 +58,15 @@ const Reveal = ({ children, width = "100%" }: { children: React.ReactNode; width
 // --- Sections ---
 
 const Hero = () => {
+  const esportsLogo = PlaceHolderImages.find(p => p.id === 'main-logo')?.imageUrl || "";
+  const spacenetLogo = PlaceHolderImages.find(p => p.id === 'spacenet-logo')?.imageUrl || "";
+
   return (
     <SectionContainer className="grid-background flex items-center">
-      <div className="absolute top-10 left-10 flex items-center gap-4 z-20">
-         <Image src="https://i.imgur.com/oovjwlr.png" alt="Esports.tn" width={60} height={60} className="drop-shadow-[0_0_10px_rgba(0,229,255,0.5)]" />
-         <div className="h-8 w-[2px] bg-white/20"></div>
-         <span className="font-orbitron font-bold tracking-widest text-xl">SPACENET</span>
+      <div className="absolute top-10 left-10 flex items-center gap-6 z-20 bg-background/40 backdrop-blur-md p-3 rounded-xl border border-white/10">
+         <Image src={esportsLogo} alt="Esports.tn" width={50} height={50} className="drop-shadow-[0_0_8px_rgba(0,229,255,0.4)]" />
+         <div className="h-8 w-[1px] bg-white/20"></div>
+         <Image src={spacenetLogo} alt="Spacenet" width={120} height={40} className="object-contain" />
       </div>
 
       <div className="relative z-10 text-center lg:text-left mt-20">
@@ -445,6 +427,9 @@ const Roadmap = () => {
 };
 
 const FinalCTA = () => {
+  const esportsLogo = PlaceHolderImages.find(p => p.id === 'main-logo')?.imageUrl || "";
+  const spacenetLogo = PlaceHolderImages.find(p => p.id === 'spacenet-logo')?.imageUrl || "";
+
   return (
     <SectionContainer className="relative overflow-hidden text-center min-h-[80vh]">
        <div className="absolute inset-0 z-0">
@@ -464,10 +449,10 @@ const FinalCTA = () => {
           </h2>
           
           <div className="flex flex-col items-center gap-6">
-             <div className="flex items-center gap-8 mb-8">
-                <Image src="https://i.imgur.com/oovjwlr.png" alt="Esports.tn" width={100} height={100} />
+             <div className="flex items-center gap-12 mb-8 bg-white/5 p-8 rounded-3xl backdrop-blur-xl border border-white/10">
+                <Image src={esportsLogo} alt="Esports.tn" width={100} height={100} className="drop-shadow-lg" />
                 <span className="text-4xl font-light text-white/20">×</span>
-                <span className="font-orbitron font-bold text-4xl tracking-widest">SPACENET</span>
+                <Image src={spacenetLogo} alt="Spacenet" width={180} height={60} className="object-contain" />
              </div>
              
              <div className="glassmorphic p-8 rounded-3xl max-w-md w-full border-primary/20">
