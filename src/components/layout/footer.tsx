@@ -1,12 +1,12 @@
 
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "@/hooks/use-translation";
 import { useLanguage } from "@/contexts/language-context";
 import { Facebook, Instagram, Linkedin, MessageCircle, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/logo";
 
 export function Footer() {
   const { t, language } = useTranslation();
@@ -33,18 +33,13 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-[#051128] text-white pt-24 pb-12 border-t border-white/5" dir={isRTL ? "rtl" : "ltr"}>
+    <footer className="bg-primary text-white pt-24 pb-12 border-t border-white/5" dir={isRTL ? "rtl" : "ltr"}>
       <div className="container px-4 md:px-8 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-6">
-            <Link href="/" className="relative h-[48px] w-[180px] block">
-              <Image
-                src="https://i.postimg.cc/P5sfzcz0/png-1.png"
-                alt="Logistica Tunisie"
-                fill
-                className="object-contain object-left rtl:object-right brightness-0 invert"
-              />
+            <Link href="/" className="inline-block">
+              <Logo variant="white" />
             </Link>
             <p className="text-lg text-white/50 max-w-sm italic">
               « {t('footer_tagline')} »
@@ -99,19 +94,19 @@ export function Footer() {
             <Globe className="h-4 w-4 text-white/40 ml-3" />
             <button 
               onClick={() => setLanguage('fr')} 
-              className={cn("px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider transition-all", language === 'fr' ? "bg-orange text-white" : "text-white/40 hover:text-white")}
+              className={cn("px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider transition-all", language === 'fr' ? "bg-orange text-primary" : "text-white/40 hover:text-white")}
             >
               FR
             </button>
             <button 
               onClick={() => setLanguage('ar')} 
-              className={cn("px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider transition-all", language === 'ar' ? "bg-orange text-white" : "text-white/40 hover:text-white")}
+              className={cn("px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider transition-all", language === 'ar' ? "bg-orange text-primary" : "text-white/40 hover:text-white")}
             >
               AR
             </button>
             <button 
               onClick={() => setLanguage('en' as any)} 
-              className={cn("px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider transition-all", language === 'en' ? "bg-orange text-white" : "text-white/40 hover:text-white")}
+              className={cn("px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider transition-all", language === 'en' ? "bg-orange text-primary" : "text-white/40 hover:text-white")}
             >
               EN
             </button>
