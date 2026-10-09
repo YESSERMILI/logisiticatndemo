@@ -35,12 +35,18 @@ export function Navbar() {
     <nav className={cn(
       "fixed top-0 left-0 right-0 z-[100] h-[72px] transition-all duration-300",
       scrolled 
-        ? "bg-white/90 backdrop-blur-md border-b border-primary/5 shadow-sm" 
+        ? "bg-white/95 backdrop-blur-md border-b border-primary/5 shadow-sm" 
         : "bg-transparent"
     )}>
       <div className="container mx-auto h-full px-4 lg:px-8 max-w-[1200px] flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="shrink-0 transition-transform hover:scale-105">
+        {/* Logo - Only visible when scrolled or on mobile to avoid clashing with Hero SVG logo */}
+        <Link 
+          href="/" 
+          className={cn(
+            "shrink-0 transition-all duration-300",
+            !scrolled && !isOpen ? "opacity-0 -translate-x-4 pointer-events-none" : "opacity-100 translate-x-0"
+          )}
+        >
           <Logo />
         </Link>
 
@@ -50,7 +56,10 @@ export function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-[15px] font-bold text-primary transition-colors hover:text-secondary tracking-tight"
+              className={cn(
+                "text-[15px] font-bold transition-colors tracking-tight",
+                scrolled ? "text-primary hover:text-secondary" : "text-primary hover:text-orange"
+              )}
             >
               {link.name}
             </Link>
