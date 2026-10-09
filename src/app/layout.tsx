@@ -16,8 +16,13 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Logistica Tunisie | De la commande à la livraison, tout simplement.",
+  title: "Logistica Tunisie - Logistique e-commerce de la commande à la livraison",
   description: "Solution complète de logistique e-commerce en Tunisie. Stockage, préparation, expédition et suivi en temps réel.",
+  openGraph: {
+    title: "Logistica Tunisie - Logistique e-commerce",
+    description: "De la commande à la livraison, tout simplement.",
+    images: ["https://i.postimg.cc/P5sfzcz0/png-1.png"], // In a real project, use a 1200x630 social image
+  },
 };
 
 export default function RootLayout({
@@ -29,6 +34,7 @@ export default function RootLayout({
     <html lang="fr" suppressHydrationWarning>
       <head>
         <link rel="preload" href="/logistica-hero-right.svg" as="image" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={`${inter.variable} ${poppins.variable}`}>
         <Providers>

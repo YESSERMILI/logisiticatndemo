@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -17,7 +18,8 @@ export function Navbar() {
     { name: t("nav_steps"), href: "#steps" },
     { name: t("nav_dashboard"), href: "#dashboard" },
     { name: t("nav_commitments"), href: "#engagements" },
-    { name: t("nav_contact"), href: "/contact" },
+    { name: t("nav_faq"), href: "#faq" },
+    { name: t("nav_contact"), href: "#contact" },
   ];
 
   return (
@@ -49,8 +51,11 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:block">
-          <Button className="bg-[#F7941D] hover:bg-[#F7941D]/90 text-[#0C2A6B] rounded-full px-8 h-11 font-bold shadow-lg shadow-[#F7941D]/20 transition-all active:scale-95">
-            {t("nav_start")}
+          <Button 
+            className="bg-[#F7941D] hover:bg-[#F7941D]/90 text-[#0C2A6B] rounded-full px-8 h-11 font-bold shadow-lg shadow-[#F7941D]/20 transition-all active:scale-95"
+            asChild
+          >
+            <Link href="#contact">{t("nav_start")}</Link>
           </Button>
         </div>
 
@@ -80,8 +85,8 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-          <Button className="bg-[#F7941D] text-[#0C2A6B] w-full rounded-full h-14 font-bold text-lg mt-4">
-            {t("nav_start")}
+          <Button className="bg-[#F7941D] text-[#0C2A6B] w-full rounded-full h-14 font-bold text-lg mt-4" asChild onClick={() => setIsOpen(false)}>
+            <Link href="#contact">{t("nav_start")}</Link>
           </Button>
         </div>
       )}
