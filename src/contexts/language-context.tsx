@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, {
@@ -20,7 +21,8 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 );
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>("ar");
+  // Changement de la langue par défaut de "ar" à "fr"
+  const [language, setLanguage] = useState<Language>("fr");
 
   useEffect(() => {
     document.documentElement.lang = language;
