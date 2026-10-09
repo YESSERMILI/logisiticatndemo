@@ -9,7 +9,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, HelpCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function FAQ() {
   const { t, language } = useTranslation();
@@ -18,41 +19,63 @@ export function FAQ() {
   const faqs = [1, 2, 3, 4, 5, 6, 7];
 
   return (
-    <section id="faq" className="py-24 bg-sky" dir={isRTL ? "rtl" : "ltr"}>
+    <section id="faq" className="py-24 bg-[#EEF4FF]" dir={isRTL ? "rtl" : "ltr"}>
       <div className="container px-4 md:px-8 mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left Column */}
           <div className={isRTL ? "text-right" : "text-left"}>
-            <p className="text-orange font-bold uppercase tracking-widest text-sm mb-2">
-              {t('faq_eyebrow')}
-            </p>
-            <h2 className="text-4xl md:text-5xl font-black text-primary mb-6">
-              {t('faq_title')}
-            </h2>
-            <p className="text-lg text-primary/60 mb-8 max-w-md">
-              {t('faq_whatsapp_text')}
-            </p>
-            <Button className="bg-[#25D366] hover:bg-[#25D366]/90 text-white rounded-full h-14 px-8 font-bold">
-              <MessageCircle className="mr-2 h-5 w-5" />
-              {t('faq_whatsapp_btn')}
-            </Button>
+            <motion.div
+              initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm">
+                <HelpCircle className="h-8 w-8 text-secondary" />
+              </div>
+              <p className="text-orange font-bold uppercase tracking-[0.2em] text-sm mb-4">
+                {t('faq_eyebrow')}
+              </p>
+              <h2 className="text-4xl md:text-5xl font-black text-primary mb-8 leading-tight">
+                {t('faq_title')}
+              </h2>
+              <p className="text-lg text-muted-foreground mb-10 max-w-md leading-relaxed font-medium">
+                {t('faq_whatsapp_text')}
+              </p>
+              <Button 
+                size="lg"
+                className="bg-[#25D366] hover:bg-[#25D366]/90 text-white rounded-full h-[60px] px-10 font-bold shadow-xl shadow-[#25D366]/20 transition-all hover:-translate-y-1 active:scale-95"
+              >
+                <MessageCircle className="mr-3 rtl:ml-3 rtl:mr-0 h-6 w-6" />
+                {t('faq_whatsapp_btn')}
+              </Button>
+            </motion.div>
           </div>
 
           {/* Right Column (Accordion) */}
-          <div className="bg-white p-8 rounded-[32px] card-shadow">
-            <Accordion type="single" collapsible className="w-full">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="bg-white p-6 md:p-10 rounded-[40px] shadow-2xl shadow-primary/5 border border-white"
+          >
+            <Accordion type="single" collapsible className="w-full space-y-4">
               {faqs.map((num) => (
-                <AccordionItem key={num} value={`item-${num}`} className="border-b border-primary/5 py-2">
-                  <AccordionTrigger className="text-lg font-bold text-primary hover:text-orange text-left rtl:text-right">
+                <AccordionItem 
+                  key={num} 
+                  value={`item-${num}`} 
+                  className="border-b border-primary/5 last:border-0 pb-2"
+                >
+                  <AccordionTrigger className="text-lg font-bold text-primary hover:text-secondary text-left rtl:text-right transition-all no-underline hover:no-underline py-6">
                     {t(`faq_q${num}` as any)}
                   </AccordionTrigger>
-                  <AccordionContent className="text-primary/60 leading-relaxed pt-2">
+                  <AccordionContent className="text-muted-foreground leading-relaxed text-[16px] pb-6 font-medium">
                     {t(`faq_a${num}` as any)}
                   </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
-          </div>
+          </motion.div>
         </div>
       </div>
 

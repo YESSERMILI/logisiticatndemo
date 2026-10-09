@@ -47,14 +47,29 @@ export function LogisticsSteps() {
   });
 
   return (
-    <section id="steps" ref={containerRef} className="py-24 bg-white relative">
-      <div className="container px-4 md:px-8 mx-auto">
-        <div className="text-center mb-24">
+    <section id="steps" ref={containerRef} className="py-24 md:py-32 bg-white relative">
+      {/* Subtle background decoration */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
+        <div className="absolute top-[10%] left-[5%] w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[10%] right-[5%] w-[500px] h-[500px] bg-orange/10 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="container px-4 md:px-8 mx-auto relative z-10">
+        <div className="text-center mb-24 max-w-3xl mx-auto">
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-orange font-bold uppercase tracking-[0.2em] text-sm mb-4"
+          >
+            NOTRE PROCESSUS
+          </motion.p>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-primary mb-4"
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl font-black text-primary mb-6"
           >
             {t('steps_title')}
           </motion.h2>
@@ -62,35 +77,41 @@ export function LogisticsSteps() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-primary/60"
+            transition={{ delay: 0.2 }}
+            className="text-xl text-muted-foreground font-medium"
           >
             {t('steps_subtitle')}
           </motion.p>
         </div>
 
         <div className="relative max-w-5xl mx-auto">
-          {/* Flow Line */}
+          {/* Main vertical line for desktop */}
           <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[4px] bg-primary/5 -translate-x-1/2 hidden md:block" />
           
           {/* Animated Scroll Line */}
           <motion.div 
             style={{ scaleY: smoothProgress, originY: 0 }}
-            className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[4px] bg-primary -translate-x-1/2 origin-top hidden md:block"
+            className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[4px] bg-secondary -translate-x-1/2 origin-top hidden md:block"
           />
 
-          {/* Parcel Head */}
+          {/* Floating parcel head following the scroll */}
           <motion.div 
             style={{ 
               top: useTransform(smoothProgress, [0, 1], ["0%", "100%"]),
               y: "-50%"
             }}
-            className="absolute left-[20px] md:left-1/2 -translate-x-1/2 z-10 hidden md:block"
+            className="absolute left-[20px] md:left-1/2 -translate-x-1/2 z-30 hidden md:block"
           >
-            <div className="flow-line-head" />
+            <motion.div 
+              animate={{ rotate: [0, 5, -5, 0] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+              className="w-12 h-10 bg-orange rounded-lg shadow-xl shadow-orange/30 flex items-center justify-center border-2 border-white"
+            >
+              <div className="w-full h-2 bg-primary/20" />
+            </motion.div>
           </motion.div>
 
-          <div className="space-y-24">
+          <div className="space-y-32">
             {steps.map((step, index) => (
               <StepItem 
                 key={step.id} 
@@ -110,41 +131,50 @@ export function LogisticsSteps() {
 function StepItem({ step, index, t, isEven }: any) {
   return (
     <motion.div 
-      initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, delay: 0.1 }}
       className={cn(
-        "flex flex-col md:flex-row items-center gap-8 md:gap-16 relative",
+        "flex flex-col md:flex-row items-center gap-12 md:gap-24 relative",
         !isEven && "md:flex-row-reverse"
       )}
     >
-      {/* Circle Node */}
-      <div className="absolute left-[20px] md:left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white border-4 border-primary z-20 flex items-center justify-center font-black text-primary text-sm shadow-lg">
+      {/* Circle Node with Number */}
+      <div className="absolute left-[20px] md:left-1/2 top-0 md:top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-2xl bg-white border-4 border-primary z-20 flex items-center justify-center font-black text-primary text-lg shadow-2xl transition-transform hover:scale-110 duration-300">
         {step.id}
       </div>
 
       {/* Content Card */}
       <div className="w-full md:w-[45%] pl-16 md:pl-0">
-        <div className={cn(
-          "bg-white p-8 rounded-[20px] card-shadow border border-border group transition-all duration-300 hover:border-orange/30",
-          !isEven ? "md:text-right" : "md:text-left"
-        )}>
+        <motion.div 
+          whileHover={{ y: -8 }}
+          className={cn(
+            "bg-white p-10 rounded-[32px] shadow-3xl border border-primary/5 group transition-all duration-500 hover:border-secondary/20 relative overflow-hidden",
+            !isEven ? "md:text-right" : "md:text-left"
+          )}
+        >
+          {/* Step icon with animated background */}
           <div className={cn(
-            "w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-6 transition-colors group-hover:bg-orange/10 group-hover:text-orange",
+            "w-20 h-20 bg-primary/5 rounded-3xl flex items-center justify-center text-primary mb-8 transition-all duration-500 group-hover:bg-secondary group-hover:text-white group-hover:rotate-6",
             !isEven ? "md:ml-auto" : "md:mr-auto"
           )}>
-            <step.icon className="h-8 w-8" strokeWidth={2} />
+            <step.icon className="h-10 w-10" strokeWidth={2} />
           </div>
-          <h3 className="text-2xl font-black text-primary mb-3">
+          
+          <h3 className="text-2xl md:text-3xl font-black text-primary mb-4 leading-tight">
             {t(`${step.translationKey}_title`)}
           </h3>
-          <p className="text-primary/60 leading-relaxed">
+          <p className="text-muted-foreground text-[17px] leading-relaxed font-medium">
             {t(`${step.translationKey}_desc`)}
           </p>
-        </div>
+          
+          {/* Background decoration in card */}
+          <div className="absolute bottom-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mb-12 transition-transform duration-700 group-hover:scale-150" />
+        </motion.div>
       </div>
 
-      {/* Spacer for the other side */}
+      {/* Spacer for desktop layout balance */}
       <div className="hidden md:block md:w-[45%]" />
     </motion.div>
   );
