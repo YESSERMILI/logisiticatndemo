@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -25,7 +24,7 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-[100] h-[72px] bg-white/85 backdrop-blur-md border-b border-primary/5">
       <div className="container mx-auto h-full px-4 lg:px-8 max-w-[1200px] flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="relative h-[44px] w-[160px] shrink-0">
+        <Link href="/" className="relative h-[40px] w-[160px] shrink-0">
           <Image
             src="https://i.postimg.cc/P5sfzcz0/png-1.png"
             alt="Logistica Tunisie"
@@ -41,7 +40,7 @@ export function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-[15px] font-bold text-primary transition-colors hover:text-secondary tracking-tight"
+              className="text-[15px] font-bold text-[#0C2A6B] transition-colors hover:text-[#1F6FDB] tracking-tight"
             >
               {link.name}
             </Link>
@@ -50,14 +49,14 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:block">
-          <Button className="bg-orange hover:bg-orange/90 text-primary rounded-full px-8 h-11 font-bold shadow-lg shadow-orange/20 transition-all active:scale-95">
+          <Button className="bg-[#F7941D] hover:bg-[#F7941D]/90 text-[#0C2A6B] rounded-full px-8 h-11 font-bold shadow-lg shadow-[#F7941D]/20 transition-all active:scale-95">
             {t("nav_start")}
           </Button>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden p-2 text-primary"
+          className="lg:hidden p-2 text-[#0C2A6B]"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -66,14 +65,14 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="fixed inset-0 top-[72px] w-full bg-primary z-[90] p-8 lg:hidden flex flex-col gap-8 animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="fixed inset-0 top-[72px] w-full bg-[#0C2A6B] z-[90] p-8 lg:hidden flex flex-col gap-8 animate-in fade-in slide-in-from-top-4 duration-300">
           {navLinks.map((link, idx) => (
             <Link
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
               className={cn(
-                "text-2xl font-black text-white hover:text-orange transition-colors border-b border-white/10 pb-4",
+                "text-2xl font-black text-white hover:text-[#F7941D] transition-colors border-b border-white/10 pb-4",
                 isRTL ? "text-right" : "text-left"
               )}
               style={{ animationDelay: `${idx * 80}ms` }}
@@ -81,7 +80,7 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-          <Button className="bg-orange text-primary w-full rounded-full h-14 font-bold text-lg mt-4">
+          <Button className="bg-[#F7941D] text-[#0C2A6B] w-full rounded-full h-14 font-bold text-lg mt-4">
             {t("nav_start")}
           </Button>
         </div>

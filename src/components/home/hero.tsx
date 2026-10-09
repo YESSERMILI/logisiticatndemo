@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -53,17 +52,17 @@ export function Hero() {
           >
             <motion.div 
               variants={itemVariants}
-              className="inline-flex items-center px-3.5 py-2 rounded-full bg-orange-soft text-[13px] font-bold text-primary mb-6 uppercase tracking-wider"
+              className="inline-flex items-center px-3.5 py-2 rounded-full bg-[#FFE6D2] text-[13px] font-bold text-[#0C2A6B] mb-6 uppercase tracking-wider"
             >
               {t('hero_pill')}
             </motion.div>
 
             <motion.h1 
               variants={itemVariants}
-              className="text-[32px] md:text-[40px] lg:text-[56px] font-black leading-[1.1] text-primary tracking-tighter mb-4"
+              className="text-[32px] md:text-[40px] lg:text-[56px] font-black leading-[1.1] text-[#0C2A6B] tracking-tighter mb-4"
             >
               <span className="block">{t('hero_title_1')}</span>
-              <span className="block text-secondary">{t('hero_title_2')}</span>
+              <span className="block text-[#1F6FDB]">{t('hero_title_2')}</span>
             </motion.h1>
 
             <motion.p 
@@ -82,14 +81,14 @@ export function Hero() {
             >
               <Button 
                 size="lg" 
-                className="bg-orange hover:bg-orange/90 text-primary rounded-full px-8 h-[56px] text-lg font-bold shadow-xl shadow-orange/20 w-full sm:w-auto transition-all hover:-translate-y-0.5 active:scale-95"
+                className="bg-[#F7941D] hover:bg-[#F7941D]/90 text-[#0C2A6B] rounded-full px-8 h-[56px] text-lg font-bold shadow-xl shadow-[#F7941D]/20 w-full sm:w-auto transition-all hover:-translate-y-0.5 active:scale-95"
               >
                 {t('hero_cta_primary')}
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="bg-transparent border-primary border-2 text-primary rounded-full px-8 h-[56px] text-lg font-bold w-full sm:w-auto transition-all hover:-translate-y-0.5 active:scale-95"
+                className="bg-transparent border-[#0C2A6B] border-2 text-[#0C2A6B] rounded-full px-8 h-[56px] text-lg font-bold w-full sm:w-auto transition-all hover:-translate-y-0.5 active:scale-95"
                 asChild
               >
                 <Link href="#steps">{t('hero_cta_secondary')}</Link>
