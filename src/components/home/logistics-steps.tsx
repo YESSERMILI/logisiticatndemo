@@ -22,7 +22,7 @@ const phases = [
   {
     id: "phase_1",
     title: "INTÉGRATION",
-    color: "from-blue-500 to-cyan-400",
+    color: "from-blue-600 to-blue-400",
     steps: [
       { id: 1, icon: ShoppingCart, key: "step_1" },
       { id: 2, icon: Package, key: "step_2" },
@@ -31,7 +31,7 @@ const phases = [
   {
     id: "phase_2",
     title: "LOGISTIQUE",
-    color: "from-orange to-amber-400",
+    color: "from-orange to-amber-500",
     steps: [
       { id: 3, icon: Hand, key: "step_3" },
       { id: 4, icon: Box, key: "step_4" },
@@ -40,7 +40,7 @@ const phases = [
   {
     id: "phase_3",
     title: "LIVRAISON",
-    color: "from-secondary to-blue-400",
+    color: "from-secondary to-blue-500",
     steps: [
       { id: 5, icon: Truck, key: "step_5" },
       { id: 6, icon: MapPin, key: "step_6" },
@@ -50,7 +50,7 @@ const phases = [
   {
     id: "phase_4",
     title: "PILOTAGE",
-    color: "from-primary to-indigo-500",
+    color: "from-primary to-indigo-700",
     steps: [
       { id: 8, icon: RefreshCcw, key: "step_8" },
       { id: 9, icon: Headphones, key: "step_9" },
@@ -64,124 +64,99 @@ export function LogisticsSteps() {
   const isRTL = language === "ar";
 
   return (
-    <section id="steps" className="py-32 bg-white relative overflow-hidden">
-      <div className="container px-4 md:px-8 mx-auto relative z-10">
-        <div className="text-center mb-24">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+    <section id="steps" className="py-24 bg-white" dir={isRTL ? "rtl" : "ltr"}>
+      <div className="container px-4 md:px-8 mx-auto">
+        <div className="text-center mb-20">
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-primary/5 text-primary border border-primary/10 text-xs font-black uppercase tracking-[0.3em] mb-8"
+            className="text-orange font-bold uppercase tracking-[0.3em] text-sm mb-4"
           >
-            {t('steps_title')}
-          </motion.div>
-          
+            NOTRE MÉTHODOLOGIE
+          </motion.p>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black text-primary mb-6 tracking-tight"
+            className="text-4xl md:text-5xl font-black text-primary tracking-tight"
           >
-            {t('steps_subtitle')}
+            {t('steps_title')}
           </motion.h2>
-          <p className="text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
-            Une infrastructure robuste au service de votre croissance e-commerce.
+          <p className="mt-4 text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
+            {t('steps_subtitle')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {phases.map((phase, phaseIdx) => (
             <motion.div
               key={phase.id}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: phaseIdx * 0.1, duration: 0.7 }}
-              className="relative group"
+              transition={{ delay: phaseIdx * 0.1 }}
+              className="relative"
             >
-              {/* Vertical connector line between phases (on mobile/tablet) */}
-              <div className="h-full bg-[#F8FAFF] rounded-[48px] p-10 border border-primary/5 transition-all duration-500 hover:shadow-3xl hover:shadow-primary/5 hover:-translate-y-2 relative overflow-hidden">
-                
-                {/* Phase Header */}
-                <div className="mb-12">
-                  <span className={cn(
-                    "text-[11px] font-black tracking-[0.3em] px-5 py-2 rounded-full text-white bg-gradient-to-r shadow-lg inline-block",
-                    phase.color
-                  )}>
-                    {phase.title}
-                  </span>
-                </div>
-
-                {/* Steps List */}
-                <div className="space-y-12 relative">
-                  {phase.steps.map((step, stepIdx) => (
-                    <div key={step.id} className="relative flex items-start gap-6">
-                      {/* Step Number & Connector */}
-                      <div className="flex flex-col items-center shrink-0">
-                        <div className="w-10 h-10 rounded-2xl bg-white border-2 border-primary/10 flex items-center justify-center text-sm font-black text-primary shadow-sm z-10 group-hover:border-orange/30 transition-colors">
-                          {step.id}
-                        </div>
-                        {stepIdx < phase.steps.length - 1 && (
-                          <div className="w-0.5 h-16 bg-gradient-to-b from-primary/10 to-transparent mt-2" />
-                        )}
-                      </div>
-
-                      {/* Content */}
-                      <div className="pt-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <div className="p-2 bg-orange/5 rounded-lg">
-                            <step.icon className="h-5 w-5 text-orange" strokeWidth={2.5} />
-                          </div>
-                          <h3 className="text-base font-black text-primary leading-tight uppercase tracking-tight">
-                            {t(`${step.key}_title` as any)}
-                          </h3>
-                        </div>
-                        <p className="text-[13px] text-muted-foreground leading-relaxed font-medium">
-                          {t(`${step.key}_desc` as any)}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Decorative Element */}
-                <div className={cn(
-                  "absolute top-0 right-0 w-24 h-24 opacity-5 pointer-events-none transform translate-x-8 -translate-y-8",
-                  "bg-gradient-to-br rounded-full",
+              {/* Phase Header Label */}
+              <div className="mb-10 text-center lg:text-start">
+                <span className={cn(
+                  "inline-block px-5 py-2 rounded-full text-[12px] font-black tracking-[0.2em] text-white shadow-lg bg-gradient-to-r",
                   phase.color
-                )} />
-
-                {/* Next Phase Indicator (Desktop only) */}
-                {phaseIdx < phases.length - 1 && (
-                  <div className="absolute top-1/2 -right-6 -translate-y-1/2 hidden lg:flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-xl z-20 border border-primary/5">
-                    <ArrowRight className={cn(
-                      "h-6 w-6 text-orange",
-                      isRTL && "rotate-180"
-                    )} />
-                  </div>
-                )}
+                )}>
+                  {phase.title}
+                </span>
               </div>
+
+              {/* Steps Vertical Timeline */}
+              <div className="space-y-12 relative px-2">
+                {/* Vertical connecting line */}
+                <div className="absolute left-[24px] rtl:left-auto rtl:right-[24px] top-4 bottom-4 w-px bg-primary/10" />
+
+                {phase.steps.map((step) => (
+                  <div key={step.id} className="relative flex items-start gap-6 group">
+                    {/* Number Badge */}
+                    <div className="relative z-10 shrink-0 w-12 h-12 rounded-2xl bg-white border-2 border-primary/10 shadow-sm flex items-center justify-center text-lg font-black text-primary group-hover:border-orange/50 transition-colors duration-300">
+                      {step.id}
+                    </div>
+
+                    {/* Step Content */}
+                    <div className="flex-1 pt-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <step.icon className="h-5 w-5 text-orange" strokeWidth={2.5} />
+                        <h3 className="text-[17px] font-black text-primary leading-tight uppercase tracking-tight">
+                          {t(`${step.key}_title` as any)}
+                        </h3>
+                      </div>
+                      <p className="text-[14px] text-muted-foreground leading-relaxed font-medium">
+                        {t(`${step.key}_desc` as any)}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Horizontal Connector Arrow (Desktop Only) */}
+              {phaseIdx < phases.length - 1 && (
+                <div className="absolute top-[18px] -right-4 hidden lg:flex items-center text-primary/10">
+                  <ArrowRight className={cn("h-8 w-8", isRTL && "rotate-180")} />
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom indicator */}
-        <div className="mt-24 flex flex-col items-center gap-6">
-            <div className="flex items-center gap-6 text-[10px] font-black text-primary/20 uppercase tracking-[0.4em]">
-                <span>Stratégie</span>
-                <div className="w-16 h-px bg-primary/10" />
-                <span>Exécution</span>
-                <div className="w-16 h-px bg-primary/10" />
-                <span>Succès</span>
-            </div>
-            <motion.div 
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-px h-16 bg-gradient-to-b from-primary/20 to-transparent" 
-            />
+        {/* Bottom Process Marker */}
+        <div className="mt-20 pt-10 border-t border-primary/5 flex flex-col items-center">
+          <div className="flex items-center gap-4 text-[11px] font-black text-primary/30 uppercase tracking-[0.5em]">
+            <span>Analyse</span>
+            <div className="w-12 h-px bg-primary/10" />
+            <span>Mise en œuvre</span>
+            <div className="w-12 h-px bg-primary/10" />
+            <span>Livré</span>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
