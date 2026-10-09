@@ -30,18 +30,18 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0A2540",
+          DEFAULT: "#0C2A6B",
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#1D5FD8",
+          DEFAULT: "#1F6FDB",
           foreground: "#FFFFFF",
         },
         sky: {
-          tint: "#EAF2FF",
+          DEFAULT: "#EEF4FF",
         },
         orange: {
-          DEFAULT: "#FF7A1A",
+          DEFAULT: "#F7941D",
           soft: "#FFE6D2",
         },
         destructive: {
@@ -53,7 +53,7 @@ const config = {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "#FF7A1A",
+          DEFAULT: "#F7941D",
           foreground: "#FFFFFF",
         },
         popover: {

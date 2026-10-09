@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 
@@ -9,8 +9,9 @@ const inter = Inter({
   variable: "--font-body"
 });
 
-const plusJakarta = Plus_Jakarta_Sans({ 
+const poppins = Poppins({ 
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-heading"
 });
 
@@ -26,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${inter.variable} ${plusJakarta.variable}`}>
+      <head>
+        <link rel="preload" href="/logistica-header.svg" as="image" type="image/svg+xml" />
+      </head>
+      <body className={`${inter.variable} ${poppins.variable}`}>
         <Providers>
           {children}
         </Providers>
