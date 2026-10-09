@@ -20,8 +20,8 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui"],
-        heading: ["var(--font-brand)", "var(--font-sans)", "sans-serif"],
-        brand: ["var(--font-brand)", "sans-serif"],
+        heading: ["var(--font-sans)", "sans-serif"],
+        brand: ["var(--font-sans)", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
