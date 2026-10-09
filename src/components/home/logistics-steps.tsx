@@ -64,9 +64,9 @@ export function LogisticsSteps() {
   const isRTL = language === "ar";
 
   return (
-    <section id="steps" className="py-20 bg-white" dir={isRTL ? "rtl" : "ltr"}>
+    <section id="steps" className="py-16 bg-white" dir={isRTL ? "rtl" : "ltr"}>
       <div className="container px-4 md:px-8 mx-auto max-w-7xl">
-        <div className="text-center mb-14">
+        <div className="text-center mb-12">
           <motion.p 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ export function LogisticsSteps() {
           >
             {t('steps_title')}
           </motion.h2>
-          <p className="mt-3 text-base text-muted-foreground font-medium max-w-xl mx-auto">
+          <p className="mt-2 text-base text-muted-foreground font-medium max-w-xl mx-auto">
             {t('steps_subtitle')}
           </p>
         </div>
@@ -98,25 +98,25 @@ export function LogisticsSteps() {
               transition={{ delay: phaseIdx * 0.1 }}
               className="relative"
             >
-              {/* Phase Header Row with Arrow */}
-              <div className="mb-8 flex items-center justify-between lg:justify-start lg:gap-4">
+              {/* Phase Header Row with Arrow Centered */}
+              <div className="mb-8 relative flex items-center lg:justify-start">
                 <span className={cn(
-                  "px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] text-white shadow-md bg-gradient-to-r",
+                  "px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] text-white shadow-md bg-gradient-to-r relative z-10",
                   phase.color
                 )}>
                   {phase.title}
                 </span>
                 
-                {/* Horizontal Connector Arrow (Desktop Only) */}
+                {/* Horizontal Connector Arrow (Desktop Only) - Perfectly Centered */}
                 {phaseIdx < phases.length - 1 && (
-                  <div className="hidden lg:flex items-center text-primary/10 absolute -right-8 top-[14px]">
+                  <div className="hidden lg:flex items-center text-primary/10 absolute -right-10 top-1/2 -translate-y-1/2">
                     <ArrowRight className={cn("h-5 w-5", isRTL && "rotate-180")} />
                   </div>
                 )}
               </div>
 
               {/* Steps Vertical Timeline */}
-              <div className="space-y-8 relative">
+              <div className="space-y-6 relative">
                 {/* Vertical connecting line */}
                 <div className="absolute left-[20px] rtl:left-auto rtl:right-[20px] top-2 bottom-2 w-px bg-primary/5" />
 
@@ -147,7 +147,7 @@ export function LogisticsSteps() {
         </div>
 
         {/* Bottom Process Marker */}
-        <div className="mt-16 pt-8 border-t border-primary/5 flex flex-col items-center">
+        <div className="mt-12 pt-8 border-t border-primary/5 flex flex-col items-center">
           <div className="flex items-center gap-4 text-[10px] font-bold text-primary/20 uppercase tracking-[0.5em]">
             <span>Analyse</span>
             <div className="w-8 h-px bg-primary/10" />
