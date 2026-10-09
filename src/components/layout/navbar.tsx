@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -50,7 +49,7 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:block">
-          <Button className="bg-[#F7941D] hover:bg-[#F7941D]/90 text-primary rounded-full px-8 h-11 font-bold shadow-lg shadow-orange/20 transition-all active:scale-95">
+          <Button className="bg-orange hover:bg-orange/90 text-primary rounded-full px-8 h-11 font-bold shadow-lg shadow-orange/20 transition-all active:scale-95">
             {t("nav_start")}
           </Button>
         </div>
@@ -81,7 +80,7 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-          <Button className="bg-[#F7941D] text-primary w-full rounded-full h-14 font-bold text-lg">
+          <Button className="bg-orange text-primary w-full rounded-full h-14 font-bold text-lg mt-4">
             {t("nav_start")}
           </Button>
         </div>

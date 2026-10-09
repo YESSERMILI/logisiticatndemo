@@ -1,0 +1,65 @@
+<svg width="640" height="520" viewBox="0 0 640 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Illustration Logistica Tunisie</title>
+  <desc>Illustration animée montrant le flux logistique avec arches et colis.</desc>
+  
+  <!-- Atmospheric Glow -->
+  <circle cx="320" cy="260" r="220" fill="#EAF2FF">
+    <animate attributeName="r" values="210;230;210" dur="6s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Clouds -->
+  <g opacity="0.8">
+    <path d="M40 80 Q60 60 80 80 T120 80 T140 100 T80 100 T40 80" fill="white">
+      <animateTransform attributeName="transform" type="translate" from="-20 0" to="20 0" dur="10s" repeatCount="indefinite" autoreverse="true" />
+    </path>
+    <path d="M480 140 Q500 120 520 140 T560 140 T580 160 T520 160 T480 140" fill="white">
+      <animateTransform attributeName="transform" type="translate" from="20 0" to="-20 0" dur="12s" repeatCount="indefinite" autoreverse="true" />
+    </path>
+  </g>
+
+  <!-- Dotted Arc -->
+  <path d="M160 320 A160 160 0 0 1 480 320" stroke="#0C2A6B" stroke-width="2" stroke-dasharray="4 8" opacity="0.2" />
+  
+  <!-- Pin -->
+  <g transform="translate(320, 160)">
+     <animateTransform attributeName="transform" type="translate" values="320 160; 320 150; 320 160" dur="3s" repeatCount="indefinite" />
+     <path d="M0 0 C-10 -15 -15 -20 -15 -30 A15 15 0 1 1 15 -30 C 15 -20 10 -15 0 0Z" fill="#F7941D" />
+     <circle cx="0" cy="-30" r="5" fill="white" />
+  </g>
+
+  <!-- Base Line -->
+  <rect x="20" y="440" width="600" height="12" rx="6" fill="#F7941D" />
+
+  <!-- Side Arches -->
+  <g opacity="0.3">
+    <path d="M100 440 V380 A25 25 0 0 1 125 355 H175 A25 25 0 0 1 200 380 V440" fill="#0C2A6B" />
+    <path d="M440 440 V380 A25 25 0 0 1 465 355 H515 A25 25 0 0 1 540 380 V440" fill="#0C2A6B" />
+  </g>
+
+  <!-- Large Center Arch -->
+  <path d="M220 440 V240 A40 40 0 0 1 260 200 H380 A40 40 0 0 1 420 240 V440" fill="#0C2A6B" />
+
+  <!-- Center Dot Beacon -->
+  <circle cx="320" cy="240" r="6" fill="#F7941D">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
+    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- Parcels -->
+  <g transform="translate(225, 410)">
+    <animateTransform attributeName="transform" type="translate" values="225 410; 225 405; 225 410" dur="2.5s" repeatCount="indefinite" />
+    <rect width="56" height="48" rx="4" fill="#1F6FDB" />
+    <rect y="18" width="56" height="12" fill="#F7941D" />
+  </g>
+  <g transform="translate(360, 410)">
+    <animateTransform attributeName="transform" type="translate" values="360 410; 360 405; 360 410" dur="2.8s" repeatCount="indefinite" />
+    <rect width="56" height="48" rx="4" fill="#1F6FDB" />
+    <rect y="18" width="56" height="12" fill="#F7941D" />
+  </g>
+
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+    }
+  </style>
+</svg>

@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
@@ -28,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/logistica-header.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/logistica-hero-right.svg" as="image" type="image/svg+xml" />
       </head>
       <body className={`${inter.variable} ${poppins.variable}`}>
         <Providers>
