@@ -13,12 +13,12 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div className="space-y-4">
             {logo && (
-              <div className="relative h-10 w-32">
+              <div className="relative h-12 w-48">
                 <Image
                   src={logo.imageUrl}
                   alt="Logistica Tunisie"
                   fill
-                  className="object-contain"
+                  className="object-contain object-left"
                 />
               </div>
             )}
