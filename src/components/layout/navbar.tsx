@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -24,7 +25,7 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-[100] h-[72px] bg-white/85 backdrop-blur-md border-b border-primary/5">
       <div className="container mx-auto h-full px-4 lg:px-8 max-w-[1200px] flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="relative h-[40px] w-[160px] shrink-0">
+        <Link href="/" className="relative h-[44px] w-[160px] shrink-0">
           <Image
             src="https://i.postimg.cc/P5sfzcz0/png-1.png"
             alt="Logistica Tunisie"
