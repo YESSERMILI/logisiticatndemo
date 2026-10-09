@@ -1,18 +1,12 @@
-
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: "--font-body"
-});
-
 const poppins = Poppins({ 
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-heading"
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-brand"
 });
 
 export const metadata: Metadata = {
@@ -38,10 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <head>
-        <link rel="preload" href="/logistica-hero-right.svg" as="image" type="image/svg+xml" />
-      </head>
-      <body className={`${inter.variable} ${poppins.variable}`}>
+      <body className={`${poppins.variable} font-sans`}>
         <Providers>
           {children}
         </Providers>
