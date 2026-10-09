@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useRef } from "react";
@@ -47,11 +46,13 @@ export function LogisticsSteps() {
   });
 
   return (
-    <section id="steps" ref={containerRef} className="py-24 md:py-32 bg-white relative">
-      {/* Subtle background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-        <div className="absolute top-[10%] left-[5%] w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[10%] right-[5%] w-[500px] h-[500px] bg-orange/10 rounded-full blur-[120px]" />
+    <section id="steps" ref={containerRef} className="py-24 md:py-32 bg-white relative overflow-hidden">
+      {/* Subtle Flow Background Lines */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
+        <svg width="100%" height="100%">
+          <path d="M-100,200 Q200,100 500,400 T1200,200" fill="none" stroke="currentColor" strokeWidth="2" className="text-secondary animate-flow" />
+          <path d="M-200,600 Q400,500 800,800 T1500,600" fill="none" stroke="currentColor" strokeWidth="2" className="text-orange animate-flow" />
+        </svg>
       </div>
 
       <div className="container px-4 md:px-8 mx-auto relative z-10">
