@@ -29,145 +29,201 @@ export function Hero() {
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 max-w-[1300px]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="flex flex-col items-center">
           
-          {/* Left Column: Content */}
+          {/* Main Integrated Illustration */}
           <motion.div 
-            initial={{ opacity: 0, x: isRTL ? 40 : -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative z-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="relative w-full max-w-[1100px] mx-auto rounded-[40px] overflow-hidden shadow-3xl bg-white/40 backdrop-blur-md border border-white/50 p-4"
           >
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange/10 text-[#F7941D] text-[13px] font-bold mb-8 shadow-sm border border-orange/20"
-            >
+            {/* Status Badge */}
+            <div className="absolute top-8 left-8 z-10 hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-orange/10 text-orange border border-orange/20 text-[11px] font-black uppercase tracking-widest">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-orange"></span>
               </span>
               {t("hero_pill")}
-            </motion.div>
-
-            <h1 className="text-4xl md:text-6xl lg:text-[64px] font-black leading-[1.1] text-[#0C2A6B] mb-8">
-              {t("hero_title_1")}<br />
-              <span className="text-[#1F6FDB]">{t("hero_title_2")}</span>
-            </h1>
-
-            <p className="text-xl md:text-2xl text-[#5B6B82] max-w-xl mb-12 font-medium leading-relaxed">
-              {t("hero_subtitle")}
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center gap-6">
-              <Button
-                size="lg"
-                className="bg-[#F7941D] hover:bg-[#F7941D]/90 text-[#0C2A6B] rounded-full px-12 h-[64px] text-xl font-black shadow-2xl shadow-orange/30 transition-all hover:-translate-y-1 active:scale-95 group w-full sm:w-auto"
-                asChild
-              >
-                <Link href="#contact" className="flex items-center gap-3">
-                  {t("hero_cta_primary")}
-                  <ArrowRight className={cn("h-6 w-6 transition-transform group-hover:translate-x-1", isRTL && "rotate-180 group-hover:-translate-x-1")} />
-                </Link>
-              </Button>
-              
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-white/50 backdrop-blur-sm border-[#0C2A6B]/20 border-2 text-[#0C2A6B] hover:bg-[#0C2A6B] hover:text-white rounded-full px-10 h-[64px] text-lg font-bold transition-all hover:-translate-y-1 active:scale-95 group shadow-lg w-full sm:w-auto"
-                asChild
-              >
-                <Link href="#steps" className="flex items-center gap-2">
-                  <Play className="h-4 w-4 fill-current" />
-                  {t("hero_cta_secondary")}
-                </Link>
-              </Button>
             </div>
-          </motion.div>
 
-          {/* Right Column: Animated SVG Illustration */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="relative"
-          >
-            <div className={cn(
-              "relative rounded-[40px] overflow-hidden shadow-3xl bg-white/40 backdrop-blur-md border border-white/50 p-4",
-              isRTL && "transform scale-x-[-1]"
-            )}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 420" width="100%" role="img" preserveAspectRatio="xMidYMid meet">
-                <defs>
-                  <clipPath id="wipe-hero">
-                    <rect x="1030" y="176" width="460" height="76" />
-                  </clipPath>
-                  <style>
-                    {`
-                      .hero-tri { transform-box: fill-box; transform-origin: center; animation: heroTri 3s ease-in-out infinite alternate; }
-                      @keyframes heroTri { from { transform: translate(0,0); } to { transform: translate(0, 10px); } }
-                      .hero-route { stroke-dasharray: 1; stroke-dashoffset: 1; animation: heroDraw 2s ease-in-out forwards; }
-                      @keyframes heroDraw { to { stroke-dashoffset: 0; } }
-                      .hero-node { animation: heroPop 0.5s cubic-bezier(.2,.8,.2,1) both; transform-box: fill-box; transform-origin: center; }
-                      @keyframes heroPop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: none; } }
-                      .hero-ring { fill: none; stroke: #f7931e; stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; animation: heroPing 7s ease-out infinite; }
-                      @keyframes heroPing { 0% { opacity: .8; transform: scale(1); } 12% { opacity: 0; transform: scale(2.8); } 100% { opacity: 0; transform: scale(2.8); } }
-                    `}
-                  </style>
-                </defs>
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 1440 420" 
+              width="100%" 
+              role="img" 
+              aria-labelledby="t d" 
+              preserveAspectRatio="xMidYMid meet"
+              className={cn(isRTL && "transform scale-x-[-1]")}
+            >
+              <title id="t">Logistica Tunisie</title>
+              <desc id="d">De la commande à la livraison, tout simplement.</desc>
 
-                {/* LOGO ASSEMBLY PART */}
-                <g transform="translate(-100, 0)">
-                  <g transform="scale(1.2)">
-                    <path className="hero-tri" style={{ animationDelay: '0.1s' }} d="M 827.5,279.3 L 1002,192 L 888.6,192 Z" fill="#0b2a6b"/>
-                    <path className="hero-tri" style={{ animationDelay: '0.3s' }} d="M 888.6,192 L 1002,192 L 827.5,104.7 Z" fill="#1f6fdb"/>
-                    <path className="hero-tri" style={{ animationDelay: '0.5s' }} d="M 827.5,279.3 L 888.6,192 L 827.5,192 Z" fill="#f7931e"/>
+              <defs>
+                <linearGradient id="bg-hero" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stopColor="#ffffff"/>
+                  <stop offset="0.6" stopColor="#ffffff"/>
+                  <stop offset="1" stopColor="#eef4fd"/>
+                </linearGradient>
+                <clipPath id="wipe-hero">
+                  <rect x="1030" y="176" width="0" height="76">
+                    <animate attributeName="width" from="0" to="460" begin="0.9s" dur="1.1s" fill="freeze"
+                             calcMode="spline" keyTimes="0;1" keySplines="0.65 0 0.2 1"/>
+                  </rect>
+                </clipPath>
+              </defs>
+
+              <style>
+                {`
+                  .tri { transform-box: fill-box; transform-origin: center; animation: triIn 0.9s cubic-bezier(.2,.8,.2,1) both; }
+                  .tri-orange { --dx: -46px; --dy: 30px;  animation-delay: 0.10s; }
+                  .tri-navy   { --dx:  46px; --dy: 40px;  animation-delay: 0.30s; }
+                  .tri-blue   { --dx:  46px; --dy: -40px; animation-delay: 0.50s; }
+                  @keyframes triIn {
+                    from { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.55) rotate(-8deg); }
+                    to   { opacity: 1; transform: none; }
+                  }
+                  .tunisie { animation: fadeIn 0.8s ease-out 1.9s both; }
+                  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+                  .tagline-svg { animation: riseIn 0.9s cubic-bezier(.2,.8,.2,1) 2.3s both; }
+                  @keyframes riseIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+                  .route { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.8s ease-in-out 1.2s forwards; }
+                  @keyframes draw { to { stroke-dashoffset: 0; } }
+                  .node { animation: popIn 0.5s cubic-bezier(.2,.8,.2,1) both; transform-box: fill-box; transform-origin: center; }
+                  .n1 { animation-delay: 1.4s; } .n2 { animation-delay: 1.8s; } .n3 { animation-delay: 2.2s; } .n4 { animation-delay: 2.6s; }
+                  @keyframes popIn { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: none; } }
+                  .label { animation: riseIn 0.6s ease-out both; }
+                  .l1 { animation-delay: 1.6s; } .l2 { animation-delay: 2.0s; } .l3 { animation-delay: 2.4s; } .l4 { animation-delay: 2.8s; }
+                  .ring { fill: none; stroke: #f7931e; stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; animation: ping 7s ease-out infinite; }
+                  .r1 { animation-delay: 3.3s; } .r2 { animation-delay: 5.28s; } .r3 { animation-delay: 7.27s; } .r4 { animation-delay: 9.25s; }
+                  @keyframes ping {
+                    0%   { opacity: .8; transform: scale(1); }
+                    12%  { opacity: 0;  transform: scale(2.8); }
+                    100% { opacity: 0;  transform: scale(2.8); }
+                  }
+                  .bgtri { animation: drift 9s ease-in-out infinite alternate; }
+                  .bgtri.b2 { animation-duration: 12s; animation-delay: -4s; }
+                  .bgtri.b3 { animation-duration: 10s; animation-delay: -7s; }
+                  @keyframes drift { from { transform: translateY(-8px); } to { transform: translateY(10px); } }
+                `}
+              </style>
+
+              <rect width="1440" height="420" fill="url(#bg-hero)"/>
+              <g opacity="0.05">
+                <polygon className="bgtri"      points="1180,0 1440,0 1440,260" fill="#1f6fdb"/>
+                <polygon className="bgtri b2"   points="1340,420 1440,420 1440,250" fill="#0b2a6b"/>
+                <polygon className="bgtri b3"   points="640,0 760,0 640,110" fill="#f7931e"/>
+              </g>
+
+              {/* LOGO */}
+              <svg x="110" y="92" width="560" height="150.6" viewBox="827.505 -279.273 648.983 174.546" overflow="visible">
+                <g transform="scale(1 -1)" fill="none" fillRule="evenodd" stroke="black" strokeWidth="0.501" strokeLinejoin="bevel" strokeMiterlimit="10">
+                  <g fillRule="nonzero" strokeLinejoin="miter">
+                    <g stroke="none" strokeWidth="1.745">
+                      <path className="tri tri-navy"   d="M 827.505,279.273 L 1002.05,192 L 888.596,192 Z" fill="#0b2a6b"/>
+                      <path className="tri tri-blue"   d="M 888.596,192 L 1002.05,192 L 827.505,104.727 Z" fill="#1f6fdb"/>
+                      <path className="tri tri-orange" d="M 827.505,279.273 L 888.596,192 L 827.505,192 Z" fill="#f7931e"/>
+                    </g>
+                    <path clipPath="url(#wipe-hero)" d="M 1050.38,192.402 L 1069.25,192.402 L 1069.25,185.018 L 1041.24,185.018 L 1041.24,240.821 L 1050.38,240.821 Z M 1077.33,213.033 C 1077.33,218.502 1078.6,223.401 1081.14,227.73 C 1083.68,232.07 1087.14,235.456 1091.51,237.888 C 1095.86,240.32 1100.63,241.536 1105.84,241.536 C 1111.07,241.536 1115.87,240.32 1120.24,237.888 C 1124.6,235.456 1128.04,232.07 1130.55,227.73 C 1133.08,223.401 1134.34,218.502 1134.34,213.033 C 1134.34,207.575 1133.08,202.665 1130.55,198.301 C 1128.04,193.938 1124.6,190.54 1120.24,188.108 C 1115.87,185.676 1111.07,184.46 1105.84,184.46 C 1100.63,184.46 1095.86,185.676 1091.51,188.108 C 1087.14,190.54 1083.68,193.938 1081.14,198.301 C 1078.6,202.665 1077.33,207.575 1077.33,213.033 Z M 1124.93,213.033 C 1124.93,217.164 1124.12,220.777 1122.49,223.872 C 1120.86,226.979 1118.59,229.365 1115.7,231.029 C 1112.81,232.681 1109.52,233.507 1105.84,233.507 C 1102.14,233.507 1098.84,232.681 1095.96,231.029 C 1093.06,229.365 1090.8,226.979 1089.17,223.872 C 1087.54,220.777 1086.72,217.164 1086.72,213.033 C 1086.72,208.914 1087.54,205.289 1089.17,202.159 C 1090.8,199.028 1093.06,196.62 1095.96,194.933 C 1098.84,193.245 1102.14,192.402 1105.84,192.402 C 1109.52,192.402 1112.81,193.245 1115.7,194.933 C 1118.59,196.62 1120.86,199.028 1122.49,202.159 C 1124.12,205.289 1124.93,208.914 1124.93,213.033 Z M 1187.21,224.762 C 1185.75,227.543 1183.75,229.644 1181.19,231.063 C 1178.62,232.483 1175.64,233.193 1172.27,233.193 C 1168.58,233.193 1165.29,232.361 1162.39,230.697 C 1159.5,229.045 1157.24,226.694 1155.6,223.645 C 1153.97,220.585 1153.15,217.047 1153.15,213.033 C 1153.15,209.018 1153.97,205.475 1155.6,202.403 C 1157.24,199.319 1159.5,196.951 1162.39,195.299 C 1165.29,193.635 1168.58,192.803 1172.27,192.803 C 1177.25,192.803 1181.29,194.194 1184.4,196.975 C 1187.49,199.767 1189.39,203.543 1190.09,208.303 L 1169.14,208.303 L 1169.14,215.616 L 1199.88,215.616 L 1199.88,208.46 C 1199.3,204.131 1197.76,200.146 1195.27,196.503 C 1192.78,192.861 1189.54,189.958 1185.55,187.794 C 1181.57,185.618 1177.14,184.53 1172.27,184.53 C 1167.02,184.53 1162.23,185.751 1157.9,188.195 C 1153.56,190.627 1150.12,194.013 1147.59,198.354 C 1145.04,202.682 1143.76,207.575 1143.76,213.033 C 1143.76,218.502 1145.04,223.401 1147.59,227.73 C 1150.12,232.07 1153.57,235.456 1157.94,237.888 C 1162.3,240.32 1167.08,241.536 1172.27,241.536 C 1178.21,241.536 1183.5,240.082 1188.13,237.173 C 1192.75,234.252 1196.11,230.115 1198.2,224.762 Z M 1221.52,240.821 L 1221.52,185.018 L 1212.38,185.018 L 1212.38,240.821 Z M 1235.7,200.431 L 1245.49,200.431 C 1245.7,198.022 1246.65,196.044 1248.33,194.496 C 1250.02,192.937 1252.39,192.157 1255.44,192.157 C 1258.6,192.157 1261.07,192.925 1262.84,194.461 C 1264.6,195.986 1265.47,197.952 1265.47,200.361 C 1265.47,202.234 1264.93,203.759 1263.83,204.934 C 1262.74,206.109 1261.37,207.017 1259.73,207.657 C 1258.1,208.297 1255.85,208.995 1252.96,209.751 C 1249.32,210.717 1246.36,211.695 1244.09,212.684 C 1241.81,213.673 1239.87,215.209 1238.26,217.292 C 1236.66,219.386 1235.85,222.173 1235.85,225.653 C 1235.85,228.864 1236.66,231.674 1238.26,234.083 C 1239.87,236.492 1242.11,238.336 1245,239.616 C 1247.9,240.896 1251.24,241.536 1255.04,241.536 C 1260.45,241.536 1264.88,240.186 1268.34,237.487 C 1271.78,234.787 1273.69,231.081 1274.08,226.368 L 1263.96,226.368 C 1263.79,228.405 1262.83,230.144 1261.06,231.587 C 1259.3,233.03 1256.97,233.751 1254.08,233.751 C 1251.46,233.751 1249.32,233.082 1247.65,231.744 C 1246,230.406 1245.18,228.48 1245.18,225.967 C 1245.18,224.256 1245.69,222.854 1246.73,221.76 C 1247.78,220.655 1249.1,219.782 1250.71,219.142 C 1252.31,218.502 1254.51,217.804 1257.29,217.047 C 1260.99,216.035 1264,215.023 1266.33,214.01 C 1268.66,212.986 1270.64,211.415 1272.26,209.298 C 1273.89,207.191 1274.71,204.37 1274.71,200.832 C 1274.71,197.993 1273.94,195.317 1272.42,192.803 C 1270.9,190.29 1268.67,188.271 1265.75,186.746 C 1262.84,185.222 1259.41,184.46 1255.44,184.46 C 1251.69,184.46 1248.32,185.117 1245.33,186.432 C 1242.33,187.735 1239.97,189.591 1238.26,192 C 1236.55,194.409 1235.7,197.219 1235.7,200.431 Z M 1325.1,240.821 L 1325.1,233.35 L 1310.25,233.35 L 1310.25,185.018 L 1301.08,185.018 L 1301.08,233.35 L 1286.16,233.35 L 1286.16,240.821 Z M 1346.97,240.821 L 1346.97,185.018 L 1337.82,185.018 L 1337.82,240.821 Z M 1387.95,241.536 C 1393.9,241.536 1399.19,240.082 1403.82,237.173 C 1408.45,234.252 1411.81,230.115 1413.89,224.762 L 1402.89,224.762 C 1401.45,227.706 1399.44,229.9 1396.87,231.343 C 1394.3,232.786 1391.33,233.507 1387.95,233.507 C 1384.26,233.507 1380.98,232.681 1378.09,231.029 C 1375.19,229.365 1372.93,226.979 1371.3,223.872 C 1369.67,220.777 1368.86,217.164 1368.86,213.033 C 1368.86,208.914 1369.67,205.301 1371.3,202.194 C 1372.93,199.098 1375.19,196.707 1378.09,195.02 C 1380.98,193.333 1384.26,192.489 1387.95,192.489 C 1391.33,192.489 1394.3,193.21 1396.87,194.653 C 1399.44,196.096 1401.45,198.29 1402.89,201.234 L 1413.89,201.234 C 1411.81,195.881 1408.45,191.762 1403.82,188.876 C 1399.19,185.978 1393.9,184.53 1387.95,184.53 C 1382.72,184.53 1377.93,185.751 1373.59,188.195 C 1369.25,190.627 1365.81,194.013 1363.27,198.354 C 1360.72,202.682 1359.45,207.575 1359.45,213.033 C 1359.45,218.502 1360.72,223.401 1363.27,227.73 C 1365.81,232.07 1369.26,235.456 1373.62,237.888 C 1377.99,240.32 1382.76,241.536 1387.95,241.536 Z M 1461.7,196.416 L 1438.34,196.416 L 1434.33,185.018 L 1424.76,185.018 L 1444.77,240.908 L 1455.36,240.908 L 1475.35,185.018 L 1465.71,185.018 Z M 1459.13,203.887 L 1450.06,229.824 L 1440.91,203.887 Z" stroke="#0b2a6b" fill="#0b2a6b" strokeWidth="1.606"/>
+
+                    {/* TUNISIE */}
+                    <path className="tunisie" d="M 1054.26,149.778 L 1054.26,147.02 L 1048.76,147.02 L 1048.76,129.164 L 1045.37,129.164 L 1045.37,147.02 L 1039.86,147.02 L 1039.86,149.778 Z M 1076.72,149.778 L 1076.72,136.634 C 1076.72,135.075 1077.13,133.9 1077.96,133.109 C 1078.78,132.317 1079.92,131.922 1081.38,131.922 C 1082.87,131.922 1084.02,132.317 1084.84,133.109 C 1085.66,133.9 1086.08,135.075 1086.08,136.634 L 1086.08,149.778 L 1089.46,149.778 L 1089.46,136.704 C 1089.46,135.017 1089.1,133.591 1088.36,132.428 C 1087.63,131.264 1086.65,130.391 1085.41,129.81 C 1084.19,129.239 1082.84,128.954 1081.36,128.954 C 1079.87,128.954 1078.52,129.239 1077.31,129.81 C 1076.09,130.391 1075.13,131.264 1074.42,132.428 C 1073.71,133.591 1073.35,135.017 1073.35,136.704 L 1073.35,149.778 Z M 1126.5,129.164 L 1123.12,129.164 L 1112.94,144.559 L 1112.94,129.164 L 1109.55,129.164 L 1109.55,149.813 L 1112.94,149.813 L 1123.12,134.452 L 1123.12,149.813 L 1126.5,149.813 Z M 1150.05,149.778 L 1150.05,129.164 L 1146.66,129.164 L 1146.66,149.778 Z M 1169.7,134.854 L 1173.31,134.854 C 1173.4,133.97 1173.75,133.242 1174.38,132.672 C 1175,132.09 1175.87,131.799 1177,131.799 C 1178.16,131.799 1179.07,132.085 1179.72,132.655 C 1180.38,133.213 1180.71,133.941 1180.71,134.837 C 1180.71,135.523 1180.51,136.087 1180.1,136.53 C 1179.7,136.96 1179.19,137.292 1178.59,137.525 C 1177.98,137.769 1177.14,138.031 1176.07,138.31 C 1174.73,138.659 1173.65,139.02 1172.81,139.392 C 1171.96,139.753 1171.24,140.317 1170.64,141.085 C 1170.05,141.865 1169.75,142.895 1169.75,144.175 C 1169.75,145.362 1170.05,146.403 1170.64,147.299 C 1171.24,148.183 1172.07,148.864 1173.14,149.341 C 1174.21,149.818 1175.45,150.057 1176.86,150.057 C 1178.85,150.057 1180.48,149.556 1181.76,148.556 C 1183.04,147.555 1183.75,146.182 1183.87,144.437 L 1180.14,144.437 C 1180.08,145.193 1179.73,145.839 1179.07,146.374 C 1178.42,146.909 1177.56,147.177 1176.49,147.177 C 1175.53,147.177 1174.73,146.927 1174.12,146.426 C 1173.5,145.938 1173.19,145.228 1173.19,144.297 C 1173.19,143.668 1173.39,143.151 1173.79,142.743 C 1174.17,142.336 1174.66,142.01 1175.25,141.766 C 1175.85,141.533 1176.65,141.277 1177.68,140.998 C 1179.04,140.626 1180.15,140.253 1181.01,139.881 C 1181.87,139.497 1182.61,138.915 1183.21,138.135 C 1183.82,137.356 1184.12,136.314 1184.12,135.011 C 1184.12,133.964 1183.84,132.975 1183.28,132.044 C 1182.71,131.113 1181.89,130.368 1180.82,129.81 C 1179.74,129.239 1178.46,128.954 1177,128.954 C 1175.61,128.954 1174.37,129.199 1173.26,129.687 C 1172.16,130.165 1171.28,130.851 1170.64,131.747 C 1170.02,132.631 1169.7,133.667 1169.7,134.854 Z" stroke="none" fill="#0b2a6b" strokeWidth="1.745"/>
                   </g>
                 </g>
+              </svg>
 
-                {/* ROUTE */}
-                <path className="hero-route" pathLength="1" d="M800,290 C880,290 880,200 960,200 C1040,200 1050,280 1130,280 C1210,280 1220,190 1300,190"
-                      fill="none" stroke="#1f6fdb" strokeOpacity="0.2" strokeWidth="4" strokeLinecap="round"/>
+              {/* Tagline */}
+              <g className="tagline-svg">
+                <text x="112" y="312" fontSize="25" fontWeight="500" fill="#0b2a6b">
+                  De la commande à la livraison, <tspan fill="#f7931e" fontWeight="700">tout simplement.</tspan>
+                </text>
+              </g>
 
+              {/* ROUTE: commande → livraison */}
+              <g>
+                <path className="route" pathLength="1" d="M800,290 C880,290 880,200 960,200 C1040,200 1050,280 1130,280 C1210,280 1220,190 1300,190"
+                      fill="none" stroke="#1f6fdb" strokeOpacity="0.35" strokeWidth="4" strokeLinecap="round"/>
+
+                {/* Nodes */}
                 <g>
-                  {[
-                    { cx: 800, cy: 290, delay: '3.3s', pDelay: '1.4s', label: 'Commande' },
-                    { cx: 960, cy: 200, delay: '5.3s', pDelay: '1.8s', label: 'Préparation' },
-                    { cx: 1130, cy: 280, delay: '7.3s', pDelay: '2.2s', label: 'Expédition' },
-                    { cx: 1300, cy: 190, delay: '9.3s', pDelay: '2.6s', label: 'Livraison' }
-                  ].map((n, i) => (
-                    <g key={i}>
-                      <circle className="hero-ring" cx={n.cx} cy={n.cy} r="10" style={{ animationDelay: n.delay }} />
-                      <circle className="hero-node" cx={n.cx} cy={n.cy} r="10" fill="#fff" stroke="#0b2a6b" strokeWidth="4" style={{ animationDelay: n.pDelay }} />
-                      <text x={n.cx} y={n.cy + (i % 2 === 0 ? 35 : -25)} fontSize="14" fontWeight="700" fill="#0b2a6b" textAnchor="middle" style={{ animation: 'heroPop 0.5s both', animationDelay: n.pDelay }}>
-                        {n.label}
-                      </text>
-                    </g>
-                  ))}
+                  <circle className="ring r1" cx="800"  cy="290" r="10"/>
+                  <circle className="ring r2" cx="960"  cy="200" r="10"/>
+                  <circle className="ring r3" cx="1130" cy="280" r="10"/>
+                  <circle className="ring r4" cx="1300" cy="190" r="10"/>
+
+                  <circle className="node n1" cx="800"  cy="290" r="10" fill="#fff" stroke="#0b2a6b" strokeWidth="4"/>
+                  <circle className="node n2" cx="960"  cy="200" r="10" fill="#fff" stroke="#0b2a6b" strokeWidth="4"/>
+                  <circle className="node n3" cx="1130" cy="280" r="10" fill="#fff" stroke="#0b2a6b" strokeWidth="4"/>
+                  <circle className="node n4" cx="1300" cy="190" r="10" fill="#f7931e" stroke="#0b2a6b" strokeWidth="4"/>
                 </g>
 
-                {/* MOVING PARCEL */}
+                {/* Labels */}
+                <g fontSize="16" fontWeight="600" fill="#0b2a6b" textAnchor="middle">
+                  <text className="label l1" x="800"  y="328">Commande</text>
+                  <text className="label l2" x="960"  y="170">Préparation</text>
+                  <text className="label l3" x="1130" y="318">Expédition</text>
+                  <text className="label l4" x="1300" y="160">Livraison</text>
+                </g>
+
+                {/* Moving Parcel */}
                 <g>
                   <g>
                     <rect x="-12" y="-12" width="24" height="24" rx="6" fill="#f7931e" stroke="#fff" strokeWidth="2.5"/>
                     <path d="M-12,-2 H12 M0,-12 V-2" stroke="#fff" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
                   </g>
                   <animateMotion dur="7s" begin="3.3s" repeatCount="indefinite" calcMode="linear"
+                                 keyPoints="0;1;1" keyTimes="0;0.85;1"
                                  path="M800,290 C880,290 880,200 960,200 C1040,200 1050,280 1130,280 C1210,280 1220,190 1300,190"/>
                 </g>
-              </svg>
-            </div>
-            
-            {/* Visual connector to next section */}
-            <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="absolute -bottom-8 left-1/2 -translate-x-1/2 hidden lg:block"
+              </g>
+
+              {/* Bottom Accent Bar */}
+              <g>
+                <rect className="bar" x="0" y="412" width="1440" height="8" fill="#0b2a6b"/>
+                <rect className="bar" x="0" y="412" width="260" height="8" fill="#f7931e" style={{ animationDelay: '0.5s' }}/>
+              </g>
+            </svg>
+          </motion.div>
+
+          {/* Call to Action Buttons - Centered below the illustration */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex flex-col sm:flex-row items-center gap-6 mt-12"
+          >
+            <Button
+              size="lg"
+              className="bg-[#F7941D] hover:bg-[#F7941D]/90 text-[#0C2A6B] rounded-full px-12 h-[64px] text-xl font-black shadow-2xl shadow-orange/30 transition-all hover:-translate-y-1 active:scale-95 group w-full sm:w-auto"
+              asChild
             >
-              <div className="w-1 h-16 bg-gradient-to-b from-secondary/50 to-transparent rounded-full" />
-            </motion.div>
+              <Link href="#contact" className="flex items-center gap-3">
+                {t("hero_cta_primary")}
+                <ArrowRight className={cn("h-6 w-6 transition-transform group-hover:translate-x-1", isRTL && "rotate-180 group-hover:-translate-x-1")} />
+              </Link>
+            </Button>
+            
+            <Button
+              variant="outline"
+              size="lg"
+              className="bg-white/50 backdrop-blur-sm border-[#0C2A6B]/20 border-2 text-[#0C2A6B] hover:bg-[#0C2A6B] hover:text-white rounded-full px-10 h-[64px] text-lg font-bold transition-all hover:-translate-y-1 active:scale-95 group shadow-lg w-full sm:w-auto"
+              asChild
+            >
+              <Link href="#steps" className="flex items-center gap-2">
+                <Play className="h-4 w-4 fill-current" />
+                {t("hero_cta_secondary")}
+              </Link>
+            </Button>
           </motion.div>
         </div>
+      </div>
+
+      {/* Background Decorative Elements */}
+      <div className="absolute top-1/2 left-0 w-full h-full pointer-events-none opacity-10">
+        <svg width="100%" height="100%" preserveAspectRatio="none">
+          <path d="M0,100 Q300,50 600,150 T1200,100" fill="none" stroke="#1f6fdb" strokeWidth="2" strokeDasharray="10 20" />
+          <path d="M0,300 Q400,250 800,350 T1440,300" fill="none" stroke="#f7931e" strokeWidth="2" strokeDasharray="10 20" />
+        </svg>
       </div>
     </section>
   );
