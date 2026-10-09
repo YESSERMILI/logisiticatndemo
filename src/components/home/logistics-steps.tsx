@@ -64,14 +64,14 @@ export function LogisticsSteps() {
   const isRTL = language === "ar";
 
   return (
-    <section id="steps" className="py-24 bg-white" dir={isRTL ? "rtl" : "ltr"}>
-      <div className="container px-4 md:px-8 mx-auto">
-        <div className="text-center mb-20">
+    <section id="steps" className="py-20 bg-white" dir={isRTL ? "rtl" : "ltr"}>
+      <div className="container px-4 md:px-8 mx-auto max-w-7xl">
+        <div className="text-center mb-14">
           <motion.p 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-orange font-bold uppercase tracking-[0.3em] text-sm mb-4"
+            className="text-orange font-bold uppercase tracking-[0.3em] text-[10px] mb-3"
           >
             NOTRE MÉTHODOLOGIE
           </motion.p>
@@ -79,80 +79,80 @@ export function LogisticsSteps() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-primary tracking-tight"
+            className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight"
           >
             {t('steps_title')}
           </motion.h2>
-          <p className="mt-4 text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
+          <p className="mt-3 text-base text-muted-foreground font-medium max-w-xl mx-auto">
             {t('steps_subtitle')}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-12">
           {phases.map((phase, phaseIdx) => (
             <motion.div
               key={phase.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: phaseIdx * 0.1 }}
               className="relative"
             >
-              {/* Phase Header Label */}
-              <div className="mb-10 text-center lg:text-start">
+              {/* Phase Header Row with Arrow */}
+              <div className="mb-8 flex items-center justify-between lg:justify-start lg:gap-4">
                 <span className={cn(
-                  "inline-block px-5 py-2 rounded-full text-[12px] font-black tracking-[0.2em] text-white shadow-lg bg-gradient-to-r",
+                  "px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] text-white shadow-md bg-gradient-to-r",
                   phase.color
                 )}>
                   {phase.title}
                 </span>
+                
+                {/* Horizontal Connector Arrow (Desktop Only) */}
+                {phaseIdx < phases.length - 1 && (
+                  <div className="hidden lg:flex items-center text-primary/10 absolute -right-8 top-[14px]">
+                    <ArrowRight className={cn("h-5 w-5", isRTL && "rotate-180")} />
+                  </div>
+                )}
               </div>
 
               {/* Steps Vertical Timeline */}
-              <div className="space-y-12 relative px-2">
+              <div className="space-y-8 relative">
                 {/* Vertical connecting line */}
-                <div className="absolute left-[24px] rtl:left-auto rtl:right-[24px] top-4 bottom-4 w-px bg-primary/10" />
+                <div className="absolute left-[20px] rtl:left-auto rtl:right-[20px] top-2 bottom-2 w-px bg-primary/5" />
 
                 {phase.steps.map((step) => (
-                  <div key={step.id} className="relative flex items-start gap-6 group">
+                  <div key={step.id} className="relative flex items-start gap-5 group">
                     {/* Number Badge */}
-                    <div className="relative z-10 shrink-0 w-12 h-12 rounded-2xl bg-white border-2 border-primary/10 shadow-sm flex items-center justify-center text-lg font-black text-primary group-hover:border-orange/50 transition-colors duration-300">
+                    <div className="relative z-10 shrink-0 w-10 h-10 rounded-xl bg-white border border-primary/10 shadow-sm flex items-center justify-center text-sm font-extrabold text-primary group-hover:border-orange/50 transition-colors duration-300">
                       {step.id}
                     </div>
 
                     {/* Step Content */}
-                    <div className="flex-1 pt-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <step.icon className="h-5 w-5 text-orange" strokeWidth={2.5} />
-                        <h3 className="text-[17px] font-black text-primary leading-tight uppercase tracking-tight">
+                    <div className="flex-1 pt-0.5">
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <step.icon className="h-4 w-4 text-orange" strokeWidth={2.5} />
+                        <h3 className="text-[14px] font-extrabold text-primary leading-tight uppercase tracking-tight">
                           {t(`${step.key}_title` as any)}
                         </h3>
                       </div>
-                      <p className="text-[14px] text-muted-foreground leading-relaxed font-medium">
+                      <p className="text-[13px] text-muted-foreground leading-relaxed font-medium">
                         {t(`${step.key}_desc` as any)}
                       </p>
                     </div>
                   </div>
                 ))}
               </div>
-
-              {/* Horizontal Connector Arrow (Desktop Only) */}
-              {phaseIdx < phases.length - 1 && (
-                <div className="absolute top-[18px] -right-4 hidden lg:flex items-center text-primary/10">
-                  <ArrowRight className={cn("h-8 w-8", isRTL && "rotate-180")} />
-                </div>
-              )}
             </motion.div>
           ))}
         </div>
 
         {/* Bottom Process Marker */}
-        <div className="mt-20 pt-10 border-t border-primary/5 flex flex-col items-center">
-          <div className="flex items-center gap-4 text-[11px] font-black text-primary/30 uppercase tracking-[0.5em]">
+        <div className="mt-16 pt-8 border-t border-primary/5 flex flex-col items-center">
+          <div className="flex items-center gap-4 text-[10px] font-bold text-primary/20 uppercase tracking-[0.5em]">
             <span>Analyse</span>
-            <div className="w-12 h-px bg-primary/10" />
-            <span>Mise en œuvre</span>
-            <div className="w-12 h-px bg-primary/10" />
+            <div className="w-8 h-px bg-primary/10" />
+            <span>Flux</span>
+            <div className="w-8 h-px bg-primary/10" />
             <span>Livré</span>
           </div>
         </div>
