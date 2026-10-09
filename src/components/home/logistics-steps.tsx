@@ -2,7 +2,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useTranslation } from "@/hooks/use-translation";
 import { 
   ShoppingCart, 
@@ -40,80 +40,51 @@ export function LogisticsSteps() {
     offset: ["start center", "end center"]
   });
 
-  const smoothProgress = useSpring(scrollYProgress, {
+  const pathLength = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
 
   return (
-    <section id="steps" ref={containerRef} className="py-24 md:py-32 bg-white relative overflow-hidden">
-      {/* Subtle Flow Background Lines */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.05]">
-        <svg width="100%" height="100%" preserveAspectRatio="none">
-          <path d="M-100,200 Q200,100 500,400 T1200,200" fill="none" stroke="#1f6fdb" strokeWidth="2" strokeDasharray="10 20" />
-          <path d="M-200,600 Q400,500 800,800 T1500,600" fill="none" stroke="#f7931e" strokeWidth="2" strokeDasharray="10 20" />
-        </svg>
+    <section id="steps" ref={containerRef} className="py-32 bg-[#F8FAFF] relative overflow-hidden">
+      {/* Background Decorative Number */}
+      <div className="absolute top-20 left-10 text-[300px] font-black text-primary/[0.02] select-none pointer-events-none leading-none">
+        10
       </div>
 
       <div className="container px-4 md:px-8 mx-auto relative z-10">
-        <div className="text-center mb-24 max-w-3xl mx-auto">
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+        <div className="text-center mb-32">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="text-orange font-bold uppercase tracking-[0.2em] text-sm mb-4"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange/10 text-orange border border-orange/20 text-xs font-black uppercase tracking-[0.2em] mb-6"
           >
-            NOTRE PROCESSUS
-          </motion.p>
+            <span className="w-2 h-2 rounded-full bg-orange animate-pulse" />
+            {t('steps_title')}
+          </motion.div>
+          
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-black text-primary mb-6"
-          >
-            {t('steps_title')}
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-muted-foreground font-medium"
+            className="text-4xl md:text-6xl font-black text-primary mb-8 tracking-tight"
           >
             {t('steps_subtitle')}
-          </motion.p>
+          </motion.h2>
         </div>
 
-        <div className="relative max-w-5xl mx-auto">
-          {/* Main vertical line for desktop */}
-          <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[4px] bg-primary/5 -translate-x-1/2 hidden md:block" />
-          
-          {/* Animated Scroll Line */}
-          <motion.div 
-            style={{ scaleY: smoothProgress, originY: 0 }}
-            className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[4px] bg-secondary -translate-x-1/2 origin-top hidden md:block"
-          />
-
-          {/* Floating parcel following the scroll */}
-          <motion.div 
-            style={{ 
-              top: useTransform(smoothProgress, [0, 1], ["0%", "100%"]),
-              y: "-50%"
-            }}
-            className="absolute left-[20px] md:left-1/2 -translate-x-1/2 z-30 hidden md:block"
-          >
+        <div className="relative max-w-6xl mx-auto">
+          {/* Central Vertical Connector (The "Conveyor Belt") */}
+          <div className="absolute left-[30px] md:left-1/2 top-0 bottom-0 w-2 md:w-3 bg-primary/5 -translate-x-1/2 rounded-full overflow-hidden">
             <motion.div 
-              animate={{ rotate: [0, 5, -5, 0], scale: [1, 1.1, 1] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="w-14 h-12 bg-orange rounded-xl shadow-2xl shadow-orange/40 flex items-center justify-center border-2 border-white"
-            >
-              <div className="w-full h-3 bg-primary/20" />
-            </motion.div>
-          </motion.div>
+              style={{ scaleY: pathLength, originY: 0 }}
+              className="absolute top-0 left-0 right-0 bg-gradient-to-b from-orange via-secondary to-primary rounded-full shadow-[0_0_15px_rgba(247,148,29,0.5)]"
+            />
+          </div>
 
-          <div className="space-y-32">
+          <div className="space-y-24 md:space-y-40">
             {steps.map((step, index) => (
               <StepItem 
                 key={step.id} 
@@ -131,53 +102,99 @@ export function LogisticsSteps() {
 }
 
 function StepItem({ step, index, t, isEven }: any) {
+  const itemRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: itemRef,
+    offset: ["start end", "center center"]
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [0.3, 1]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0.9, 1]);
+  const x = useTransform(
+    scrollYProgress, 
+    [0, 0.5], 
+    [isEven ? -50 : 50, 0]
+  );
+
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, delay: 0.1 }}
+    <div 
+      ref={itemRef}
       className={cn(
-        "flex flex-col md:flex-row items-center gap-12 md:gap-24 relative",
+        "flex flex-col md:flex-row items-center gap-10 md:gap-20 relative",
         !isEven && "md:flex-row-reverse"
       )}
     >
-      {/* Circle Node with Number */}
-      <div className="absolute left-[20px] md:left-1/2 top-0 md:top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-2xl bg-white border-4 border-primary z-20 flex items-center justify-center font-black text-primary text-lg shadow-2xl transition-all hover:scale-110 duration-300">
-        {step.id}
-      </div>
+      {/* Node / Marker */}
+      <motion.div 
+        style={{ scale }}
+        className="absolute left-[30px] md:left-1/2 top-0 md:top-1/2 -translate-y-1/2 -translate-x-1/2 z-20"
+      >
+        <div className="relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+            <motion.div 
+              className="absolute inset-0 bg-white border-4 border-primary rounded-2xl shadow-xl"
+              whileInView={{ rotate: 45 }}
+              transition={{ duration: 0.6 }}
+            />
+            <span className="relative z-10 text-xl md:text-2xl font-black text-primary">
+                {step.id}
+            </span>
+        </div>
+      </motion.div>
 
       {/* Content Card */}
-      <div className="w-full md:w-[45%] pl-16 md:pl-0">
-        <motion.div 
-          whileHover={{ y: -10, scale: 1.02 }}
-          className={cn(
-            "bg-white p-10 rounded-[32px] shadow-3xl border border-primary/5 group transition-all duration-500 hover:border-secondary/20 relative overflow-hidden",
-            !isEven ? "md:text-right" : "md:text-left"
-          )}
-        >
-          {/* Animated Background Blob */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 transition-transform duration-700 group-hover:scale-150" />
-          
-          {/* Step icon with animated background */}
+      <motion.div 
+        style={{ opacity, scale, x }}
+        className="w-full md:w-[45%] pl-20 md:pl-0"
+      >
+        <div className={cn(
+          "bg-white p-8 md:p-12 rounded-[40px] shadow-3xl border border-primary/5 relative overflow-hidden group transition-all duration-500 hover:shadow-orange/10 hover:border-orange/20",
+          !isEven ? "md:text-right" : "md:text-left"
+        )}>
+          {/* Giant Number Overlay */}
           <div className={cn(
-            "w-20 h-20 bg-primary/5 rounded-3xl flex items-center justify-center text-primary mb-8 transition-all duration-500 group-hover:bg-secondary group-hover:text-white group-hover:rotate-12",
-            !isEven ? "md:ml-auto" : "md:mr-auto"
+            "absolute top-0 text-[120px] font-black text-primary/[0.03] select-none pointer-events-none transition-all duration-700 group-hover:text-orange/5",
+            !isEven ? "left-4" : "right-4"
           )}>
-            <step.icon className="h-10 w-10" strokeWidth={2.5} />
+            {step.id < 10 ? `0${step.id}` : step.id}
           </div>
-          
-          <h3 className="text-2xl md:text-3xl font-black text-primary mb-4 leading-tight">
-            {t(`${step.translationKey}_title`)}
-          </h3>
-          <p className="text-muted-foreground text-[17px] leading-relaxed font-medium">
-            {t(`${step.translationKey}_desc`)}
-          </p>
-        </motion.div>
-      </div>
+
+          <div className={cn(
+            "relative z-10 flex flex-col",
+            !isEven ? "md:items-end" : "md:items-start"
+          )}>
+            {/* Icon Box */}
+            <div className={cn(
+              "w-16 h-16 md:w-20 md:h-20 bg-primary/5 rounded-3xl flex items-center justify-center text-primary mb-8 transition-all duration-500 group-hover:bg-orange group-hover:text-white group-hover:rotate-12",
+            )}>
+              <step.icon className="h-8 w-8 md:h-10 md:w-10" strokeWidth={2.5} />
+            </div>
+            
+            <h3 className="text-2xl md:text-3xl font-black text-primary mb-4 leading-tight font-brand group-hover:text-orange transition-colors">
+              {t(`${step.translationKey}_title`)}
+            </h3>
+            
+            <p className="text-muted-foreground text-lg leading-relaxed font-medium font-sans">
+              {t(`${step.translationKey}_desc`)}
+            </p>
+
+            {/* Visual Action Indicator */}
+            <div className={cn(
+              "mt-8 h-1 w-12 bg-primary/10 rounded-full overflow-hidden group-hover:bg-orange/20 transition-colors",
+              !isEven ? "md:ml-auto" : "md:mr-auto"
+            )}>
+              <motion.div 
+                className="h-full bg-orange w-1/3"
+                animate={{ x: ["-100%", "300%"] }}
+                transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+              />
+            </div>
+          </div>
+        </div>
+      </motion.div>
 
       {/* Spacer for desktop layout balance */}
       <div className="hidden md:block md:w-[45%]" />
-    </motion.div>
+    </div>
   );
 }
+
