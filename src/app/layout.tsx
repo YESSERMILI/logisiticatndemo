@@ -1,14 +1,22 @@
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-body"
+});
+
+const plusJakarta = Plus_Jakarta_Sans({ 
+  subsets: ["latin"],
+  variable: "--font-heading"
+});
 
 export const metadata: Metadata = {
-  title: "New Project | Built with Firebase Studio",
-  description: "A fresh start for your next big idea.",
+  title: "Logistica Tunisie | De la commande à la livraison, tout simplement.",
+  description: "Solution complète de logistique e-commerce en Tunisie. Stockage, préparation, expédition et suivi en temps réel.",
 };
 
 export default function RootLayout({
@@ -17,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+    <html lang="fr" suppressHydrationWarning>
+      <body className={`${inter.variable} ${plusJakarta.variable}`}>
         <Providers>
           {children}
         </Providers>

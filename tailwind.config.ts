@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 const config = {
@@ -19,9 +20,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        orbitron: ["Orbitron", "sans-serif"],
-        space: ["Space Grotesk", "sans-serif"],
+        heading: ["var(--font-heading)", "sans-serif"],
+        body: ["var(--font-body)", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -30,12 +30,19 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#0A2540",
+          foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "#1D5FD8",
+          foreground: "#FFFFFF",
+        },
+        sky: {
+          tint: "#EAF2FF",
+        },
+        orange: {
+          DEFAULT: "#FF7A1A",
+          soft: "#FFE6D2",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -46,8 +53,8 @@ const config = {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "#FF7A1A",
+          foreground: "#FFFFFF",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -59,9 +66,9 @@ const config = {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "20px",
+        md: "12px",
+        sm: "8px",
       },
       keyframes: {
         "accordion-down": {
