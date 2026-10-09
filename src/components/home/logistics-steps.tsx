@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef } from "react";
@@ -48,10 +49,10 @@ export function LogisticsSteps() {
   return (
     <section id="steps" ref={containerRef} className="py-24 md:py-32 bg-white relative overflow-hidden">
       {/* Subtle Flow Background Lines */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
-        <svg width="100%" height="100%">
-          <path d="M-100,200 Q200,100 500,400 T1200,200" fill="none" stroke="currentColor" strokeWidth="2" className="text-secondary animate-flow" />
-          <path d="M-200,600 Q400,500 800,800 T1500,600" fill="none" stroke="currentColor" strokeWidth="2" className="text-orange animate-flow" />
+      <div className="absolute inset-0 pointer-events-none opacity-[0.05]">
+        <svg width="100%" height="100%" preserveAspectRatio="none">
+          <path d="M-100,200 Q200,100 500,400 T1200,200" fill="none" stroke="#1f6fdb" strokeWidth="2" strokeDasharray="10 20" />
+          <path d="M-200,600 Q400,500 800,800 T1500,600" fill="none" stroke="#f7931e" strokeWidth="2" strokeDasharray="10 20" />
         </svg>
       </div>
 
@@ -95,7 +96,7 @@ export function LogisticsSteps() {
             className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[4px] bg-secondary -translate-x-1/2 origin-top hidden md:block"
           />
 
-          {/* Floating parcel head following the scroll */}
+          {/* Floating parcel following the scroll */}
           <motion.div 
             style={{ 
               top: useTransform(smoothProgress, [0, 1], ["0%", "100%"]),
@@ -104,11 +105,11 @@ export function LogisticsSteps() {
             className="absolute left-[20px] md:left-1/2 -translate-x-1/2 z-30 hidden md:block"
           >
             <motion.div 
-              animate={{ rotate: [0, 5, -5, 0] }}
+              animate={{ rotate: [0, 5, -5, 0], scale: [1, 1.1, 1] }}
               transition={{ repeat: Infinity, duration: 2 }}
-              className="w-12 h-10 bg-orange rounded-lg shadow-xl shadow-orange/30 flex items-center justify-center border-2 border-white"
+              className="w-14 h-12 bg-orange rounded-xl shadow-2xl shadow-orange/40 flex items-center justify-center border-2 border-white"
             >
-              <div className="w-full h-2 bg-primary/20" />
+              <div className="w-full h-3 bg-primary/20" />
             </motion.div>
           </motion.div>
 
@@ -142,25 +143,28 @@ function StepItem({ step, index, t, isEven }: any) {
       )}
     >
       {/* Circle Node with Number */}
-      <div className="absolute left-[20px] md:left-1/2 top-0 md:top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-2xl bg-white border-4 border-primary z-20 flex items-center justify-center font-black text-primary text-lg shadow-2xl transition-transform hover:scale-110 duration-300">
+      <div className="absolute left-[20px] md:left-1/2 top-0 md:top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-2xl bg-white border-4 border-primary z-20 flex items-center justify-center font-black text-primary text-lg shadow-2xl transition-all hover:scale-110 duration-300">
         {step.id}
       </div>
 
       {/* Content Card */}
       <div className="w-full md:w-[45%] pl-16 md:pl-0">
         <motion.div 
-          whileHover={{ y: -8 }}
+          whileHover={{ y: -10, scale: 1.02 }}
           className={cn(
             "bg-white p-10 rounded-[32px] shadow-3xl border border-primary/5 group transition-all duration-500 hover:border-secondary/20 relative overflow-hidden",
             !isEven ? "md:text-right" : "md:text-left"
           )}
         >
+          {/* Animated Background Blob */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 transition-transform duration-700 group-hover:scale-150" />
+          
           {/* Step icon with animated background */}
           <div className={cn(
-            "w-20 h-20 bg-primary/5 rounded-3xl flex items-center justify-center text-primary mb-8 transition-all duration-500 group-hover:bg-secondary group-hover:text-white group-hover:rotate-6",
+            "w-20 h-20 bg-primary/5 rounded-3xl flex items-center justify-center text-primary mb-8 transition-all duration-500 group-hover:bg-secondary group-hover:text-white group-hover:rotate-12",
             !isEven ? "md:ml-auto" : "md:mr-auto"
           )}>
-            <step.icon className="h-10 w-10" strokeWidth={2} />
+            <step.icon className="h-10 w-10" strokeWidth={2.5} />
           </div>
           
           <h3 className="text-2xl md:text-3xl font-black text-primary mb-4 leading-tight">
@@ -169,9 +173,6 @@ function StepItem({ step, index, t, isEven }: any) {
           <p className="text-muted-foreground text-[17px] leading-relaxed font-medium">
             {t(`${step.translationKey}_desc`)}
           </p>
-          
-          {/* Background decoration in card */}
-          <div className="absolute bottom-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mb-12 transition-transform duration-700 group-hover:scale-150" />
         </motion.div>
       </div>
 

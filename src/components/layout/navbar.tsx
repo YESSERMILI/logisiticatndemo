@@ -17,7 +17,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -33,33 +33,34 @@ export function Navbar() {
   return (
     <header 
       className={cn(
-        "fixed top-0 left-0 right-0 z-[100] transition-all duration-500 h-[80px] flex items-center",
+        "fixed top-0 left-0 right-0 z-[100] transition-all duration-500 flex items-center",
         scrolled 
-          ? "bg-white/80 backdrop-blur-xl border-b border-black/[0.03] shadow-[0_2px_20px_-2px_rgba(0,0,0,0.02)]" 
-          : "bg-transparent"
+          ? "h-[72px] bg-white/90 backdrop-blur-xl border-b border-primary/5 shadow-xl shadow-primary/2" 
+          : "h-[90px] bg-transparent"
       )}
     >
-      <nav className="container mx-auto px-4 lg:px-8 max-w-[1200px] flex items-center justify-between">
+      <nav className="container mx-auto px-4 lg:px-8 max-w-[1300px] flex items-center justify-between">
         {/* Logo */}
         <Link 
           href="/" 
-          className="shrink-0 transition-transform hover:scale-[1.02] active:scale-[0.98]"
+          className="shrink-0 transition-transform hover:scale-105 active:scale-95"
         >
-          <Logo className="h-9 w-auto md:h-11" />
+          <Logo className={cn("transition-all duration-500", scrolled ? "h-10" : "h-12")} />
         </Link>
 
         {/* Desktop Links */}
         <div className={cn(
-          "hidden lg:flex items-center gap-8",
+          "hidden lg:flex items-center gap-10",
           isRTL && "flex-row-reverse"
         )}>
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-[15px] font-bold text-[#0C2A6B]/70 hover:text-[#0C2A6B] transition-colors tracking-tight"
+              className="text-[15px] font-black text-primary/60 hover:text-primary transition-all tracking-tight relative group"
             >
               {link.name}
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-orange transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
         </div>
@@ -67,7 +68,7 @@ export function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden lg:block">
           <Button 
-            className="bg-[#F7941D] hover:bg-[#F7941D]/90 text-[#0C2A6B] rounded-full px-7 h-11 font-black shadow-lg shadow-orange/10 transition-all active:scale-95"
+            className="bg-[#F7941D] hover:bg-[#F7941D]/90 text-[#0C2A6B] rounded-full px-8 h-12 font-black shadow-xl shadow-orange/20 transition-all hover:-translate-y-1 active:scale-95"
             asChild
           >
             <Link href="#contact">{t("nav_start")}</Link>
@@ -76,41 +77,49 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden p-2 text-[#0C2A6B] rounded-xl hover:bg-black/5 transition-colors"
+          className="lg:hidden p-3 text-primary rounded-2xl bg-primary/5 hover:bg-primary/10 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </nav>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="fixed inset-0 top-[80px] w-full bg-white/95 backdrop-blur-2xl z-[90] p-6 lg:hidden flex flex-col gap-6 animate-in fade-in slide-in-from-top-4 duration-300">
-          {navLinks.map((link, idx) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className={cn(
-                "text-2xl font-black text-[#0C2A6B] hover:text-[#F7941D] transition-colors border-b border-black/[0.05] pb-4",
-                isRTL ? "text-right" : "text-left"
-              )}
-              style={{ animationDelay: `${idx * 50}ms` }}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Button 
-            className="bg-[#F7941D] text-[#0C2A6B] w-full rounded-full h-14 font-black text-lg mt-4 shadow-xl shadow-orange/20" 
-            asChild 
-            onClick={() => setIsOpen(false)}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 top-[72px] w-full bg-white/98 backdrop-blur-2xl z-[90] p-8 lg:hidden flex flex-col gap-8 shadow-2xl"
           >
-            <Link href="#contact">{t("nav_start")}</Link>
-          </Button>
-        </div>
-      )}
+            {navLinks.map((link, idx) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  "text-3xl font-black text-primary hover:text-orange transition-colors border-b border-primary/5 pb-6",
+                  isRTL ? "text-right" : "text-left"
+                )}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <Button 
+              className="bg-orange text-primary w-full rounded-full h-16 font-black text-xl mt-4 shadow-2xl shadow-orange/30" 
+              asChild 
+              onClick={() => setIsOpen(false)}
+            >
+              <Link href="#contact">{t("nav_start")}</Link>
+            </Button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
 
+// Ensure AnimatePresence is available
+import { AnimatePresence } from "framer-motion";

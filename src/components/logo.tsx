@@ -9,7 +9,7 @@ interface LogoProps {
 export const Logo = ({ className, variant = "default" }: LogoProps) => {
   const navyColor = variant === "white" ? "#FFFFFF" : "#0b2a6b";
   const blueColor = variant === "white" ? "#FFFFFF" : "#1f6fdb";
-  const orangeColor = "#f7931e";
+  const orangeColor = "#f7941d";
 
   return (
     <svg 
