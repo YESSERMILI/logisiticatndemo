@@ -1,22 +1,16 @@
 {
   "placeholderImages": [
     {
-      "id": "main-logo",
-      "description": "Esports.tn Logo",
-      "imageUrl": "https://i.imgur.com/oovjwlr.png",
-      "imageHint": "esports logo"
+      "id": "logistica-logo",
+      "description": "Logistica Tunisie Logo",
+      "imageUrl": "https://picsum.photos/seed/logistic/300/100",
+      "imageHint": "logistic logo"
     },
     {
-      "id": "spacenet-logo",
-      "description": "Spacenet Logo",
-      "imageUrl": "https://i.imgur.com/pGgSHkW.png",
-      "imageHint": "spacenet technology logo"
-    },
-    {
-      "id": "hero-bg",
-      "description": "Futuristic gaming arena background",
-      "imageUrl": "https://picsum.photos/seed/gaming/1920/1080",
-      "imageHint": "esports arena stadium"
+      "id": "hero-logistics",
+      "description": "Modern logistics and delivery warehouse",
+      "imageUrl": "https://picsum.photos/seed/warehouse/1200/800",
+      "imageHint": "logistics warehouse"
     }
   ]
 }
