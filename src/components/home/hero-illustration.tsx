@@ -78,7 +78,7 @@ export function HeroIllustration() {
             </circle>
             {/* Destination Pin */}
             <g transform="translate(100, -45)">
-              <animateTransform attributeName="transform" type="translate" values="100,-45; 100,-52; 100,-45" dur="3s" repeatCount="indefinite" additive="sum" />
+              <animateTransform attributeName="transform" type="translate" values="0,0; 0,-7; 0,0" dur="3s" repeatCount="indefinite" />
               <path d="M0 0 C-12 -18 -18 -24 -18 -36 A18 18 0 1 1 18 -36 C18 -24 12 -18 0 0Z" fill="#F7941D" />
               <circle cx="0" cy="-36" r="6" fill="white" />
             </g>
