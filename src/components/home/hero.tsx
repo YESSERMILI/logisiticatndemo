@@ -4,11 +4,12 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/use-translation";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { HeroIllustration } from "./hero-illustration";
 
 export function Hero() {
   const { t, language } = useTranslation();
@@ -58,24 +59,20 @@ export function Hero() {
 
   return (
     <section 
-      className="relative w-full overflow-hidden bg-sky min-h-[300px] md:min-h-[340px] lg:min-h-[420px] flex flex-col"
+      className="relative w-full overflow-hidden bg-[#EEF4FF] min-h-[420px] md:min-h-[500px] lg:min-h-[600px] flex flex-col"
       dir={isRTL ? "rtl" : "ltr"}
     >
       {/* Background Illustration Container */}
-      <div 
-        aria-hidden="true"
-        className={cn(
-          "absolute inset-0 z-0 bg-[url('/logistica-header.svg')] bg-no-repeat bg-cover bg-[right_center]",
-          isRTL && "scale-x-[-1]"
-        )}
-      />
+      <div className="absolute inset-0 z-0">
+        <HeroIllustration />
+      </div>
 
       {/* White Legibility Fade */}
       <div 
         className={cn(
           "absolute inset-0 z-[1]",
-          "lg:bg-gradient-to-r lg:from-[#EEF4FF]/90 lg:via-[#EEF4FF]/40 lg:to-transparent lg:w-full",
-          "bg-gradient-to-b from-[#EEF4FF]/95 via-[#EEF4FF]/60 to-transparent w-full"
+          "lg:bg-gradient-to-r lg:from-[#EEF4FF]/95 lg:via-[#EEF4FF]/50 lg:to-transparent lg:w-full",
+          "bg-gradient-to-b from-[#EEF4FF]/95 via-[#EEF4FF]/70 to-transparent w-full"
         )}
       />
 
@@ -99,7 +96,7 @@ export function Hero() {
               <Link 
                 key={link.name} 
                 href={link.href}
-                className="text-sm font-semibold text-primary transition-colors hover:text-secondary"
+                className="text-sm font-bold text-primary transition-colors hover:text-secondary"
               >
                 {link.name}
               </Link>
@@ -145,7 +142,7 @@ export function Hero() {
       {/* Hero Content */}
       <div className="relative z-10 container mx-auto px-4 lg:px-8 max-w-[1200px] flex-grow flex items-center py-12 lg:py-0">
         <motion.div 
-          className="max-w-[520px] w-full text-center lg:text-left rtl:lg:text-right"
+          className="max-w-[560px] w-full text-center lg:text-left rtl:lg:text-right"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -153,13 +150,13 @@ export function Hero() {
           {/* Pill */}
           <motion.div 
             variants={itemVariants}
-            className="inline-flex items-center px-4 py-1.5 rounded-full bg-orange-soft text-[13px] font-bold text-primary mb-6"
+            className="inline-flex items-center px-4 py-1.5 rounded-full bg-orange-soft text-[13px] font-black text-primary mb-6 uppercase tracking-wider"
           >
             {t('hero_pill')}
           </motion.div>
 
           {/* H1 with Mask Reveal */}
-          <h1 className="text-[32px] md:text-[40px] lg:text-[56px] font-black leading-[1.15] text-primary mb-6 overflow-hidden">
+          <h1 className="text-[36px] md:text-[48px] lg:text-[64px] font-black leading-[1.1] text-primary mb-8 overflow-hidden">
             <motion.span variants={h1Variants} className="block">
               {t('hero_title_1')}
             </motion.span>
@@ -171,7 +168,7 @@ export function Hero() {
           {/* Subtitle */}
           <motion.p 
             variants={itemVariants}
-            className="text-base md:text-lg lg:text-[18px] text-[#5B6B82] leading-[1.5] mb-8 lg:mb-10 max-w-[480px] mx-auto lg:mx-0 font-body"
+            className="text-lg md:text-xl lg:text-[20px] text-[#5B6B82] leading-[1.5] mb-10 max-w-[500px] mx-auto lg:mx-0 font-medium"
           >
             {t('hero_subtitle')}
           </motion.p>
@@ -181,18 +178,15 @@ export function Hero() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
           >
-            <Button size="lg" className="bg-orange hover:bg-orange/90 text-primary rounded-full px-10 h-14 font-bold shadow-xl shadow-orange/20 w-full sm:w-auto transition-transform hover:-translate-y-0.5 active:scale-95">
+            <Button size="lg" className="bg-orange hover:bg-orange/90 text-white rounded-full px-12 h-16 text-lg font-black shadow-xl shadow-orange/30 w-full sm:w-auto transition-transform hover:-translate-y-1 active:scale-95">
               {t('hero_cta_primary')}
             </Button>
-            <Button variant="outline" size="lg" className="border-primary border-2 text-primary rounded-full px-10 h-14 font-bold w-full sm:w-auto transition-transform hover:-translate-y-0.5 active:scale-95" asChild>
+            <Button variant="outline" size="lg" className="border-primary border-2 text-primary rounded-full px-10 h-16 text-lg font-black w-full sm:w-auto transition-transform hover:-translate-y-1 active:scale-95" asChild>
               <Link href="#steps">{t('hero_cta_secondary')}</Link>
             </Button>
           </motion.div>
         </motion.div>
       </div>
-      
-      {/* Spacer for Mobile SVG Visibility */}
-      <div className="lg:hidden h-[200px]" aria-hidden="true" />
     </section>
   );
 }
