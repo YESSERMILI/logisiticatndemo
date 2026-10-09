@@ -64,14 +64,14 @@ export function LogisticsSteps() {
   const isRTL = language === "ar";
 
   return (
-    <section id="steps" className="py-24 bg-white relative overflow-hidden">
+    <section id="steps" className="py-32 bg-white relative overflow-hidden">
       <div className="container px-4 md:px-8 mx-auto relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-24">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 text-primary border border-primary/10 text-xs font-black uppercase tracking-[0.2em] mb-6"
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-primary/5 text-primary border border-primary/10 text-xs font-black uppercase tracking-[0.3em] mb-8"
           >
             {t('steps_title')}
           </motion.div>
@@ -80,63 +80,63 @@ export function LogisticsSteps() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-primary mb-4 tracking-tight"
+            className="text-4xl md:text-6xl font-black text-primary mb-6 tracking-tight"
           >
             {t('steps_subtitle')}
           </motion.h2>
+          <p className="text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
+            Une infrastructure robuste au service de votre croissance e-commerce.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {phases.map((phase, phaseIdx) => (
             <motion.div
               key={phase.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: phaseIdx * 0.1 }}
+              transition={{ delay: phaseIdx * 0.1, duration: 0.7 }}
               className="relative group"
             >
-              <div className="h-full bg-[#F8FAFF] rounded-[32px] p-8 border border-primary/5 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-2">
+              {/* Vertical connector line between phases (on mobile/tablet) */}
+              <div className="h-full bg-[#F8FAFF] rounded-[48px] p-10 border border-primary/5 transition-all duration-500 hover:shadow-3xl hover:shadow-primary/5 hover:-translate-y-2 relative overflow-hidden">
+                
                 {/* Phase Header */}
-                <div className="flex items-center justify-between mb-8">
+                <div className="mb-12">
                   <span className={cn(
-                    "text-[10px] font-black tracking-[0.3em] px-3 py-1 rounded-full text-white bg-gradient-to-r shadow-lg",
+                    "text-[11px] font-black tracking-[0.3em] px-5 py-2 rounded-full text-white bg-gradient-to-r shadow-lg inline-block",
                     phase.color
                   )}>
                     {phase.title}
                   </span>
-                  <div className="h-px flex-1 bg-primary/5 mx-4 hidden group-last:hidden lg:block" />
-                  {phaseIdx < phases.length - 1 && (
-                    <ArrowRight className={cn(
-                      "h-4 w-4 text-primary/20 hidden lg:block",
-                      isRTL && "rotate-180"
-                    )} />
-                  )}
                 </div>
 
                 {/* Steps List */}
-                <div className="space-y-8">
+                <div className="space-y-12 relative">
                   {phase.steps.map((step, stepIdx) => (
-                    <div key={step.id} className="relative flex items-start gap-4">
+                    <div key={step.id} className="relative flex items-start gap-6">
                       {/* Step Number & Connector */}
                       <div className="flex flex-col items-center shrink-0">
-                        <div className="w-8 h-8 rounded-full bg-white border-2 border-primary/10 flex items-center justify-center text-xs font-black text-primary shadow-sm z-10">
+                        <div className="w-10 h-10 rounded-2xl bg-white border-2 border-primary/10 flex items-center justify-center text-sm font-black text-primary shadow-sm z-10 group-hover:border-orange/30 transition-colors">
                           {step.id}
                         </div>
                         {stepIdx < phase.steps.length - 1 && (
-                          <div className="w-0.5 h-12 bg-gradient-to-b from-primary/10 to-transparent mt-2" />
+                          <div className="w-0.5 h-16 bg-gradient-to-b from-primary/10 to-transparent mt-2" />
                         )}
                       </div>
 
                       {/* Content */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <step.icon className="h-4 w-4 text-orange" strokeWidth={2.5} />
-                          <h3 className="text-sm font-black text-primary leading-none uppercase tracking-tight">
+                      <div className="pt-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="p-2 bg-orange/5 rounded-lg">
+                            <step.icon className="h-5 w-5 text-orange" strokeWidth={2.5} />
+                          </div>
+                          <h3 className="text-base font-black text-primary leading-tight uppercase tracking-tight">
                             {t(`${step.key}_title` as any)}
                           </h3>
                         </div>
-                        <p className="text-xs text-muted-foreground leading-relaxed font-medium">
+                        <p className="text-[13px] text-muted-foreground leading-relaxed font-medium">
                           {t(`${step.key}_desc` as any)}
                         </p>
                       </div>
@@ -144,27 +144,44 @@ export function LogisticsSteps() {
                   ))}
                 </div>
 
-                {/* Decorative Bottom Bar */}
+                {/* Decorative Element */}
                 <div className={cn(
-                  "absolute bottom-0 left-8 right-8 h-1 rounded-full bg-gradient-to-r opacity-20 transform scale-x-0 transition-transform duration-500 group-hover:scale-x-100",
+                  "absolute top-0 right-0 w-24 h-24 opacity-5 pointer-events-none transform translate-x-8 -translate-y-8",
+                  "bg-gradient-to-br rounded-full",
                   phase.color
                 )} />
+
+                {/* Next Phase Indicator (Desktop only) */}
+                {phaseIdx < phases.length - 1 && (
+                  <div className="absolute top-1/2 -right-6 -translate-y-1/2 hidden lg:flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-xl z-20 border border-primary/5">
+                    <ArrowRight className={cn(
+                      "h-6 w-6 text-orange",
+                      isRTL && "rotate-180"
+                    )} />
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Global Progress Indicator */}
-        <div className="mt-16 flex justify-center">
-            <div className="flex items-center gap-4 text-xs font-bold text-primary/30 uppercase tracking-[0.2em]">
-                <span>Logistique</span>
-                <div className="w-12 h-px bg-primary/10" />
-                <span>Transport</span>
-                <div className="w-12 h-px bg-primary/10" />
-                <span>Satisfaction</span>
+        {/* Bottom indicator */}
+        <div className="mt-24 flex flex-col items-center gap-6">
+            <div className="flex items-center gap-6 text-[10px] font-black text-primary/20 uppercase tracking-[0.4em]">
+                <span>Stratégie</span>
+                <div className="w-16 h-px bg-primary/10" />
+                <span>Exécution</span>
+                <div className="w-16 h-px bg-primary/10" />
+                <span>Succès</span>
             </div>
+            <motion.div 
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-px h-16 bg-gradient-to-b from-primary/20 to-transparent" 
+            />
         </div>
       </div>
     </section>
   );
 }
+
