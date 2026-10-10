@@ -172,7 +172,7 @@ export function Loader() {
         .lg-loader {
           --bg: #ffffff; --navy: #0b2a6b; --blue: #1f6fdb; --orange: #f7931e;
           --muted: #5a6a8a; --track: #e3ebf8; --dot: #dbe5f5;
-          --font-display: "Poppins", "Segoe UI", Helvetica, Arial, sans-serif;
+          --font-display: var(--font-inter), "Segoe UI", Helvetica, Arial, sans-serif;
           --font-data: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
           position: fixed; inset: 0; z-index: 99999; overflow-y: auto; box-sizing: border-box;
           padding-inline: 16px;

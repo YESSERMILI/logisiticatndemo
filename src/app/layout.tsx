@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Poppins, DM_Mono } from "next/font/google";
+import { Inter, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { Loader } from "@/components/loader";
@@ -7,13 +7,6 @@ import { Loader } from "@/components/loader";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  display: "swap",
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -47,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${inter.variable} ${poppins.variable} ${dmMono.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${dmMono.variable} font-sans antialiased`}>
         <Loader />
         <Providers>
           {children}
