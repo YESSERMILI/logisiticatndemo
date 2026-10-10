@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useTranslation } from "@/hooks/use-translation";
@@ -22,8 +21,8 @@ export function FAQ() {
     <section id="faq" className="py-24 bg-[#EEF4FF]" dir={isRTL ? "rtl" : "ltr"}>
       <div className="container px-4 md:px-8 mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left Column */}
-          <div className={isRTL ? "text-right" : "text-left"}>
+          {/* Left Column (Sticky) */}
+          <div className="lg:sticky lg:top-32">
             <motion.div
               initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -59,14 +58,14 @@ export function FAQ() {
             transition={{ duration: 0.8 }}
             className="bg-white p-6 md:p-10 rounded-[40px] shadow-2xl shadow-primary/5 border border-white"
           >
-            <Accordion type="single" collapsible className="w-full space-y-4">
+            <Accordion type="single" collapsible defaultValue="item-1" className="w-full space-y-4">
               {faqs.map((num) => (
                 <AccordionItem 
                   key={num} 
                   value={`item-${num}`} 
                   className="border-b border-primary/5 last:border-0 pb-2"
                 >
-                  <AccordionTrigger className="text-lg font-bold text-primary hover:text-secondary text-left rtl:text-right transition-all no-underline hover:no-underline py-6">
+                  <AccordionTrigger className="text-lg font-bold text-primary hover:text-secondary text-left rtl:text-right transition-all no-underline hover:no-underline py-6 [&[data-state=open]>svg]:rotate-180">
                     {t(`faq_q${num}` as any)}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground leading-relaxed text-[16px] pb-6 font-medium">
