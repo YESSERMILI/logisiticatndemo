@@ -18,7 +18,6 @@ export function Hero() {
     const route = root.querySelector('.lgs-route') as SVGPathElement;
     const prog = root.querySelector('.lgs-prog') as SVGPathElement;
     const truck = root.querySelector('.lgs-truck') as SVGGElement;
-    const speed = root.querySelector('.lgs-speed') as SVGGElement;
     const spins = root.querySelectorAll('.lgs-spin');
     const nodes = root.querySelectorAll('.lgs-node');
     const rings = root.querySelectorAll('.lgs-ring');
@@ -53,10 +52,10 @@ export function Hero() {
       return 0.5 - 0.5 * Math.cos(Math.PI * Math.min(1, Math.max(0, x))); 
     }
 
-    const LOOP = 11;
-    const ARRIVE = [0.7, 3.2, 5.7, 8.2];
-    const DEPART = [1.3, 3.8, 6.3];
-    const RESET = 10.3;
+    const LOOP = 12;
+    const ARRIVE = [0.7, 3.5, 6.3, 9.1];
+    const DEPART = [1.3, 4.1, 6.9];
+    const RESET = 11.3;
 
     function render(time: number, final: boolean) {
       const st = (function(t) {
@@ -83,7 +82,6 @@ export function Hero() {
       
       truck.setAttribute('transform', `translate(${((rp.x + fp.x) / 2).toFixed(1)} ${((rp.y + fp.y) / 2 + bob).toFixed(1)}) rotate(${ang.toFixed(1)}) scale(1.15) translate(-50 -63)`);
       truck.setAttribute('opacity', fade.toFixed(2));
-      if (speed) speed.setAttribute('opacity', st.moving ? '0.7' : '0');
       
       spins.forEach(spin => {
         spin.setAttribute('transform', `rotate(${(len * 5).toFixed(0)})`);
@@ -172,8 +170,8 @@ export function Hero() {
         .lgs-pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
         .lgs-title {
           margin: 0; max-width: 100%;
-          font-size: clamp(28px, 3.8vw, 48px); font-weight: 800; line-height: 1.15;
-          letter-spacing: 0.02em; color: var(--navy); text-wrap: balance;
+          font-size: clamp(28px, 3.8vw, 46px); font-weight: 800; line-height: 1.15;
+          letter-spacing: 0.01em; color: var(--navy); text-wrap: balance;
           text-transform: uppercase;
         }
         .lgs-title em { font-style: normal; color: var(--orange); }
@@ -195,11 +193,10 @@ export function Hero() {
         .lgs-stage { direction: ltr; position: relative; border-radius: 32px; box-shadow: 0 30px 70px rgba(11,42,107,.16), 0 4px 14px rgba(11,42,107,.06); }
         .lgs-svg { display: block; width: 100%; height: auto; border-radius: 32px; overflow: hidden; }
         
-        /* Decoration animations */
-        .lgs-cloud { animation: drift 15s ease-in-out infinite alternate; opacity: 0.6; }
-        .lgs-cloud.c2 { animation-duration: 22s; animation-delay: -5s; }
-        .lgs-cloud.c3 { animation-duration: 18s; animation-delay: -10s; }
-        @keyframes drift { from { transform: translateX(-15px); } to { transform: translateX(25px); } }
+        .lgs-cloud { animation: drift 20s ease-in-out infinite alternate; opacity: 0.7; }
+        .lgs-cloud.c2 { animation-duration: 28s; animation-delay: -5s; }
+        .lgs-cloud.c3 { animation-duration: 24s; animation-delay: -10s; }
+        @keyframes drift { from { transform: translateX(-20px); } to { transform: translateX(30px); } }
 
         .lgs-node .bg { fill: #fff; stroke: var(--navy); stroke-width: 4; transition: fill .35s, stroke .35s; }
         .lgs-node .ic { fill: none; stroke: var(--navy); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transition: stroke .35s; }
@@ -227,8 +224,8 @@ export function Hero() {
           font-size: 13px; font-weight: 800; background: var(--blue-50); color: var(--navy);
           transition: background .3s, color .3s;
         }
-        .lgs-card .t { font-size: 16px; font-weight: 800; line-height: 1.2; color: var(--navy); overflow-wrap: break-word; text-transform: uppercase; }
-        .lgs-card .d { margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--slate); font-family: var(--font-sans); }
+        .lgs-card .t { font-size: 15px; font-weight: 800; line-height: 1.2; color: var(--navy); overflow-wrap: break-word; text-transform: uppercase; }
+        .lgs-card .d { margin: 0; font-size: 13px; line-height: 1.45; color: var(--slate); font-family: var(--font-sans); }
         .lgs-card.is-on { border-color: var(--blue); }
         .lgs-card.is-now { border-color: var(--orange); transform: translateY(-6px); box-shadow: 0 16px 34px rgba(247,147,30,.25); }
         @keyframes lgs-fade { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: none; } }
@@ -276,14 +273,12 @@ export function Hero() {
                 <g clipPath="url(#lgs-clip)">
                   <rect width="640" height="400" fill="url(#lgs-bg)"/>
                   
-                  {/* Decorative Elements */}
-                  <g className="lgs-decor" opacity="0.6">
+                  <g className="lgs-decor" opacity="0.8">
                     <circle className="lgs-cloud c1" cx="100" cy="80" r="40" fill="#fff" />
                     <circle className="lgs-cloud c2" cx="500" cy="120" r="60" fill="#fff" />
                     <circle className="lgs-cloud c3" cx="300" cy="50" r="30" fill="#fff" />
                     
-                    {/* Silhouette of logistics hubs */}
-                    <path d="M0,320 L60,320 L60,280 L120,280 L120,320 L200,320 L200,300 L260,300 L260,320 L400,320 L400,270 L480,270 L480,320 L640,320 L640,400 L0,400 Z" fill="#c9dcf8" opacity="0.8" />
+                    <path d="M0,320 L60,320 L60,280 L120,280 L120,320 L200,320 L200,300 L260,300 L260,320 L400,320 L400,270 L480,270 L480,320 L640,320 L640,400 L0,400 Z" fill="#c9dcf8" opacity="1" />
                   </g>
 
                   <path className="lgs-route" d="M80,295 C150,295 170,215 240,215 C310,215 330,280 400,280 C470,280 490,200 560,200" fill="none" stroke="#c9dcf8" strokeWidth="22" strokeLinecap="round"/>
