@@ -111,7 +111,7 @@ export function Hero() {
 
         {/* Right Column: Route Visual */}
         <svg className={cn("lgh-route", isRTL && "scale-x-[-1]")} viewBox="730 130 620 230" role="img" aria-label="Parcours : Commande, Préparation, Expédition, Livraison">
-          <path className="lgh-line" pathLength={1} d="M800,290 C880,290 880,200 960,200 C1040,200 1050,280 1130,280 C1210,280 1220,190 1300,190"
+          <path className="lgh-line" pathLength="1" d="M800,290 C880,290 880,200 960,200 C1040,200 1050,280 1130,280 C1210,280 1220,190 1300,190"
                 fill="none" stroke="#bcd3f5" strokeWidth={4} strokeLinecap="round"/>
           <circle className="lgh-ring lgh-r1" cx="800"  cy="290" r="10"/>
           <circle className="lgh-ring lgh-r2" cx="960"  cy="200" r="10"/>
