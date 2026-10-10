@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -7,7 +8,6 @@ import { useLanguage } from "@/contexts/language-context";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Globe, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Logo } from "@/components/logo";
 import { AnimatePresence, motion } from "framer-motion";
 
 export function Navbar() {
@@ -44,15 +44,7 @@ export function Navbar() {
       )}
     >
       <nav className="container flex items-center justify-between">
-        {/* Logo */}
-        <Link 
-          href="/" 
-          className="shrink-0 transition-transform hover:scale-105"
-        >
-          <Logo className={cn("transition-all duration-300", scrolled ? "h-8" : "h-10")} />
-        </Link>
-
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation - Align left since logo is removed */}
         <div className={cn(
           "hidden lg:flex items-center gap-8",
           isRTL && "flex-row-reverse"
@@ -97,7 +89,7 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden p-2 text-primary"
+          className="lg:hidden p-2 text-primary ml-auto"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
