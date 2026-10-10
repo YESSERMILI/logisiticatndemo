@@ -16,7 +16,6 @@ import {
   LayoutDashboard,
   Box,
   Map,
-  Settings,
   ArrowUpRight,
   DollarSign,
   AlertCircle,
@@ -364,7 +363,7 @@ export function DashboardShowcase() {
                           </div>
                         ))}
                       </div>
-                      <Button className="w-full mt-10 rounded-full bg-orange hover:bg-orange/90 text-primary font-black uppercase tracking-widest h-12 border-none">
+                      <Button className="w-full mt-10 rounded-full bg-orange hover:bg-orange/90 text-white font-black uppercase tracking-widest h-12 border-none">
                         {t('dashboard_cta' as any)}
                       </Button>
                    </div>
