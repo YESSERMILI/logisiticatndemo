@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -19,13 +18,9 @@ import {
   Map,
   Settings,
   ArrowUpRight,
-  ShieldCheck,
-  Zap,
-  Clock,
   ExternalLink,
   DollarSign,
   AlertCircle,
-  BarChart,
   CheckCircle2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -117,8 +112,8 @@ export function DashboardShowcase() {
             className="relative w-full rounded-[48px] overflow-hidden border border-white/10 bg-[#0A101F]/70 backdrop-blur-3xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.6)] flex"
           >
             {/* Sidebar - Desktop Only */}
-            <div className="hidden lg:flex w-24 border-r border-white/5 flex-col items-center py-10 gap-10 bg-black/20">
-              <div className="w-12 h-12 bg-orange rounded-2xl flex items-center justify-center shadow-lg shadow-orange/20">
+            <div className="hidden lg:flex w-24 border-r border-white/5 flex-col items-center py-10 gap-10 bg-black/20 custom-scrollbar overflow-y-auto">
+              <div className="w-12 h-12 bg-orange rounded-2xl flex items-center justify-center shadow-lg shadow-orange/20 shrink-0">
                 <Box className="h-6 w-6 text-[#0C2A6B]" />
               </div>
               <div className="flex flex-col gap-6">
@@ -131,7 +126,7 @@ export function DashboardShowcase() {
                   </div>
                 ))}
               </div>
-              <div className="mt-auto">
+              <div className="mt-auto shrink-0">
                  <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/20 text-xs font-bold">JD</div>
               </div>
             </div>
@@ -139,7 +134,7 @@ export function DashboardShowcase() {
             {/* Main Content Area */}
             <div className="flex-1 flex flex-col min-w-0">
               {/* Top Navigation Bar */}
-              <div className="h-20 border-b border-white/5 px-8 flex items-center justify-between bg-black/10">
+              <div className="h-20 border-b border-white/5 px-8 flex items-center justify-between bg-black/10 shrink-0">
                 <div className="flex items-center gap-4 flex-1">
                   <div className="max-w-md w-full relative">
                     <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-white/20" />
@@ -171,7 +166,7 @@ export function DashboardShowcase() {
               </div>
 
               {/* Dashboard Internal Content */}
-              <div className="p-8 space-y-8 overflow-y-auto max-h-[700px] custom-scrollbar">
+              <div className="p-8 space-y-8 overflow-y-auto max-h-[720px] custom-scrollbar">
                 {/* Horizontal KPIs Summary */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                   {kpis.map((kpi, idx) => (
@@ -186,7 +181,7 @@ export function DashboardShowcase() {
                         )}>{kpi.trend}</span>
                       </div>
                       <p className="text-2xl font-black tracking-tight mb-1">
-                        {mounted ? kpi.value.toLocaleString() : '---'}
+                        {mounted ? kpi.value.toLocaleString('fr-FR') : '---'}
                         {mounted && kpi.suffix}
                       </p>
                       <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.1em]">{t(kpi.key)}</p>
@@ -303,7 +298,7 @@ export function DashboardShowcase() {
                 </div>
 
                 {/* Bottom Interactive Row */}
-                <div className="grid grid-cols-12 gap-8">
+                <div className="grid grid-cols-12 gap-8 pb-8">
                    {/* Cash Flow Tracking (COD) */}
                    <div className="col-span-12 lg:col-span-7 bg-white/[0.03] rounded-3xl p-8 border border-white/5 relative overflow-hidden group">
                       <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-orange/5 rounded-full blur-[80px] pointer-events-none" />
@@ -319,7 +314,7 @@ export function DashboardShowcase() {
                         <div>
                           <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1">Encaissé (Aujourd'hui)</p>
                           <p className="text-4xl font-black text-orange tabular-nums">
-                            {mounted ? (14285).toLocaleString() : '---'} <span className="text-sm font-bold text-white/40">DT</span>
+                            {mounted ? (14285).toLocaleString('fr-FR') : '---'} <span className="text-sm font-bold text-white/40">DT</span>
                           </p>
                           <div className="flex items-center gap-2 mt-2">
                              <TrendingUp className="h-3 w-3 text-emerald-400" />
@@ -329,7 +324,7 @@ export function DashboardShowcase() {
                         <div>
                           <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1">En attente de versement</p>
                           <p className="text-4xl font-black text-white tabular-nums">
-                            {mounted ? (32910).toLocaleString() : '---'} <span className="text-sm font-bold text-white/40">DT</span>
+                            {mounted ? (32910).toLocaleString('fr-FR') : '---'} <span className="text-sm font-bold text-white/40">DT</span>
                           </p>
                           <p className="text-[10px] font-bold text-white/20 mt-2 uppercase">Prochain virement : <span className="text-secondary">Mardi 24 Mars</span></p>
                         </div>
