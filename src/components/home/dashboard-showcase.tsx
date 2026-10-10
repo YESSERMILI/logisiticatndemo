@@ -190,7 +190,7 @@ export function DashboardShowcase() {
                   <div className="col-span-12 lg:col-span-8 bg-white/[0.03] rounded-3xl p-8 border border-white/5">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4">
                       <div>
-                        <h3 className="text-lg font-black flex items-center gap-2">
+                        <h3 className="text-lg font-black flex items-center gap-2 text-white">
                           Performance des Livraisons
                           <ArrowUpRight className="h-4 w-4 text-secondary" />
                         </h3>
