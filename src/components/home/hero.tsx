@@ -189,9 +189,17 @@ export function Hero() {
         .lgs-btn-p:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(247,147,30,.4); }
         .lgs-btn-s { background: #fff; color: var(--navy); border: 2px solid var(--blue-100); }
         .lgs-btn-s:hover { border-color: var(--blue); transform: translateY(-2px); }
+        
         .lgs-visual { min-width: 0; animation: lgs-fade 1s ease-out .15s both; }
         .lgs-stage { direction: ltr; position: relative; border-radius: 32px; box-shadow: 0 30px 70px rgba(11,42,107,.16), 0 4px 14px rgba(11,42,107,.06); }
         .lgs-svg { display: block; width: 100%; height: auto; border-radius: 32px; overflow: hidden; }
+        
+        /* Decoration animations */
+        .lgs-cloud { animation: drift 15s ease-in-out infinite alternate; opacity: 0.4; }
+        .lgs-cloud.c2 { animation-duration: 22s; animation-delay: -5s; }
+        .lgs-cloud.c3 { animation-duration: 18s; animation-delay: -10s; }
+        @keyframes drift { from { transform: translateX(-15px); } to { transform: translateX(25px); } }
+
         .lgs-node .bg { fill: #fff; stroke: var(--navy); stroke-width: 4; transition: fill .35s, stroke .35s; }
         .lgs-node .ic { fill: none; stroke: var(--navy); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transition: stroke .35s; }
         .lgs-node.is-done .bg { fill: var(--blue); stroke: var(--blue); }
@@ -200,6 +208,7 @@ export function Hero() {
         .lgs-chk { transform-box: fill-box; transform-origin: center; transform: scale(0); transition: transform .4s cubic-bezier(.2,.9,.3,1.4); }
         .lgs-node.is-done .lgs-chk { transform: scale(1); }
         .lgs-ring { fill: none; stroke: var(--orange); stroke-width: 3; pointer-events: none; }
+        
         .lgs-cards {
           direction: ltr; list-style: none; margin: -30px 0 0; padding: 0 14px;
           position: relative; z-index: 1;
@@ -221,7 +230,6 @@ export function Hero() {
         .lgs-card .d { margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--slate); font-family: var(--font-sans); }
         .lgs-card.is-on { border-color: var(--blue); }
         .lgs-card.is-now { border-color: var(--orange); transform: translateY(-6px); box-shadow: 0 16px 34px rgba(247,147,30,.25); }
-        @keyframes lgs-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
         @keyframes lgs-fade { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: none; } }
         @media (max-width: 960px) {
           .lgs-grid { grid-template-columns: minmax(0, 1fr); }
@@ -240,7 +248,7 @@ export function Hero() {
             <h1 
               className="lgs-title" 
               id="lgs-title"
-              dangerouslySetInnerHTML={{ __html: t("hero_title_html") }}
+              dangerouslySetInnerHTML={{ __html: t("hero_title_html").toUpperCase() }}
             />
             <p className="lgs-sub">{t("hero_subtitle")}</p>
             <div className="lgs-cta">
@@ -266,6 +274,17 @@ export function Hero() {
 
                 <g clipPath="url(#lgs-clip)">
                   <rect width="640" height="400" fill="url(#lgs-bg)"/>
+                  
+                  {/* Decorative Elements */}
+                  <g className="lgs-decor" opacity="0.4">
+                    <circle className="lgs-cloud c1" cx="100" cy="80" r="40" fill="#fff" />
+                    <circle className="lgs-cloud c2" cx="500" cy="120" r="60" fill="#fff" />
+                    <circle className="lgs-cloud c3" cx="300" cy="50" r="30" fill="#fff" />
+                    
+                    {/* Subtle silhouette of logistics hubs */}
+                    <path d="M0,320 L60,320 L60,280 L120,280 L120,320 L200,320 L200,300 L260,300 L260,320 L400,320 L400,270 L480,270 L480,320 L640,320 L640,400 L0,400 Z" fill="#c9dcf8" opacity="0.3" />
+                  </g>
+
                   <path className="lgs-route" d="M80,295 C150,295 170,215 240,215 C310,215 330,280 400,280 C470,280 490,200 560,200" fill="none" stroke="#c9dcf8" strokeWidth="22" strokeLinecap="round"/>
                   <path d="M80,295 C150,295 170,215 240,215 C310,215 330,280 400,280 C470,280 490,200 560,200" fill="none" stroke="#ffffff" strokeWidth="3" strokeDasharray="10 12" strokeLinecap="round" opacity=".95"/>
                   <path className="lgs-prog" d="M80,295 C150,295 170,215 240,215 C310,215 330,280 400,280 C470,280 490,200 560,200" fill="none" stroke="#1f6fdb" strokeWidth="8" strokeLinecap="round"/>
@@ -310,22 +329,22 @@ export function Hero() {
             <ol className="lgs-cards">
               <li className="lgs-card">
                 <span className="n">1</span>
-                <span className="t">{t("hero_station_1_t")}</span>
+                <span className="t">{t("hero_station_1_t").toUpperCase()}</span>
                 <p className="d">{t("hero_station_1_d")}</p>
               </li>
               <li className="lgs-card">
                 <span className="n">2</span>
-                <span className="t">{t("hero_station_2_t")}</span>
+                <span className="t">{t("hero_station_2_t").toUpperCase()}</span>
                 <p className="d">{t("hero_station_2_d")}</p>
               </li>
               <li className="lgs-card">
                 <span className="n">3</span>
-                <span className="t">{t("hero_station_3_t")}</span>
+                <span className="t">{t("hero_station_3_t").toUpperCase()}</span>
                 <p className="d">{t("hero_station_3_d")}</p>
               </li>
               <li className="lgs-card">
                 <span className="n">4</span>
-                <span className="t">{t("hero_station_4_t")}</span>
+                <span className="t">{t("hero_station_4_t").toUpperCase()}</span>
                 <p className="d">{t("hero_station_4_d")}</p>
               </li>
             </ol>
