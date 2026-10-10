@@ -16,7 +16,7 @@ export const Logo = ({ className, variant = "default" }: LogoProps) => {
       viewBox="827.505 -279.273 648.983 174.546" 
       className={cn("h-10 w-auto", className)}
       role="img" 
-      aria-label="Logistica Tunisie"
+      aria-label="LOGISTICA TUNISIE"
     >
       <g transform="scale(1 -1)" fillRule="nonzero">
         <g stroke="none">
