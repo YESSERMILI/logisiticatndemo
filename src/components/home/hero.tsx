@@ -159,7 +159,7 @@ export function Hero() {
                 <path d="M5 12h14M13 6l6 6-6 6"/>
               </svg>
             </a>
-            <a className="lgs-btn lgs-btn-s" href="#steps">{t("hero_cta_secondary")}</a>
+            <a className="lgs-btn lgs-btn-s" href="#etapes">{t("hero_cta_secondary")}</a>
           </div>
           <ul className={cn("lgs-trust", isRTL && "flex-row-reverse")}>
             <li>
