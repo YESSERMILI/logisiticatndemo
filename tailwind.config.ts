@@ -19,9 +19,9 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui"],
-        heading: ["var(--font-sans)", "sans-serif"],
-        brand: ["var(--font-sans)", "sans-serif"],
+        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui"],
+        heading: ["var(--font-poppins)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -30,19 +30,26 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0C2A6B",
+          DEFAULT: "#0B2A6B", // Navy
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#1F6FDB",
+          DEFAULT: "#1F6FDB", // Blue
           foreground: "#FFFFFF",
         },
-        sky: {
-          DEFAULT: "#EEF4FF",
-        },
         orange: {
-          DEFAULT: "#F7941D",
-          soft: "#FFE6D2",
+          DEFAULT: "#F7931E", // Orange
+          soft: "#EEF4FD", // Blue-50 equivalent used for tiles
+        },
+        navy: {
+          950: "#061233",
+        },
+        blue: {
+          50: "#EEF4FD",
+          100: "#DBE7FB",
+        },
+        slate: {
+          text: "#5A6A8A",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -53,7 +60,7 @@ const config = {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "#F7941D",
+          DEFAULT: "#F7931E",
           foreground: "#FFFFFF",
         },
         popover: {
@@ -66,23 +73,13 @@ const config = {
         },
       },
       borderRadius: {
-        lg: "20px",
-        md: "12px",
-        sm: "8px",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 8px)",
+        sm: "calc(var(--radius) - 12px)",
+        xl: "28px",
       },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+      letterSpacing: {
+        label: "0.08em",
       },
     },
   },

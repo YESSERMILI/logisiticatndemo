@@ -5,63 +5,65 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 210 40% 15%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 210 40% 15%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 210 40% 15%;
-    --primary: 221 80% 24%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 215 75% 48%;
-    --secondary-foreground: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 221 81% 23%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 215 75% 49%;
+    --secondary-foreground: 210 40% 98%;
     --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted-foreground: 215 20% 45%;
     --accent: 33 93% 54%;
-    --accent-foreground: 0 0% 100%;
+    --accent-foreground: 221 81% 23%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 215 75% 48%;
-    --radius: 24px;
+    --ring: 33 93% 54%;
+    --radius: 20px;
   }
 
-  .dark {
-    --background: 221 80% 8%;
-    --foreground: 210 40% 98%;
-    --card: 221 80% 8%;
-    --card-foreground: 210 40% 98%;
-    --popover: 221 80% 8%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 221 80% 24%;
-    --secondary: 215 75% 48%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground antialiased font-sans font-light selection:bg-orange/20 selection:text-primary;
+    @apply bg-background text-foreground font-sans selection:bg-orange/20 selection:text-primary;
+    font-size: 16px;
+    line-height: 1.6;
   }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading tracking-tight font-extrabold;
+    @apply font-heading tracking-tight text-primary;
   }
 }
 
-/* Custom Thin Scrollbar for Dashboard */
+@layer components {
+  .container {
+    @apply max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .btn-primary {
+    @apply h-12 px-8 rounded-full bg-orange text-primary font-bold transition-all hover:translate-y-[-2px] hover:shadow-lg active:translate-y-0 focus:ring-4 focus:ring-orange/30 outline-none;
+  }
+
+  .btn-secondary {
+    @apply h-12 px-8 rounded-full border-2 border-primary bg-white text-primary font-bold transition-all hover:bg-primary/5 hover:translate-y-[-2px] active:translate-y-0 focus:ring-4 focus:ring-primary/10 outline-none;
+  }
+
+  .placeholder-chip {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-600 border border-blue-100 italic;
+  }
+}
+
+/* Custom Scrollbar for Dashboard */
 .custom-scrollbar::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -69,63 +71,13 @@
 
 .custom-scrollbar::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.02);
-  border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
-  transition: background 0.3s;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(247, 148, 29, 0.4);
-}
-
-.shadow-3xl {
-  box-shadow: 0 25px 50px -12px rgba(10, 37, 64, 0.08);
-}
-
-.glow-on-hover {
-  @apply hover:shadow-[0_0_20px_rgba(31,111,219,0.3)] transition-shadow duration-300;
-}
-
-.text-glow {
-  text-shadow: 0 0 1px rgba(12, 42, 107, 0.1);
-}
-
-.bg-orange-soft {
-  background-color: #FFE6D2;
-}
-
-.bg-sky-tint {
-  background-color: #EEF4FF;
-}
-
-@keyframes flow-dash {
-  to {
-    stroke-dashoffset: -20;
-  }
-}
-
-.animate-flow {
-  animation: flow-dash 1s linear infinite;
-}
-
-@keyframes pulse-soft {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.1); }
-}
-
-.animate-pulse-soft {
-  animation: pulse-soft 3s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
