@@ -157,7 +157,7 @@ export function Hero() {
           position: relative; box-sizing: border-box; width: 100%;
           padding: clamp(32px, 6vw, 80px) 16px;
           background: linear-gradient(180deg, #ffffff 0%, #f4f8ff 100%);
-          font-family: var(--font-inter), sans-serif;
+          font-family: var(--font-manrope), sans-serif;
           color: var(--navy);
           overflow: hidden;
         }
@@ -357,11 +357,6 @@ export function Hero() {
                 <path className="lgs-route" d="M80,295 C150,295 170,215 240,215 C310,215 330,280 400,280 C470,280 490,200 560,200" fill="none" stroke="#c9dcf8" strokeWidth="22" strokeLinecap="round"/>
                 <path d="M80,295 C150,295 170,215 240,215 C310,215 330,280 400,280 C470,280 490,200 560,200" fill="none" stroke="#ffffff" strokeWidth="3" strokeDasharray="10 12" strokeLinecap="round" opacity=".95"/>
                 <path className="lgs-prog" d="M80,295 C150,295 170,215 240,215 C310,215 330,280 400,280 C470,280 490,200 560,200" fill="none" stroke="#1f6fdb" strokeWidth="8" strokeLinecap="round"/>
-
-                <circle className="lgs-ring" cx="80"  cy="295" r="30" fill="none" stroke="#f7931e" strokeWidth="3" opacity="0"/>
-                <circle className="lgs-ring" cx="240" cy="215" r="30" fill="none" stroke="#f7931e" strokeWidth="3" opacity="0"/>
-                <circle className="lgs-ring" cx="400" cy="280" r="30" fill="none" stroke="#f7931e" strokeWidth="3" opacity="0"/>
-                <circle className="lgs-ring" cx="560" cy="200" r="30" fill="none" stroke="#f7931e" strokeWidth="3" opacity="0"/>
 
                 <g className="lgs-truck" opacity="0">
                   <g className="lgs-speed" opacity="0" stroke="#1f6fdb" strokeWidth="3" strokeLinecap="round">

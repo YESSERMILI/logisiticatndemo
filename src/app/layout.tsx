@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, DM_Mono } from "next/font/google";
+import { Manrope, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { Loader } from "@/components/loader";
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -40,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${inter.variable} ${dmMono.variable} font-sans antialiased`}>
+      <body className={`${manrope.variable} ${dmMono.variable} font-sans antialiased`}>
         <Loader />
         <Providers>
           {children}
