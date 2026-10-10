@@ -79,7 +79,7 @@ export function LogisticsSteps() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-black text-primary tracking-tight"
+            className="text-3xl md:text-5xl font-black text-primary tracking-tight uppercase"
           >
             {t('steps_title')}
           </motion.h2>

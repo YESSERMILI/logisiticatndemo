@@ -186,8 +186,9 @@ export function Hero() {
 
         .lgs-title {
           margin: 0; max-width: 100%;
-          font-size: clamp(28px, 4.2vw, 48px); font-weight: 700; line-height: 1.18;
-          letter-spacing: -0.01em; color: var(--navy); text-wrap: balance;
+          font-size: clamp(28px, 3.8vw, 42px); font-weight: 700; line-height: 1.15;
+          letter-spacing: 0.02em; color: var(--navy); text-wrap: balance;
+          text-transform: uppercase;
         }
         .lgs-title em { font-style: normal; color: var(--orange); }
         .lgs-nb { white-space: nowrap; }

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useTranslation } from "@/hooks/use-translation";
@@ -34,7 +35,7 @@ export function FAQ() {
               <p className="text-orange font-bold uppercase tracking-[0.2em] text-sm mb-4">
                 {t('faq_eyebrow')}
               </p>
-              <h2 className="text-4xl md:text-5xl font-black text-primary mb-8 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-black text-primary mb-8 leading-tight uppercase">
                 {t('faq_title')}
               </h2>
               <p className="text-lg text-muted-foreground mb-10 max-w-md leading-relaxed font-medium">

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -76,7 +77,7 @@ export function DashboardShowcase() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-tight text-white"
+            className="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-tight text-white uppercase"
           >
             {t('dashboard_title')}
           </motion.h2>
@@ -190,7 +191,7 @@ export function DashboardShowcase() {
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4">
                       <div>
                         <h3 className="text-lg font-black flex items-center gap-2 text-white">
-                          Performance des Livraisons
+                          PERFORMANCE DES LIVRAISONS
                           <ArrowUpRight className="h-4 w-4 text-secondary" />
                         </h3>
                         <p className="text-xs text-white/30 font-medium">Analyse comparative des flux sur 7 jours</p>
@@ -363,7 +364,7 @@ export function DashboardShowcase() {
                           </div>
                         ))}
                       </div>
-                      <Button className="w-full mt-10 rounded-full bg-orange hover:bg-orange/90 text-white font-black uppercase tracking-widest h-12 border-none">
+                      <Button className="w-full mt-10 rounded-full bg-orange hover:bg-orange/90 text-primary font-black uppercase tracking-widest h-12 border-none">
                         {t('dashboard_cta' as any)}
                       </Button>
                    </div>

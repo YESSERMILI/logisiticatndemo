@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -34,7 +35,7 @@ export function Commitments() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-black text-primary mb-6"
+            className="text-4xl md:text-5xl font-black text-primary mb-6 uppercase"
           >
             {t('commitments_title')}
           </motion.h2>
@@ -57,7 +58,7 @@ export function Commitments() {
               <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-primary mb-6">
                 <item.icon className="h-8 w-8" strokeWidth={1.75} />
               </div>
-              <h3 className="text-xl font-bold text-primary mb-3 leading-tight">
+              <h3 className="text-xl font-bold text-primary mb-3 leading-tight uppercase">
                 {t(`commitments_${item.key}` as any)}
               </h3>
               <p className="text-slate-text text-[15px] leading-relaxed">

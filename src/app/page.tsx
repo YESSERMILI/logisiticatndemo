@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Navbar } from "@/components/layout/navbar";
@@ -32,7 +33,7 @@ export default function HomePage() {
         <RevealSection id="couverture">
           <section className="py-24 bg-white text-center">
             <div className="container">
-              <h2 className="text-4xl font-black mb-8">Couverture Géographique</h2>
+              <h2 className="text-4xl font-black mb-8 uppercase">Couverture Géographique</h2>
               <div className="p-12 border-2 border-dashed border-blue-100 rounded-[28px] bg-blue-50/30">
                 <p className="text-slate text-lg italic">Section Carte de la Tunisie [À CONFIRMER]</p>
                 <div className="mt-4 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-600 border border-blue-100 italic">

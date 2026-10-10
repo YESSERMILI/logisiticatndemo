@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -50,7 +51,7 @@ export function ContactSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-primary mb-4 leading-tight"
+            className="text-4xl md:text-5xl font-black text-primary mb-4 leading-tight uppercase"
           >
             {t('contact_title')}
           </motion.h2>
