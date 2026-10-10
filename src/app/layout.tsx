@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import { Outfit, DM_Mono } from "next/font/google";
+import { Inter, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { Loader } from "@/components/loader";
 
-const outfit = Outfit({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-outfit",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -41,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${outfit.variable} ${dmMono.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${dmMono.variable} font-sans antialiased`}>
         <Loader />
         <Providers>
           {children}

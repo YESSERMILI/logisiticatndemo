@@ -100,9 +100,11 @@ export function Hero() {
         if (reached) current = i;
         const dt = t - ARRIVE[i];
         if (!final && reached && dt < 1) {
-          rings[i].setAttribute('r', (30 + dt * 34).toFixed(1));
-          rings[i].setAttribute('opacity', (0.7 * (1 - dt)).toFixed(2));
-        } else {
+          if (rings[i]) {
+            rings[i].setAttribute('r', (30 + dt * 34).toFixed(1));
+            rings[i].setAttribute('opacity', (0.7 * (1 - dt)).toFixed(2));
+          }
+        } else if (rings[i]) {
           rings[i].setAttribute('opacity', '0');
         }
       });
@@ -139,7 +141,10 @@ export function Hero() {
 
     return () => {
       observer.disconnect();
-      if (raf) cancelAnimationFrame(raf);
+      if (raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
     };
   }, []);
 
