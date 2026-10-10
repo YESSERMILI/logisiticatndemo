@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -185,12 +186,12 @@ export function Hero() {
 
         .lgs-title {
           margin: 0; max-width: 100%;
-          font-size: clamp(34px, 4.7vw, 60px); font-weight: 800; line-height: 1.12;
+          font-size: clamp(28px, 4.2vw, 48px); font-weight: 700; line-height: 1.18;
           letter-spacing: -0.01em; color: var(--navy); text-wrap: balance;
         }
         .lgs-title em { font-style: normal; color: var(--orange); }
         .lgs-nb { white-space: nowrap; }
-        .lgs-sub { margin: 0; max-width: 54ch; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.65; color: var(--slate); font-family: var(--font-sans); }
+        .lgs-sub { margin: 0; max-width: 54ch; font-size: clamp(16px, 1.4vw, 18px); line-height: 1.65; color: var(--slate); font-family: var(--font-sans); }
         .lgs-cta { display: flex; flex-wrap: wrap; gap: 14px; }
 
         .lgs-btn {
