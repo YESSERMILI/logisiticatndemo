@@ -27,11 +27,6 @@ export function Hero() {
 
     if (!route || !prog || !truck) return;
 
-    const LOOP = 11;
-    const ARRIVE = [0.7, 3.2, 5.7, 8.2];
-    const DEPART = [1.3, 3.8, 6.3];
-    const RESET = 10.3;
-
     const total = route.getTotalLength();
     const stationLen: number[] = [];
     
@@ -58,22 +53,27 @@ export function Hero() {
       return 0.5 - 0.5 * Math.cos(Math.PI * Math.min(1, Math.max(0, x))); 
     }
 
-    function lengthAt(t: number) {
-      for (let i = 0; i < DEPART.length; i++) {
-        if (t >= DEPART[i] && t < ARRIVE[i + 1]) {
-          return { 
-            len: stationLen[i] + (stationLen[i + 1] - stationLen[i]) * ease((t - DEPART[i]) / (ARRIVE[i + 1] - DEPART[i])), 
-            moving: true 
-          };
-        }
-      }
-      let at = 0;
-      for (let j = 0; j < ARRIVE.length; j++) if (t >= ARRIVE[j]) at = j;
-      return { len: stationLen[at], moving: false };
-    }
+    const LOOP = 11;
+    const ARRIVE = [0.7, 3.2, 5.7, 8.2];
+    const DEPART = [1.3, 3.8, 6.3];
+    const RESET = 10.3;
 
     function render(t: number, final: boolean) {
-      const st = lengthAt(t), len = st.len;
+      const st = (function(time) {
+        for (let i = 0; i < DEPART.length; i++) {
+          if (time >= DEPART[i] && time < ARRIVE[i + 1]) {
+            return { 
+              len: stationLen[i] + (stationLen[i + 1] - stationLen[i]) * ease((time - DEPART[i]) / (ARRIVE[i + 1] - DEPART[i])), 
+              moving: true 
+            };
+          }
+        }
+        let at = 0;
+        for (let j = 0; j < ARRIVE.length; j++) if (time >= ARRIVE[j]) at = j;
+        return { len: stationLen[at], moving: false };
+      })(t);
+
+      const len = st.len;
       const fade = final ? 1 : Math.min(1, t / 0.4, Math.max(0, (LOOP - t) / 0.7));
       const HALF_WHEELBASE = 32;
       const rp = route.getPointAtLength(Math.max(0, len - HALF_WHEELBASE));
@@ -117,22 +117,25 @@ export function Hero() {
     }
 
     let t0: number | null = null;
-    let visible = true;
     let raf: number = 0;
 
     function frame(now: number) {
       if (t0 === null) t0 = now;
       render(((now - t0) / 1000) % LOOP, false);
-      if (visible) raf = requestAnimationFrame(frame);
+      raf = requestAnimationFrame(frame);
     }
 
     const observer = new IntersectionObserver((entries) => {
-      visible = entries[0].isIntersecting;
-      if (visible && !raf) raf = requestAnimationFrame(frame);
+      if (entries[0].isIntersecting) {
+        if (!raf) raf = requestAnimationFrame(frame);
+      } else {
+        if (raf) {
+          cancelAnimationFrame(raf);
+          raf = 0;
+        }
+      }
     });
     observer.observe(root);
-
-    raf = requestAnimationFrame(frame);
 
     return () => {
       observer.disconnect();
