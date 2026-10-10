@@ -6,9 +6,10 @@ import Link from "next/link";
 import { useTranslation } from "@/hooks/use-translation";
 import { useLanguage } from "@/contexts/language-context";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Globe, ChevronDown } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import { Logo } from "@/components/logo";
 
 export function Navbar() {
   const { t, language } = useTranslation();
@@ -44,21 +45,28 @@ export function Navbar() {
       )}
     >
       <nav className="container flex items-center justify-between">
-        {/* Desktop Navigation - Align left since logo is removed */}
-        <div className={cn(
-          "hidden lg:flex items-center gap-8",
-          isRTL && "flex-row-reverse"
-        )}>
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-[15px] font-medium text-primary/70 hover:text-primary transition-all relative group"
-            >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange transition-all duration-300 group-hover:w-full" />
-            </Link>
-          ))}
+        <div className="flex items-center gap-12">
+          {/* Logo restored to the left */}
+          <Link href="/" className="shrink-0">
+            <Logo className="h-8 md:h-10" />
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className={cn(
+            "hidden lg:flex items-center gap-8",
+            isRTL && "flex-row-reverse"
+          )}>
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-[15px] font-medium text-primary/70 hover:text-primary transition-all relative group"
+              >
+                {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange transition-all duration-300 group-hover:w-full" />
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Right Side actions */}
