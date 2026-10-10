@@ -60,6 +60,11 @@ const carrierData = [
 export function DashboardShowcase() {
   const { t, language } = useTranslation();
   const isRTL = language === "ar";
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const kpis = [
     { icon: Package, key: "dashboard_kpi_1", value: 1248, trend: "+12%", color: "text-blue-500" },
@@ -180,7 +185,10 @@ export function DashboardShowcase() {
                           kpi.trend.startsWith('+') ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400"
                         )}>{kpi.trend}</span>
                       </div>
-                      <p className="text-2xl font-black tracking-tight mb-1">{kpi.value.toLocaleString()}{kpi.suffix}</p>
+                      <p className="text-2xl font-black tracking-tight mb-1">
+                        {mounted ? kpi.value.toLocaleString() : '---'}
+                        {mounted && kpi.suffix}
+                      </p>
                       <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.1em]">{t(kpi.key)}</p>
                     </div>
                   ))}
@@ -209,47 +217,49 @@ export function DashboardShowcase() {
                     </div>
                     
                     <div className="h-[300px] w-full">
-                      <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart data={performanceData}>
-                          <defs>
-                            <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="#1F6FDB" stopOpacity={0.4}/>
-                              <stop offset="95%" stopColor="#1F6FDB" stopOpacity={0}/>
-                            </linearGradient>
-                          </defs>
-                          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.03)" />
-                          <XAxis 
-                            dataKey="name" 
-                            axisLine={false} 
-                            tickLine={false} 
-                            tick={{fill: 'rgba(255,255,255,0.2)', fontSize: 10, fontWeight: 800}}
-                            dy={15}
-                          />
-                          <YAxis hide />
-                          <Tooltip 
-                            contentStyle={{backgroundColor: '#0A101F', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)'}}
-                            itemStyle={{fontSize: '11px', fontWeight: 900, textTransform: 'uppercase'}}
-                          />
-                          <Area 
-                            type="monotone" 
-                            dataKey="value" 
-                            stroke="#1F6FDB" 
-                            strokeWidth={4} 
-                            fillOpacity={1} 
-                            fill="url(#colorValue)" 
-                            animationDuration={2000}
-                          />
-                          <Area 
-                            type="monotone" 
-                            dataKey="returns" 
-                            stroke="#F7941D" 
-                            strokeWidth={3} 
-                            strokeDasharray="5 5"
-                            fill="transparent" 
-                            animationDuration={2500}
-                          />
-                        </AreaChart>
-                      </ResponsiveContainer>
+                      {mounted && (
+                        <ResponsiveContainer width="100%" height="100%">
+                          <AreaChart data={performanceData}>
+                            <defs>
+                              <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#1F6FDB" stopOpacity={0.4}/>
+                                <stop offset="95%" stopColor="#1F6FDB" stopOpacity={0}/>
+                              </linearGradient>
+                            </defs>
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.03)" />
+                            <XAxis 
+                              dataKey="name" 
+                              axisLine={false} 
+                              tickLine={false} 
+                              tick={{fill: 'rgba(255,255,255,0.2)', fontSize: 10, fontWeight: 800}}
+                              dy={15}
+                            />
+                            <YAxis hide />
+                            <Tooltip 
+                              contentStyle={{backgroundColor: '#0A101F', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)'}}
+                              itemStyle={{fontSize: '11px', fontWeight: 900, textTransform: 'uppercase'}}
+                            />
+                            <Area 
+                              type="monotone" 
+                              dataKey="value" 
+                              stroke="#1F6FDB" 
+                              strokeWidth={4} 
+                              fillOpacity={1} 
+                              fill="url(#colorValue)" 
+                              animationDuration={2000}
+                            />
+                            <Area 
+                              type="monotone" 
+                              dataKey="returns" 
+                              stroke="#F7941D" 
+                              strokeWidth={3} 
+                              strokeDasharray="5 5"
+                              fill="transparent" 
+                              animationDuration={2500}
+                            />
+                          </AreaChart>
+                        </ResponsiveContainer>
+                      )}
                     </div>
                   </div>
 
@@ -308,7 +318,9 @@ export function DashboardShowcase() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
                         <div>
                           <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1">Encaissé (Aujourd'hui)</p>
-                          <p className="text-4xl font-black text-orange tabular-nums">14,285 <span className="text-sm font-bold text-white/40">DT</span></p>
+                          <p className="text-4xl font-black text-orange tabular-nums">
+                            {mounted ? (14285).toLocaleString() : '---'} <span className="text-sm font-bold text-white/40">DT</span>
+                          </p>
                           <div className="flex items-center gap-2 mt-2">
                              <TrendingUp className="h-3 w-3 text-emerald-400" />
                              <span className="text-[10px] font-bold text-emerald-400">+22% vs hier</span>
@@ -316,7 +328,9 @@ export function DashboardShowcase() {
                         </div>
                         <div>
                           <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1">En attente de versement</p>
-                          <p className="text-4xl font-black text-white tabular-nums">32,910 <span className="text-sm font-bold text-white/40">DT</span></p>
+                          <p className="text-4xl font-black text-white tabular-nums">
+                            {mounted ? (32910).toLocaleString() : '---'} <span className="text-sm font-bold text-white/40">DT</span>
+                          </p>
                           <p className="text-[10px] font-bold text-white/20 mt-2 uppercase">Prochain virement : <span className="text-secondary">Mardi 24 Mars</span></p>
                         </div>
                       </div>
