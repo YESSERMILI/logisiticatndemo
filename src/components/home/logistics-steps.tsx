@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -106,14 +107,21 @@ export function LogisticsSteps() {
                 </span>
                 
                 {phaseIdx < phases.length - 1 && (
-                  <div className="hidden lg:flex items-center text-primary/10 absolute -right-10 top-1/2 -translate-y-1/2">
+                  <div className={cn(
+                    "hidden lg:flex items-center text-primary/10 absolute top-1/2 -translate-y-1/2",
+                    isRTL ? "-left-10" : "-right-10"
+                  )}>
                     <ArrowRight className={cn("h-5 w-5", isRTL && "rotate-180")} />
                   </div>
                 )}
               </div>
 
               <div className="space-y-8 relative">
-                <div className="absolute left-[20px] rtl:left-auto rtl:right-[20px] top-2 bottom-2 w-px bg-primary/5" />
+                {/* Connecting line */}
+                <div className={cn(
+                  "absolute top-2 bottom-2 w-px bg-primary/5",
+                  isRTL ? "right-[20px]" : "left-[20px]"
+                )} />
 
                 {phase.steps.map((step) => (
                   <div key={step.id} className="relative flex items-start gap-6 group">
@@ -121,14 +129,14 @@ export function LogisticsSteps() {
                       {step.id}
                     </div>
 
-                    <div className="flex-1 pt-0.5">
-                      <div className="flex items-center gap-2 mb-2">
-                        <step.icon className="h-5 w-5 text-orange" strokeWidth={2} />
-                        <h3 className="text-[15px] font-black text-primary leading-tight uppercase tracking-tight">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2.5">
+                        <step.icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
+                        <h3 className="text-[15px] font-bold text-primary leading-tight uppercase tracking-tight">
                           {t(`${step.key}_title` as any)}
                         </h3>
                       </div>
-                      <p className="text-[14px] text-muted-foreground leading-relaxed font-medium">
+                      <p className="text-[14px] text-slate-text leading-relaxed font-medium">
                         {t(`${step.key}_desc` as any)}
                       </p>
                     </div>
