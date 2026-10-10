@@ -167,7 +167,7 @@ export function Hero() {
           display: inline-flex; align-items: center; gap: 8px;
           padding: 8px 14px; border-radius: 999px;
           background: var(--blue-50); border: 1px solid var(--blue-100);
-          font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy);
+          font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--navy);
         }
         .lgs-pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
         .lgs-title {
@@ -182,8 +182,9 @@ export function Hero() {
         .lgs-btn {
           display: inline-flex; align-items: center; justify-content: center; gap: 10px;
           min-height: 52px; padding: 0 28px; border-radius: 999px;
-          font-size: 16px; font-weight: 700; text-decoration: none; cursor: pointer;
+          font-size: 16px; font-weight: 800; text-decoration: none; cursor: pointer;
           transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+          text-transform: uppercase;
         }
         .lgs-btn-p { background: var(--orange); color: var(--navy); box-shadow: 0 10px 24px rgba(247,147,30,.32); }
         .lgs-btn-p:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(247,147,30,.4); }
@@ -195,7 +196,7 @@ export function Hero() {
         .lgs-svg { display: block; width: 100%; height: auto; border-radius: 32px; overflow: hidden; }
         
         /* Decoration animations */
-        .lgs-cloud { animation: drift 15s ease-in-out infinite alternate; opacity: 0.4; }
+        .lgs-cloud { animation: drift 15s ease-in-out infinite alternate; opacity: 0.6; }
         .lgs-cloud.c2 { animation-duration: 22s; animation-delay: -5s; }
         .lgs-cloud.c3 { animation-duration: 18s; animation-delay: -10s; }
         @keyframes drift { from { transform: translateX(-15px); } to { transform: translateX(25px); } }
@@ -226,7 +227,7 @@ export function Hero() {
           font-size: 13px; font-weight: 800; background: var(--blue-50); color: var(--navy);
           transition: background .3s, color .3s;
         }
-        .lgs-card .t { font-size: 16px; font-weight: 700; line-height: 1.2; color: var(--navy); overflow-wrap: break-word; }
+        .lgs-card .t { font-size: 16px; font-weight: 800; line-height: 1.2; color: var(--navy); overflow-wrap: break-word; text-transform: uppercase; }
         .lgs-card .d { margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--slate); font-family: var(--font-sans); }
         .lgs-card.is-on { border-color: var(--blue); }
         .lgs-card.is-now { border-color: var(--orange); transform: translateY(-6px); box-shadow: 0 16px 34px rgba(247,147,30,.25); }
@@ -276,13 +277,13 @@ export function Hero() {
                   <rect width="640" height="400" fill="url(#lgs-bg)"/>
                   
                   {/* Decorative Elements */}
-                  <g className="lgs-decor" opacity="0.4">
+                  <g className="lgs-decor" opacity="0.6">
                     <circle className="lgs-cloud c1" cx="100" cy="80" r="40" fill="#fff" />
                     <circle className="lgs-cloud c2" cx="500" cy="120" r="60" fill="#fff" />
                     <circle className="lgs-cloud c3" cx="300" cy="50" r="30" fill="#fff" />
                     
-                    {/* Subtle silhouette of logistics hubs */}
-                    <path d="M0,320 L60,320 L60,280 L120,280 L120,320 L200,320 L200,300 L260,300 L260,320 L400,320 L400,270 L480,270 L480,320 L640,320 L640,400 L0,400 Z" fill="#c9dcf8" opacity="0.3" />
+                    {/* Silhouette of logistics hubs */}
+                    <path d="M0,320 L60,320 L60,280 L120,280 L120,320 L200,320 L200,300 L260,300 L260,320 L400,320 L400,270 L480,270 L480,320 L640,320 L640,400 L0,400 Z" fill="#c9dcf8" opacity="0.8" />
                   </g>
 
                   <path className="lgs-route" d="M80,295 C150,295 170,215 240,215 C310,215 330,280 400,280 C470,280 490,200 560,200" fill="none" stroke="#c9dcf8" strokeWidth="22" strokeLinecap="round"/>
