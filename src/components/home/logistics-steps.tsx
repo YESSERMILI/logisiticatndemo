@@ -22,7 +22,7 @@ const phases = [
   {
     id: "phase_1",
     title: "INTÉGRATION",
-    color: "from-blue-600 to-blue-400",
+    color: "bg-blue-600",
     steps: [
       { id: 1, icon: ShoppingCart, key: "step_1" },
       { id: 2, icon: Package, key: "step_2" },
@@ -31,7 +31,7 @@ const phases = [
   {
     id: "phase_2",
     title: "LOGISTIQUE",
-    color: "from-orange to-amber-500",
+    color: "bg-orange",
     steps: [
       { id: 3, icon: Hand, key: "step_3" },
       { id: 4, icon: Box, key: "step_4" },
@@ -40,7 +40,7 @@ const phases = [
   {
     id: "phase_3",
     title: "LIVRAISON",
-    color: "from-secondary to-blue-500",
+    color: "bg-secondary",
     steps: [
       { id: 5, icon: Truck, key: "step_5" },
       { id: 6, icon: MapPin, key: "step_6" },
@@ -50,7 +50,7 @@ const phases = [
   {
     id: "phase_4",
     title: "PILOTAGE",
-    color: "from-primary to-indigo-700",
+    color: "bg-primary",
     steps: [
       { id: 8, icon: RefreshCcw, key: "step_8" },
       { id: 9, icon: Headphones, key: "step_9" },
@@ -100,7 +100,7 @@ export function LogisticsSteps() {
             >
               <div className="mb-10 relative flex items-center lg:justify-start">
                 <span className={cn(
-                  "px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] text-white shadow-md bg-gradient-to-r relative z-10",
+                  "px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] text-white shadow-sm relative z-10",
                   phase.color
                 )}>
                   {phase.title}
