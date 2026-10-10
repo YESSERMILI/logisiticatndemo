@@ -81,3 +81,70 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(247, 148, 29, 0.4);
 }
+
+/* Animated Hero Visual Styles */
+.lgh-hero {
+  --navy: #0b2a6b; --blue: #1f6fdb; --orange: #f7931e; --track: #bcd3f5;
+  position: relative; width: 100%; box-sizing: border-box;
+  padding: clamp(24px, 5vw, 56px) 16px;
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 60%, #eef4fd 100%);
+  overflow: hidden;
+}
+.lgh-wrap {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  align-items: center; gap: clamp(24px, 4vw, 64px);
+}
+.lgh-brand { display: grid; gap: clamp(14px, 2vw, 24px); justify-items: start; min-width: 0; }
+.lgh-logo { display: block; width: 100%; max-width: 520px; height: auto; overflow: visible; }
+.lgh-tagline {
+  margin: 0; max-width: 100%; color: var(--navy);
+  font-size: clamp(18px, 2.1vw, 26px); font-weight: 500; line-height: 1.35; text-wrap: balance;
+  animation: lgh-rise .9s cubic-bezier(.2,.8,.2,1) 2.3s both;
+}
+.lgh-tagline em { font-style: normal; font-weight: 700; color: var(--orange); }
+.lgh-route { display: block; width: 100%; height: auto; min-width: 0; overflow: visible; }
+
+/* logo mark assembly */
+.lgh-tri { transform-box: fill-box; transform-origin: center; animation: lgh-tri .9s cubic-bezier(.2,.8,.2,1) both; }
+.lgh-tri-orange { --dx: -46px; --dy: 30px;  animation-delay: .10s; }
+.lgh-tri-navy   { --dx:  46px; --dy: 40px;  animation-delay: .30s; }
+.lgh-tri-blue   { --dx:  46px; --dy: -40px; animation-delay: .50s; }
+@keyframes lgh-tri {
+  from { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.55) rotate(-8deg); }
+  to   { opacity: 1; transform: none; }
+}
+.lgh-tunisie { animation: lgh-fade .8s ease-out 1.9s both; }
+@keyframes lgh-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lgh-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* route */
+.lgh-line { stroke-dasharray: 1; stroke-dashoffset: 1; animation: lgh-draw 1.8s ease-in-out 1.2s forwards; }
+@keyframes lgh-draw { to { stroke-dashoffset: 0; } }
+.lgh-node { transform-box: fill-box; transform-origin: center; animation: lgh-pop .5s cubic-bezier(.2,.8,.2,1) both; }
+.lgh-n1 { animation-delay: 1.4s; } .lgh-n2 { animation-delay: 1.8s; } .lgh-n3 { animation-delay: 2.2s; } .lgh-n4 { animation-delay: 2.6s; }
+@keyframes lgh-pop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: none; } }
+.lgh-lab { font-size: 16px; font-weight: 600; fill: var(--navy); text-anchor: middle; animation: lgh-rise .6s ease-out both; }
+.lgh-l1 { animation-delay: 1.6s; } .lgh-l2 { animation-delay: 2.0s; } .lgh-l3 { animation-delay: 2.4s; } .lgh-l4 { animation-delay: 2.8s; }
+.lgh-ring { fill: none; stroke: var(--orange); stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; animation: lgh-ping 7s ease-out infinite; }
+.lgh-r1 { animation-delay: 3.3s; } .lgh-r2 { animation-delay: 5.28s; } .lgh-r3 { animation-delay: 7.27s; } .lgh-r4 { animation-delay: 9.25s; }
+@keyframes lgh-ping {
+  0% { opacity: .8; transform: scale(1); }
+  12% { opacity: 0; transform: scale(2.8); }
+  100% { opacity: 0; transform: scale(2.8); }
+}
+
+/* tablet and phone: stack, bigger route labels */
+@media (max-width: 900px) {
+  .lgh-wrap { grid-template-columns: minmax(0, 1fr); }
+  .lgh-brand { justify-items: center; text-align: center; }
+  .lgh-logo { max-width: 420px; }
+}
+@media (max-width: 640px) {
+  .lgh-lab { font-size: 22px; }
+  .lgh-node { r: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lgh-hero * { animation: none !important; }
+  .lgh-line { stroke-dashoffset: 0; }
+}
