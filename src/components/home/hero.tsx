@@ -157,7 +157,7 @@ export function Hero() {
           position: relative; box-sizing: border-box; width: 100%;
           padding: clamp(32px, 6vw, 80px) 16px;
           background: linear-gradient(180deg, #ffffff 0%, #f4f8ff 100%);
-          font-family: var(--font-manrope), sans-serif;
+          font-family: var(--font-heading), sans-serif;
           color: var(--navy);
           overflow: hidden;
         }
@@ -179,24 +179,24 @@ export function Hero() {
           display: inline-flex; align-items: center; gap: 8px;
           padding: 8px 14px; border-radius: 999px;
           background: var(--blue-50); border: 1px solid var(--blue-100);
-          font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--navy);
+          font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy);
         }
         .lgs-pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
 
         .lgs-title {
           margin: 0; max-width: 100%;
-          font-size: clamp(34px, 4.7vw, 60px); font-weight: 700; line-height: 1.12;
+          font-size: clamp(34px, 4.7vw, 60px); font-weight: 800; line-height: 1.12;
           letter-spacing: -0.01em; color: var(--navy); text-wrap: balance;
         }
         .lgs-title em { font-style: normal; color: var(--orange); }
         .lgs-nb { white-space: nowrap; }
-        .lgs-sub { margin: 0; max-width: 54ch; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.65; color: var(--slate); }
+        .lgs-sub { margin: 0; max-width: 54ch; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.65; color: var(--slate); font-family: var(--font-sans); }
         .lgs-cta { display: flex; flex-wrap: wrap; gap: 14px; }
 
         .lgs-btn {
           display: inline-flex; align-items: center; justify-content: center; gap: 10px;
           min-height: 52px; padding: 0 28px; border-radius: 999px;
-          font-size: 16px; font-weight: 600; text-decoration: none; cursor: pointer;
+          font-size: 16px; font-weight: 700; text-decoration: none; cursor: pointer;
           transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
         }
         .lgs-btn:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
@@ -206,7 +206,7 @@ export function Hero() {
         .lgs-btn-s:hover { border-color: var(--blue); transform: translateY(-2px); }
 
         .lgs-trust { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 22px; }
-        .lgs-trust li { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--slate); }
+        .lgs-trust li { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--slate); font-family: var(--font-sans); }
         .lgs-trust svg { width: 18px; height: 18px; flex: none; }
 
         .lgs-visual { min-width: 0; animation: lgs-fade 1s ease-out .15s both; }
@@ -239,11 +239,11 @@ export function Hero() {
         }
         .lgs-card .n {
           display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
-          font-size: 13px; font-weight: 700; background: var(--blue-50); color: var(--navy);
+          font-size: 13px; font-weight: 800; background: var(--blue-50); color: var(--navy);
           transition: background .3s, color .3s;
         }
-        .lgs-card .t { font-size: 16px; font-weight: 600; line-height: 1.2; color: var(--navy); overflow-wrap: break-word; }
-        .lgs-card .d { margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--slate); }
+        .lgs-card .t { font-size: 16px; font-weight: 700; line-height: 1.2; color: var(--navy); overflow-wrap: break-word; }
+        .lgs-card .d { margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--slate); font-family: var(--font-sans); }
         .lgs-card.is-on { border-color: var(--blue); }
         .lgs-card.is-on .n { background: var(--blue); color: #fff; }
         .lgs-card.is-now { border-color: var(--orange); transform: translateY(-6px); box-shadow: 0 16px 34px rgba(247,147,30,.25); }

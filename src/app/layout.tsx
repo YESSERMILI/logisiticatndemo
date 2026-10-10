@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Manrope, DM_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { Loader } from "@/components/loader";
 
-const manrope = Manrope({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -40,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${manrope.variable} ${dmMono.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${jakarta.variable} ${dmMono.variable} font-sans antialiased`}>
         <Loader />
         <Providers>
           {children}
