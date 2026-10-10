@@ -75,6 +75,7 @@ export const translations = {
     dashboard_kpi_3: "Colis en transit",
     dashboard_kpi_4: "Retours",
     dashboard_kpi_5: "Montant COD",
+    dashboard_cta: "Accéder au portail",
     
     faq_eyebrow: "FAQ",
     faq_title: "Questions fréquentes",
@@ -208,6 +209,7 @@ export const translations = {
     
     dashboard_title: "قم بقيادة عملياتك من لوحة تحكم واحدة",
     dashboard_illustrative: "معاينة توضيحية · بيانات افتراضية",
+    dashboard_cta: "دخول البوابة",
     
     faq_eyebrow: "الأسئلة الشائعة",
     faq_title: "الأسئلة المتكررة",
@@ -341,6 +343,7 @@ export const translations = {
     
     dashboard_title: "Pilot your operations from a single dashboard",
     dashboard_illustrative: "Illustrative preview · fictitious data",
+    dashboard_cta: "Access Portal",
     
     faq_eyebrow: "FAQ",
     faq_title: "Frequently Asked Questions",

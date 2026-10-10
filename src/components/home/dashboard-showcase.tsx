@@ -364,8 +364,8 @@ export function DashboardShowcase() {
                           </div>
                         ))}
                       </div>
-                      <Button variant="outline" className="w-full mt-10 rounded-2xl border-white/5 hover:bg-white/5 text-[10px] font-black uppercase tracking-widest h-12">
-                        Accéder au portail
+                      <Button className="w-full mt-10 rounded-full bg-orange hover:bg-orange/90 text-primary font-black uppercase tracking-widest h-12 border-none">
+                        {t('dashboard_cta' as any)}
                       </Button>
                    </div>
                 </div>
