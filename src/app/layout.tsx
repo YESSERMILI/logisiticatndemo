@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
+import { Loader } from "@/components/loader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,7 +33,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=DM+Mono:wght@500&display=swap" />
+      </head>
       <body className={`${inter.variable} font-sans`}>
+        <Loader />
         <Providers>
           {children}
         </Providers>
