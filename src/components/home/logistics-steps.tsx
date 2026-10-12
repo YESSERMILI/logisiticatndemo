@@ -1,11 +1,12 @@
+
 "use client";
 
 import { motion } from "framer-motion";
 import { useTranslation } from "@/hooks/use-translation";
 import { 
   ShoppingCart, Box, Package, Truck, MapPin, 
-  Banknote, RefreshCcw, Headphones, LayoutDashboard,
-  ArrowRight, Store, Sync, Inbox, Layers, CheckCircle
+  Banknote, RefreshCw, Headphones, LayoutDashboard,
+  ArrowRight, Store, PackageOpen, Layers, CheckCircle2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -14,15 +15,15 @@ export function LogisticsSteps() {
   const { t } = useTranslation();
 
   const steps = [
-    { id: 1, icon: Sync, key: "step_1", phase: "Intégration", time: "J-0" },
-    { id: 2, icon: Inbox, key: "step_2", phase: "Intégration", time: "Réception" },
+    { id: 1, icon: RefreshCw, key: "step_1", phase: "Intégration", time: "J-0" },
+    { id: 2, icon: PackageOpen, key: "step_2", phase: "Intégration", time: "Réception" },
     { id: 3, icon: Layers, key: "step_3", phase: "Stockage", time: "Entreposage" },
     { id: 4, icon: ShoppingCart, key: "step_4", phase: "Stockage", time: "Automatique" },
     { id: 5, icon: Package, key: "step_5", phase: "Distribution", time: "< 2h" },
     { id: 6, icon: MapPin, key: "step_6", phase: "Distribution", time: "Tri Hub" },
     { id: 7, icon: Truck, key: "step_7", phase: "Distribution", time: "24h / 48h" },
     { id: 8, icon: Banknote, key: "step_8", phase: "Trésorerie", time: "En espèces" },
-    { id: 9, icon: CheckCircle, key: "step_9", phase: "Trésorerie", time: "J+1" },
+    { id: 9, icon: CheckCircle2, key: "step_9", phase: "Trésorerie", time: "J+1" },
     { id: 10, icon: LayoutDashboard, key: "step_10", phase: "Trésorerie", time: "Pilotage" },
   ];
 
@@ -32,12 +33,15 @@ export function LogisticsSteps() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 reveal">
           <div className="max-w-2xl space-y-4">
             <span className="eyebrow">Notre Méthodologie</span>
-            <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-on-surface">Nos 10 étapes logistiques intégrées</h2>
+            <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-on-surface uppercase">Nos 10 étapes logistiques intégrées</h2>
             <p className="text-lg text-on-surface-variant font-medium">Un processus standardisé, automatisé et traçable étape par étape.</p>
           </div>
           <div className="flex flex-wrap gap-2">
              {['Intégration', 'Stockage', 'Distribution', 'Trésorerie'].map((p, i) => (
-               <span key={i} className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest ${i === 2 ? 'bg-secondary-container text-on-secondary shadow-sm' : 'bg-surface-container text-on-surface-variant'}`}>{p}</span>
+               <span key={i} className={cn(
+                 "px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest",
+                 i === 2 ? 'bg-secondary-container text-on-secondary shadow-sm' : 'bg-surface-container text-on-surface-variant'
+               )}>{p}</span>
              ))}
           </div>
         </div>
@@ -64,7 +68,7 @@ export function LogisticsSteps() {
         </div>
 
         <div className="mt-16 text-center reveal">
-           <Button className="btn-primary h-16 px-12 text-lg shadow-orange">
+           <Button className="btn-primary h-16 px-12 text-lg shadow-orange rounded-full bg-secondary-container text-on-secondary font-bold">
               Démarrer mon intégration
               <ArrowRight className="h-6 w-6 ml-2" />
            </Button>

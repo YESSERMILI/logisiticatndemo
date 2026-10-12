@@ -3,7 +3,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Package, Truck, Landmark, UserCheck, Inbox } from "lucide-react";
+import { Package, Truck, UserCheck, PackageOpen } from "lucide-react";
 
 export function HeroIllustration() {
   const [activeNode, setActiveNode] = useState(0);
@@ -24,22 +24,19 @@ export function HeroIllustration() {
 
   const nodes = [
     { label: "COMMANDE", x: "10.7%", y: "77.3%", icon: Package },
-    { label: "PRÉPARATION", x: "30.4%", y: "63.6%", icon: Inbox },
+    { label: "PRÉPARATION", x: "30.4%", y: "63.6%", icon: PackageOpen },
     { label: "EXPÉDITION", x: "69.6%", y: "38.2%", icon: Truck },
     { label: "LIVRAISON", x: "89.3%", y: "22.7%", icon: UserCheck },
   ];
 
   return (
     <div className="relative w-full aspect-[560/440] bg-[#07163F] rounded-[40px] overflow-hidden">
-      {/* Background Decor: Clouds and City Silhouette */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 560 440">
-           {/* Clouds */}
            <g className="animate-float-slow" style={{ opacity: 0.6 }}>
              <path d="M40 80 Q60 60 80 80 T120 80" fill="white" />
              <path d="M400 120 Q420 100 440 120 T480 120" fill="white" />
            </g>
-           {/* City Silhouette */}
            <path d="M0 440 L0 380 L40 380 L40 340 L80 340 L80 360 L140 360 L140 320 L200 320 L200 350 L260 350 L260 310 L340 310 L340 350 L420 350 L420 330 L500 330 L500 380 L560 380 L560 440 Z" fill="#131b2e" />
            <circle cx="280" cy="220" r="150" fill="white" fillOpacity="0.05" />
         </svg>
@@ -52,7 +49,6 @@ export function HeroIllustration() {
         role="img" 
         aria-label="Un camion Logistica suit la route de la commande à la livraison"
       >
-        {/* Dotted Route */}
         <path 
           id="route" 
           d="M60 340 C160 340 180 220 280 220 C380 220 400 120 500 100"
@@ -64,7 +60,6 @@ export function HeroIllustration() {
           opacity="0.3"
         />
 
-        {/* Orange Progress Line */}
         <path 
           d="M60 340 C160 340 180 220 280 220 C380 220 400 120 500 100" 
           pathLength="1"
@@ -84,7 +79,6 @@ export function HeroIllustration() {
           />
         </path>
 
-        {/* Truck Animation */}
         <g id="truck">
           <animateMotion 
             dur="8s" 
@@ -94,13 +88,11 @@ export function HeroIllustration() {
             <mpath href="#route"/>
           </animateMotion>
           
-          {/* Truck Body - Enhanced modern van */}
           <rect x="-24" y="-18" width="34" height="22" rx="4" fill="#2563EB"/>
           <rect x="-24" y="-8" width="34" height="3" fill="#fd761a"/>
           <path d="M10 -14 h12 l8 10 v8 h-20z" fill="#0B2A7A"/>
           <path d="M14 -10 h6 l5 6 h-11z" fill="#BFD4FF"/>
           
-          {/* Wheels with spin */}
           <g transform="translate(-10 6)">
             <g className="animate-spin-slow">
               <circle r="6" fill="#07163F" stroke="white" strokeWidth="1"/>
@@ -116,7 +108,6 @@ export function HeroIllustration() {
         </g>
       </svg>
 
-      {/* Overlay Glass Cards */}
       {nodes.map((node, i) => (
         <div 
           key={i}
@@ -127,7 +118,7 @@ export function HeroIllustration() {
           style={{ left: node.x, top: node.y }}
         >
           <div className={cn(
-            "glass-card px-4 py-2.5 rounded-2xl text-[10px] font-black text-center min-w-[110px] border-2",
+            "glass-card px-4 py-2.5 rounded-2xl text-[10px] font-black text-center min-w-[110px] border-2 bg-white/10 backdrop-blur-md",
             activeNode === i ? "border-secondary shadow-orange" : "border-white/10"
           )}>
             <div className={cn(
