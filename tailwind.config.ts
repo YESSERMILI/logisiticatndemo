@@ -36,12 +36,14 @@ const config = {
           DEFAULT: "#07163F",
           foreground: "#FFFFFF",
         },
-        secondary: {
+        navy: {
+          900: "#07163F",
+          700: "#0B2A7A",
+        },
+        blue: {
           500: "#2563EB",
           100: "#E6EEFF",
           50: "#F4F7FF",
-          DEFAULT: "#2563EB",
-          foreground: "#FFFFFF",
         },
         orange: {
           100: "#FFF0DD",
@@ -59,9 +61,9 @@ const config = {
         success: "#12B76A",
         warning: "#F79009",
         error: "#F04438",
-        muted: {
-          DEFAULT: "#9AA3B8",
-          foreground: "#5B6580",
+        secondary: {
+          DEFAULT: "#2563EB",
+          foreground: "#FFFFFF",
         },
         accent: {
           DEFAULT: "#FF8A1F",

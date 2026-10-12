@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -19,7 +18,7 @@ export function Commitments() {
   ];
 
   return (
-    <section id="services" className="py-24 bg-white" dir={isRTL ? "rtl" : "ltr"}>
+    <section id="engagements" className="py-24 bg-white" dir={isRTL ? "rtl" : "ltr"}>
       <div className="container px-4 md:px-8 mx-auto">
         <div className="text-center mb-16">
           <motion.p 
@@ -52,7 +51,6 @@ export function Commitments() {
               whileHover={{ y: -8 }}
               className={cn(
                 "bg-white p-8 rounded-[28px] border border-primary/5 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary/10 flex flex-col items-center text-center",
-                index >= 3 && "md:col-span-1.5 lg:col-span-1" // Centering logic for bottom row on certain breakpoints
               )}
             >
               <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-primary mb-6">
@@ -61,7 +59,7 @@ export function Commitments() {
               <h3 className="text-xl font-bold text-primary mb-3 leading-tight uppercase">
                 {t(`commitments_${item.key}` as any)}
               </h3>
-              <p className="text-slate-text text-[15px] leading-relaxed">
+              <p className="text-gray-600 text-[15px] leading-relaxed">
                 {t(`commitments_${item.key}_desc` as any)}
               </p>
             </motion.div>

@@ -65,7 +65,7 @@
   }
 
   .btn-secondary {
-    @apply h-14 px-8 rounded-full border-2 border-primary-700 text-primary-700 font-bold hover:bg-secondary-50 transition-all active:scale-95 flex items-center justify-center gap-2;
+    @apply h-14 px-8 rounded-full border-2 border-primary-700 text-primary-700 font-bold hover:bg-blue-50 transition-all active:scale-95 flex items-center justify-center gap-2;
   }
 
   .reveal {

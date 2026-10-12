@@ -13,7 +13,7 @@ import { Footer } from "@/components/layout/footer";
 import { BentoServices } from "@/components/home/services-bento";
 import { PricingEstimator } from "@/components/home/pricing-estimator";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
@@ -62,18 +62,18 @@ export default function HomePage() {
                   Libérer les e-commerçants tunisiens de la logistique.
                 </h2>
                 <p className="text-xl text-gray-600 font-medium mb-10 leading-relaxed">
-                  Derrière chaque commande, il y a un colis à préparer, une livraison à suivre, de l'argent à encaisser. Nous prenons tout cela en charge pour que vous gardiez votre énergie pour votre marque.
+                  Derrière chaque commande, il y a un colis à préparer, une livraison à suivre, de l'argent à encaisser. Nous prenons tout cela en charge, avec une équipe locale et un outil simple, pour que vous gardiez votre énergie pour votre croissance.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   {['Simple', 'Fiable', 'Fièrement tunisien'].map(pill => (
-                    <span key={pill} className="px-6 py-3 bg-secondary-50 text-secondary-500 rounded-2xl font-black uppercase text-[10px] tracking-widest border border-secondary-100">
+                    <span key={pill} className="px-6 py-3 bg-blue-50 text-blue-500 rounded-2xl font-black uppercase text-[10px] tracking-widest border border-blue-100">
                       {pill}
                     </span>
                   ))}
                 </div>
               </div>
               <div className="relative reveal" style={{ transitionDelay: '200ms' }}>
-                 <div className="bg-secondary-50 rounded-[48px] p-12 aspect-square flex items-center justify-center border border-secondary-100">
+                 <div className="bg-blue-50 rounded-[48px] p-12 aspect-square flex items-center justify-center border border-blue-100">
                     <svg viewBox="0 0 400 400" className="w-full h-full max-w-[320px]">
                         <path id="mission-route" d="M50 300 Q100 300 150 200 Q200 100 350 100" fill="none" stroke="#9DB7F5" strokeWidth="4" strokeLinecap="round" strokeDasharray="2 10" />
                         <circle r="30" cx="50" cy="300" fill="#07163F" opacity="0.1" />
@@ -107,7 +107,7 @@ export default function HomePage() {
         {/* S11. Our commitments */}
         <Commitments />
 
-        {/* S12. Geographic Coverage Placeholder */}
+        {/* S12. Geographic Coverage */}
         <section id="couverture" className="section-padding bg-gray-50 text-center">
             <div className="container mx-auto px-4">
               <div className="max-w-3xl mx-auto mb-20 reveal">
@@ -115,9 +115,9 @@ export default function HomePage() {
                 <h2 className="text-4xl md:text-5xl font-heading font-extrabold mb-8 uppercase">Couverture Géographique</h2>
                 <p className="text-lg text-gray-600 font-medium">Nous livrons dans tous les gouvernorats de Tunisie [À CONFIRMER]</p>
               </div>
-              <div className="max-w-5xl mx-auto p-12 md:p-20 border-2 border-dashed border-secondary-200 rounded-[56px] bg-white shadow-e2 reveal">
+              <div className="max-w-5xl mx-auto p-12 md:p-20 border-2 border-dashed border-blue-200 rounded-[56px] bg-white shadow-e2 reveal">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
-                   <div className="aspect-[3/4] bg-secondary-50 rounded-3xl flex items-center justify-center border border-secondary-100">
+                   <div className="aspect-[3/4] bg-blue-50 rounded-3xl flex items-center justify-center border border-blue-100">
                       <p className="text-gray-400 font-bold uppercase tracking-widest text-xs italic">Carte interactive en cours d'intégration</p>
                    </div>
                    <div className="space-y-8 text-left">

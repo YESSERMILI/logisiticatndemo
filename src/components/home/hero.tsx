@@ -11,10 +11,10 @@ export function Hero() {
   const isRTL = language === "ar";
 
   return (
-    <section className="relative pt-44 pb-20 overflow-hidden bg-secondary-50" dir={isRTL ? "rtl" : "ltr"}>
+    <section className="relative pt-44 pb-20 overflow-hidden bg-blue-50" dir={isRTL ? "rtl" : "ltr"}>
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary-100 rounded-full blur-[100px]" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-100 rounded-full blur-[100px]" />
         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-orange-100 rounded-full blur-[120px]" />
       </div>
 
@@ -41,12 +41,12 @@ export function Hero() {
               e-commerce, de la commande à la <br className="hidden md:block" />
               <span className="relative inline-block text-orange-500">
                 livraison.
-                <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 20" fill="none">
+                <svg className="absolute -bottom-2 left-0 w-full h-3 text-orange-500" fill="none" preserveAspectRatio="none" viewBox="0 0 300 12">
                   <motion.path 
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
                     transition={{ duration: 1, delay: 1 }}
-                    d="M5 15Q150 5 295 15" stroke="currentColor" strokeWidth="4" strokeLinecap="round"
+                    d="M2 9C75 3 225 3 298 9" stroke="currentColor" strokeWidth="5" strokeLinecap="round"
                   />
                 </svg>
               </span>

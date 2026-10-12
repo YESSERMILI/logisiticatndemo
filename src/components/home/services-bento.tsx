@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslation } from "@/hooks/use-translation";
-import { Box, Package, Truck, Banknote, RotateCcw, Headphones, ArrowRight, LayoutDashboard } from "lucide-react";
+import { Box, Package, Truck, Banknote, RotateCcw, Headphones, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -9,7 +9,7 @@ export function BentoServices() {
   const { t } = useTranslation();
 
   const services = [
-    { title: t('service_stock'), icon: Box, size: "col-span-2 row-span-2", color: "bg-secondary-50 text-secondary-500", illustration: "boxes" },
+    { title: t('service_stock'), icon: Box, size: "col-span-2 row-span-2", color: "bg-blue-50 text-blue-500", illustration: "boxes" },
     { title: t('service_prep'), icon: Package, size: "col-span-1 row-span-1", color: "bg-orange-100 text-orange-600", illustration: "tape" },
     { title: t('service_shipping'), icon: Truck, size: "col-span-1 row-span-2", color: "bg-primary-900 text-white", illustration: "map" },
     { title: t('service_cod'), icon: Banknote, size: "col-span-1 row-span-1", color: "bg-emerald-50 text-emerald-600", illustration: "coins" },

@@ -1,18 +1,18 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { useTranslation } from "@/hooks/use-translation";
 import { useRef } from "react";
 import { 
   ShoppingCart, Box, Package, Truck, MapPin, 
   Banknote, RefreshCcw, Headphones, LayoutDashboard,
-  CheckCircle2, ArrowRight, Store
+  ArrowRight, Store
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 export function LogisticsSteps() {
-  const { t, language } = useTranslation();
+  const { t } = useTranslation();
   const containerRef = useRef(null);
   
   const { scrollYProgress } = useScroll({

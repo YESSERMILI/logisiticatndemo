@@ -39,7 +39,7 @@ export function HeroIllustration() {
         role="img" 
         aria-label="Un camion Logistica suit la route de la commande à la livraison"
       >
-        {/* Sky / City Silhouette Decor */}
+        {/* Background Skyline */}
         <g opacity="0.1">
           <path d="M0 380 h560 v60 h-560z" fill="#07163F" />
           <path d="M50 380 v-40 h30 v40z M120 380 v-60 h40 v60z M300 380 v-30 h50 v30z M450 380 v-50 h40 v50z" fill="#07163F" />
