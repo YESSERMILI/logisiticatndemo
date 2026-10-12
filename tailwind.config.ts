@@ -39,7 +39,7 @@ const config: Config = {
         },
         secondary: {
           DEFAULT: "#9d4300",
-          container: "#fd761a", // Logistics Amber
+          container: "#FF8A1F", // Logistics Amber
           fixed: "#ffdbca",
           "fixed-dim": "#ffb690",
           foreground: "#ffffff",
@@ -111,19 +111,19 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        marquee: {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(-50%)" },
-        },
         "dash-flow": {
           to: { "stroke-dashoffset": "-24" }
+        },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" }
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        marquee: "marquee 40s linear infinite",
         "dash-flow": "dash-flow 2s linear infinite",
+        "float": "float 5s ease-in-out infinite",
       },
     },
   },

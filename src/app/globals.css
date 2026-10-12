@@ -30,43 +30,43 @@
 
 @layer components {
   .glassmorphic {
-    @apply bg-white/80 backdrop-blur-xl border border-white/40 shadow-xl;
-  }
-  
-  .route-line {
-    background-image: radial-gradient(circle, #FF8A1F 1.5px, transparent 1.5px);
-    background-size: 12px 12px;
+    @apply bg-white/80 backdrop-blur-xl border border-white/40 shadow-e1;
   }
 
   .text-glow {
     text-shadow: 0 0 20px rgba(253, 118, 26, 0.2);
   }
-}
 
-body {
-  @apply bg-background text-foreground antialiased;
-  font-feature-settings: "cv05" 1, "cv08" 1, "ss01" 1;
-}
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-primary/10 rounded-full hover:bg-primary/20 transition-colors;
-}
-
-@keyframes dash-scroll {
-  to {
-    stroke-dashoffset: -20;
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.animate-dash {
-  stroke-dasharray: 5, 5;
-  animation: dash-scroll 1s linear infinite;
+body {
+  @apply bg-background text-foreground antialiased selection:bg-secondary/20;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-surface;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/10 rounded-full hover:bg-secondary/30 transition-colors;
+}
+
+.route-line-bg {
+  background-image: radial-gradient(circle, #FF8A1F 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.05;
 }
