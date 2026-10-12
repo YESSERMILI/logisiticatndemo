@@ -5,13 +5,15 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "@/hooks/use-translation";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { 
   ArrowRight, Package, Warehouse, Truck, 
   RefreshCcw, Headset, CheckCircle2, ChevronDown, Wallet, Box,
   LineChart, Network, GitFork, XCircle, Store, Bike, BellRing,
-  HelpCircle, ShieldCheck, Zap, Globe, Star, Mail, Phone, MessageCircle, MapPin
+  HelpCircle, ShieldCheck, Zap, Globe, Star, Mail, Phone, MessageCircle, MapPin,
+  Search, PackageOpen, Layers, ShoppingCart, Banknote, LayoutDashboard, Radar,
+  Clock, AlertTriangle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/logo";
@@ -56,7 +58,7 @@ export default function HomePage() {
       
       <main className="flex-grow pt-20">
         {/* S3: Hero Section (55/45) */}
-        <section className="relative py-20 lg:py-32 overflow-hidden bg-gradient-to-b from-surface to-white">
+        <section className="relative py-20 lg:py-32 overflow-hidden bg-gradient-to-b from-surface via-surface-container-low to-surface">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-12 gap-16 items-center">
               <div className="lg:col-span-7 reveal space-y-8">
@@ -66,11 +68,11 @@ export default function HomePage() {
                     {language === 'ar' ? 'اللوجستيك متاعك، أوضح وأسهل' : 'Logistique E-commerce · Tunisie'}
                   </span>
                 </div>
-                <h1 className="text-4xl lg:text-6xl font-extrabold text-on-surface leading-tight tracking-tight uppercase">
+                <h1 className="text-4xl lg:text-7xl font-extrabold text-on-surface leading-[1.1] tracking-tight uppercase">
                   {language === 'ar' ? (
                     <>من الكوموند حتى للتوصيل، <span className="text-secondary-container underline decoration-secondary-container/30">كل شي منظّم</span> وبكل سهولة.</>
                   ) : (
-                    <>De la commande à la livraison, <span className="text-secondary-container underline decoration-secondary-container/30">tout est fluide</span>.</>
+                    <>Votre logistique <br className="hidden md:block" /> e-commerce, de la commande à la <span className="text-secondary-container relative inline-block">livraison<svg className="absolute -bottom-2 left-0 w-full h-3 text-secondary-container/40" fill="none" preserveAspectRatio="none" viewBox="0 0 300 12"><path d="M2 9C75 3 225 3 298 9" stroke="currentColor" strokeWidth="5" strokeLinecap="round"/></svg></span>.</>
                   )}
                 </h1>
                 <p className="text-lg lg:text-xl text-on-surface-variant font-medium leading-relaxed max-w-xl">
@@ -90,8 +92,8 @@ export default function HomePage() {
                 <div className="max-w-2xl mt-12 p-6 rounded-3xl bg-white shadow-e3 border border-surface-container-high/60">
                   <div className="flex items-center justify-between mb-4">
                     <span className="font-bold text-on-surface text-sm flex items-center gap-2 uppercase tracking-widest">
-                      <Zap className="h-4 w-4 text-secondary-container" />
-                      {language === 'ar' ? 'تتبع الطلبية في الوقت الفعلي' : 'Suivi en temps réel'}
+                      <Radar className="h-4 w-4 text-secondary-container" />
+                      {language === 'ar' ? 'تتبع الطلبية في الوقت الفعلي' : 'Module de Traçabilité en Direct'}
                     </span>
                     <span className="text-[10px] font-black bg-surface-container px-2.5 py-1 rounded text-outline uppercase tracking-widest">
                       DEMO
@@ -258,7 +260,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* S20: Contact Form (Multi-step) */}
+        {/* S20: Contact Form */}
         <section className="py-24 bg-white" id="contact">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-24 items-start">
