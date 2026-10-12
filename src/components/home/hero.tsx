@@ -170,7 +170,7 @@ export function Hero() {
         .lgs-pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
         .lgs-title {
           margin: 0; max-width: 100%;
-          font-size: clamp(28px, 3.8vw, 46px); font-weight: 800; line-height: 1.15;
+          font-size: clamp(28px, 3.2vw, 42px); font-weight: 800; line-height: 1.15;
           letter-spacing: 0.01em; color: var(--navy); text-wrap: balance;
           text-transform: uppercase;
         }
