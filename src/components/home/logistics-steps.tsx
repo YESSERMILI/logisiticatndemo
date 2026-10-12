@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -66,12 +65,12 @@ export function LogisticsSteps() {
   return (
     <section id="etapes" className="py-24 bg-white" dir={isRTL ? "rtl" : "ltr"}>
       <div className="container px-4 md:px-8 mx-auto max-w-7xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <motion.p 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-orange font-bold uppercase tracking-[0.3em] text-[11px] mb-3"
+            className="text-orange font-black uppercase tracking-[0.4em] text-[11px] mb-4"
           >
             NOTRE MÉTHODOLOGIE
           </motion.p>
@@ -79,11 +78,11 @@ export function LogisticsSteps() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-black text-primary tracking-tight uppercase"
+            className="text-4xl md:text-5xl font-black text-primary tracking-tight uppercase"
           >
             {t('steps_title')}
           </motion.h2>
-          <p className="mt-4 text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-slate-text font-medium max-w-2xl mx-auto">
             {t('steps_subtitle')}
           </p>
         </div>
@@ -100,7 +99,7 @@ export function LogisticsSteps() {
             >
               <div className="mb-10 relative flex items-center lg:justify-start">
                 <span className={cn(
-                  "px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.2em] text-white shadow-sm relative z-10",
+                  "px-5 py-2 rounded-full text-[11px] font-black tracking-[0.25em] text-white shadow-lg relative z-10",
                   phase.color
                 )}>
                   {phase.title}
@@ -108,10 +107,10 @@ export function LogisticsSteps() {
                 
                 {phaseIdx < phases.length - 1 && (
                   <div className={cn(
-                    "hidden lg:flex items-center text-primary/10 absolute top-1/2 -translate-y-1/2",
+                    "hidden lg:flex items-center text-primary/5 absolute top-1/2 -translate-y-1/2",
                     isRTL ? "-left-10" : "-right-10"
                   )}>
-                    <ArrowRight className={cn("h-5 w-5", isRTL && "rotate-180")} />
+                    <ArrowRight className={cn("h-6 w-6", isRTL && "rotate-180")} />
                   </div>
                 )}
               </div>
@@ -119,20 +118,20 @@ export function LogisticsSteps() {
               <div className="space-y-8 relative">
                 {/* Connecting line */}
                 <div className={cn(
-                  "absolute top-2 bottom-2 w-px bg-primary/5",
+                  "absolute top-2 bottom-2 w-[2px] bg-slate-100",
                   isRTL ? "right-[20px]" : "left-[20px]"
                 )} />
 
                 {phase.steps.map((step) => (
                   <div key={step.id} className="relative flex items-start gap-6 group">
-                    <div className="relative z-10 shrink-0 w-10 h-10 rounded-xl bg-white border border-primary/10 shadow-sm flex items-center justify-center text-sm font-black text-primary group-hover:border-orange/50 transition-colors duration-300">
+                    <div className="relative z-10 shrink-0 w-10 h-10 rounded-xl bg-white border-2 border-slate-100 shadow-sm flex items-center justify-center text-sm font-black text-primary group-hover:border-orange group-hover:text-orange transition-all duration-300">
                       {step.id}
                     </div>
 
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2.5">
-                        <step.icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
-                        <h3 className="text-[15px] font-bold text-primary leading-tight uppercase tracking-tight">
+                      <div className="flex items-center gap-3 mb-2">
+                        <step.icon className="h-5 w-5 text-primary group-hover:text-orange transition-colors" strokeWidth={2} />
+                        <h3 className="text-[15px] font-extrabold text-primary leading-tight uppercase">
                           {t(`${step.key}_title` as any)}
                         </h3>
                       </div>

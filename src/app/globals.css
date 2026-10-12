@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 220 33% 98%;
     --foreground: 222 47% 11%;
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
@@ -23,7 +23,7 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 33 93% 54%;
-    --radius: 20px;
+    --radius: 24px;
   }
 
   * {
@@ -43,36 +43,30 @@
 
 @layer components {
   .container {
-    @apply max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8;
-  }
-  
-  .section-padding {
-    @apply py-16 md:py-24;
+    @apply max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  .btn-primary {
-    @apply h-12 px-8 rounded-full bg-orange text-primary font-bold transition-all hover:translate-y-[-2px] hover:shadow-lg active:translate-y-0 focus:ring-4 focus:ring-orange/30 outline-none;
+  .glassmorphic {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(11,42,107,0.05)];
   }
 
-  .btn-secondary {
-    @apply h-12 px-8 rounded-full border-2 border-primary bg-white text-primary font-bold transition-all hover:bg-primary/5 hover:translate-y-[-2px] active:translate-y-0 focus:ring-4 focus:ring-primary/10 outline-none;
+  .text-glow {
+    text-shadow: 0 0 20px rgba(247, 147, 30, 0.2);
+  }
+
+  .glow-on-hover {
+    @apply transition-all duration-300 hover:shadow-[0_0_30px_rgba(247,147,30,0.15)] hover:border-orange/30;
   }
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.02);
+  background: transparent;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(247, 148, 29, 0.4);
+  @apply bg-primary/10 rounded-full hover:bg-primary/20 transition-colors;
 }
