@@ -9,10 +9,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { 
   ArrowRight, Package, Warehouse, Truck, 
-  RefreshCcw, Headset, CheckCircle2, ChevronDown, Wallet
+  RefreshCcw, Headset, CheckCircle2, ChevronDown, Wallet, Box,
+  LineChart, Network, GitFork, XCircle, Store, Bike, BellRing,
+  HelpCircle, ShieldCheck, Zap, Globe, Star, Mail, Phone, MessageCircle, MapPin
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/logo";
+import { HeroIllustration } from "@/components/home/hero-illustration";
 
 export default function HomePage() {
   const { t, language } = useTranslation();
@@ -40,7 +43,9 @@ export default function HomePage() {
       <div className="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center gap-6">
         <Logo className="h-16" />
         <div className="loader-track"><span></span></div>
-        <p className="text-sm font-medium text-primary/60">{language === 'ar' ? 'نحضّرولك التجربة...' : 'Préparation de l\'expérience...'}</p>
+        <p className="text-sm font-medium text-primary/60">
+          {language === 'ar' ? 'نحضّرولك التجربة...' : 'Préparation de l\'expérience...'}
+        </p>
       </div>
     );
   }
@@ -50,96 +55,100 @@ export default function HomePage() {
       <Navbar />
       
       <main className="flex-grow pt-20">
-        {/* S3: Hero Section */}
+        {/* S3: Hero Section (55/45) */}
         <section className="relative py-20 lg:py-32 overflow-hidden bg-gradient-to-b from-surface to-white">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="reveal space-y-8">
+            <div className="grid lg:grid-cols-12 gap-16 items-center">
+              <div className="lg:col-span-7 reveal space-y-8">
                 <div className="eyebrow">
                   <span className="eyebrow-dot"></span>
-                  <span>{t('hero_eyebrow')}</span>
+                  <span className="uppercase tracking-[0.2em] font-bold text-[11px]">
+                    {language === 'ar' ? 'اللوجستيك متاعك، أوضح وأسهل' : 'Logistique E-commerce · Tunisie'}
+                  </span>
                 </div>
                 <h1 className="text-4xl lg:text-6xl font-extrabold text-on-surface leading-tight tracking-tight uppercase">
                   {language === 'ar' ? (
-                    <>من الكوموند حتى للتوصيل، <span className="text-secondary-container">كل شي منظّم</span> وبكل سهولة.</>
+                    <>من الكوموند حتى للتوصيل، <span className="text-secondary-container underline decoration-secondary-container/30">كل شي منظّم</span> وبكل سهولة.</>
                   ) : (
-                    <>De la commande à la livraison, <span className="text-secondary-container">tout est fluide</span>.</>
+                    <>De la commande à la livraison, <span className="text-secondary-container underline decoration-secondary-container/30">tout est fluide</span>.</>
                   )}
                 </h1>
                 <p className="text-lg lg:text-xl text-on-surface-variant font-medium leading-relaxed max-w-xl">
                   {t('hero_lead')}
                 </p>
                 <div className="flex flex-wrap gap-4 pt-4">
-                  <Button className="btn-primary text-lg h-16 px-10">
+                  <Button className="btn-primary text-lg h-16 px-10 rounded-full bg-secondary-container text-white font-bold shadow-orange hover:bg-secondary transition-all">
                     {t('hero_cta_demo')}
                     <ArrowRight className={cn("h-5 w-5", language === 'ar' ? 'rotate-180' : '')} />
                   </Button>
-                  <Button variant="outline" className="h-16 px-10 rounded-full border-2 font-bold text-lg">
+                  <Button variant="outline" className="h-16 px-10 rounded-full border-2 border-primary font-bold text-lg text-primary hover:bg-surface-container">
                     {t('hero_cta_see_how')}
                   </Button>
                 </div>
-                <div className="flex items-center gap-3 pt-4 text-sm text-on-surface-variant">
-                  <span className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">✓</span>
-                  <span>{t('hero_proof')}</span>
-                  <span className="w-1 h-1 rounded-full bg-surface-container mx-2"></span>
-                  <span className="text-[10px] uppercase font-bold tracking-widest">{t('no_claims')}</span>
+
+                {/* Tracking Widget */}
+                <div className="max-w-2xl mt-12 p-6 rounded-3xl bg-white shadow-e3 border border-surface-container-high/60">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="font-bold text-on-surface text-sm flex items-center gap-2 uppercase tracking-widest">
+                      <Zap className="h-4 w-4 text-secondary-container" />
+                      {language === 'ar' ? 'تتبع الطلبية في الوقت الفعلي' : 'Suivi en temps réel'}
+                    </span>
+                    <span className="text-[10px] font-black bg-surface-container px-2.5 py-1 rounded text-outline uppercase tracking-widest">
+                      DEMO
+                    </span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <div className="relative flex-grow">
+                      <Search className="absolute left-3.5 top-3.5 h-5 w-5 text-outline" />
+                      <input 
+                        type="text" 
+                        placeholder={language === 'ar' ? 'رقم التتبع' : 'Numéro de suivi'} 
+                        className="w-full pl-11 pr-4 py-3.5 bg-surface-container-low rounded-xl text-sm font-bold text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary-container transition-all"
+                      />
+                    </div>
+                    <Button className="bg-primary hover:bg-on-surface text-on-primary rounded-xl h-auto py-3.5 px-8 font-black uppercase text-xs tracking-widest shadow-sm">
+                      {language === 'ar' ? 'تتبع' : 'Suivre'}
+                    </Button>
+                  </div>
                 </div>
               </div>
 
-              {/* Hero Visual: Dashboard Preview */}
-              <div className="reveal reveal-delay-1 relative lg:h-[500px]">
-                <div className="absolute inset-0 bg-secondary-container/5 rounded-full blur-[100px] -z-10" />
-                <div className="glassmorphic rounded-3xl p-8 border-white/40 shadow-2xl relative overflow-hidden">
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-xs font-bold">L</div>
-                      <div>
-                        <p className="font-bold text-sm">Dashboard Logistica</p>
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-widest">Données de démo</p>
-                      </div>
-                    </div>
-                    <span className="px-2 py-1 rounded bg-secondary-container/10 text-secondary-container text-[10px] font-black tracking-widest">DEMO</span>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-4 mb-10">
-                    {[
-                      { l: language === 'ar' ? 'كوموندات' : 'Commandes', v: '24', c: 'blue' },
-                      { l: language === 'ar' ? 'في التحضير' : 'En préparation', v: '08', c: 'orange' },
-                      { l: language === 'ar' ? 'في الإرسال' : 'En transit', v: '12', c: 'green' },
-                    ].map((s, i) => (
-                      <div key={i} className="p-4 rounded-2xl bg-white/50 border border-white/20 shadow-sm">
-                        <p className="text-[10px] text-muted-foreground uppercase font-bold mb-1">{s.l}</p>
-                        <p className="text-2xl font-black">{s.v}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="space-y-6">
-                    <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-                      <span className="w-1 h-4 bg-secondary-container"></span>
-                      Suivi d'un colis test
-                    </p>
-                    <div className="relative space-y-4">
-                      {[
-                        { t: t('service_stock'), s: '09:12', d: true },
-                        { t: t('service_prep'), s: '09:26', d: true },
-                        { t: language === 'ar' ? 'الإرسال والمتابعة' : 'Expédition', s: 'En cours', a: true },
-                        { t: t('service_shipping'), s: '--' },
-                      ].map((st, i) => (
-                        <div key={i} className={cn("flex items-start gap-4 transition-opacity", !st.d && !st.a && "opacity-40")}>
-                          <div className={cn("w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0", st.d ? "bg-emerald-500 text-white" : st.a ? "bg-secondary-container text-white animate-pulse" : "bg-white border")}>
-                            {st.d ? '✓' : i + 1}
-                          </div>
-                          <div className="flex-grow -mt-1">
-                            <p className="text-sm font-bold">{st.t}</p>
-                            <p className="text-[10px] text-muted-foreground">{st.s}</p>
-                          </div>
-                        </div>
-                      ))}
-                      <div className="absolute left-[11px] rtl:right-[11px] top-4 bottom-4 w-[2px] bg-surface-container -z-10" />
-                    </div>
-                  </div>
+              {/* Hero Visual: Isometric Scene */}
+              <div className="lg:col-span-5 reveal reveal-delay-1 relative">
+                <div className="bg-primary rounded-[48px] p-1 shadow-2xl relative group overflow-hidden border border-white/10">
+                  <HeroIllustration />
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* S4: Trust Strip */}
+        <section className="bg-white border-y border-gray-100 py-16">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-[1fr,1.6fr] gap-20 items-center">
+              <div className="reveal">
+                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-secondary mb-6">
+                  {language === 'ar' ? 'شركاء النجاح' : 'Ils nous font confiance'}
+                </p>
+                <div className="flex gap-8 overflow-hidden opacity-40 grayscale">
+                   <div className="font-bold text-xl uppercase tracking-tighter">Merchant.TN</div>
+                   <div className="font-bold text-xl uppercase tracking-tighter">E-Shop.DZ</div>
+                   <div className="font-bold text-xl uppercase tracking-tighter">BioStyle</div>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+                {[
+                  { l: language === 'ar' ? 'كوموندات' : 'Commandes', v: '50 000+', c: 'text-primary' },
+                  { l: language === 'ar' ? 'نسبة النجاح' : 'Taux de succès', v: '98%', c: 'text-secondary-container' },
+                  { l: language === 'ar' ? 'تغطية' : 'Couverture', v: '24/24', c: 'text-primary' },
+                  { l: language === 'ar' ? 'سرعة' : 'Délai', v: '< 2h', c: 'text-secondary-container' },
+                ].map((s, i) => (
+                  <div key={i} className="reveal text-center lg:text-left">
+                    <p className={cn("text-3xl font-black mb-1", s.c)}>{s.v}</p>
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{s.l}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -148,13 +157,13 @@ export default function HomePage() {
         {/* S7: Services Grid */}
         <section className="py-24 bg-surface-container-low/30" id="solutions">
           <div className="container mx-auto px-4">
-            <div className="section-heading reveal mb-16">
+            <div className="section-heading reveal mb-16 max-w-3xl">
               <div className="eyebrow">
                 <span className="eyebrow-dot"></span>
-                <span>{t('solutions_eyebrow')}</span>
+                <span className="uppercase tracking-[0.2em] font-bold text-[11px]">{t('solutions_eyebrow')}</span>
               </div>
-              <h2 className="text-4xl lg:text-5xl font-extrabold text-on-surface mb-6 uppercase">{t('solutions_title')}</h2>
-              <p className="text-lg text-on-surface-variant max-w-2xl">{t('solutions_lead')}</p>
+              <h2 className="text-4xl lg:text-5xl font-extrabold text-on-surface mb-6 uppercase tracking-tight">{t('solutions_title')}</h2>
+              <p className="text-lg text-on-surface-variant leading-relaxed">{t('solutions_lead')}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -175,24 +184,6 @@ export default function HomePage() {
                   <p className="text-sm text-on-surface-variant leading-relaxed">{s.desc}</p>
                 </div>
               ))}
-              <div className="reveal lg:col-span-3 p-8 rounded-3xl bg-primary-container text-white flex flex-col lg:flex-row items-center justify-between gap-8 overflow-hidden relative">
-                <div className="relative z-10">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
-                      <RefreshCcw className="h-6 w-6 text-secondary-container" />
-                    </div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-secondary-container">Étape 07</span>
-                  </div>
-                  <h3 className="text-2xl font-bold uppercase mb-2">{t('service_returns')}</h3>
-                  <p className="text-primary-fixed-dim max-w-md">{t('service_returns_desc')}</p>
-                </div>
-                <Button className="btn-primary h-16 px-10 relative z-10 shrink-0">
-                  {t('create_account')}
-                </Button>
-                <div className="absolute -bottom-20 -right-20 opacity-5 pointer-events-none">
-                  <RefreshCcw className="w-64 h-64" />
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -202,9 +193,9 @@ export default function HomePage() {
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-5 gap-16 items-center">
               <div className="lg:col-span-2 reveal space-y-8">
-                <div className="eyebrow eyebrow-light">
-                  <span className="eyebrow-dot"></span>
-                  <span>{t('dashboard_eyebrow')}</span>
+                <div className="eyebrow bg-white/10">
+                  <span className="eyebrow-dot bg-secondary-container"></span>
+                  <span className="text-secondary-container font-bold uppercase tracking-widest">{t('dashboard_eyebrow')}</span>
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-extrabold uppercase leading-tight">
                   {t('dashboard_title')}
@@ -220,13 +211,10 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
-                <Button className="btn-primary h-16 px-10 w-full lg:w-auto">
+                <Button className="btn-primary h-16 px-10 w-full lg:w-auto bg-secondary-container text-white rounded-full font-bold">
                   {t('try_dashboard')}
                   <ArrowRight className={cn("h-5 w-5", language === 'ar' ? 'rotate-180' : '')} />
                 </Button>
-                <p className="text-[10px] text-white/40 uppercase tracking-widest italic pt-2">
-                  Version démonstration — Données non contractuelles
-                </p>
               </div>
 
               <div className="lg:col-span-3 reveal reveal-delay-1 relative">
@@ -237,12 +225,11 @@ export default function HomePage() {
                       <span className="w-3 h-3 rounded-full bg-amber-500/80"></span>
                       <span className="w-3 h-3 rounded-full bg-emerald-500/80"></span>
                     </div>
-                    <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Logistica Workspace v3.0</p>
+                    <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Logistica Portal v3.4</p>
                   </div>
-
                   <div className="grid grid-cols-2 gap-4">
                     <div className="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
-                      <span className="text-[10px] text-white/50 uppercase font-bold tracking-widest">{t('nav_solutions')}</span>
+                      <span className="text-[10px] text-white/50 uppercase font-bold tracking-widest">{language === 'ar' ? 'الكوموندات' : 'Commandes'}</span>
                       <p className="text-3xl font-black">124</p>
                     </div>
                     <div className="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
@@ -250,23 +237,19 @@ export default function HomePage() {
                       <p className="text-3xl font-black text-secondary-container">18</p>
                     </div>
                   </div>
-
-                  <div className="p-6 rounded-2xl bg-white/5 border border-white/5 space-y-6">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-black uppercase tracking-widest">{language === 'ar' ? 'نظرة على المسار' : 'Suivi des flux'}</span>
-                      <span className="text-[10px] text-white/20">7 DERNIERS JOURS</span>
-                    </div>
+                  <div className="p-6 rounded-2xl bg-white/5 border border-white/5 space-y-4">
+                    <span className="text-xs font-bold uppercase tracking-widest text-white/60">{language === 'ar' ? 'الأداء الأسبوعي' : 'Performance Hebdo'}</span>
                     <div className="h-32 w-full flex items-end gap-2">
-                      {[40, 65, 52, 85, 45, 95, 70].map((h, i) => (
-                        <div key={i} className="flex-1 bg-secondary-container/20 rounded-t-lg relative group">
-                          <motion.div 
-                            initial={{ height: 0 }}
-                            whileInView={{ height: `${h}%` }}
-                            transition={{ duration: 1, delay: i * 0.1 }}
-                            className="absolute bottom-0 left-0 right-0 bg-secondary-container rounded-t-lg group-hover:brightness-125 transition-all"
-                          />
-                        </div>
-                      ))}
+                       {[40, 65, 52, 85, 45, 95, 70].map((h, i) => (
+                         <div key={i} className="flex-1 bg-secondary-container/20 rounded-t-lg relative group overflow-hidden">
+                            <motion.div 
+                              initial={{ height: 0 }}
+                              whileInView={{ height: `${h}%` }}
+                              transition={{ duration: 1, delay: i * 0.1 }}
+                              className="absolute bottom-0 left-0 right-0 bg-secondary-container rounded-t-lg"
+                            />
+                         </div>
+                       ))}
                     </div>
                   </div>
                 </div>
@@ -275,14 +258,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* S19: Multi-step Contact Form */}
+        {/* S20: Contact Form (Multi-step) */}
         <section className="py-24 bg-white" id="contact">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-24 items-start">
               <div className="reveal space-y-8">
                 <div className="eyebrow">
                   <span className="eyebrow-dot"></span>
-                  <span>{t('nav_contact')}</span>
+                  <span className="uppercase tracking-[0.2em] font-bold text-[11px]">{t('nav_contact')}</span>
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-extrabold text-on-surface uppercase leading-tight">
                   {t('contact_title')}
@@ -290,17 +273,22 @@ export default function HomePage() {
                 <p className="text-lg text-on-surface-variant font-medium leading-relaxed">
                   {t('contact_lead')}
                 </p>
-                <div className="p-8 rounded-3xl bg-surface-container-low/50 border border-surface-container flex items-center gap-6">
-                  <div className="w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0">
-                    <Headset className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold">{language === 'ar' ? 'استفسار سريع ؟' : 'Besoin d\'aide ?'}</p>
-                    <p className="text-xs text-on-surface-variant">{language === 'ar' ? 'المستشارين متاحين في الواتساب.' : 'Nos conseillers sont sur WhatsApp.'}</p>
-                  </div>
-                  <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold ml-auto rtl:mr-auto rtl:ml-0">
-                    {language === 'ar' ? 'تواصل' : 'Discuter'}
-                  </Button>
+                <div className="grid gap-6">
+                  {[
+                    { icon: Mail, label: 'Email', val: 'contact@logistica.tn' },
+                    { icon: Phone, label: 'Téléphone', val: '+216 71 000 000' },
+                    { icon: MessageCircle, label: 'WhatsApp', val: '+216 20 000 000' },
+                  ].map((info, i) => (
+                    <div key={i} className="flex items-center gap-4 p-5 rounded-2xl bg-surface-container-low border border-surface-container shadow-sm">
+                       <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-secondary shadow-sm">
+                          <info.icon className="h-5 w-5" />
+                       </div>
+                       <div>
+                          <p className="text-[10px] font-black uppercase text-gray-400 tracking-widest">{info.label}</p>
+                          <p className="text-sm font-bold text-primary">{info.val}</p>
+                       </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -330,13 +318,10 @@ export default function HomePage() {
                       <ChevronDown className="absolute right-6 rtl:left-6 rtl:right-auto top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground pointer-events-none" />
                     </div>
                   </div>
-                  <Button className="btn-primary w-full text-lg h-16">
+                  <Button className="btn-primary w-full text-lg h-16 bg-secondary-container text-white rounded-full font-bold shadow-orange">
                     {t('send_request')}
                     <ArrowRight className={cn("h-5 w-5", language === 'ar' ? 'rotate-180' : '')} />
                   </Button>
-                  <p className="text-[10px] text-center text-muted-foreground uppercase tracking-widest pt-2">
-                    {language === 'ar' ? 'ما يتم حتى إرسال في النسخة هاذي' : 'Aucun envoi réel dans cette démo'}
-                  </p>
                 </form>
               </div>
             </div>
