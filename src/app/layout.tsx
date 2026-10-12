@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter, DM_Mono } from "next/font/google";
+import { Sora, Inter, IBM_Plex_Sans_Arabic, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
-import { Loader } from "@/components/loader";
+import { Toaster } from "@/components/ui/toaster";
 
-const jakarta = Plus_Jakarta_Sans({
+const sora = Sora({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "600", "700"],
   variable: "--font-heading",
   display: "swap",
 });
@@ -14,6 +14,13 @@ const jakarta = Plus_Jakarta_Sans({
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const ibmPlexArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["400", "600", "700"],
+  variable: "--font-arabic",
   display: "swap",
 });
 
@@ -25,11 +32,11 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LOGISTICA TUNISIE - Logistique e-commerce de la commande à la livraison",
-  description: "Solution complète de logistique e-commerce en Tunisie. Stockage, préparation, expédition et suivi en temps réel.",
+  title: "LOGISTICA TUNISIE - Logistique e-commerce simplifiée",
+  description: "Solution complète de logistique e-commerce en Tunisie. De la commande à la livraison, tout simplement.",
   openGraph: {
     title: "LOGISTICA TUNISIE - Logistique e-commerce",
-    description: "De la commande à la livraison, tout simplement.",
+    description: "Stockage, préparation, expédition et suivi en temps réel pour boutiques en ligne.",
     images: ["https://i.postimg.cc/P5sfzcz0/png-1.png"],
   },
 };
@@ -41,11 +48,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${inter.variable} ${jakarta.variable} ${dmMono.variable} font-sans antialiased bg-slate-50`}>
-        <Loader />
+      <body className={`${inter.variable} ${sora.variable} ${ibmPlexArabic.variable} ${dmMono.variable} font-sans antialiased text-gray-900`}>
         <Providers>
           {children}
         </Providers>
+        <Toaster />
       </body>
     </html>
   );

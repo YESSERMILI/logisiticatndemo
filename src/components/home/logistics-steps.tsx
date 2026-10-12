@@ -1,149 +1,112 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { useTranslation } from "@/hooks/use-translation";
+import { useRef } from "react";
 import { 
-  ShoppingCart, 
-  Package, 
-  Hand, 
-  Box, 
-  Truck, 
-  MapPin, 
-  Banknote, 
-  RefreshCcw, 
-  Headphones, 
-  BarChart3,
-  ArrowRight
+  ShoppingCart, Package, CheckCircle, Box, Truck, MapPin, 
+  Banknote, RefreshCcw, Headphones, LayoutDashboard,
+  ArrowRight 
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const phases = [
-  {
-    id: "phase_1",
-    title: "INTÉGRATION",
-    color: "bg-blue-600",
-    steps: [
-      { id: 1, icon: ShoppingCart, key: "step_1" },
-      { id: 2, icon: Package, key: "step_2" },
-    ]
-  },
-  {
-    id: "phase_2",
-    title: "LOGISTIQUE",
-    color: "bg-orange",
-    steps: [
-      { id: 3, icon: Hand, key: "step_3" },
-      { id: 4, icon: Box, key: "step_4" },
-    ]
-  },
-  {
-    id: "phase_3",
-    title: "LIVRAISON",
-    color: "bg-secondary",
-    steps: [
-      { id: 5, icon: Truck, key: "step_5" },
-      { id: 6, icon: MapPin, key: "step_6" },
-      { id: 7, icon: Banknote, key: "step_7" },
-    ]
-  },
-  {
-    id: "phase_4",
-    title: "PILOTAGE",
-    color: "bg-primary",
-    steps: [
-      { id: 8, icon: RefreshCcw, key: "step_8" },
-      { id: 9, icon: Headphones, key: "step_9" },
-      { id: 10, icon: BarChart3, key: "step_10" },
-    ]
-  }
-];
+import { Button } from "@/components/ui/button";
 
 export function LogisticsSteps() {
   const { t, language } = useTranslation();
   const isRTL = language === "ar";
+  const containerRef = useRef(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end end"]
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  const steps = [
+    { id: 1, icon: ShoppingCart, key: "step_1", phase: "integration" },
+    { id: 2, icon: Box, key: "step_2", phase: "integration" },
+    { id: 3, icon: Package, key: "step_3", phase: "logistics" },
+    { id: 4, icon: CheckCircle, key: "step_4", phase: "logistics" },
+    { id: 5, icon: Truck, key: "step_5", phase: "logistics" },
+    { id: 6, icon: MapPin, key: "step_6", phase: "logistics" },
+    { id: 7, icon: Banknote, key: "step_7", phase: "delivery" },
+    { id: 8, icon: RefreshCcw, key: "step_8", phase: "delivery" },
+    { id: 9, icon: Headphones, key: "step_9", phase: "support" },
+    { id: 10, icon: LayoutDashboard, key: "step_10", phase: "support" },
+  ];
 
   return (
-    <section id="etapes" className="py-24 bg-white" dir={isRTL ? "rtl" : "ltr"}>
-      <div className="container px-4 md:px-8 mx-auto max-w-7xl">
-        <div className="text-center mb-20">
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-orange font-black uppercase tracking-[0.4em] text-[11px] mb-4"
-          >
-            NOTRE MÉTHODOLOGIE
-          </motion.p>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-primary tracking-tight uppercase"
-          >
-            {t('steps_title')}
-          </motion.h2>
-          <p className="mt-4 text-lg text-slate-text font-medium max-w-2xl mx-auto">
-            {t('steps_subtitle')}
-          </p>
+    <section id="etapes" className="section-padding bg-white" dir={isRTL ? "rtl" : "ltr"} ref={containerRef}>
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto text-center mb-24">
+          <p className="eyebrow">{t('steps_eyebrow')}</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">{t('steps_title')}</h2>
+          <p className="text-lg text-gray-600 font-medium">{t('steps_subtitle')}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16">
-          {phases.map((phase, phaseIdx) => (
-            <motion.div
-              key={phase.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: phaseIdx * 0.1 }}
-              className="relative"
-            >
-              <div className="mb-10 relative flex items-center lg:justify-start">
-                <span className={cn(
-                  "px-5 py-2 rounded-full text-[11px] font-black tracking-[0.25em] text-white shadow-lg relative z-10",
-                  phase.color
-                )}>
-                  {phase.title}
-                </span>
-                
-                {phaseIdx < phases.length - 1 && (
-                  <div className={cn(
-                    "hidden lg:flex items-center text-primary/5 absolute top-1/2 -translate-y-1/2",
-                    isRTL ? "-left-10" : "-right-10"
-                  )}>
-                    <ArrowRight className={cn("h-6 w-6", isRTL && "rotate-180")} />
-                  </div>
+        <div className="relative max-w-3xl mx-auto">
+          {/* Vertical Progress Line */}
+          <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-1 bg-gray-100 -translate-x-1/2 rounded-full overflow-hidden">
+            <motion.div 
+              className="w-full bg-orange-500 origin-top"
+              style={{ scaleY }}
+            />
+          </div>
+
+          <div className="space-y-20">
+            {steps.map((step, i) => (
+              <motion.div
+                key={step.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                className={cn(
+                  "relative flex items-center gap-8 md:gap-24",
+                  i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 )}
-              </div>
-
-              <div className="space-y-8 relative">
-                {/* Connecting line */}
-                <div className={cn(
-                  "absolute top-2 bottom-2 w-[2px] bg-slate-100",
-                  isRTL ? "right-[20px]" : "left-[20px]"
-                )} />
-
-                {phase.steps.map((step) => (
-                  <div key={step.id} className="relative flex items-start gap-6 group">
-                    <div className="relative z-10 shrink-0 w-10 h-10 rounded-xl bg-white border-2 border-slate-100 shadow-sm flex items-center justify-center text-sm font-black text-primary group-hover:border-orange group-hover:text-orange transition-all duration-300">
-                      {step.id}
-                    </div>
-
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <step.icon className="h-5 w-5 text-primary group-hover:text-orange transition-colors" strokeWidth={2} />
-                        <h3 className="text-[15px] font-extrabold text-primary leading-tight uppercase">
-                          {t(`${step.key}_title` as any)}
-                        </h3>
-                      </div>
-                      <p className="text-[14px] text-slate-text leading-relaxed font-medium">
-                        {t(`${step.key}_desc` as any)}
-                      </p>
-                    </div>
+              >
+                {/* Content */}
+                <div className="flex-1 text-left md:text-right">
+                  <div className={cn(
+                    "flex flex-col",
+                    i % 2 === 0 ? "md:items-end" : "md:items-start"
+                  )}>
+                    <span className="text-orange-500 text-sm font-black mb-2 uppercase tracking-widest">
+                      {t(`phase_${step.phase}` as any)}
+                    </span>
+                    <h3 className="text-xl md:text-2xl font-bold text-primary mb-3">
+                      {t(`${step.key}_title` as any)}
+                    </h3>
+                    <p className="text-gray-600 font-medium">
+                      {t(`${step.key}_desc` as any)}
+                    </p>
                   </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                </div>
+
+                {/* Node */}
+                <div className="relative z-10 shrink-0">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border-4 border-gray-100 flex items-center justify-center text-primary group-hover:border-orange-500 transition-colors shadow-e1">
+                    <step.icon className="h-5 w-5 md:h-6 md:w-6" />
+                  </div>
+                </div>
+
+                {/* Empty spacer for grid alignment */}
+                <div className="hidden md:block flex-1" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-24 text-center">
+          <Button className="btn-primary">
+            Commencer mon intégration
+            <ArrowRight className="h-5 w-5 ml-2 rtl:mr-2 rtl:ml-0" />
+          </Button>
         </div>
       </div>
     </section>

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -8,241 +7,190 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { MessageCircle, Phone, Mail, MapPin, Clock, Loader2, Send, Map } from "lucide-react";
+import { MessageCircle, Phone, Mail, MapPin, Loader2, Send, ArrowRight, ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { placeholders } from "@/config/placeholders";
 
 export function ContactSection() {
   const { t, language } = useTranslation();
-  const isRTL = language === "ar";
+  const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const nextStep = () => setStep(prev => Math.min(prev + 1, 3));
+  const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (step < 3) {
+      nextStep();
+      return;
+    }
     setIsSubmitting(true);
-    // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
-    }, 1500);
+    }, 2000);
   };
 
-  const contactInfo = [
-    { icon: MessageCircle, key: "whatsapp", value: placeholders.contact.whatsapp },
-    { icon: Phone, key: "phone", value: placeholders.contact.phone },
-    { icon: Mail, key: "email", value: placeholders.contact.email },
-    { icon: MapPin, key: "address", value: placeholders.contact.address },
-  ];
-
   return (
-    <section id="contact" className="py-24 bg-white" dir={isRTL ? "rtl" : "ltr"}>
-      <div className="container px-4 md:px-8 mx-auto">
-        <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-primary mb-4 leading-tight uppercase"
-          >
-            {t('contact_title')}
-          </motion.h2>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="flex flex-col items-center gap-4"
-          >
-            <p className="text-lg text-slate-text max-w-2xl font-medium">
-              {t('contact_subtitle')}
-            </p>
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-secondary border border-blue-100 text-xs font-bold italic">
-              {t('contact_response_delay')}{placeholders.meta.responseDelay}
+    <section id="contact" className="section-padding bg-white" dir={language === "ar" ? "rtl" : "ltr"}>
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-[1.5fr,1fr] gap-20 items-start">
+          
+          <div className="glass-panel p-8 md:p-12 rounded-[40px]">
+            <div className="mb-12">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs font-black uppercase text-orange-500 tracking-widest">Étape {step} sur 3</span>
+                <span className="text-xs font-bold text-gray-400">{Math.round((step / 3) * 100)}% complété</span>
+              </div>
+              <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                <motion.div 
+                  className="h-full bg-orange-500" 
+                  initial={{ width: 0 }}
+                  animate={{ width: `${(step / 3) * 100}%` }}
+                />
+              </div>
             </div>
-          </motion.div>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-10 gap-16 items-start">
-          {/* Form Card (60%) */}
-          <motion.div 
-            initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-6 bg-white rounded-[28px] p-8 border border-primary/5 shadow-sm"
-          >
             <AnimatePresence mode="wait">
               {!isSuccess ? (
                 <motion.form 
                   key="form"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
                   onSubmit={handleSubmit} 
-                  className="space-y-6"
+                  className="space-y-8"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-sm font-bold text-primary">{t('contact_form_name')}</Label>
-                      <Input id="name" required className="rounded-xl border-slate-300 h-14 px-5 focus:ring-secondary transition-all" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-sm font-bold text-primary">{t('contact_form_phone')}</Label>
-                      <div className="relative">
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">+216</span>
-                        <Input id="phone" type="tel" placeholder="00 000 000" required className="rounded-xl border-slate-300 h-14 pl-14 focus:ring-secondary transition-all" />
+                  {step === 1 && (
+                    <div className="space-y-8">
+                      <h3 className="text-3xl font-bold text-primary">{t('contact_step_1')}</h3>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label className="text-sm font-bold text-primary uppercase tracking-wider">{t('contact_form_name')}</Label>
+                          <Input required className="h-14 bg-gray-50 border-gray-200 rounded-xl px-6 focus:ring-secondary-500" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label className="text-sm font-bold text-primary uppercase tracking-wider">{t('contact_form_phone')}</Label>
+                          <Input type="tel" required className="h-14 bg-gray-50 border-gray-200 rounded-xl px-6 focus:ring-secondary-500" />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label className="text-sm font-bold text-primary uppercase tracking-wider">{t('contact_form_email')}</Label>
+                        <Input type="email" className="h-14 bg-gray-50 border-gray-200 rounded-xl px-6 focus:ring-secondary-500" />
                       </div>
                     </div>
-                  </div>
+                  )}
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-sm font-bold text-primary">{t('contact_form_email')}</Label>
-                      <Input id="email" type="email" className="rounded-xl border-slate-300 h-14 px-5 focus:ring-secondary transition-all" />
+                  {step === 2 && (
+                    <div className="space-y-8">
+                      <h3 className="text-3xl font-bold text-primary">{t('contact_step_2')}</h3>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label className="text-sm font-bold text-primary uppercase tracking-wider">{t('contact_form_shop')}</Label>
+                          <Input className="h-14 bg-gray-50 border-gray-200 rounded-xl px-6 focus:ring-secondary-500" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label className="text-sm font-bold text-primary uppercase tracking-wider">{t('contact_form_type')}</Label>
+                          <Input className="h-14 bg-gray-50 border-gray-200 rounded-xl px-6 focus:ring-secondary-500" />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label className="text-sm font-bold text-primary uppercase tracking-wider">{t('contact_form_volume')}</Label>
+                        <Input className="h-14 bg-gray-50 border-gray-200 rounded-xl px-6 focus:ring-secondary-500" />
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="shop" className="text-sm font-bold text-primary">{t('contact_form_shop')}</Label>
-                      <Input id="shop" className="rounded-xl border-slate-300 h-14 px-5 focus:ring-secondary transition-all" />
+                  )}
+
+                  {step === 3 && (
+                    <div className="space-y-8">
+                      <h3 className="text-3xl font-bold text-primary">{t('contact_step_3')}</h3>
+                      <div className="space-y-2">
+                        <Label className="text-sm font-bold text-primary uppercase tracking-wider">{t('contact_form_message')}</Label>
+                        <Textarea className="min-h-[150px] bg-gray-50 border-gray-200 rounded-xl p-6 focus:ring-secondary-500" />
+                      </div>
+                      <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200">
+                        <Checkbox id="consent" required className="mt-1" />
+                        <Label htmlFor="consent" className="text-xs font-medium leading-relaxed cursor-pointer text-gray-600">
+                          {t('contact_form_consent')}
+                        </Label>
+                      </div>
                     </div>
-                  </div>
+                  )}
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label className="text-sm font-bold text-primary">{t('contact_form_type')}</Label>
-                      <Select required>
-                        <SelectTrigger className="rounded-xl border-slate-300 h-14 px-5 focus:ring-secondary transition-all">
-                          <SelectValue placeholder="Choisir..." />
-                        </SelectTrigger>
-                        <SelectContent className="rounded-xl">
-                          <SelectItem value="fashion">Mode & Accessoires</SelectItem>
-                          <SelectItem value="beauty">Beauté & Cosmétique</SelectItem>
-                          <SelectItem value="tech">High-Tech & Électronique</SelectItem>
-                          <SelectItem value="home">Maison & Déco</SelectItem>
-                          <SelectItem value="food">Alimentaire</SelectItem>
-                          <SelectItem value="other">Autre</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="space-y-2">
-                      <Label className="text-sm font-bold text-primary">{t('contact_form_volume')}</Label>
-                      <Select>
-                        <SelectTrigger className="rounded-xl border-slate-300 h-14 px-5 focus:ring-secondary transition-all">
-                          <SelectValue placeholder="Choisir..." />
-                        </SelectTrigger>
-                        <SelectContent className="rounded-xl">
-                          <SelectItem value="small">Moins de 50</SelectItem>
-                          <SelectItem value="medium">50 - 200</SelectItem>
-                          <SelectItem value="large">200 - 500</SelectItem>
-                          <SelectItem value="xlarge">Plus de 500</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-sm font-bold text-primary">{t('contact_form_message')}</Label>
-                    <Textarea id="message" className="rounded-xl border-slate-300 min-h-[120px] px-5 py-4 focus:ring-secondary transition-all" />
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <Checkbox id="consent" required className="mt-1 h-5 w-5 rounded-md border-slate-300" />
-                    <Label htmlFor="consent" className="text-xs font-medium leading-tight cursor-pointer text-slate-text">
-                      {t('contact_form_consent')}
-                    </Label>
-                  </div>
-
-                  <Button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="w-full h-14 bg-orange hover:bg-orange/90 text-primary rounded-full font-bold text-lg shadow-lg shadow-orange/20 transition-all hover:-translate-y-1"
-                  >
-                    {isSubmitting ? (
-                      <Loader2 className="h-6 w-6 animate-spin mr-3" />
-                    ) : (
-                      <Send className="h-5 w-5 mr-3" />
+                  <div className="flex gap-4 pt-6">
+                    {step > 1 && (
+                      <Button 
+                        type="button" 
+                        variant="outline" 
+                        onClick={prevStep}
+                        className="h-14 px-8 rounded-full font-bold border-2"
+                      >
+                        <ArrowLeft className="mr-2 h-5 w-5" />
+                        Précédent
+                      </Button>
                     )}
-                    {t('contact_form_submit')}
-                  </Button>
+                    <Button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="flex-1 btn-primary text-lg"
+                    >
+                      {isSubmitting ? (
+                        <Loader2 className="h-6 w-6 animate-spin" />
+                      ) : step === 3 ? (
+                        <>Envoyer ma demande <Send className="ml-2 h-5 w-5" /></>
+                      ) : (
+                        <>Continuer <ArrowRight className="ml-2 h-5 w-5" /></>
+                      )}
+                    </Button>
+                  </div>
                 </motion.form>
               ) : (
                 <motion.div 
-                  key="success"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="py-12 text-center space-y-6"
+                  className="py-20 text-center"
                 >
-                  <div className="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-sm">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <div className="w-24 h-24 bg-success/20 text-success rounded-full flex items-center justify-center mx-auto mb-8">
+                    <svg className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="4" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
                   </div>
-                  <div className="space-y-2">
-                    <h3 className="text-3xl font-black text-primary">{t('contact_form_success')}</h3>
-                    <p className="text-slate-text font-medium">{t('contact_form_success_desc')}</p>
-                  </div>
-                  <Button variant="outline" className="rounded-full px-8 h-12 font-bold" onClick={() => setIsSuccess(false)}>
-                    Retour au formulaire
+                  <h3 className="text-4xl font-bold text-primary mb-4">{t('contact_success_title')}</h3>
+                  <p className="text-xl text-gray-600 mb-10">{t('contact_success_desc')}</p>
+                  <Button variant="outline" className="btn-secondary h-14 px-12" onClick={() => {setIsSuccess(false); setStep(1);}}>
+                    Nouvelle demande
                   </Button>
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
+          </div>
 
-          {/* Contact Details (40%) */}
-          <motion.div 
-            initial={{ opacity: 0, x: isRTL ? -30 : 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-4 space-y-8"
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {contactInfo.map((info) => (
-                <div 
-                  key={info.key} 
-                  className="bg-blue-50 border border-blue-100 p-6 rounded-2xl group hover:bg-white hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4 text-primary shadow-sm group-hover:scale-110 transition-transform">
-                    <info.icon className="h-6 w-6" />
+          <div className="space-y-12">
+            <div>
+              <h2 className="text-4xl font-bold text-primary mb-6">{t('contact_title')}</h2>
+              <p className="text-lg text-gray-600 font-medium leading-relaxed">{t('contact_subtitle')}</p>
+            </div>
+
+            <div className="grid gap-6">
+              {[
+                { icon: MessageCircle, label: t('contact_info_whatsapp'), value: "[À REMPLACER]", color: "text-emerald-500", bg: "bg-emerald-50" },
+                { icon: Mail, label: t('contact_info_email'), value: "[À REMPLACER]", color: "text-blue-500", bg: "bg-blue-50" },
+                { icon: Phone, label: t('contact_info_phone'), value: "[À REMPLACER]", color: "text-orange-500", bg: "bg-orange-50" },
+                { icon: MapPin, label: t('contact_info_address'), value: "[À REMPLACER]", color: "text-primary", bg: "bg-gray-100" },
+              ].map((info, i) => (
+                <div key={i} className="flex items-center gap-6 p-6 rounded-2xl border border-gray-100 bg-white hover:shadow-e2 transition-all group">
+                  <div className={cn("w-14 h-14 rounded-xl flex items-center justify-center shrink-0 transition-transform group-hover:scale-110", info.bg, info.color)}>
+                    <info.icon className="h-7 w-7" />
                   </div>
-                  <h4 className="text-[10px] font-black text-slate-text uppercase tracking-widest mb-1">
-                    {t(`contact_info_${info.key}` as any)}
-                  </h4>
-                  <div className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white text-blue-600 border border-blue-100 italic">
-                    {info.value}
+                  <div>
+                    <p className="text-[10px] font-black uppercase text-gray-400 tracking-widest">{info.label}</p>
+                    <p className="text-lg font-bold text-primary mt-0.5">{info.value}</p>
                   </div>
                 </div>
               ))}
             </div>
-            
-            <div className="bg-navy-950 p-8 rounded-2xl text-white flex items-center gap-6 group overflow-hidden relative">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-secondary opacity-10 -mr-16 -mt-16 rounded-full blur-2xl" />
-              <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center shrink-0">
-                <Clock className="h-8 w-8 text-orange" />
-              </div>
-              <div>
-                <h4 className="text-[10px] font-black text-white/40 uppercase tracking-widest mb-1">{t('contact_info_hours')}</h4>
-                <div className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/5 text-white/60 border border-white/10 italic">
-                  {placeholders.contact.hours}
-                </div>
-              </div>
-            </div>
+          </div>
 
-            <div className="bg-gradient-to-br from-secondary to-blue-500 p-8 rounded-2xl text-white flex items-center gap-6 group">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center shrink-0 shadow-lg">
-                <Map className="h-8 w-8" />
-              </div>
-              <div>
-                <p className="font-black text-xl mb-0.5">Logistica Tunisie</p>
-                <p className="text-white/80 text-sm font-medium italic opacity-70">Opérations optimisées.</p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
