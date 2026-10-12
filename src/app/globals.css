@@ -9,8 +9,6 @@
     --foreground: 215 50% 12%;
     --card: 0 0% 100%;
     --card-foreground: 215 50% 12%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 50% 12%;
     --primary: 222 47% 13%;
     --primary-foreground: 210 40% 98%;
     --secondary: 24 99% 54%;
@@ -35,33 +33,11 @@
     @apply bg-surface text-on-surface font-sans;
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-extrabold tracking-tight text-on-surface uppercase;
-  }
-
-  h1 { @apply text-4xl lg:text-7xl leading-[1.1]; }
-  h2 { @apply text-3xl lg:text-5xl leading-tight; }
 }
 
 @layer components {
-  .btn-primary {
-    @apply h-14 px-8 rounded-full bg-secondary-container text-on-secondary font-bold shadow-orange hover:bg-secondary transition-all active:scale-95 flex items-center justify-center gap-2;
-  }
-
-  .btn-secondary {
-    @apply h-14 px-8 rounded-full border-2 border-primary text-primary font-bold hover:bg-surface-container transition-all active:scale-95 flex items-center justify-center gap-2;
-  }
-
-  .glass-card {
-    @apply bg-surface-container-lowest/70 backdrop-blur-xl border border-white/60 shadow-e1;
-  }
-
-  .eyebrow {
-    @apply inline-flex items-center px-3 py-1 rounded-full bg-secondary-container/10 text-secondary font-bold uppercase text-[11px] tracking-[0.08em] mb-4;
-  }
-
   .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -72,6 +48,45 @@
     opacity: 1;
     transform: none;
   }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/10 text-secondary-container font-bold uppercase text-[11px] tracking-[0.08em] mb-4;
+  }
+
+  .eyebrow-dot {
+    @apply w-1.5 h-1.5 rounded-full bg-secondary-container animate-pulse;
+  }
+
+  .glassmorphic {
+    @apply bg-white/70 backdrop-blur-xl border border-white/60 shadow-lg;
+  }
+
+  .btn-primary {
+    @apply h-14 px-8 rounded-full bg-secondary-container text-white font-bold shadow-lg hover:bg-secondary transition-all active:scale-95 flex items-center justify-center gap-2;
+  }
+}
+
+.loader-track {
+  width: 120px;
+  height: 2px;
+  background: #e5eeff;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loader-track span {
+  display: block;
+  height: 100%;
+  width: 40px;
+  background: #fd761a;
+  position: absolute;
+  left: -40px;
+  animation: slide 1.2s infinite ease-in-out;
+}
+
+@keyframes slide {
+  to { left: 120px; }
 }
 
 ::-webkit-scrollbar {
