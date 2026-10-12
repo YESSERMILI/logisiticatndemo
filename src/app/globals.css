@@ -6,89 +6,67 @@
 @layer base {
   :root {
     --background: 220 100% 99%;
-    --foreground: 215 50% 12%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 215 50% 12%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
     --primary: 222 47% 13%;
     --primary-foreground: 210 40% 98%;
     --secondary: 24 99% 54%;
     --secondary-foreground: 210 40% 98%;
     --muted: 210 40% 96.1%;
-    --muted-foreground: 215 20% 45%;
-    --accent: 24 99% 54%;
-    --accent-foreground: 222 47% 13%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 222 47% 11%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 24 99% 54%;
-    --radius: 16px;
-  }
-
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-surface text-on-surface font-sans;
-    -webkit-font-smoothing: antialiased;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+    --ring: 222 47% 11%;
+    --radius: 0.75rem;
   }
 }
 
 @layer components {
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  .glassmorphic {
+    @apply bg-white/80 backdrop-blur-xl border border-white/40 shadow-xl;
   }
   
-  .reveal.in {
-    opacity: 1;
-    transform: none;
+  .route-line {
+    background-image: radial-gradient(circle, #FF8A1F 1.5px, transparent 1.5px);
+    background-size: 12px 12px;
   }
 
-  .eyebrow {
-    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/10 text-secondary-container font-bold uppercase text-[11px] tracking-[0.08em] mb-4;
-  }
-
-  .eyebrow-dot {
-    @apply w-1.5 h-1.5 rounded-full bg-secondary-container animate-pulse;
-  }
-
-  .glassmorphic {
-    @apply bg-white/70 backdrop-blur-xl border border-white/60 shadow-lg;
-  }
-
-  .btn-primary {
-    @apply h-14 px-8 rounded-full bg-secondary-container text-white font-bold shadow-lg hover:bg-secondary transition-all active:scale-95 flex items-center justify-center gap-2;
+  .text-glow {
+    text-shadow: 0 0 20px rgba(253, 118, 26, 0.2);
   }
 }
 
-.loader-track {
-  width: 120px;
-  height: 2px;
-  background: #e5eeff;
-  border-radius: 2px;
-  overflow: hidden;
-  position: relative;
-}
-
-.loader-track span {
-  display: block;
-  height: 100%;
-  width: 40px;
-  background: #fd761a;
-  position: absolute;
-  left: -40px;
-  animation: slide 1.2s infinite ease-in-out;
-}
-
-@keyframes slide {
-  to { left: 120px; }
+body {
+  @apply bg-background text-foreground antialiased;
+  font-feature-settings: "cv05" 1, "cv08" 1, "ss01" 1;
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/10 rounded-full hover:bg-primary/20 transition-colors;
+}
+
+@keyframes dash-scroll {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animate-dash {
+  stroke-dasharray: 5, 5;
+  animation: dash-scroll 1s linear infinite;
 }

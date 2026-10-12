@@ -1,67 +1,52 @@
 
-export type Language = "fr" | "ar" | "en";
+export type Language = "fr" | "ar";
 
 export const translations = {
   fr: {
-    // Header & Global
-    nav_solutions: "Solutions",
+    nav_solutions: "Services",
     nav_workflow: "Comment ça marche",
     nav_dashboard: "Tableau de bord",
     nav_commitments: "Engagements",
     nav_contact: "Contact",
     sign_in: "Connexion",
     create_account: "S'inscrire",
-    
-    // Hero
-    hero_eyebrow: "Votre logistique, simplifiée",
-    hero_title: "De la commande à la livraison, tout est organisé et fluide.",
-    hero_lead: "Logistica Tunisie accompagne les entreprises et commerçants dans l'optimisation de leurs opérations logistiques : réception, préparation, expédition et suivi.",
-    hero_cta_demo: "Explorer le tableau de bord",
-    hero_cta_see_how: "Voir comment ça marche",
-    hero_proof: "Un parcours clair du premier clic à la livraison finale",
-    no_claims: "Sans promesses exagérées",
-    
-    // Solutions
-    solutions_eyebrow: "Domaine d'intervention",
-    solutions_title: "Chaque étape a sa place.",
-    solutions_lead: "Les services Logistica s'articulent autour de l'organisation du parcours logistique, du stock jusqu'au dernier kilomètre.",
-    service_stock: "Gestion du Stock",
-    service_stock_desc: "Organisation de l'inventaire lié au flux de commandes.",
-    service_prep: "Préparation",
-    service_prep_desc: "Organisation et préparation des colis avant expédition.",
+    hero_title: "Votre logistique e-commerce, de la commande à la livraison.",
+    hero_subtitle: "Logistica Tunisie accompagne les entreprises dans l'organisation et la gestion de leurs opérations logistiques.",
+    hero_cta: "Demander un devis",
+    service_stock: "Gestion des stocks",
+    service_stock_desc: "Organisation du stock et liaison directe avec le flux des commandes.",
+    service_prep: "Préparation des commandes",
+    service_prep_desc: "Organisation et préparation des commandes avant expédition.",
+    service_pack: "Emballage",
+    service_pack_desc: "Une étape claire entre la préparation et l'expédition.",
     service_shipping: "Expédition",
-    service_shipping_desc: "Gestion du départ vers les transporteurs.",
-    service_tracking: "Suivi & Tracé",
-    service_tracking_desc: "Visibilité claire sur l'état de chaque colis.",
-    service_cod: "Gestion du COD",
-    service_cod_desc: "Suivi des encaissements à la livraison.",
+    service_shipping_desc: "Organisation du transfert de la commande vers la phase de livraison.",
+    service_tracking: "Suivi des livraisons",
+    service_tracking_desc: "Une visibilité accrue sur l'état de chaque commande.",
+    service_cod: "Encaissement (COD)",
+    service_cod_desc: "Suivi de la phase de paiement à la livraison (Cash on Delivery).",
     service_returns: "Retours & Échanges",
-    service_returns_desc: "Gestion des flux inversés dans le cycle logistique.",
-
-    // Dashboard
-    dashboard_eyebrow: "Tableau de bord",
-    dashboard_title: "Pilotez le parcours, pas seulement le numéro.",
-    dashboard_lead: "Une interface conçue pour la clarté opérationnelle : commandes, stocks, expéditions et finances.",
-    dashboard_point1: "Vue d'ensemble en temps réel",
-    dashboard_point2: "Accès direct aux étapes clés",
-    dashboard_point3: "Données de démonstration interactives",
-    try_dashboard: "Tester la console",
-    
-    // Contact
-    contact_title: "Parlons de votre logistique.",
-    contact_lead: "Décrivez vos besoins et explorons ensemble si Logistica est la solution adaptée pour votre croissance.",
-    full_name: "Nom complet",
-    company_name: "Nom de l'entreprise",
-    email_address: "Email professionnel",
-    main_need: "Votre besoin principal ?",
-    send_request: "Envoyer ma demande",
-
-    // Footer
-    footer_tagline: "Logistica Tunisie — Logistique claire, service organisé.",
-    back_top: "Retour en haut"
+    service_returns_desc: "Intégration des retours dans le cycle de suivi des commandes.",
+    commitment_speed: "Rapidité",
+    commitment_speed_desc: "Des processus organisés pour mieux maîtriser les délais.",
+    commitment_reliability: "Fiabilité",
+    commitment_reliability_desc: "Une attention portée à la préparation et au suivi.",
+    commitment_proximity: "Proximité",
+    commitment_proximity_desc: "Une approche tournée vers les besoins en Tunisie.",
+    commitment_digital: "Digitalisation",
+    commitment_digital_desc: "Une vision centralisée des commandes.",
+    commitment_identity: "Identité tunisienne",
+    commitment_identity_desc: "Une marque ancrée dans son marché.",
+    footer_tagline: "De la commande à la livraison, tout simplement.",
+    dashboard_overview: "Aperçu général",
+    dashboard_orders: "Commandes",
+    dashboard_inventory: "Inventaire",
+    dashboard_cod: "Reversements COD",
+    logout: "Déconnexion",
+    try_dashboard: "Explorer le Dashboard",
+    see_how: "Voir comment ça marche"
   },
   ar: {
-    // Header & Global (Derja Focus)
     nav_solutions: "شنوّة نعملو",
     nav_workflow: "كيفاش تخدم",
     nav_dashboard: "لوحة القيادة",
@@ -69,64 +54,40 @@ export const translations = {
     nav_contact: "تواصل",
     sign_in: "دخول",
     create_account: "ابدأ معانا",
-    
-    // Hero
-    hero_eyebrow: "اللوجستيك متاعك، أوضح وأسهل",
     hero_title: "من الكوموند حتى للتوصيل، كل شي منظّم وبكل سهولة.",
-    hero_lead: "Logistica Tunisie تعاون المؤسسات والتجّار باش ينظّموا عملياتهم اللوجستية: من استقبال الكوموندات والستوك، لتحضير الطلبيات وتغليفها وإرسالها.",
-    hero_cta_demo: "استكشف لوحة القيادة",
-    hero_cta_see_how: "شوف كيفاش تخدم",
-    hero_proof: "مسار واضح من أول كوموند حتى لآخر مرحلة",
-    no_claims: "من غير وعود مبالغ فيها",
-    
-    // Solutions
-    solutions_eyebrow: "نطاق الخدمة",
-    solutions_title: "كل مرحلة عندها بلاصتها.",
-    solutions_lead: "خدمات Logistica تدور على تنظيم المسار اللوجستي للطلبية، من المخزون للتحضير والإرسال، حتى التوصيل وما يتبعه.",
+    hero_subtitle: "Logistica Tunisie تعاون المؤسسات والتجّار باش ينظّموا عملياتهم اللوجستية بكل احترافية.",
+    hero_cta: "أعمل دوفي توّة",
     service_stock: "إدارة الستوك",
     service_stock_desc: "تنظيم المخزون وربطه بمسار الطلبية.",
     service_prep: "تحضير الكوموندات",
     service_prep_desc: "تنظيم الطلبيات وتحضيرها قبل الإرسال.",
+    service_pack: "التغليف",
+    service_pack_desc: "مرحلة واضحة بين التحضير والإرسال.",
     service_shipping: "الإرسال",
     service_shipping_desc: "تنظيم انتقال الطلبية لمرحلة التوصيل.",
     service_tracking: "متابعة التوصيل",
     service_tracking_desc: "رؤية أوضح لحالة كل طلبية ومراحلها.",
-    service_cod: "الاستخلاص عند التوصيل",
+    service_cod: "الاستخلاص (COD)",
     service_cod_desc: "متابعة مرحلة الدفع عند التسليم (COD).",
     service_returns: "الرجوع والتبديل",
     service_returns_desc: "إدراج الإرجاع والتبديل ضمن دورة متابعة الطلبية.",
-
-    // Dashboard
-    dashboard_eyebrow: "لوحة القيادة",
-    dashboard_title: "تشوف مسار الطلبية، موش كان رقمها.",
-    dashboard_lead: "واجهة تجريبية توريك كيفاش تنجم العمليات تتعرض بوضوح: الكوموندات، الستوك، التحضير، الإرسال، الاستخلاص، والرجوع.",
-    dashboard_point1: "نظرة عامة على حالات الطلبيات",
-    dashboard_point2: "وصول مباشر لأهم مراحل الخدمة",
-    dashboard_point3: "أمثلة تفاعلية ببيانات وهمية فقط",
-    try_dashboard: "جرّب لوحة القيادة",
-
-    // Contact
-    contact_title: "خلّينا نحكيو على مسارك اللوجستي.",
-    contact_lead: "ورّينا شنوّة يلزمك تنظّم في خدمتك، ونستكشفوا مع بعضنا إذا نطاق Logistica مناسب لاحتياجاتك.",
-    full_name: "الاسم الكامل",
-    company_name: "اسم المؤسسة",
-    email_address: "البريد الإلكتروني",
-    main_need: "شنوّة أكثر حاجة تحب تنظّمها؟",
-    send_request: "إرسال طلب تجريبي",
-
-    // Footer
-    footer_tagline: "Logistica Tunisie — لوجستيك أوضح، وخدمة منظّمة.",
-    back_top: "للأعلى"
-  },
-  en: {
-    nav_solutions: "What we do",
-    nav_workflow: "How it works",
-    nav_dashboard: "Dashboard",
-    nav_commitments: "Commitments",
-    nav_contact: "Contact",
-    sign_in: "Sign In",
-    create_account: "Get Started",
-    hero_title: "From Order to Delivery, everything is organized and simple.",
-    footer_tagline: "Logistica Tunisie — Clear logistics, organized service."
+    commitment_speed: "السرعة",
+    commitment_speed_desc: "عمليات منظمة باش نربحو الوقت.",
+    commitment_reliability: "الموثوقية",
+    commitment_reliability_desc: "تركيز كبير على التحضير والمتابعة.",
+    commitment_proximity: "القرب",
+    commitment_proximity_desc: "حلول تتماشى مع سوق تونس.",
+    commitment_digital: "الرقمنة",
+    commitment_digital_desc: "رؤية مركزية لكل الكوموندات.",
+    commitment_identity: "هوية تونسية",
+    commitment_identity_desc: "ماركة قريبة من واقعنا.",
+    footer_tagline: "من الكوموند حتى للتوصيل، بكل بساطة.",
+    dashboard_overview: "نظرة عامة",
+    dashboard_orders: "الكوموندات",
+    dashboard_inventory: "المخزون",
+    dashboard_cod: "خلاص الـ COD",
+    logout: "خروج",
+    try_dashboard: "استكشف لوحة القيادة",
+    see_how: "شوف كيفاش تخدم"
   }
 };

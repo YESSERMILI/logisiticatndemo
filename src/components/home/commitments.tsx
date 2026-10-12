@@ -1,66 +1,45 @@
+
 "use client";
 
-import { motion } from "framer-motion";
 import { useTranslation } from "@/hooks/use-translation";
-import { Zap, ShieldCheck, Globe, Monitor, Star } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { Zap, ShieldCheck, MapPin, Monitor, Star } from "lucide-react";
 
 export function Commitments() {
   const { t, language } = useTranslation();
-  const isRTL = language === "ar";
 
   const items = [
-    { icon: Zap, key: "speed" },
-    { icon: ShieldCheck, key: "reliability" },
-    { icon: Globe, key: "proximity" },
-    { icon: Monitor, key: "digital" },
-    { icon: Star, key: "tunisian" },
+    { icon: Zap, title: t('commitment_speed'), desc: t('commitment_speed_desc') },
+    { icon: ShieldCheck, title: t('commitment_reliability'), desc: t('commitment_reliability_desc') },
+    { icon: MapPin, title: t('commitment_proximity'), desc: t('commitment_proximity_desc') },
+    { icon: Monitor, title: t('commitment_digital'), desc: t('commitment_digital_desc') },
+    { icon: Star, title: t('commitment_identity'), desc: t('commitment_identity_desc') },
   ];
 
   return (
-    <section id="engagements" className="py-24 bg-white" dir={isRTL ? "rtl" : "ltr"}>
-      <div className="container px-4 md:px-8 mx-auto">
+    <section id="commitments" className="py-24 bg-surface-container-low" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+      <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-orange font-bold uppercase tracking-[0.2em] text-sm mb-4"
-          >
-            {t('commitments_eyebrow')}
-          </motion.p>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-black text-primary mb-6 uppercase"
-          >
-            {t('commitments_title')}
-          </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-black text-primary mb-4">{t('nav_commitments')}</h2>
+          <div className="w-24 h-1.5 bg-secondary mx-auto rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
           {items.map((item, index) => (
             <motion.div
-              key={item.key}
+              key={item.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
-              className={cn(
-                "bg-white p-8 rounded-[28px] border border-primary/5 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary/10 flex flex-col items-center text-center",
-              )}
+              className="flex flex-col items-center text-center group"
             >
-              <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-primary mb-6">
-                <item.icon className="h-8 w-8" strokeWidth={1.75} />
+              <div className="w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center mb-6 group-hover:bg-secondary group-hover:text-white transition-all duration-300">
+                <item.icon className="h-10 w-10" />
               </div>
-              <h3 className="text-xl font-bold text-primary mb-3 leading-tight uppercase">
-                {t(`commitments_${item.key}` as any)}
-              </h3>
-              <p className="text-gray-600 text-[15px] leading-relaxed">
-                {t(`commitments_${item.key}_desc` as any)}
+              <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {item.desc}
               </p>
             </motion.div>
           ))}
