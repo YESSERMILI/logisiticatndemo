@@ -1,7 +1,9 @@
+
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { Package, Truck, Landmark, UserCheck, Inbox } from "lucide-react";
 
 export function HeroIllustration() {
   const [activeNode, setActiveNode] = useState(0);
@@ -10,7 +12,6 @@ export function HeroIllustration() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (!svgRef.current) return;
-      // Normalizing time based on SVG current time or custom animation loop
       const time = (Date.now() % 8000) / 8000;
       
       if (time < 0.25) setActiveNode(0);
@@ -22,18 +23,24 @@ export function HeroIllustration() {
   }, []);
 
   const nodes = [
-    { label: "COMMANDE", x: "10.7%", y: "77.3%" },
-    { label: "PRÉPARATION", x: "30.4%", y: "63.6%" },
-    { label: "EXPÉDITION", x: "69.6%", y: "38.2%" },
-    { label: "LIVRAISON", x: "89.3%", y: "22.7%" },
+    { label: "COMMANDE", x: "10.7%", y: "77.3%", icon: Package },
+    { label: "PRÉPARATION", x: "30.4%", y: "63.6%", icon: Inbox },
+    { label: "EXPÉDITION", x: "69.6%", y: "38.2%", icon: Truck },
+    { label: "LIVRAISON", x: "89.3%", y: "22.7%", icon: UserCheck },
   ];
 
   return (
-    <div className="relative w-full aspect-[560/440] bg-primary rounded-[40px] overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
+    <div className="relative w-full aspect-[560/440] bg-[#07163F] rounded-[40px] overflow-hidden">
+      {/* Background Decor: Clouds and City Silhouette */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 560 440">
-           <path d="M100 400 L200 300 L400 200 L500 100" stroke="white" strokeWidth="1" strokeDasharray="10 10" />
+           {/* Clouds */}
+           <g className="animate-float-slow" style={{ opacity: 0.6 }}>
+             <path d="M40 80 Q60 60 80 80 T120 80" fill="white" />
+             <path d="M400 120 Q420 100 440 120 T480 120" fill="white" />
+           </g>
+           {/* City Silhouette */}
+           <path d="M0 440 L0 380 L40 380 L40 340 L80 340 L80 360 L140 360 L140 320 L200 320 L200 350 L260 350 L260 310 L340 310 L340 350 L420 350 L420 330 L500 330 L500 380 L560 380 L560 440 Z" fill="#131b2e" />
            <circle cx="280" cy="220" r="150" fill="white" fillOpacity="0.05" />
         </svg>
       </div>
@@ -64,7 +71,7 @@ export function HeroIllustration() {
           fill="none" 
           stroke="#fd761a" 
           strokeWidth="4.5" 
-          strokeLinecap="round"
+          strokeLinecap="round" 
           strokeDasharray="1 1" 
           strokeDashoffset="1"
         >
@@ -87,31 +94,29 @@ export function HeroIllustration() {
             <mpath href="#route"/>
           </animateMotion>
           
-          {/* Truck Body - Van style */}
-          <rect x="-24" y="-18" width="30" height="21" rx="3" fill="#2563EB"/>
-          <rect x="-24" y="-9" width="30" height="3.5" fill="#fd761a"/>
-          <path d="M8 -12 h10 l7 8 v7 h-17z" fill="#0B2A7A"/>
-          <path d="M12 -9 h5 l4 5 h-9z" fill="#BFD4FF"/>
+          {/* Truck Body - Enhanced modern van */}
+          <rect x="-24" y="-18" width="34" height="22" rx="4" fill="#2563EB"/>
+          <rect x="-24" y="-8" width="34" height="3" fill="#fd761a"/>
+          <path d="M10 -14 h12 l8 10 v8 h-20z" fill="#0B2A7A"/>
+          <path d="M14 -10 h6 l5 6 h-11z" fill="#BFD4FF"/>
           
-          {/* Wheels */}
-          <g transform="translate(-12 6)">
-            <g>
-              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur=".7s" repeatCount="indefinite"/>
-              <circle r="5" fill="#07163F"/>
-              <circle r="2" fill="#fff"/>
+          {/* Wheels with spin */}
+          <g transform="translate(-10 6)">
+            <g className="animate-spin-slow">
+              <circle r="6" fill="#07163F" stroke="white" strokeWidth="1"/>
+              <path d="M-4 0 h8 M0 -4 v8" stroke="white" strokeWidth="0.5" />
             </g>
           </g>
-          <g transform="translate(14 6)">
-            <g>
-              <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur=".7s" repeatCount="indefinite"/>
-              <circle r="5" fill="#07163F"/>
-              <circle r="2" fill="#fff"/>
+          <g transform="translate(18 6)">
+            <g className="animate-spin-slow">
+              <circle r="6" fill="#07163F" stroke="white" strokeWidth="1"/>
+              <path d="M-4 0 h8 M0 -4 v8" stroke="white" strokeWidth="0.5" />
             </g>
           </g>
         </g>
       </svg>
 
-      {/* Overlay Cards */}
+      {/* Overlay Glass Cards */}
       {nodes.map((node, i) => (
         <div 
           key={i}
@@ -122,14 +127,14 @@ export function HeroIllustration() {
           style={{ left: node.x, top: node.y }}
         >
           <div className={cn(
-            "glass-panel px-4 py-2 rounded-xl text-[10px] font-black text-center min-w-[100px] border-2",
+            "glass-card px-4 py-2.5 rounded-2xl text-[10px] font-black text-center min-w-[110px] border-2",
             activeNode === i ? "border-secondary shadow-orange" : "border-white/10"
           )}>
             <div className={cn(
-              "w-1.5 h-1.5 rounded-full mx-auto mb-1",
+              "w-2 h-2 rounded-full mx-auto mb-1",
               activeNode === i ? "bg-secondary animate-pulse" : "bg-white/20"
             )} />
-            <span className="text-on-surface uppercase tracking-widest">{node.label}</span>
+            <span className="text-white uppercase tracking-widest">{node.label}</span>
           </div>
         </div>
       ))}

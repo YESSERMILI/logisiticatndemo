@@ -1,3 +1,4 @@
+
 export type Language = "fr" | "ar" | "en";
 
 export const translations = {
@@ -61,25 +62,25 @@ export const translations = {
     phase_support: "PILOTAGE & SUPPORT",
     
     step_1_title: "Intégration boutique",
-    step_1_desc: "Connexion de votre site Shopify, WooCommerce, etc. à notre système.",
+    step_1_desc: "Connexion de votre site Shopify, WooCommerce, YouCan, etc. à notre système en quelques minutes.",
     step_2_title: "Réception du stock",
-    step_2_desc: "Vérification en rayon et mise en entrepôt.",
-    step_3_title: "Préparation des commandes",
-    step_3_desc: "Collecte précise des articles d'une commande.",
-    step_4_title: "Emballage et étiquetage",
-    step_4_desc: "Protection du colis et impression des bordereaux.",
-    step_5_title: "Expédition",
-    step_5_desc: "Remise au transporteur partenaire.",
-    step_6_title: "Suivi de livraison",
-    step_6_desc: "Mise à jour automatique du statut pour vous et vos clients.",
-    step_7_title: "Paiement à la livraison COD",
-    step_7_desc: "Encaissement sécurisé du montant chez le client.",
-    step_8_title: "Retours et échanges",
-    step_8_desc: "Gestion rapide des retours avec contrôle qualité.",
-    step_9_title: "Support client",
-    step_9_desc: "Assistance dédiée pour résoudre les incidents de livraison.",
-    step_10_title: "Tableau de bord",
-    step_10_desc: "Analyse de vos performances et suivi de vos revenus.",
+    step_2_desc: "Contrôle qualité, comptage d'inventaire et scanning codes-barres dès l'arrivée à l'entrepôt.",
+    step_3_title: "Entreposage sécurisé",
+    step_3_desc: "Stockage optimisé en rayonnages étiquetés avec surveillance 24/7 et assurance marchandise.",
+    step_4_title: "Capture automatique",
+    step_4_desc: "Vos commandes remontent instantanément sur notre console sans saisie manuelle.",
+    step_5_title: "Picking & Packing",
+    step_5_desc: "Collecte précise des articles et emballage professionnel sécurisé sous moins de 2 heures.",
+    step_6_title: "Tri & Expédition",
+    step_6_desc: "Dispatch vers nos hubs régionaux pour un acheminement express sur tout le territoire.",
+    step_7_title: "Suivi en temps réel",
+    step_7_desc: "Mise à jour automatique du statut pour vous et notifications pour vos clients finaux.",
+    step_8_title: "Livraison & COD",
+    step_8_desc: "Remise en main propre avec encaissement sécurisé du montant chez l'acheteur.",
+    step_9_title: "Reversement J+1",
+    step_9_desc: "Virement garanti de vos recettes Cash-on-Delivery dès le lendemain de la livraison.",
+    step_10_title: "Gestion des retours",
+    step_10_desc: "Traitement, vérification et réintégration en stock de vos retours sous 48 heures.",
 
     // Services
     services_title: "TOUT CE DONT VOTRE BOUTIQUE A BESOIN",

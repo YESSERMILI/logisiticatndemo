@@ -1,14 +1,14 @@
+
 "use client";
 
 import Link from "next/link";
 import { useTranslation } from "@/hooks/use-translation";
 import { useLanguage } from "@/contexts/language-context";
-import { Facebook, Instagram, Linkedin, MessageCircle, Globe, Send, ArrowUp, MapPin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, MessageCircle, Send, ArrowUp, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { motion } from "framer-motion";
 
 export function Footer() {
   const { t, language } = useTranslation();
@@ -23,20 +23,20 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-primary text-white pt-24 pb-12 overflow-hidden relative" dir={isRTL ? "rtl" : "ltr"}>
+    <footer className="bg-primary-container text-white pt-24 pb-12 overflow-hidden relative" dir={isRTL ? "rtl" : "ltr"}>
       <div className="container mx-auto px-4 relative z-10">
         
         {/* Newsletter Section */}
         <div className="bg-white/5 rounded-[48px] p-8 md:p-16 mb-24 border border-white/10 flex flex-col lg:flex-row items-center justify-between gap-12 reveal">
           <div className="max-w-xl text-center lg:text-left rtl:lg:text-right">
             <span className="text-secondary-fixed font-black uppercase tracking-[0.2em] text-[10px] mb-4 block">Conseils Logistique</span>
-            <h3 className="text-3xl font-heading font-extrabold mb-4 uppercase leading-tight">Optimisez vos flux e-commerce</h3>
+            <h3 className="font-heading font-extrabold mb-4 uppercase leading-tight text-white">{t('footer_newsletter')}</h3>
             <p className="text-primary-fixed-dim font-medium">Rejoignez +1000 boutiques déjà abonnées à notre newsletter.</p>
           </div>
           <div className="flex w-full lg:w-auto gap-4">
             <Input 
               placeholder="votre@email.pro" 
-              className="h-16 bg-white/5 border-white/10 rounded-2xl px-8 md:w-80 focus:ring-secondary transition-all"
+              className="h-16 bg-white/5 border-white/10 rounded-2xl px-8 md:w-80 focus:ring-secondary transition-all text-white"
             />
             <Button className="btn-primary h-16 px-10 shadow-none">
               <Send className="h-5 w-5" />
@@ -71,7 +71,7 @@ export function Footer() {
               <ul className="space-y-5">
                 {col.links.map((link) => (
                   <li key={link}>
-                    <Link href="#" className="text-primary-fixed-dim font-bold hover:text-white transition-colors text-sm">
+                    <Link href="#" className="text-primary-fixed-dim font-bold hover:text-white transition-colors text-sm uppercase">
                       {t(`footer_link_${link}` as any)}
                     </Link>
                   </li>
@@ -115,7 +115,7 @@ export function Footer() {
 
         {/* Giant Watermark */}
         <div className="relative h-24 md:h-48 overflow-hidden pointer-events-none mt-16 opacity-5">
-          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[15vw] font-heading font-extrabold text-white select-none tracking-tighter leading-none">
+          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[15vw] font-heading font-extrabold text-white select-none tracking-[0.2em] leading-none uppercase">
             LOGISTICA
           </span>
         </div>

@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -23,7 +24,6 @@ const config: Config = {
         heading: ["var(--font-heading)", "sans-serif"],
         arabic: ["var(--font-arabic)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
-        display: ["Plus Jakarta Sans", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -32,20 +32,20 @@ const config: Config = {
         background: "#f8f9ff",
         foreground: "#0b1c30",
         primary: {
-          DEFAULT: "#000000",
+          DEFAULT: "#07163F", // Deep Mediterranean Navy
           container: "#131b2e",
           fixed: "#dae2fd",
           foreground: "#ffffff",
         },
         secondary: {
           DEFAULT: "#9d4300",
-          container: "#fd761a",
+          container: "#fd761a", // Logistics Amber
           fixed: "#ffdbca",
           "fixed-dim": "#ffb690",
           foreground: "#ffffff",
         },
         tertiary: {
-          DEFAULT: "#000000",
+          DEFAULT: "#2563EB", // Electric Blue
           container: "#00174b",
           fixed: "#dbe1ff",
         },
@@ -91,9 +91,9 @@ const config: Config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 4px)",
         sm: "calc(var(--radius) - 8px)",
-        xl: "0.75rem",
-        "2xl": "1rem",
-        "3xl": "1.5rem",
+        xl: "1rem",
+        "2xl": "1.5rem",
+        "3xl": "2rem",
         full: "9999px",
       },
       boxShadow: {
