@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
 
-const config = {
+const config: Config = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -23,66 +23,84 @@ const config = {
         heading: ["var(--font-heading)", "sans-serif"],
         arabic: ["var(--font-arabic)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
+        display: ["Plus Jakarta Sans", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background: "#f8f9ff",
+        foreground: "#0b1c30",
         primary: {
-          900: "#07163F",
-          700: "#0B2A7A",
-          DEFAULT: "#07163F",
-          foreground: "#FFFFFF",
+          DEFAULT: "#000000",
+          container: "#131b2e",
+          fixed: "#dae2fd",
+          foreground: "#ffffff",
         },
-        navy: {
-          900: "#07163F",
-          700: "#0B2A7A",
+        secondary: {
+          DEFAULT: "#9d4300",
+          container: "#fd761a",
+          fixed: "#ffdbca",
+          "fixed-dim": "#ffb690",
+          foreground: "#ffffff",
         },
-        blue: {
-          500: "#2563EB",
-          100: "#E6EEFF",
-          50: "#F4F7FF",
+        tertiary: {
+          DEFAULT: "#000000",
+          container: "#00174b",
+          fixed: "#dbe1ff",
         },
-        orange: {
-          100: "#FFF0DD",
-          500: "#FF8A1F",
-          600: "#EE7400",
-          DEFAULT: "#FF8A1F",
+        surface: {
+          DEFAULT: "#f8f9ff",
+          bright: "#f8f9ff",
+          dim: "#cbdbf5",
+          variant: "#d3e4fe",
+          container: {
+            DEFAULT: "#e5eeff",
+            low: "#eff4ff",
+            lowest: "#ffffff",
+            high: "#dce9ff",
+            highest: "#d3e4fe",
+          },
         },
-        gray: {
-          50: "#F7F8FB",
-          200: "#E3E7F0",
-          400: "#9AA3B8",
-          600: "#5B6580",
-          900: "#101828",
+        "on-surface": {
+          DEFAULT: "#0b1c30",
+          variant: "#45464d",
+        },
+        "on-primary": {
+          DEFAULT: "#ffffff",
+          container: "#7c839b",
+          fixed: "#131b2e",
+        },
+        "on-secondary": {
+          DEFAULT: "#ffffff",
+          container: "#5c2400",
+          fixed: "#341100",
+        },
+        error: {
+          DEFAULT: "#ba1a1a",
+          container: "#ffdad6",
         },
         success: "#12B76A",
         warning: "#F79009",
-        error: "#F04438",
-        secondary: {
-          DEFAULT: "#2563EB",
-          foreground: "#FFFFFF",
-        },
-        accent: {
-          DEFAULT: "#FF8A1F",
-          foreground: "#FFFFFF",
-        },
+        outline: {
+          DEFAULT: "#76777d",
+          variant: "#c6c6cd",
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 4px)",
         sm: "calc(var(--radius) - 8px)",
-        xl: "16px",
-        "2xl": "24px",
-        "3xl": "32px",
+        xl: "0.75rem",
+        "2xl": "1rem",
+        "3xl": "1.5rem",
+        full: "9999px",
       },
       boxShadow: {
-        e1: "0 2px 8px rgba(7, 22, 63, 0.06)",
-        e2: "0 12px 32px rgba(7, 22, 63, 0.10)",
-        e3: "0 24px 64px rgba(7, 22, 63, 0.16)",
-        orange: "0 8px 32px rgba(255, 138, 31, 0.35)",
+        e1: "0 2px 8px rgba(7, 22, 63, 0.04)",
+        e2: "0 12px 32px rgba(7, 22, 63, 0.08)",
+        e3: "0 24px 64px rgba(7, 22, 63, 0.12)",
+        orange: "0 8px 32px rgba(253, 118, 26, 0.25)",
       },
       keyframes: {
         "accordion-down": {
@@ -97,16 +115,15 @@ const config = {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
-        pulse: {
-          "0%, 100%": { opacity: "1", transform: "scale(1)" },
-          "50%": { opacity: "0.5", transform: "scale(0.95)" },
-        },
+        "dash-flow": {
+          to: { "stroke-dashoffset": "-24" }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         marquee: "marquee 40s linear infinite",
-        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "dash-flow": "dash-flow 2s linear infinite",
       },
     },
   },

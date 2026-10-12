@@ -10,7 +10,8 @@ export function HeroIllustration() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (!svgRef.current) return;
-      const time = (svgRef.current.getCurrentTime() % 8) / 8;
+      // Normalizing time based on SVG current time or custom animation loop
+      const time = (Date.now() % 8000) / 8000;
       
       if (time < 0.25) setActiveNode(0);
       else if (time < 0.5) setActiveNode(1);
@@ -28,23 +29,22 @@ export function HeroIllustration() {
   ];
 
   return (
-    <div className="relative w-full aspect-[560/440]">
-      {/* Visual background decor */}
-      <div className="absolute inset-0 bg-route-pattern opacity-10 rounded-3xl" />
-      
+    <div className="relative w-full aspect-[560/440] bg-primary rounded-[40px] overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <svg className="w-full h-full" viewBox="0 0 560 440">
+           <path d="M100 400 L200 300 L400 200 L500 100" stroke="white" strokeWidth="1" strokeDasharray="10 10" />
+           <circle cx="280" cy="220" r="150" fill="white" fillOpacity="0.05" />
+        </svg>
+      </div>
+
       <svg 
         ref={svgRef}
         viewBox="0 0 560 440" 
-        className="w-full h-full drop-shadow-2xl"
+        className="w-full h-full"
         role="img" 
         aria-label="Un camion Logistica suit la route de la commande à la livraison"
       >
-        {/* Background Skyline */}
-        <g opacity="0.1">
-          <path d="M0 380 h560 v60 h-560z" fill="#07163F" />
-          <path d="M50 380 v-40 h30 v40z M120 380 v-60 h40 v60z M300 380 v-30 h50 v30z M450 380 v-50 h40 v50z" fill="#07163F" />
-        </g>
-
         {/* Dotted Route */}
         <path 
           id="route" 
@@ -54,6 +54,7 @@ export function HeroIllustration() {
           strokeWidth="4" 
           strokeLinecap="round" 
           strokeDasharray="2 11"
+          opacity="0.3"
         />
 
         {/* Orange Progress Line */}
@@ -61,7 +62,7 @@ export function HeroIllustration() {
           d="M60 340 C160 340 180 220 280 220 C380 220 400 120 500 100" 
           pathLength="1"
           fill="none" 
-          stroke="#FF8A1F" 
+          stroke="#fd761a" 
           strokeWidth="4.5" 
           strokeLinecap="round"
           strokeDasharray="1 1" 
@@ -86,9 +87,9 @@ export function HeroIllustration() {
             <mpath href="#route"/>
           </animateMotion>
           
-          {/* Truck Body */}
+          {/* Truck Body - Van style */}
           <rect x="-24" y="-18" width="30" height="21" rx="3" fill="#2563EB"/>
-          <rect x="-24" y="-9" width="30" height="3.5" fill="#FF8A1F"/>
+          <rect x="-24" y="-9" width="30" height="3.5" fill="#fd761a"/>
           <path d="M8 -12 h10 l7 8 v7 h-17z" fill="#0B2A7A"/>
           <path d="M12 -9 h5 l4 5 h-9z" fill="#BFD4FF"/>
           
@@ -121,14 +122,14 @@ export function HeroIllustration() {
           style={{ left: node.x, top: node.y }}
         >
           <div className={cn(
-            "glass-panel px-4 py-2 rounded-xl text-[10px] font-black text-center min-w-[96px]",
-            activeNode === i ? "border-orange-500 shadow-orange" : "border-white/20"
+            "glass-panel px-4 py-2 rounded-xl text-[10px] font-black text-center min-w-[100px] border-2",
+            activeNode === i ? "border-secondary shadow-orange" : "border-white/10"
           )}>
             <div className={cn(
               "w-1.5 h-1.5 rounded-full mx-auto mb-1",
-              activeNode === i ? "bg-orange-500 animate-pulse" : "bg-primary-900/20"
+              activeNode === i ? "bg-secondary animate-pulse" : "bg-white/20"
             )} />
-            {node.label}
+            <span className="text-on-surface uppercase tracking-widest">{node.label}</span>
           </div>
         </div>
       ))}

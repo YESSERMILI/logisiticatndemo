@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --background: 220 100% 99%;
+    --foreground: 215 50% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 215 50% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 221 81% 14%;
+    --popover-foreground: 215 50% 12%;
+    --primary: 222 47% 13%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 221 83% 53%;
+    --secondary: 24 99% 54%;
     --secondary-foreground: 210 40% 98%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215 20% 45%;
-    --accent: 28 100% 56%;
-    --accent-foreground: 221 81% 14%;
+    --accent: 24 99% 54%;
+    --accent-foreground: 222 47% 13%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 28 100% 56%;
-    --radius: 16px;
+    --ring: 24 99% 54%;
+    --radius: 12px;
   }
 
   * {
@@ -31,41 +31,31 @@
   }
 
   body {
-    @apply bg-white text-gray-900 font-sans selection:bg-orange-500/20 selection:text-primary-900;
-    font-variant-ligatures: common-ligatures;
+    @apply bg-surface text-foreground font-sans;
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold tracking-tight text-primary-900 uppercase;
-  }
-
-  .rtl {
-    direction: rtl;
-    @apply font-arabic;
+    @apply font-heading font-extrabold tracking-tight text-foreground uppercase;
   }
 }
 
 @layer components {
-  .section-padding {
-    @apply py-20 md:py-32;
-  }
-
   .glass-panel {
-    @apply bg-white/70 backdrop-blur-xl border border-white/60 shadow-e1;
+    @apply bg-surface-container-lowest/70 backdrop-blur-xl border border-white/60 shadow-e1;
   }
 
   .eyebrow {
-    @apply inline-flex items-center px-3 py-1 rounded-full bg-orange-100 text-orange-600 text-[12px] font-bold uppercase tracking-[0.08em] mb-4;
+    @apply inline-flex items-center px-3 py-1 rounded-full bg-surface-container text-secondary font-bold uppercase text-[12px] tracking-[0.08em] mb-4;
   }
 
   .btn-primary {
-    @apply h-14 px-8 rounded-full bg-orange-500 text-white font-bold shadow-orange hover:bg-orange-600 transition-all active:scale-95 flex items-center justify-center gap-2;
+    @apply h-14 px-8 rounded-full bg-secondary-container text-on-secondary font-bold shadow-orange hover:bg-secondary transition-all active:scale-95 flex items-center justify-center gap-2;
   }
 
   .btn-secondary {
-    @apply h-14 px-8 rounded-full border-2 border-primary-700 text-primary-700 font-bold hover:bg-blue-50 transition-all active:scale-95 flex items-center justify-center gap-2;
+    @apply h-14 px-8 rounded-full border-2 border-primary text-primary font-bold hover:bg-surface-container transition-all active:scale-95 flex items-center justify-center gap-2;
   }
 
   .reveal {
@@ -78,47 +68,8 @@
     opacity: 1;
     transform: none;
   }
-
-  .draw {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-  }
-  
-  .in .draw {
-    animation: draw 1s 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-
-  @keyframes draw {
-    to { stroke-dashoffset: 0; }
-  }
-
-  .ring-pulse {
-    transform-origin: center;
-    transform-box: fill-box;
-    animation: ring 2.4s infinite;
-  }
-
-  @keyframes ring {
-    0% { transform: scale(0.6); opacity: 0.8; }
-    100% { transform: scale(2.4); opacity: 0; }
-  }
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-primary-900/10 rounded-full hover:bg-primary-900/20 transition-colors;
-}
-
-/* Background patterns */
-.bg-route-pattern {
-  background-image: radial-gradient(circle at 2px 2px, #07163F 1px, transparent 0);
-  background-size: 24px 24px;
-  opacity: 0.05;
+::-webkit-scrollbar {
+  display: none;
 }
