@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 const sora = Sora({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "600", "700", "800"],
   variable: "--font-heading",
   display: "swap",
 });

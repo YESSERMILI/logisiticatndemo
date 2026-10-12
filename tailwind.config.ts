@@ -31,20 +31,22 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#07163F", // Navy 900
-          700: "#0B2A7A",     // Navy 700
+          900: "#07163F",
+          700: "#0B2A7A",
+          DEFAULT: "#07163F",
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#2563EB", // Blue 500
-          100: "#E6EEFF",     // Blue 100
-          50: "#F4F7FF",      // Blue 50
+          500: "#2563EB",
+          100: "#E6EEFF",
+          50: "#F4F7FF",
+          DEFAULT: "#2563EB",
           foreground: "#FFFFFF",
         },
         orange: {
-          50: "#FFF0DD",      // Orange 100 equivalent
-          500: "#FF8A1F",     // Orange 500
-          600: "#EE7400",     // Orange 600
+          100: "#FFF0DD",
+          500: "#FF8A1F",
+          600: "#EE7400",
           DEFAULT: "#FF8A1F",
         },
         gray: {
@@ -54,12 +56,9 @@ const config = {
           600: "#5B6580",
           900: "#101828",
         },
-        destructive: {
-          DEFAULT: "#F04438",
-          foreground: "#FFFFFF",
-        },
         success: "#12B76A",
         warning: "#F79009",
+        error: "#F04438",
         muted: {
           DEFAULT: "#9AA3B8",
           foreground: "#5B6580",
@@ -68,14 +67,6 @@ const config = {
           DEFAULT: "#FF8A1F",
           foreground: "#FFFFFF",
         },
-        popover: {
-          DEFAULT: "#FFFFFF",
-          foreground: "#101828",
-        },
-        card: {
-          DEFAULT: "#FFFFFF",
-          foreground: "#101828",
-        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -83,6 +74,7 @@ const config = {
         sm: "calc(var(--radius) - 8px)",
         xl: "16px",
         "2xl": "24px",
+        "3xl": "32px",
       },
       boxShadow: {
         e1: "0 2px 8px rgba(7, 22, 63, 0.06)",
@@ -103,11 +95,16 @@ const config = {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
+        pulse: {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.5", transform: "scale(0.95)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         marquee: "marquee 40s linear infinite",
+        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },
