@@ -1,32 +1,48 @@
 
 import type { Metadata } from "next";
-import { Inter, Sora, IBM_Plex_Sans_Arabic } from "next/font/google";
+import { Sora, Plus_Jakarta_Sans, Readex_Pro, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/language-context";
 import { Toaster } from "@/components/ui/toaster";
 
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: "--font-sans" 
-});
-
 const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-heading"
+  variable: "--font-heading",
+  weight: ["400", "600", "700", "800"],
 });
 
-const ibmPlexArabic = IBM_Plex_Sans_Arabic({
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
+});
+
+const readexPro = Readex_Pro({
   subsets: ["arabic"],
-  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-arabic",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Logistica Tunisie — De la commande à la livraison, tout simplement.",
-  description: "Solution intégrée de fulfillment, stockage et livraison pour l'e-commerce en Tunisie.",
-  icons: {
-    icon: "/favicon.ico",
-  }
+  title: "LOGISTICA TUNISIE - Logistique e-commerce simplifiée",
+  description: "Solution complète de logistique e-commerce en Tunisie. De la commande à la livraison, tout simplement.",
+  openGraph: {
+    title: "LOGISTICA TUNISIE - Logistique e-commerce",
+    description: "Stockage, préparation, expédition et suivi en temps réel pour boutiques en ligne.",
+    images: ["https://i.postimg.cc/P5sfzcz0/png-1.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LOGISTICA TUNISIE - Logistique e-commerce",
+    description: "Stockage, préparation, expédition et suivi en temps réel pour boutiques en ligne.",
+    images: ["https://i.postimg.cc/P5sfzcz0/png-1.png"],
+  },
 };
 
 export default function RootLayout({
@@ -35,8 +51,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ar" dir="rtl" suppressHydrationWarning>
-      <body className={`${ibmPlexArabic.variable} ${inter.variable} ${sora.variable} font-sans antialiased text-white selection:bg-[#F7931E] selection:text-[#0B2A6B]`}>
+    <html lang="fr" suppressHydrationWarning>
+      <body className={`${plusJakarta.variable} ${sora.variable} ${readexPro.variable} ${dmMono.variable} font-sans antialiased text-gray-900`}>
         <LanguageProvider>
           {children}
           <Toaster />
