@@ -19,10 +19,10 @@ import { Slider } from "@/components/ui/slider";
 import { Logo } from "@/components/logo";
 import { DashboardShowcase } from "@/components/home/dashboard-showcase";
 
-// Technical Blueprint Process Visual Component - NEW STYLE
+// Context-Aware Process Visual Component
 const ProcessVisual = ({ type }: { type: 'picking' | 'packing' | 'labeling' | 'ready' }) => {
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-8">
+    <div className="relative w-full h-full flex items-center justify-center p-6">
       <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
         <defs>
           <filter id="glowProcess">
@@ -31,75 +31,76 @@ const ProcessVisual = ({ type }: { type: 'picking' | 'packing' | 'labeling' | 'r
           </filter>
         </defs>
 
-        {/* Technical Circular Base */}
-        <circle cx="100" cy="100" r="70" fill="none" stroke="#1F6FDB" strokeWidth="0.5" strokeDasharray="4 4" opacity="0.3" />
-        <circle cx="100" cy="100" r="85" fill="none" stroke="#F7931E" strokeWidth="1" strokeDasharray="1 10" opacity="0.2" />
-
-        {/* Dynamic Background Elements */}
-        <motion.circle 
-          cx="100" cy="100" r="70" fill="none" stroke="#1F6FDB" strokeWidth="2" 
-          strokeDasharray="20 100"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-        />
-
-        {/* Center Content based on Type */}
+        {/* Picking Context: Shelf & Targeted Selection */}
         {type === 'picking' && (
           <g>
-            <Target className="text-[#F7931E]" x="70" y="70" size={60} strokeWidth={1} filter="url(#glowProcess)" />
+            <rect x="40" y="60" width="120" height="10" fill="#081E4E" rx="2" />
+            <rect x="40" y="120" width="120" height="10" fill="#081E4E" rx="2" />
+            {[45, 85, 125].map(x => (
+              <rect key={x} x={x} y="85" width="30" height="35" fill="#1F6FDB" fillOpacity="0.2" rx="2" />
+            ))}
             <motion.rect 
-              x="85" y="85" width="30" height="30" rx="4" fill="#1F6FDB" 
-              animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              x="85" y="85" width="30" height="35" fill="#F7931E" rx="2" 
+              initial={{ y: 0 }}
+              animate={{ y: [-10, 0] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              filter="url(#glowProcess)"
             />
-            <path d="M 60,100 H 140 M 100,60 V 140" stroke="#F7931E" strokeWidth="0.5" opacity="0.3" />
+            <path d="M 100,50 V 80 M 90,65 H 110" stroke="#F7931E" strokeWidth="1" strokeDasharray="2 2" />
           </g>
         )}
 
+        {/* Packing Context: Box with Tape Application */}
         {type === 'packing' && (
-          <g>
-            <Layers className="text-[#1F6FDB]" x="70" y="70" size={60} strokeWidth={1} />
+          <g transform="translate(10, 10)">
+            <path d="M 40,80 L 100,110 L 160,80 L 100,50 Z" fill="#0B2A6B" fillOpacity="0.1" />
+            <path d="M 40,80 L 40,140 L 100,170 L 100,110 Z" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="1" />
+            <path d="M 160,80 L 160,140 L 100,170 L 100,110 Z" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="1" />
             <motion.path 
-              d="M 60,140 L 100,160 L 140,140" fill="none" stroke="#F7931E" strokeWidth="3" strokeLinecap="round"
-              animate={{ y: [-20, 0, -20] }}
-              transition={{ duration: 3, repeat: Infinity }}
+              d="M 40,80 L 100,110 L 160,80" 
+              fill="none" stroke="#F7931E" strokeWidth="8" strokeLinecap="round"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
               filter="url(#glowProcess)"
             />
-            <motion.path 
-              d="M 60,60 L 100,40 L 140,60" fill="none" stroke="#F7931E" strokeWidth="3" strokeLinecap="round"
-              animate={{ y: [20, 0, 20] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              filter="url(#glowProcess)"
-            />
+            <circle cx="160" cy="80" r="4" fill="#F7931E" />
           </g>
         )}
 
+        {/* Labeling Context: Scanning a Box Label */}
         {type === 'labeling' && (
           <g>
-            <Cpu className="text-[#F7931E]" x="70" y="70" size={60} strokeWidth={1} />
+            <rect x="50" y="60" width="100" height="80" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="1" rx="4" />
+            <rect x="70" y="80" width="60" height="40" fill="white" rx="2" />
+            <g transform="translate(75, 85)">
+              {[0, 10, 20, 30, 40, 50].map(x => (
+                <rect key={x} x={x} y="0" width={x % 20 === 0 ? "4" : "2"} height="30" fill="#081E4E" />
+              ))}
+            </g>
             <motion.line 
-              x1="50" y1="100" x2="150" y2="100" stroke="#F7931E" strokeWidth="2"
-              animate={{ y: [-40, 40, -40] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              x1="60" y1="80" x2="140" y2="80" stroke="#F7931E" strokeWidth="3"
+              animate={{ y: [0, 40, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               filter="url(#glowProcess)"
             />
-            <rect x="75" y="75" width="50" height="50" fill="none" stroke="#1F6FDB" strokeWidth="0.5" strokeDasharray="2 2" />
           </g>
         )}
 
+        {/* Ready Context: Box on conveyor belt ready to go */}
         {type === 'ready' && (
           <g>
-            <Activity className="text-[#10B981]" x="70" y="70" size={60} strokeWidth={1} filter="url(#glowProcess)" />
-            {Array.from({length: 8}).map((_, i) => (
-              <motion.circle 
-                key={i}
-                cx="100" cy="100" r="80" fill="#10B981"
-                initial={{ scale: 0, opacity: 0.5 }}
-                animate={{ scale: 1.2, opacity: 0 }}
-                transition={{ duration: 2, repeat: Infinity, delay: i * 0.25 }}
-              />
+            <rect x="40" y="140" width="120" height="15" fill="#081E4E" rx="7" />
+            {[50, 80, 110, 140].map(x => (
+              <circle key={x} cx={x} cy="147.5" r="4" fill="#1F6FDB" />
             ))}
-            <Truck className="text-white" x="80" y="80" size={40} />
+            <motion.g
+              animate={{ x: [0, 40], opacity: [0, 1, 1, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            >
+              <rect x="60" y="70" width="60" height="60" fill="#1F6FDB" rx="4" />
+              <path d="M 75,100 L 85,115 L 105,85" fill="none" stroke="white" strokeWidth="6" strokeLinecap="round" strokeJoin="round" />
+            </motion.g>
           </g>
         )}
       </svg>
@@ -346,7 +347,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Preparation & Emballage Section (TECHNICAL BLUEPRINT STYLE) */}
+      {/* Preparation & Emballage Section (CONTEXTUAL STYLE) */}
       <section id="preparation" className="py-24 bg-white/10">
         <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
           <div className="relative order-2 lg:order-1">
@@ -354,7 +355,7 @@ export default function HomePage() {
                 {[
                   { type: 'picking', label: t('t3') },
                   { type: 'packing', label: t('t4') },
-                  { type: 'labeling', label: 'Labeling' },
+                  { type: 'labeling', label: 'Etiquetage' },
                   { type: 'ready', label: 'Ready' }
                 ].map((item, i) => (
                   <motion.div 
