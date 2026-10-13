@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useTranslation } from "@/hooks/use-translation";
 import { useLanguage } from "@/contexts/language-context";
 import { 
@@ -12,7 +13,7 @@ import {
   ChevronRight, ArrowUpRight, Banknote, Package, 
   PackageOpen, Layers, Headphones, LayoutDashboard, Plus, Clock, Star, HelpCircle
 } from "lucide-react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -50,7 +51,7 @@ function Counter({ value, label, suffix = "" }: { value: number; label: string; 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="flex flex-col items-center text-center p-8 bg-white/5 border border-white/10 rounded-md"
+      className="flex flex-col items-center text-center p-8 bg-white/5 border border-white/10 rounded-md shadow-brutal"
     >
       <b className="text-4xl md:text-5xl font-bold text-[#F7931E] font-sans tracking-tighter tabular-nums">
         {value >= 1000 ? `+${count.toLocaleString('en')}` : count}{suffix}
@@ -101,7 +102,7 @@ export default function HomePage() {
   const returns = calcOrders * (calcRet / 100) * 4;
   const total = Math.round(storage + prep + delivery + returns);
 
-  // Dashboard Mock Data
+  // Dashboard Mock Data (Stable for hydration)
   const dashData = [
     { k: [184, 171, 9420, 9], t: [12, 5, 8, 2], b: [40, 55, 48, 70, 62, 85, 74] },
     { k: [1240, 1186, 63800, 52], t: [15, 4, 11, 4], b: [60, 72, 65, 80, 70, 90, 95] },
@@ -145,8 +146,8 @@ export default function HomePage() {
               <span className={cn("px-4 py-1.5 rounded-full text-xs font-bold transition-all", language === 'ar' ? "bg-[#F7931E] text-[#0B2A6B]" : "text-[#B9C8EC]")}>عربية</span>
               <span className={cn("px-4 py-1.5 rounded-full text-xs font-bold transition-all", language === 'fr' ? "bg-[#F7931E] text-[#0B2A6B]" : "text-[#B9C8EC]")}>FR</span>
             </div>
-            <Button variant="secondary" size="sm" className="hidden sm:flex bg-[#F7931E] text-[#0B2A6B] font-bold shadow-lg hover:bg-[#E0861A] border-none rounded-sm px-6">
-              {t('n4')}
+            <Button variant="secondary" size="sm" className="hidden sm:flex bg-[#F7931E] text-[#0B2A6B] font-bold shadow-lg hover:bg-[#E0861A] border-none rounded-sm px-6" asChild>
+              <Link href="#calc">{t('n4')}</Link>
             </Button>
             <button className="lg:hidden text-white text-2xl" onClick={() => setMobileMenu(!mobileMenu)}>☰</button>
           </div>
@@ -184,12 +185,14 @@ export default function HomePage() {
               {t('sub')}
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button className="h-14 px-8 text-lg font-bold bg-[#F7931E] text-[#0B2A6B] shadow-xl hover:shadow-[#F7931E]/20 transition-all rounded-sm group border-none">
-                {t('cta1')}
-                <ArrowRight className={cn("transition-transform group-hover:translate-x-1", language === 'ar' && "rotate-180")} />
+              <Button className="h-14 px-8 text-lg font-bold bg-[#F7931E] text-[#0B2A6B] shadow-xl hover:shadow-[#F7931E]/20 transition-all rounded-sm group border-none" asChild>
+                <Link href="#cta">
+                  {t('cta1')}
+                  <ArrowRight className={cn("transition-transform group-hover:translate-x-1", language === 'ar' && "rotate-180")} />
+                </Link>
               </Button>
-              <Button variant="outline" className="h-14 px-8 text-lg font-bold border-2 border-white text-white hover:bg-white hover:text-[#0B2A6B] rounded-sm bg-transparent">
-                {t('cta2')}
+              <Button variant="outline" className="h-14 px-8 text-lg font-bold border-2 border-white text-white hover:bg-white hover:text-[#0B2A6B] rounded-sm bg-transparent" asChild>
+                <Link href="#how">{t('cta2')}</Link>
               </Button>
             </div>
             <div className="mt-10 flex flex-wrap gap-6 text-sm text-[#9FB2DE] font-medium">
@@ -222,6 +225,7 @@ export default function HomePage() {
                   <g className="animate-[bob_0.5s_ease-in-out_infinite_alternate]">
                     <rect x="40" y="206" width="140" height="82" rx="4" fill="#1F6FDB" className="shadow-lg"/>
                     <path d="M180 226h44l28 32v30h-72z" fill="#fff"/>
+                    <text x="62" y="256" fill="#fff" fontSize="18" fontWeight="800" fontFamily="Inter" style={{ letterSpacing: '2px' }}>LOGISTICA</text>
                     <g className="animate-spin origin-center" style={{ transformOrigin: '82px 292px' }}><circle cx="82" cy="292" r="17" fill="#0B2A6B"/><circle cx="82" cy="292" r="7" fill="#F7931E"/></g>
                     <g className="animate-spin origin-center" style={{ transformOrigin: '150px 292px' }}><circle cx="150" cy="292" r="17" fill="#0B2A6B"/><circle cx="150" cy="292" r="7" fill="#F7931E"/></g>
                   </g>
@@ -275,7 +279,7 @@ export default function HomePage() {
           <Counter value={12000} label={t('s1')} />
           <Counter value={24} label={t('s2')} />
           <Counter value={98} suffix="%" label={t('s3')} />
-          <div className="flex flex-col items-center text-center p-8 bg-white/5 border border-white/10 rounded-md">
+          <div className="flex flex-col items-center text-center p-8 bg-white/5 border border-white/10 rounded-md shadow-brutal">
             <b className="text-4xl md:text-5xl font-bold text-[#F7931E] font-sans tracking-tighter tabular-nums">{t('s4b')}</b>
             <span className="text-muted-foreground text-sm font-medium mt-2">{t('s4')}</span>
           </div>
@@ -389,7 +393,7 @@ export default function HomePage() {
                     transition={{ duration: 6, repeat: Infinity, delay: idx * 2, ease: "linear" }}
                   >
                     <rect x="0" y="144" width="46" height="36" fill={idx === 1 ? "#fff" : idx === 2 ? "#1F6FDB" : "#F7931E"} className="shadow-lg"/>
-                    <path d="M0 160h46M23 144v36" stroke={idx === 1 ? "#1F6FDB" : "#0B2A6B"} strokeWidth={2} opacity="0.3"/>
+                    <path d="M0 160h46M23 144v36" stroke={idx === 1 ? "#1F6FDB" : "#0B2A6B"} strokeWidth={2} style={{ opacity: 0.3 }}/>
                   </motion.g>
                 ))}
 
@@ -886,17 +890,17 @@ export default function HomePage() {
           <div>
             <h4 className="text-white mb-6 uppercase tracking-widest text-xs font-bold">{t('fh1')}</h4>
             <ul className="grid gap-3 text-sm text-[#7E93C4]">
-              <li><a href="#services" className="hover:text-[#F7931E] transition-colors">{t('n1')}</a></li>
-              <li><a href="#how" className="hover:text-[#F7931E] transition-colors">{t('n0')}</a></li>
-              <li><a href="#plans" className="hover:text-[#F7931E] transition-colors">{t('n7')}</a></li>
+              <li><Link href="#services" className="hover:text-[#F7931E] transition-colors">{t('n1')}</Link></li>
+              <li><Link href="#how" className="hover:text-[#F7931E] transition-colors">{t('n0')}</Link></li>
+              <li><Link href="#plans" className="hover:text-[#F7931E] transition-colors">{t('n7')}</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="text-white mb-6 uppercase tracking-widest text-xs font-bold">{t('fh2')}</h4>
             <ul className="grid gap-3 text-sm text-[#7E93C4]">
-              <li><a href="#tracking" className="hover:text-[#F7931E] transition-colors">{t('n5')}</a></li>
-              <li><a href="#coverage" className="hover:text-[#F7931E] transition-colors">{t('n6')}</a></li>
-              <li><a href="#faq" className="hover:text-[#F7931E] transition-colors">{t('n3')}</a></li>
+              <li><Link href="#tracking" className="hover:text-[#F7931E] transition-colors">{t('n5')}</Link></li>
+              <li><Link href="#coverage" className="hover:text-[#F7931E] transition-colors">{t('n6')}</Link></li>
+              <li><Link href="#faq" className="hover:text-[#F7931E] transition-colors">{t('n3')}</Link></li>
             </ul>
           </div>
           <div>
@@ -933,3 +937,4 @@ export default function HomePage() {
     </div>
   );
 }
+
