@@ -18,7 +18,7 @@ import { Slider } from "@/components/ui/slider";
 import { Logo } from "@/components/logo";
 import { DashboardShowcase } from "@/components/home/dashboard-showcase";
 
-// Professional Isometric Carton Illustration Component - HIGH FIDELITY
+// Professional Isometric Carton Illustration Component - DEEP BUILD
 const DetailedCarton = ({ type }: { type: 'picking' | 'packing' | 'labeling' | 'ready' }) => {
   return (
     <div className="relative w-48 h-48 flex items-center justify-center">
@@ -39,101 +39,107 @@ const DetailedCarton = ({ type }: { type: 'picking' | 'packing' | 'labeling' | '
           <filter id="boxShadow" x="0" y="140" width="240" height="60" filterUnits="userSpaceOnUse">
             <feGaussianBlur stdDeviation="8" />
           </filter>
+          <filter id="glowScan" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
         </defs>
 
         {/* Dynamic Floor Shadow */}
-        <ellipse cx="120" cy="190" rx="80" ry="25" fill="#0B2A6B" fillOpacity="0.1" filter="url(#boxShadow)" />
+        <ellipse cx="120" cy="190" rx="80" ry="25" fill="#0B2A6B" fillOpacity="0.15" filter="url(#boxShadow)" />
 
         <motion.g
           initial={{ y: 0 }}
-          animate={{ y: [-2, 2, -2] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ y: [-3, 3, -3] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
-          {/* Main Box Structure */}
-          {type !== 'picking' && (
-            <path d="M120 40 L190 75 L120 110 L50 75 Z" fill="url(#boxTop)" stroke="#0B2A6B" strokeWidth="1.5" />
-          )}
-          
-          <path d="M120 110 L190 75 V145 L120 180 Z" fill="url(#boxSideRight)" stroke="#0B2A6B" strokeWidth="1.5" />
-          <path d="M120 110 L50 75 V145 L120 180 Z" fill="url(#boxSideLeft)" stroke="#0B2A6B" strokeWidth="1.5" />
+          {/* Main Box Structure (Bottom Part) */}
+          <path d="M120 110 L190 75 V145 L120 180 Z" fill="url(#boxSideRight)" stroke="#0B2A6B" strokeWidth="1.2" />
+          <path d="M120 110 L50 75 V145 L120 180 Z" fill="url(#boxSideLeft)" stroke="#0B2A6B" strokeWidth="1.2" />
 
-          {/* Branding on side */}
-          <path d="M75 100 L95 110 L75 120 Z" fill="#F7931E" fillOpacity="0.4" />
-          <rect x="85" y="115" width="20" height="2" fill="#0B2A6B" fillOpacity="0.2" transform="skewY(20)" />
+          {/* Branding Logo on Left Side */}
+          <g transform="translate(70, 100) scale(0.12)">
+             <path d="M 0,174 L 174,87 L 61,87 Z" fill="#0B2A6B" fillOpacity="0.2" />
+             <path d="M 61,87 L 174,87 L 0,0 Z" fill="#1F6FDB" fillOpacity="0.2" />
+             <path d="M 0,174 L 61,87 L 0,87 Z" fill="#F7931E" fillOpacity="0.2" />
+          </g>
 
           {/* Specific Stage Details */}
           {type === 'picking' && (
-            <g transform="translate(0, -5)">
-              {/* Open Flaps with Perspective */}
-              <path d="M50 75 L10 55 L80 20 L120 40 Z" fill="#F1F5F9" stroke="#0B2A6B" strokeWidth="1.5" /> {/* Left Open */}
-              <path d="M190 75 L230 55 L160 20 L120 40 Z" fill="#E2E8F0" stroke="#0B2A6B" strokeWidth="1.5" /> {/* Right Open */}
-              
-              {/* Interior Shadow */}
+            <g>
+              {/* Internal Bottom */}
               <path d="M120 110 L50 75 L120 40 L190 75 Z" fill="#1e293b" fillOpacity="0.1" />
+              {/* Open Flaps with real depth */}
+              <path d="M50 75 L10 55 L80 20 L120 40 Z" fill="#F1F5F9" stroke="#0B2A6B" strokeWidth="1.2" /> {/* Left Flap */}
+              <path d="M190 75 L230 55 L160 20 L120 40 Z" fill="#E2E8F0" stroke="#0B2A6B" strokeWidth="1.2" /> {/* Right Flap */}
               
-              {/* Picked Item */}
-              <motion.rect 
-                x="95" y="60" width="50" height="35" rx="4" fill="#F7931E"
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.path 
-                d="M120 50 V30 M110 40 L120 30 L130 40" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              />
+              {/* Item being picked - Animated */}
+              <motion.g
+                animate={{ y: [0, -25, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <rect x="95" y="55" width="50" height="40" rx="4" fill="#F7931E" stroke="#0B2A6B" strokeWidth="1" />
+                <path d="M110 75 L118 83 L132 68" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              </motion.g>
             </g>
+          )}
+
+          {type !== 'picking' && (
+            <path d="M120 40 L190 75 L120 110 L50 75 Z" fill="url(#boxTop)" stroke="#0B2A6B" strokeWidth="1.2" />
           )}
 
           {type === 'packing' && (
             <g>
-              {/* Top Tape Stretched */}
-              <path d="M85 57 L155 92 L155 100 L85 65 Z" fill="#F7931E" />
-              <path d="M155 92 V130" stroke="#F7931E" strokeWidth="8" strokeLinecap="round" />
-              <path d="M85 65 V100" stroke="#F7931E" strokeWidth="8" strokeLinecap="round" />
-              {/* Tape Texture Effect */}
-              <path d="M90 60 L150 90" stroke="rgba(255,255,255,0.2)" strokeWidth="1" strokeDasharray="4 4" />
+              {/* Top Tape Seam */}
+              <path d="M85 57 L155 92" stroke="#F7931E" strokeWidth="8" strokeLinecap="round" />
+              {/* Tape going down the sides */}
+              <path d="M155 92 V115" stroke="#F7931E" strokeWidth="8" strokeLinecap="round" />
+              <path d="M85 57 V80" stroke="#F7931E" strokeWidth="8" strokeLinecap="round" />
+              {/* Tape Texture effect */}
+              <path d="M90 60 L150 90" stroke="rgba(255,255,255,0.3)" strokeWidth="1" strokeDasharray="4 2" />
             </g>
           )}
 
           {type === 'labeling' && (
             <g>
-              {/* Pro Shipping Label */}
-              <rect x="135" y="85" width="45" height="30" rx="2" fill="white" stroke="#0B2A6B" strokeWidth="1" transform="matrix(1, 0.5, 0, 1, 0, 0)" />
-              <g transform="matrix(1, 0.5, 0, 1, 140, 90)">
-                <rect width="35" height="3" fill="#0B2A6B" />
-                <rect y="6" width="25" height="1" fill="#94A3B8" />
-                <rect y="9" width="25" height="1" fill="#94A3B8" />
-                <rect y="13" width="12" height="6" fill="#0B2A6B" /> {/* Small Barcode Area */}
-                <rect x="15" y="13" width="2" height="6" fill="#0B2A6B" />
-                <rect x="19" y="13" width="4" height="6" fill="#0B2A6B" />
+              {/* Shipping Label on Right Side */}
+              <rect x="140" y="90" width="40" height="30" rx="2" fill="white" stroke="#0B2A6B" strokeWidth="1" transform="matrix(1, 0.5, 0, 1, 0, 0)" />
+              <g transform="matrix(1, 0.5, 0, 1, 145, 95)">
+                <rect width="30" height="3" fill="#0B2A6B" opacity="0.8" />
+                <rect y="6" width="20" height="1" fill="#94A3B8" />
+                <rect y="9" width="20" height="1" fill="#94A3B8" />
+                <rect y="13" width="10" height="8" fill="#000" /> {/* Barcode area */}
+                <rect x="12" y="13" width="2" height="8" fill="#000" />
+                <rect x="16" y="13" width="4" height="8" fill="#000" />
               </g>
-              {/* Laser Scan Beam */}
-              <motion.path 
-                d="M130 80 L190 110" stroke="#F7931E" strokeWidth="2" strokeLinecap="round"
-                animate={{ opacity: [0, 1, 0], x: [-5, 5, -5] }}
+              {/* Laser Scan Line Animated */}
+              <motion.line 
+                x1="130" y1="85" x2="185" y2="115"
+                stroke="#F7931E" strokeWidth="3" strokeLinecap="round"
+                filter="url(#glowScan)"
+                animate={{ opacity: [0, 1, 0], x: [-10, 10, -10] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
             </g>
           )}
 
           {type === 'ready' && (
-            <g transform="translate(10, -10) scale(0.8)">
-               {/* Stacked Box Behind */}
-               <g transform="translate(-30, 20)">
+            <g transform="translate(15, -15)">
+               {/* Small Box stacked behind */}
+               <g transform="translate(-40, 30) scale(0.7)">
                   <path d="M120 40 L190 75 L120 110 L50 75 Z" fill="#F7931E" stroke="#0B2A6B" strokeWidth="2" />
                   <path d="M120 110 L190 75 V145 L120 180 Z" fill="#E0861A" stroke="#0B2A6B" strokeWidth="2" />
                   <path d="M120 110 L50 75 V145 L120 180 Z" fill="#C97817" stroke="#0B2A6B" strokeWidth="2" />
                </g>
-               {/* Ready Check Badge */}
-               <motion.circle 
-                 cx="190" cy="80" r="25" fill="#10B981" stroke="white" strokeWidth="3"
-                 initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.5, type: 'spring' }}
-               />
-               <motion.path 
-                 d="M180 80 L187 87 L200 74" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"
-                 initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.8 }}
-               />
+               {/* Ready Indicator Checkmark */}
+               <motion.g
+                 initial={{ scale: 0 }}
+                 whileInView={{ scale: 1 }}
+                 transition={{ type: 'spring', delay: 0.5 }}
+               >
+                 <circle cx="190" cy="80" r="28" fill="#10B981" stroke="white" strokeWidth="4" />
+                 <path d="M180 80 L187 87 L202 72" stroke="white" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+               </motion.g>
             </g>
           )}
         </motion.g>
@@ -387,8 +393,8 @@ export default function HomePage() {
           <div className="relative order-2 lg:order-1">
              <div className="grid grid-cols-2 gap-8">
                 {[
-                  { type: 'picking', label: 'Picking' },
-                  { type: 'packing', label: 'Packing' },
+                  { type: 'picking', label: t('t3') },
+                  { type: 'packing', label: t('t4') },
                   { type: 'labeling', label: 'Labeling' },
                   { type: 'ready', label: 'Ready' }
                 ].map((item, i) => (
@@ -421,8 +427,8 @@ export default function HomePage() {
                     <Search size={24} />
                   </div>
                   <div>
-                    <p className="text-white font-bold text-lg mb-1">Picking Precise</p>
-                    <p className="text-sm text-[#9FB2DE]">{t('t3')}</p>
+                    <p className="text-white font-bold text-lg mb-1">{t('t3')}</p>
+                    <p className="text-sm text-[#9FB2DE]">{t('d3')}</p>
                   </div>
                </div>
                <div className="p-6 bg-white/5 rounded-2xl border border-white/10 flex items-start gap-5 hover:bg-white/10 transition-all group">
@@ -430,8 +436,8 @@ export default function HomePage() {
                     <ClipboardCheck size={24} />
                   </div>
                   <div>
-                    <p className="text-white font-bold text-lg mb-1">Packing & Labeling</p>
-                    <p className="text-sm text-[#9FB2DE]">{t('t4')}</p>
+                    <p className="text-white font-bold text-lg mb-1">{t('t4')}</p>
+                    <p className="text-sm text-[#9FB2DE]">{t('d4')}</p>
                   </div>
                </div>
             </div>
@@ -449,9 +455,7 @@ export default function HomePage() {
              {/* High Fidelity Tunisian Map with All Internal Borders */}
              <svg viewBox="0 0 550 1100" className="w-full h-full drop-shadow-2xl overflow-visible" role="img" preserveAspectRatio="xMidYMid meet">
                 <g stroke="white" strokeWidth="1.2" fill="rgba(31,111,219,0.2)">
-                  {/* Governorate paths go here (placeholder logic for simplicity) */}
                   <path d="M 211.3,38.4 L 211.3,40.1 L 211.3,45.8 L 211.3,50 L 211.3,52.8 L 214.8,54.2 L 218.4,57.1 L 222.6,57.1 L 223.3,59.9 L 228.3,69.1 L 231.1,74 L 236,81.1 L 241.7,88.2 L 244.5,91.7 L 248,94.5 L 252.3,98.1 L 255.1,98.1 L 258.7,95.3 L 264.3,90.3 L 266.4,87.5 L 270,86.1 L 271.4,84 L 271.4,81.8 L 275.6,80.4 L 280.6,78.3 L 288.4,75.5 L 295.4,71.2 L 301.8,68.4 L 305.3,69.1 L 308.1,69.8 L 311,70.5 L 313.8,71.2 L 318.8,71.9 L 320,71.9 L 321.6,67 L 325.1,62 L 332.2,49.3 L 334.3,47.2 L 338.5,46.5 L 343.5,45 L 346.4,45.9 L 347,45 L 345.6,44.4 L 340.7,42.2 L 336.5,39.4 L 337.1,38.7 L 342.8,38.7 L 349.9,39.4 L 351.3,38 L 350.6,35.1 L 342.1,30.9 L 332.9,26 L 324.4,24.5 L 314.5,26.7 L 308.9,27.4 L 304.6,29.5 L 303.9,30.2 L 308.1,31.6 L 310.3,32.3 L 312.4,33 L 311.7,36.6 L 310.3,40.1 L 303.9,42.2 L 297.5,40.1 L 294.7,37.3 L 295.4,33 L 295.4,29.5 L 298.3,27.4 L 300.4,27.4 L 304.6,25.3 L 306,23.1 L 306,21 L 302.5,16.8 L 294,13.2 L 283.4,14 L 275.6,16.8 L 260.8,23.1 L 239.6,30.9 L 229.7,33.7 L 211.3,38.4 z" />
-                  {/* (Other paths... keeping file size manageable while ensuring current request is met) */}
                 </g>
              </svg>
           </div>
@@ -569,4 +573,3 @@ export default function HomePage() {
     </div>
   );
 }
-
