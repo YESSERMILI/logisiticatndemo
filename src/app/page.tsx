@@ -9,7 +9,7 @@ import {
   ShoppingCart, Box, Truck, 
   MapPin, Wallet, Zap, Check, 
   ArrowRight, Scan, Package, 
-  MessageCircle
+  MessageCircle, Search, ClipboardCheck
 } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -17,6 +17,64 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Logo } from "@/components/logo";
 import { DashboardShowcase } from "@/components/home/dashboard-showcase";
+
+// Detailed Isometric Carton Illustration
+const DetailedCarton = ({ type }: { type: 'picking' | 'packing' | 'labeling' | 'ready' }) => {
+  return (
+    <svg viewBox="0 0 200 200" className="w-32 h-32 drop-shadow-2xl overflow-visible">
+      {/* Shadow */}
+      <ellipse cx="100" cy="160" rx="60" ry="20" fill="rgba(0,0,0,0.2)" />
+      
+      <motion.g
+        initial={{ y: 0 }}
+        animate={{ y: [-5, 5, -5] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      >
+        {/* Main Box Structure */}
+        <path d="M100 40 L160 70 L100 100 L40 70 Z" fill="#F8FAFC" stroke="#0B2A6B" strokeWidth="2" /> {/* Top */}
+        <path d="M100 100 L160 70 L160 140 L100 170 Z" fill="#E2E8F0" stroke="#0B2A6B" strokeWidth="2" /> {/* Right */}
+        <path d="M100 100 L40 70 L40 140 L100 170 Z" fill="#CBD5E1" stroke="#0B2A6B" strokeWidth="2" /> {/* Left */}
+
+        {/* Logo on side */}
+        <path d="M60 100 L80 110 L60 120 Z" fill="#1F6FDB" opacity="0.4" />
+        
+        {/* Specific Details based on type */}
+        {type === 'picking' && (
+          <>
+            <path d="M80 50 L120 70 L100 80 L60 60 Z" fill="#F7931E" opacity="0.3" /> {/* Item inside */}
+            <motion.path 
+              d="M100 30 V10" stroke="#F7931E" strokeWidth="3" strokeLinecap="round"
+              animate={{ y: [0, -10, 0] }} transition={{ duration: 2, repeat: Infinity }}
+            />
+          </>
+        )}
+
+        {type === 'packing' && (
+          <path d="M100 40 L160 70 L100 100 L40 70 Z" fill="none" stroke="#F7931E" strokeWidth="8" strokeDasharray="100" strokeDashoffset="50" /> 
+        )}
+
+        {type === 'labeling' && (
+          <g>
+            <rect x="110" y="75" width="30" height="20" rx="2" fill="white" stroke="#0B2A6B" strokeWidth="1" transform="skewY(25)" />
+            <motion.rect 
+              x="115" y="80" width="20" height="2" fill="#F7931E" 
+              animate={{ opacity: [0, 1, 0] }} transition={{ duration: 1, repeat: Infinity }}
+              transform="skewY(25)"
+            />
+          </g>
+        )}
+
+        {type === 'ready' && (
+          <g transform="translate(10, -20) scale(0.6)">
+             <path d="M100 40 L160 70 L100 100 L40 70 Z" fill="#F7931E" stroke="#0B2A6B" strokeWidth="2" />
+             <path d="M100 100 L160 70 L160 140 L100 170 Z" fill="#E0861A" stroke="#0B2A6B" strokeWidth="2" />
+             <path d="M100 100 L40 70 L40 140 L100 170 Z" fill="#C97817" stroke="#0B2A6B" strokeWidth="2" />
+          </g>
+        )}
+      </motion.g>
+    </svg>
+  );
+};
 
 export default function HomePage() {
   const { t, language } = useTranslation();
@@ -259,39 +317,70 @@ export default function HomePage() {
 
       {/* Preparation & Emballage Section */}
       <section id="preparation" className="py-24 bg-white/10">
-        <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
           <div className="relative order-2 lg:order-1">
-             <div className="grid grid-cols-2 gap-4">
-                {[1,2,3,4].map(i => (
+             <div className="grid grid-cols-2 gap-8">
+                {[
+                  { type: 'picking', label: 'Picking' },
+                  { type: 'packing', label: 'Packing' },
+                  { type: 'labeling', label: 'Labeling' },
+                  { type: 'ready', label: 'Ready' }
+                ].map((item, i) => (
                   <motion.div 
                     key={i}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="aspect-video bg-[#081E4E] rounded-xl border border-white/10 flex items-center justify-center text-[#F7931E]"
+                    className="aspect-square bg-gradient-to-b from-[#081E4E] to-[#0B2A6B] rounded-[32px] border border-white/5 flex flex-col items-center justify-center relative group hover:border-[#F7931E]/20 transition-all shadow-xl"
                   >
-                    <Package size={48} strokeWidth={1} className="opacity-20" />
+                    <DetailedCarton type={item.type as any} />
+                    <p className="absolute bottom-6 text-[10px] font-black uppercase tracking-widest text-[#9FB2DE]/40 group-hover:text-[#F7931E] transition-colors">{item.label}</p>
                   </motion.div>
                 ))}
              </div>
-             <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-[#F7931E] text-[#0B2A6B] p-6 rounded-full shadow-2xl animate-bounce">
-                   <Zap size={32} />
-                </div>
-             </div>
+             
+             {/* Floating Badge */}
+             <motion.div 
+               animate={{ rotate: [0, 360] }}
+               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+               className="absolute -top-6 -right-6 w-32 h-32 opacity-10 pointer-events-none"
+             >
+               <svg viewBox="0 0 100 100" className="w-full h-full fill-white">
+                 <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                 <text className="text-[8px] font-bold uppercase tracking-widest">
+                   <textPath href="#circlePath">Logistica Excellence • Premium Packaging •</textPath>
+                 </text>
+               </svg>
+             </motion.div>
           </div>
+
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} className="order-1 lg:order-2">
             <span className="text-[#F7931E] font-bold uppercase tracking-widest text-xs mb-4 block">{t('h3t')}</span>
-            <h2 className="text-white text-3xl md:text-5xl font-bold mb-6">{t('svt')}</h2>
-            <p className="text-[#9FB2DE] text-lg font-light leading-relaxed mb-8">{t('h3d')}</p>
-            <div className="grid grid-cols-2 gap-6">
-               <div className="p-4 bg-white/5 rounded-lg border-l-4 border-[#F7931E]">
-                  <p className="text-white font-bold mb-1">Picking</p>
-                  <p className="text-xs text-[#9FB2DE]">{t('t3')}</p>
+            <h2 className="text-white text-4xl md:text-6xl font-bold mb-8 leading-tight">
+              {t('svt')}
+            </h2>
+            <p className="text-[#9FB2DE] text-xl font-light leading-relaxed mb-12 border-l-4 border-[#F7931E] pl-6">
+              {t('h3d')}
+            </p>
+            
+            <div className="grid gap-6">
+               <div className="p-6 bg-white/5 rounded-2xl border border-white/10 flex items-start gap-5 hover:bg-white/10 transition-all group">
+                  <div className="w-12 h-12 rounded-xl bg-[#F7931E]/10 flex items-center justify-center text-[#F7931E] group-hover:scale-110 transition-transform">
+                    <Search size={24} />
+                  </div>
+                  <div>
+                    <p className="text-white font-bold text-lg mb-1">Picking Precise</p>
+                    <p className="text-sm text-[#9FB2DE]">{t('t3')}</p>
+                  </div>
                </div>
-               <div className="p-4 bg-white/5 rounded-lg border-l-4 border-[#1F6FDB]">
-                  <p className="text-white font-bold mb-1">Packing</p>
-                  <p className="text-xs text-[#9FB2DE]">{t('t4')}</p>
+               <div className="p-6 bg-white/5 rounded-2xl border border-white/10 flex items-start gap-5 hover:bg-white/10 transition-all group">
+                  <div className="w-12 h-12 rounded-xl bg-[#1F6FDB]/10 flex items-center justify-center text-[#1F6FDB] group-hover:scale-110 transition-transform">
+                    <ClipboardCheck size={24} />
+                  </div>
+                  <div>
+                    <p className="text-white font-bold text-lg mb-1">Packing & Labeling</p>
+                    <p className="text-sm text-[#9FB2DE]">{t('t4')}</p>
+                  </div>
                </div>
             </div>
           </motion.div>
