@@ -127,6 +127,7 @@ export default function HomePage() {
       )}>
         <div className="max-w-[1200px] mx-auto px-6 w-full flex items-center justify-between">
           <Link href="#" className="transition-transform hover:-translate-y-1 group">
+            {/* The Logo component handles its own colors via the variant prop */}
             <Logo variant="white" />
           </Link>
 
