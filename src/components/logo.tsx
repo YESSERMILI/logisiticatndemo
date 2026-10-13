@@ -1,3 +1,4 @@
+
 "use client";
 
 import { cn } from "@/lib/utils";
@@ -5,6 +6,7 @@ import { cn } from "@/lib/utils";
 /**
  * Official Vector Logo Component for Logistica Tunisie.
  * Renders the exact paths from the provided SVG source.
+ * Handles official colors vs white variant for dark backgrounds.
  */
 export function Logo({ className, variant = 'default' }: { className?: string, variant?: 'default' | 'white' }) {
   const isWhite = variant === 'white';
