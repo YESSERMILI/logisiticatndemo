@@ -1,24 +1,25 @@
 
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "@/hooks/use-translation";
 import { useLanguage } from "@/contexts/language-context";
 import { 
   ShoppingCart, Box, Target, ClipboardList, Truck, 
   MapPin, Wallet, RefreshCw, Headset, BarChart, 
-  Zap, ShieldCheck, Phone, Heart, Check, Plus, 
-  ArrowRight, Store, MessageCircle, Scan, Link as LinkIcon,
-  Calculator, Search, Info, FileCheck, Star, 
+  Zap, ShieldCheck, Check, 
+  ArrowRight, Store, MessageCircle, Scan, 
+  Search, FileCheck,  
   ChevronRight, ArrowUpRight, Banknote, Package, 
-  PackageOpen, Layers, Headphones, LayoutDashboard
+  PackageOpen, Layers, Headphones, LayoutDashboard, Plus, Clock, Star, HelpCircle
 } from "lucide-react";
-import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // --- Components ---
 
@@ -50,7 +51,7 @@ function Counter({ value, label, suffix = "", id }: { value: number; label: stri
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="flex flex-col items-center text-center p-8 bg-white/5 border border-white/10 rounded-md"
+      className="flex flex-col items-center text-center p-8 bg-white/5 border border-white/10 rounded-md reveal"
     >
       <b className="text-4xl md:text-5xl font-bold text-orange-500 font-sans tracking-tighter tabular-nums">
         {value >= 1000 ? `+${count.toLocaleString('en')}` : count}{suffix}
@@ -72,6 +73,7 @@ export default function HomePage() {
   const [calcSpeed, setCalcSpeed] = useState(1);
   const [dashRange, setDashRange] = useState(0);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -81,12 +83,14 @@ export default function HomePage() {
   });
 
   useEffect(() => {
+    setHasMounted(true);
     const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const runTrack = () => {
+  const runTrack = (e?: React.FormEvent) => {
+    if(e) e.preventDefault();
     setTrackProgress(0);
     setTimeout(() => setTrackProgress(85), 100);
   };
@@ -98,12 +102,14 @@ export default function HomePage() {
   const returns = calcOrders * (calcRet / 100) * 4;
   const total = Math.round(storage + prep + delivery + returns);
 
-  // Dashboard Mock Data
+  // Dashboard Mock Data - Stability for hydration
   const dashData = [
-    { k: [184, 171, 9420, 9], b: [40, 55, 48, 70, 62, 85, 74] },
-    { k: [1240, 1186, 63800, 52], b: [60, 72, 65, 80, 70, 90, 95] },
-    { k: [5310, 5072, 271500, 214], b: [50, 68, 75, 62, 88, 92, 80] }
+    { k: [184, 171, 9420, 9], t: [12, 5, 8, 2], b: [40, 55, 48, 70, 62, 85, 74] },
+    { k: [1240, 1186, 63800, 52], t: [15, 4, 11, 4], b: [60, 72, 65, 80, 70, 90, 95] },
+    { k: [5310, 5072, 271500, 214], t: [18, 7, 14, 6], b: [50, 68, 75, 62, 88, 92, 80] }
   ];
+
+  if (!hasMounted) return null;
 
   return (
     <div className="min-h-screen selection:bg-orange-500 selection:text-navy-900 bg-[#0B2A6B]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
@@ -424,7 +430,7 @@ export default function HomePage() {
           </div>
 
           <div className="bg-white p-8 md:p-12 rounded-md shadow-2xl max-w-4xl mx-auto">
-            <form className="flex flex-col sm:flex-row gap-4 mb-12" onSubmit={(e) => { e.preventDefault(); runTrack(); }}>
+            <form className="flex flex-col sm:flex-row gap-4 mb-12" onSubmit={runTrack}>
               <div className="relative flex-grow">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                 <Input defaultValue="LG-2026-004821" className="h-14 pl-12 border-2 border-gray-200 focus:border-navy-900 rounded-sm font-sans font-bold text-navy-900" />
@@ -549,7 +555,7 @@ export default function HomePage() {
             {[
               { i: Store, t: 'f1', d: 'f1d' },
               { i: Truck, t: 'f2', d: 'f2d' },
-              { i: Heart, t: 'f3', d: 'f3d' }, 
+              { i: Clock, t: 'f3', d: 'f3d' }, 
               { i: BarChart, t: 'f4', d: 'f4d' }
             ].map((node, idx) => (
               <div key={idx} className="flex items-center gap-6 lg:gap-12">
@@ -616,7 +622,7 @@ export default function HomePage() {
                   >
                     {dashData[dashRange].k[i].toLocaleString('en')}
                   </motion.b>
-                  <em className="text-[10px] font-bold text-green-500 font-sans">▲ {Math.floor(Math.random() * 15 + 2)}%</em>
+                  <em className="text-[10px] font-bold text-green-500 font-sans">▲ {dashData[dashRange].t[i]}%</em>
                 </div>
               ))}
 
@@ -746,7 +752,7 @@ export default function HomePage() {
               { icon: ShieldCheck, t: 'w2', d: 'wd2', c: 'bg-green-600' },
               { icon: MapPin, t: 'w3', d: 'wd3', c: 'bg-pink-600' },
               { icon: Headset, t: 'w4', d: 'wd4', c: 'bg-blue-600' },
-              { icon: Heart, t: 'w5', d: 'wd5', c: 'bg-red-500' }
+              { icon: Clock, t: 'w5', d: 'wd5', c: 'bg-red-500' }
             ].map((v, i) => (
               <motion.div 
                 key={i}
@@ -915,9 +921,10 @@ export default function HomePage() {
 
       {/* Global CSS for animations used in SVGs */}
       <style jsx global>{`
-        @keyframes road { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -30; } }
+        @keyframes road { from { strokeDashoffset: 0; } to { strokeDashoffset: -30; } }
         @keyframes bob { to { transform: translateY(-3px); } }
       `}</style>
     </div>
   );
 }
+
