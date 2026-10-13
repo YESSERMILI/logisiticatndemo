@@ -18,46 +18,6 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Logo } from "@/components/logo";
 
-// --- Components ---
-
-function Counter({ value, label, suffix = "" }: { value: number; label: string; suffix?: string }) {
-  const [count, setCount] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
-
-  useEffect(() => {
-    if (!hasStarted) return;
-    let start = 0;
-    const duration = 2000;
-    const increment = value / (duration / 16);
-    
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= value) {
-        setCount(value);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-    return () => clearInterval(timer);
-  }, [value, hasStarted]);
-
-  return (
-    <motion.div 
-      onViewportEnter={() => setHasStarted(true)}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="flex flex-col items-center text-center p-8 bg-white/5 border border-white/10 rounded-md shadow-brutal"
-    >
-      <b className="text-4xl md:text-5xl font-bold text-[#F7931E] font-sans tracking-tighter tabular-nums">
-        {value >= 1000 ? `+${count.toLocaleString('en')}` : count}{suffix}
-      </b>
-      <span className="text-muted-foreground text-sm font-medium mt-2">{label}</span>
-    </motion.div>
-  );
-}
-
 // --- Main Page ---
 
 export default function HomePage() {
@@ -67,7 +27,6 @@ export default function HomePage() {
   const [calcOrders, setCalcOrders] = useState(500);
   const [calcRet, setCalcRet] = useState(10);
   const [calcSpeed, setCalcSpeed] = useState(1);
-  const [dashRange, setDashRange] = useState(0);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -91,13 +50,6 @@ export default function HomePage() {
   const delivery = calcOrders * 6.5 * calcSpeed;
   const returns = calcOrders * (calcRet / 100) * 4;
   const total = Math.round(storage + prep + delivery + returns);
-
-  // Stable Mock Data
-  const dashData = [
-    { k: [184, 171, 9420, 9], t: [12, 5, 8, 2], b: [40, 55, 48, 70, 62, 85, 74] },
-    { k: [1240, 1186, 63800, 52], t: [15, 4, 11, 4], b: [60, 72, 65, 80, 70, 90, 95] },
-    { k: [5310, 5072, 271500, 214], t: [18, 7, 14, 6], b: [50, 68, 75, 62, 88, 92, 80] }
-  ];
 
   if (!hasMounted) return null;
 
@@ -127,7 +79,7 @@ export default function HomePage() {
             {['n1', 'n6', 'n3'].map((key) => (
               <a 
                 key={key} 
-                href={`#${t(key as any).toLowerCase()}`} 
+                href={`#${key === 'n1' ? 'how' : key === 'n6' ? 'coverage' : 'faq'}`} 
                 className={cn(
                   "font-bold text-sm transition-colors uppercase tracking-wider",
                   scrolled ? "text-[#0B2A6B] hover:text-[#F7931E]" : "text-white/80 hover:text-[#F7931E]"
@@ -279,21 +231,26 @@ export default function HomePage() {
              {/* Map SVG with FIXED ViewBox for Full Visibility */}
              <svg viewBox="0 0 550 1100" className="w-full h-auto max-w-[420px] overflow-visible drop-shadow-2xl" role="img">
                 <g className="map-governorates" stroke="#1F6FDB" strokeWidth="1.5" fill="rgba(31,111,219,0.15)">
-                  {/* All 24 segments included for full map pieces */}
+                  {/* All 27 paths from provided SVG */}
                   <path className="hover:fill-[#F7931E]/20 transition-all cursor-pointer" d="M 211.3125,38.40625 L 211.3125,40.15625 L 211.3125,45.8125 L 211.3125,50.0625 L 211.3125,52.875 L 214.875,54.28125 L 218.40625,57.125 L 222.65625,57.125 L 223.34375,59.9375 L 228.3125,69.125 L 231.125,74.09375 L 236.0625,81.15625 L 241.71875,88.21875 L 244.5625,91.78125 L 248.09375,94.59375 L 252.34375,98.125 L 255.15625,98.125 L 258.71875,95.3125 L 264.375,90.34375 L 266.46875,87.53125 L 270.03125,86.125 L 271.4375,84 L 271.4375,81.875 L 275.6875,80.46875 L 280.625,78.34375 L 288.40625,75.5 L 295.46875,71.25 L 301.84375,68.4375 L 305.375,69.125 L 308.1875,69.84375 L 311.03125,70.5625 L 313.84375,71.25 L 318.8125,71.96875 L 320,71.90625 L 321.625,67.03125 L 325.1875,62.0625 L 332.25,49.34375 L 334.375,47.21875 L 338.59375,46.5 L 343.5625,45.09375 L 346.4375,45.90625 L 347.09375,45.09375 L 345.6875,44.40625 L 340.71875,42.28125 L 336.5,39.4375 L 337.1875,38.75 L 342.84375,38.75 L 349.90625,39.4375 L 351.34375,38.03125 L 350.625,35.1875 L 342.15625,30.96875 L 332.9375,26 L 324.46875,24.59375 L 314.5625,26.71875 L 308.90625,27.40625 L 304.65625,29.53125 L 303.96875,30.25 L 308.1875,31.65625 L 310.3125,32.375 L 312.4375,33.09375 L 311.75,36.625 L 310.3125,40.15625 L 303.96875,42.28125 L 297.59375,40.15625 L 294.78125,37.3125 L 295.46875,33.09375 L 295.46875,29.53125 L 298.3125,27.40625 L 300.4375,27.40625 L 304.65625,25.3125 L 306.09375,23.1875 L 306.09375,21.0625 L 302.53125,16.8125 L 294.0625,13.28125 L 283.4375,14 L 275.6875,16.8125 L 260.8125,23.1875 L 239.625,30.96875 L 229.71875,33.78125 L 211.3125,38.40625 z " />
                   <path className="hover:fill-[#F7931E]/20 transition-all cursor-pointer" d="M 311.28125,630.375 L 311.03125,632 L 310.3125,634.125 L 311.75,636.25 L 317.40625,641.1875 L 318.8125,646.125 L 316.6875,651.78125 L 313.84375,661.6875 L 311.03125,674.4375 L 313.15625,682.90625 L 316.6875,687.84375 L 319.5,692.09375 L 313.84375,690.6875 L 310.3125,689.96875 L 303.96875,684.3125 L 296.1875,675.84375 L 289.8125,670.1875 L 284.15625,669.46875 L 278.5,671.59375 L 272.84375,674.4375 L 267.1875,680.09375 L 260.8125,681.5 L 252.34375,684.3125 L 233.96875,688.5625 L 222.65625,690.6875 L 208.5,690.6875 L 183.75,695.625 L 144.875,705.53125 L 124.125,710.71875 L 125.0625,711.1875 L 127.1875,711.90625 L 130.71875,714.71875 L 136.375,718.96875 L 143.4375,723.90625 L 150.53125,729.59375 L 157.59375,735.25 L 168.90625,743.71875 L 186.59375,756.4375 L 191.53125,760.6875 L 197.90625,765.65625 L 208.5,772 L 265.0625,1039.2813 L 268.59375,1040.7188 L 277.09375,1035.75 L 289.125,1030.8125 L 295.46875,1027.2813 L 303.96875,1026.5625 L 307.5,1025.8438 L 310.3125,1021.625 L 311.03125,1020.1875 L 315.28125,1015.25 L 340.71875,979.90625 L 352.03125,960.09375 L 356.28125,949.5 L 357.6875,945.25 L 356.28125,933.9375 L 352.03125,916.96875 L 346.375,900 L 337.1875,876.65625 L 335.78125,868.875 L 335.78125,864.625 L 342.84375,849.78125 L 352.03125,833.53125 L 357.6875,827.15625 L 359.8125,825.75 L 367.59375,825.03125 L 375.375,827.15625 L 381.75,826.4375 L 392.34375,813.03125 L 398,804.53125 L 405.78125,793.9375 L 407.1875,791.09375 L 410.71875,789.6875 L 413.5625,786.15625 L 415.6875,784.71875 L 417.8125,784.71875 L 419.21875,784.03125 L 423.46875,776.25 L 428.40625,767.0625 L 462.71875,749.34375 L 463.75,746.5625 L 468.71875,738.78125 L 475.78125,728.15625 L 481.4375,718.96875 L 484.28125,714.03125 L 484.28125,711.90625 L 472.25,702.71875 L 463.75,696.34375 L 456,687.84375 L 453.875,685.03125 L 453.875,678.65625 L 453.875,660.28125 L 451.75,651.09375 L 447.5,641.90625 L 446.09375,635.53125 L 440.4375,631.28125 L 431.25,627.0625 L 419.9375,621.40625 L 411.4375,618.5625 L 408.625,613.625 L 402.96875,607.96875 L 398,604.40625 L 388.8125,603 L 380.3125,605.84375 L 369,610.78125 L 359.125,615.03125 L 348.5,617.15625 L 337.1875,619.96875 L 330.84375,627.75 L 323.75,629.875 L 311.28125,630.375 z " />
-                  <path className="hover:fill-[#F7931E]/20 transition-all cursor-pointer" d="M 292.65625,600.96875 L 299,600.1875 L 310.3125,598.0625 L 320.21875,597.34375 L 327.28125,595.21875 L 331.53125,592.40625 L 338.59375,586.03125 L 342.84375,581.78125 L 346.375,580.375 L 353.46875,577.5625 L 359.125,571.90625 L 366.1875,559.875 L 372.5625,549.96875 L 376.15625,546.8125 L 369.71875,543.59375 L 359.8125,539.375 L 352.75,533 L 343.5625,523.8125 L 335.0625,513.21875 L 328,501.1875 L 324.46875,489.15625 L 321.625,477.15625 L 320.9375,471.5 L 321.46875,471.5 L 319.5,470.0625 L 318.09375,470.0625 L 316.6875,472.1875 L 313.15625,474.3125 L 310.3125,472.1875 L 307.5,469.375 L 303.25,465.8125 L 299,465.125 L 294.78125,465.8125 L 291.21875,464.40625 L 288.40625,462.28125 L 285.5625,458.75 L 283.4375,454.5 L 279.90625,454.5 L 274.96875,456.625 L 265.78125,462.28125 L 258.71875,465.125 L 248.8125,464.40625 L 243.84375,462.28125 L 240.3125,464.40625 L 235.375,467.25 L 234.65625,467.25 L 235.375,470.78125 L 236.0625,472.1875 L 236.0625,476.4375 L 234.65625,484.21875 L 232.53125,492 L 231.125,494.8125 L 234.65625,508.25 L 235.375,515.3125 L 241.03125,526.625 L 247.375,536.53125 L 251.625,540.0625 L 260.125,544.3125 L 267.1875,549.96875 L 270.71875,555.625 L 272.84375,557.03125 L 271.4375,559.15625 L 270.03125,562.6875 L 268.59375,566.25 L 267.1875,569.78125 L 267.90625,571.90625 L 280.625,588.15625 L 291.21875,598.75 L 292.65625,599.46875 L 292.65625,600.96875 z " />
-                  {/* Points for Hubs */}
+                  <path className="hover:fill-[#F7931E]/20 transition-all cursor-pointer" d="M 292.65625,600.96875 L 299,600.1875 L 310.3125,598.0625 L 320.21875,597.34375 L 327.28125,595.21875 L 331.53125,592.40625 L 338.59375,586.03125 L 342.84375,581.78125 L 346.375,580.375 L 353.46875,577.5625 L 359.125,571.90625 L 366.1875,559.875 L 372.5625,549.96875 L 376.15625,546.8125 L 369.71875,543.59375 L 359.8125,539.375 L 352.75,533 L 343.5625,523.8125 L 335.0625,513.21875 L 328,501.1875 L 324.46875,489.15625 L 321.625,477.15625 L 320.9375,471.5 L 321.46875,471.5 L 319.5,470.0625 L 318.09375,470.0625 L 316.6875,472.1875 L 313.15625,474.3125 L 310.3125,472.1875 L 310.3125,472.1875 L 307.5,469.375 L 303.25,465.8125 L 299,465.125 L 294.78125,465.8125 L 291.21875,464.40625 L 288.40625,462.28125 L 285.5625,458.75 L 283.4375,454.5 L 279.90625,454.5 L 274.96875,456.625 L 265.78125,462.28125 L 258.71875,465.125 L 248.8125,464.40625 L 243.84375,462.28125 L 240.3125,464.40625 L 235.375,467.25 L 234.65625,467.25 L 235.375,470.78125 L 236.0625,472.1875 L 236.0625,476.4375 L 234.65625,484.21875 L 232.53125,492 L 231.125,494.8125 L 234.65625,508.25 L 235.375,515.3125 L 241.03125,526.625 L 247.375,536.53125 L 251.625,540.0625 L 260.125,544.3125 L 267.1875,549.96875 L 270.71875,555.625 L 272.84375,557.03125 L 271.4375,559.15625 L 270.03125,562.6875 L 268.59375,566.25 L 267.1875,569.78125 L 267.90625,571.90625 L 280.625,588.15625 L 291.21875,598.75 L 292.65625,599.46875 L 292.65625,600.96875 z " />
+                  
+                  {/* Plus d'autres tracés fournis par l'utilisateur pour compléter la Tunisie */}
+                  <path className="hover:fill-[#F7931E]/20 transition-all cursor-pointer" d="M 407.90368,516.7392 L 407.90368,520.27474 L 407.19657,522.39606 L 406.48947,526.6387 L 406.48947,530.88134 L 407.19657,533.70977 L 409.31789,537.2453 L 413.56053,538.65951 L 417.09607,537.2453 L 417.80317,535.12398 L 420.6316,535.83109 L 422.04581,536.53819 L 422.75292,539.36662 L 424.16714,544.31637 L 424.16714,546.43769 L 425.58135,547.8519 L 426.99556,547.14479 L 428.40978,542.19505 L 434.77374,537.95241 L 439.72348,534.41687 L 443.96612,530.17423 L 446.08745,529.46713 L 448.91587,527.34581 L 449.62298,524.51738 L 447.50166,522.39606 L 444.67323,520.98184 L 443.25902,519.56763 L 436.18795,516.0321 L 433.35952,513.91078 L 424.87424,513.20367 L 414.97475,511.78946 L 412.14632,512.49656 L 407.90368,516.7392 z " />
+                  <path className="hover:fill-[#F7931E]/20 transition-all cursor-pointer" d="M 468.71486,378.85338 L 464.47222,385.92445 L 460.93669,388.75288 L 459.52247,392.99552 L 455.98694,397.23816 L 456.69405,399.35948 L 458.81537,398.65237 L 462.3509,396.53105 L 469.42197,391.5813 L 474.37172,388.04577 L 477.20014,384.51024 L 478.61436,382.38891 L 478.61436,380.26759 L 476.49304,378.85338 L 472.9575,378.14627 L 468.71486,378.85338 z " />
+                  
+                  {/* Points pour les hubs logistiques */}
                   {[
-                    { x: 484, y: 110, n: 'Bizerte' },
                     { x: 345, y: 187, n: 'Tunis' },
                     { x: 593, y: 272, n: 'Sousse' },
                     { x: 577, y: 398, n: 'Sfax' },
+                    { x: 484, y: 110, n: 'Bizerte' },
                     { x: 519, y: 511, n: 'Gabès' }
                   ].map((c, i) => (
                     <g key={i}>
-                      <circle cx={c.x} cy={c.y} r="12" fill="#F7931E" className="animate-pulse opacity-40"/>
-                      <circle cx={c.x} cy={c.y} r="6" fill="#F7931E" className="shadow-lg border-2 border-[#0B2A6B]"/>
+                      <circle cx={c.x} cy={c.y} r="10" fill="#F7931E" className="animate-pulse opacity-40"/>
+                      <circle cx={c.x} cy={c.y} r="5" fill="#F7931E" className="shadow-lg border-2 border-[#0B2A6B]"/>
                     </g>
                   ))}
                 </g>
@@ -373,7 +330,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="pt-20 pb-10 border-t border-white/10">
+      <footer id="faq" className="pt-20 pb-10 border-t border-white/10">
         <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div>
             <Logo variant="white" className="mb-6" />
@@ -382,24 +339,21 @@ export default function HomePage() {
           <div>
             <h4 className="text-white mb-6 uppercase tracking-widest text-xs font-bold">{t('fh1')}</h4>
             <ul className="grid gap-3 text-sm text-[#7E93C4]">
-              <li><Link href="#services" className="hover:text-[#F7931E] transition-colors">{t('n1')}</Link></li>
+              <li><Link href="#how" className="hover:text-[#F7931E] transition-colors">{t('n1')}</Link></li>
               <li><Link href="#how" className="hover:text-[#F7931E] transition-colors">{t('n0')}</Link></li>
-              <li><Link href="#plans" className="hover:text-[#F7931E] transition-colors">{t('n7')}</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="text-white mb-6 uppercase tracking-widest text-xs font-bold">{t('fh2')}</h4>
             <ul className="grid gap-3 text-sm text-[#7E93C4]">
-              <li><Link href="#tracking" className="hover:text-[#F7931E] transition-colors">{t('n5')}</Link></li>
               <li><Link href="#coverage" className="hover:text-[#F7931E] transition-colors">{t('n6')}</Link></li>
-              <li><Link href="#faq" className="hover:text-[#F7931E] transition-colors">{t('n3')}</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="text-white mb-6 uppercase tracking-widest text-xs font-bold">{t('fh3')}</h4>
             <div className="text-sm text-[#7E93C4] grid gap-3">
               <a href="mailto:contact@logistica.tn" className="hover:text-[#F7931E] transition-colors">contact@logistica.tn</a>
-              <span>+216 00 000 000</span>
+              <span>+216 71 000 000</span>
               <span>Tunis, Tunisie</span>
             </div>
           </div>
@@ -413,13 +367,6 @@ export default function HomePage() {
       <a href="https://wa.me/21600000000" target="_blank" rel="noopener noreferrer" className="fixed bottom-8 right-8 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl animate-pulse hover:scale-110 transition-transform z-[100]">
         <MessageCircle size={32} />
       </a>
-
-      <style jsx global>{`
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(50%); } }
-        @keyframes marquee-ltr { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee { animation: marquee 26s linear infinite; }
-        [dir="ltr"] .animate-marquee { animation: marquee-ltr 26s linear infinite; }
-      `}</style>
     </div>
   );
 }
