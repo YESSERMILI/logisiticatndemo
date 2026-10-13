@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -128,7 +127,7 @@ const ProcessVisual = ({ type }: { type: 'picking' | 'packing' | 'labeling' | 'r
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             >
               <rect x="60" y="70" width="60" height="60" fill="#1F6FDB" rx="4" />
-              <path d="M 75,100 L 85,115 L 105,85" fill="none" stroke="white" strokeWidth="6" strokeLinecap="round" strokeJoin="round" />
+              <path d="M 75,100 L 85,115 L 105,85" fill="none" stroke="white" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
             </motion.g>
           </g>
         )}
