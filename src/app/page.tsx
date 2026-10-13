@@ -225,7 +225,6 @@ export default function HomePage() {
                   <g className="animate-[bob_0.5s_ease-in-out_infinite_alternate]">
                     <rect x="40" y="206" width="140" height="82" rx="4" fill="#1F6FDB" className="shadow-lg"/>
                     <path d="M180 226h44l28 32v30h-72z" fill="#fff"/>
-                    <text x="62" y="256" fill="#fff" fontSize="18" fontWeight="800" fontFamily="Inter" style={{ letterSpacing: '2px' }}>LOGISTICA</text>
                     <g className="animate-spin origin-center" style={{ transformOrigin: '82px 292px' }}><circle cx="82" cy="292" r="17" fill="#0B2A6B"/><circle cx="82" cy="292" r="7" fill="#F7931E"/></g>
                     <g className="animate-spin origin-center" style={{ transformOrigin: '150px 292px' }}><circle cx="150" cy="292" r="17" fill="#0B2A6B"/><circle cx="150" cy="292" r="7" fill="#F7931E"/></g>
                   </g>
@@ -461,11 +460,11 @@ export default function HomePage() {
                   { icon: Truck, label: 'k3', time: '11:40' },
                   { icon: MapPin, label: 'k4', time: '14:20' },
                   { icon: Check, label: 'k5', time: '15:02' }
-                ].map((s, i) => {
+                ].map((s, idx) => {
                   const thresholds = [0, 20, 45, 70, 100];
-                  const isActive = trackProgress >= thresholds[i];
+                  const isActive = trackProgress >= thresholds[idx];
                   return (
-                    <div key={i} className="relative z-10 flex flex-col items-center">
+                    <div key={idx} className="relative z-10 flex flex-col items-center">
                       <div className={cn(
                         "w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-500",
                         isActive ? "bg-[#0B2A6B] text-[#F7931E]" : "bg-gray-100 text-gray-400"
@@ -937,4 +936,3 @@ export default function HomePage() {
     </div>
   );
 }
-

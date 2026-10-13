@@ -5,8 +5,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Official Logo Component for Logistica Tunisie.
- * Uses the provided high-quality PNG.
- * Handles automatic color inversion for dark backgrounds.
+ * Uses the exact provided high-quality asset.
  */
 export function Logo({ className, variant = 'default' }: { className?: string, variant?: 'default' | 'white' }) {
   return (
@@ -19,7 +18,7 @@ export function Logo({ className, variant = 'default' }: { className?: string, v
         priority
         className={cn(
           "h-8 md:h-10 w-auto transition-all duration-300", 
-          variant === 'white' && "brightness-0 invert opacity-90",
+          variant === 'white' && "brightness-0 invert opacity-95",
           "group-hover:scale-105"
         )}
       />
