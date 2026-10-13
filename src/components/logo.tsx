@@ -57,3 +57,11 @@ export function Logo({ className, variant = 'default' }: LogoProps) {
     </div>
   );
 }
+
+export function AppName() {
+  return (
+    <div className="flex items-center gap-2">
+      <Logo className="h-8" />
+    </div>
+  );
+}
