@@ -378,7 +378,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Preparation & Emballage Section (CONTEXTUAL STYLE) */}
+      {/* Preparation & Emballage Section */}
       <section id="preparation" className="py-24 bg-white/10">
         <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
           <div className="relative order-2 lg:order-1">
@@ -386,8 +386,8 @@ export default function HomePage() {
                 {[
                   { type: 'picking', label: t('t3') },
                   { type: 'packing', label: t('t4') },
-                  { type: 'labeling', label: 'Etiquetage' },
-                  { type: 'ready', label: 'Ready' }
+                  { type: 'labeling', label: t('tL') },
+                  { type: 'ready', label: t('tR') }
                 ].map((item, i) => (
                   <motion.div 
                     key={i}
@@ -445,11 +445,9 @@ export default function HomePage() {
           <div className="flex justify-center items-center p-4 relative overflow-visible group bg-[#081E4E]/40 border border-white/5 rounded-[40px] max-w-[400px] mx-auto aspect-[1/2]">
              <svg viewBox="0 0 550 1100" className="w-full h-full drop-shadow-2xl overflow-visible" role="img" preserveAspectRatio="xMidYMid meet">
                 <g stroke="white" strokeWidth="1.2" fill="rgba(31,111,219,0.2)">
-                   {/* Detailed Tunisia Path representing 24 governorates with borders */}
                    <path d="M 211.3,38.4 L 211.3,52.8 L 222.6,57.1 L 236,81.1 L 255.1,98.1 L 271.4,81.8 L 302,16 L 211.3,38.4 Z" />
                    <path d="M 271.4,81.8 L 311,70.5 L 340,42 L 302,16 Z" />
                    <path d="M 271.4,81.8 L 260.8,219 L 285.4,233 L 315,448 L 366,476 L 413,711 L 417,915 L 341,992 L 117,891 L 117,877 L 205,802 L 271,307 L 214,131 L 171,89 L 211,38 L 271.4,81.8 Z" />
-                   {/* This is a simplified set for demonstration, in real use we'd list all 24 paths */}
                    <path d="M 260.8,219 L 269,223 L 308,260 L 305,277 L 271,307 L 260.8,219 Z" />
                    <path d="M 315,448 L 414,720 L 417,926 L 313,999 L 215,999 L 117,891 L 117,801 L 260,783 L 315,448 Z" />
                 </g>
