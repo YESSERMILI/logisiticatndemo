@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/language-context";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { Logo } from "@/components/logo";
 
 export function Navbar() {
   const { t, language } = useTranslation();
@@ -25,14 +25,8 @@ export function Navbar() {
       scrolled ? "bg-[#0B2A6B]/90 backdrop-blur-xl border-b border-white/10 py-3" : "bg-transparent py-6"
     )}>
       <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-white rounded-sm flex items-center justify-center font-black text-[#0B2A6B] text-xl transition-transform group-hover:scale-110">
-            L
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="text-white font-black text-xl tracking-tighter uppercase">Logistica</span>
-            <span className="text-[#F7931E] font-bold text-[8px] uppercase tracking-[0.2em]">Tunisie</span>
-          </div>
+        <Link href="/" className="bg-white p-2 px-4 rounded-md shadow-lg transition-transform hover:-translate-y-1 group">
+          <Logo />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -60,9 +54,9 @@ export function Navbar() {
             {t('nav_signin')}
           </Link>
           
-          <Link href="/register" className="btn-bold !py-2 !px-6 !text-sm !shadow-none">
+          <Button variant="secondary" size="sm" className="bg-[#F7931E] text-[#0B2A6B] font-bold shadow-lg hover:bg-[#E0861A] border-none rounded-sm px-6">
             {t('nav_signup')}
-          </Link>
+          </Button>
         </div>
       </div>
     </header>

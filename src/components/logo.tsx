@@ -14,12 +14,12 @@ export function Logo({ className, variant = 'default' }: { className?: string, v
       <Image 
         src="https://i.postimg.cc/P5sfzcz0/png-1.png" 
         alt="Logistica Tunisie" 
-        width={180} 
-        height={60}
+        width={240} 
+        height={80}
         priority
         className={cn(
-          "h-9 w-auto transition-all duration-300", 
-          variant === 'white' && "brightness-0 invert",
+          "h-8 md:h-10 w-auto transition-all duration-300", 
+          variant === 'white' && "brightness-0 invert opacity-90",
           "group-hover:scale-105"
         )}
       />
