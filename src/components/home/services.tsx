@@ -1,74 +1,71 @@
-
 "use client";
 
 import { useTranslation } from "@/hooks/use-translation";
 import { motion } from "framer-motion";
-import { 
-  Warehouse, 
-  PackageSearch, 
-  Box, 
-  Truck, 
-  Navigation, 
-  Wallet, 
-  RotateCcw 
-} from "lucide-react";
+import { ShoppingCart, Box, Target, FileCheck, Truck, MapPin, Wallet, RefreshCw, Headset, LayoutDashboard } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function Services() {
-  const { t, language } = useTranslation();
+  const { t } = useTranslation();
 
   const services = [
-    { icon: Warehouse, title: t('service_stock'), color: "bg-blue-50 text-blue-600" },
-    { icon: PackageSearch, title: t('service_prep'), color: "bg-orange-50 text-orange-600" },
-    { icon: Box, title: t('service_pack'), color: "bg-emerald-50 text-emerald-600" },
-    { icon: Truck, title: t('service_ship'), color: "bg-indigo-50 text-indigo-600" },
-    { icon: Navigation, title: t('service_track'), color: "bg-purple-50 text-purple-600" },
-    { icon: Wallet, title: t('service_cod'), color: "bg-amber-50 text-amber-600" },
-    { icon: RotateCcw, title: t('service_returns'), color: "bg-rose-50 text-red-600" },
+    { id: 1, icon: ShoppingCart, color: "bg-blue-100 text-blue-600", step: "#3B82F6" },
+    { id: 2, icon: Box, color: "bg-green-100 text-green-600", step: "#10B981" },
+    { id: 3, icon: Target, color: "bg-orange-100 text-orange-600", step: "#F97316" },
+    { id: 4, icon: FileCheck, color: "bg-purple-100 text-purple-600", step: "#A855F7" },
+    { id: 5, icon: Truck, color: "bg-teal-100 text-teal-600", step: "#14B8A6" },
+    { id: 6, icon: MapPin, color: "bg-pink-100 text-pink-600", step: "#EC4899" },
+    { id: 7, icon: Wallet, color: "bg-amber-100 text-amber-600", step: "#F59E0B" },
+    { id: 8, icon: RefreshCw, color: "bg-rose-100 text-rose-600", step: "#F43F5E" },
+    { id: 9, icon: Headset, color: "bg-indigo-100 text-indigo-600", step: "#6366F1" },
+    { id: 10, icon: LayoutDashboard, color: "bg-cyan-100 text-cyan-600", step: "#06B6D4" },
   ];
 
   return (
-    <section id="solutions" className="py-24 bg-white" dir={language === 'ar' ? 'rtl' : 'ltr'}>
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-primary mb-6"
-          >
-            {language === 'ar' ? "خدماتنا اللوجستية" : "Nos domaines d'intervention"}
-          </motion.h2>
-          <p className="text-lg text-muted-foreground">
-            Une approche structurée pour couvrir chaque étape de votre chaîne logistique.
-          </p>
+    <section id="solutions" className="py-24 bg-white overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="text-center mb-16 space-y-4">
+          <div className="inline-block px-3 py-1 rounded-full bg-orange-100 text-orange-500 font-bold text-xs uppercase tracking-widest">
+            {t("services_title")}
+          </div>
+          <h2 className="text-3xl md:text-5xl font-black text-navy-900 tracking-tight">
+            كل مرحلة عندها بلاصتها.
+          </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {services.map((service, idx) => (
             <motion.div
-              key={service.title}
+              key={service.id}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="p-8 rounded-[2rem] border border-primary/5 shadow-sm hover:shadow-xl transition-all duration-300 group"
+              transition={{ delay: idx * 0.05 }}
+              whileHover={{ y: -8 }}
+              className="p-6 rounded-2xl border border-gray-100 hover:shadow-md transition-all group cursor-default h-full flex flex-col justify-between"
             >
-              <div className={cn("w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110", service.color)}>
-                <service.icon className="h-8 w-8" />
+              <div className="space-y-4">
+                <div className={cn("w-12 h-12 rounded-full flex items-center justify-center transition-all group-hover:bg-opacity-100", service.color)}>
+                  <service.icon size={24} />
+                </div>
+                <div>
+                  <h3 className="font-bold text-navy-900 text-base md:text-lg">
+                    {t(`service_${service.id}_title` as any)}
+                  </h3>
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">
+                    {t(`service_${service.id}_sub` as any)}
+                  </p>
+                  <p className="text-sm text-gray-500 leading-relaxed line-clamp-2">
+                    {t(`service_${service.id}_desc` as any)}
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-primary group-hover:text-secondary transition-colors">
-                {service.title}
-              </h3>
+              <div className="pt-4 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-[10px] font-black text-navy-900/20">#{service.id}</span>
+                <div className="w-6 h-1 rounded-full bg-orange-500" />
+              </div>
             </motion.div>
           ))}
-          
-          <div className="col-span-2 md:col-span-3 lg:col-span-1 p-8 rounded-[2rem] bg-primary text-white flex flex-col justify-center">
-            <h3 className="text-2xl font-bold mb-4">{language === 'ar' ? "أكثر من مجرد توصيل" : "Plus qu'un simple livreur."}</h3>
-            <p className="text-white/60 text-sm">
-              Logistica est votre partenaire stratégique en Tunisie.
-            </p>
-          </div>
         </div>
       </div>
     </section>

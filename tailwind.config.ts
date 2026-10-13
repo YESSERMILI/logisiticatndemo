@@ -14,14 +14,13 @@ const config: Config = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1200px",
       },
     },
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui"],
         heading: ["var(--font-heading)", "sans-serif"],
-        display: ["var(--font-display)", "sans-serif"],
         arabic: ["var(--font-arabic)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
@@ -29,88 +28,59 @@ const config: Config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#f8f9ff",
-        foreground: "#0b1c30",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        navy: {
+          900: "#0B2A6B",
+          800: "#123A8C",
+        },
+        blue: {
+          600: "#1F6FDB",
+          100: "#E8F1FD",
+        },
+        orange: {
+          500: "#F7931E",
+          100: "#FEF3E2",
+        },
         primary: {
-          DEFAULT: "#07163F", // Deep Mediterranean Navy
-          container: "#131b2e",
-          fixed: "#dae2fd",
-          foreground: "#ffffff",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "#9d4300",
-          container: "#FF8A1F", // Logistics Amber
-          fixed: "#ffdbca",
-          "fixed-dim": "#ffb690",
-          foreground: "#ffffff",
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
-        tertiary: {
-          DEFAULT: "#2563EB", // Electric Blue
-          container: "#00174b",
-          fixed: "#dbe1ff",
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
         },
-        surface: {
-          DEFAULT: "#f8f9ff",
-          bright: "#f8f9ff",
-          dim: "#cbdbf5",
-          variant: "#d3e4fe",
-          container: {
-            DEFAULT: "#e5eeff",
-            low: "#eff4ff",
-            lowest: "#ffffff",
-            high: "#dce9ff",
-            highest: "#d3e4fe",
-          },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
-        "on-surface": {
-          DEFAULT: "#0b1c30",
-          variant: "#45464d",
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
         },
-        "on-primary": {
-          DEFAULT: "#ffffff",
-          container: "#7c839b",
-          fixed: "#131b2e",
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
         },
-        "on-secondary": {
-          DEFAULT: "#ffffff",
-          container: "#5c2400",
-          fixed: "#341100",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
-        success: "#12B76A",
-        warning: "#F79009",
-        error: "#EF4444",
-        outline: {
-          DEFAULT: "#76777d",
-          variant: "#c6c6cd",
-        }
       },
       borderRadius: {
-        lg: "1rem",
-        md: "0.75rem",
-        sm: "0.5rem",
-        xl: "1.5rem",
-        "2xl": "2rem",
-        "3xl": "3rem",
-        full: "9999px",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+        full: "999px",
       },
       boxShadow: {
-        e1: "0 2px 8px rgba(7, 22, 63, 0.04)",
-        e2: "0 12px 32px rgba(7, 22, 63, 0.08)",
-        e3: "0 24px 64px rgba(7, 22, 63, 0.12)",
-        orange: "0 8px 32px rgba(253, 118, 26, 0.25)",
-      },
-      keyframes: {
-        "dash-flow": {
-          to: { "stroke-dashoffset": "-24" }
-        },
-        "float": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" }
-        }
-      },
-      animation: {
-        "dash-flow": "dash-flow 2s linear infinite",
-        "float": "float 5s ease-in-out infinite",
+        sm: "0 1px 3px rgba(16,24,40,.08)",
+        md: "0 8px 24px rgba(11,42,107,.10)",
+        lg: "0 20px 50px rgba(11,42,107,.16)",
       },
     },
   },

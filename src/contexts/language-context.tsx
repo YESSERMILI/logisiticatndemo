@@ -1,13 +1,6 @@
-
 "use client";
 
-import React, {
-  createContext,
-  useContext,
-  useState,
-  ReactNode,
-  useEffect,
-} from "react";
+import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import type { Language } from "@/lib/translations";
 
 type LanguageContextType = {
@@ -16,16 +9,13 @@ type LanguageContextType = {
   toggleLanguage: () => void;
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined
-);
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  // Changement de la langue par défaut de "ar" à "fr"
-  const [language, setLanguage] = useState<Language>("fr");
+  const [language, setLanguage] = useState<Language>("ar");
 
   useEffect(() => {
-    document.documentElement.lang = language;
+    document.documentElement.lang = language === "ar" ? "ar-TN" : "fr";
     document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
   }, [language]);
 

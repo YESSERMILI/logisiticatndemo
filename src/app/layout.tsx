@@ -1,57 +1,34 @@
 import type { Metadata } from "next";
-import { Sora, Inter, IBM_Plex_Sans_Arabic, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Sora, Tajawal, IBM_Plex_Sans_Arabic } from "next/font/google";
 import "./globals.css";
-import { Providers } from "@/components/providers";
+import { LanguageProvider } from "@/contexts/language-context";
 import { Toaster } from "@/components/ui/toaster";
 
-const sora = Sora({
-  subsets: ["latin"],
-  weight: ["400", "700", "800"],
-  variable: "--font-heading",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const ibmPlexArabic = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic"],
-  weight: ["400", "600", "700"],
-  variable: "--font-arabic",
-  display: "swap",
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const sora = Sora({ subsets: ["latin"], variable: "--font-heading" });
+const tajawal = Tajawal({ 
+  subsets: ["arabic"], 
+  weight: ["400", "500", "700", "800", "900"],
+  variable: "--font-arabic" 
 });
 
 export const metadata: Metadata = {
-  title: "LOGISTICA TUNISIE - Logistique e-commerce simplifiée",
-  description: "Solution complète de logistique e-commerce en Tunisie. De la commande à la livraison, tout simplement.",
-  openGraph: {
-    title: "LOGISTICA TUNISIE - Logistique e-commerce",
-    description: "Stockage, préparation, expédition et suivi en temps réel pour boutiques en ligne.",
-    images: ["https://i.postimg.cc/P5sfzcz0/png-1.png"],
-  },
+  title: "Logistica Tunisie — De la commande à la livraison",
+  description: "Solution intégrée d'entreposage, de distribution et de gestion COD conçue pour l'e-commerce tunisien.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${inter.variable} ${sora.variable} ${ibmPlexArabic.variable} ${plusJakartaSans.variable} font-sans antialiased text-gray-900`}>
-        <Providers>
+      <body className={`${inter.variable} ${sora.variable} ${tajawal.variable} font-sans`}>
+        <LanguageProvider>
           {children}
-        </Providers>
-        <Toaster />
+          <Toaster />
+        </LanguageProvider>
       </body>
     </html>
   );

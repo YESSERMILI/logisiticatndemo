@@ -1,102 +1,70 @@
-
 "use client";
 
 import { useTranslation } from "@/hooks/use-translation";
+import { useLanguage } from "@/contexts/language-context";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { MessageCircle, HelpCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { HelpCircle } from "lucide-react";
 
 export function FAQ() {
-  const { t, language } = useTranslation();
-  const isRTL = language === "ar";
+  const { t } = useTranslation();
+  const { language } = useLanguage();
 
-  const faqs = [1, 2, 3, 4, 5, 6, 7];
+  const faqs = [
+    {
+      q: language === 'ar' ? "شحال التكلفة؟" : "Combien ça coûte ?",
+      a: language === 'ar' ? "تسعيرة حسب الڤوليم، ابعثلنا ونعطيوك ديڤي مفصّل." : "Tarification flexible selon le volume. Contactez-nous pour un devis personnalisé."
+    },
+    {
+      q: language === 'ar' ? "كيفاش نربط سيتي؟" : "Comment l'intégrer ?",
+      a: language === 'ar' ? "API ولا WooCommerce/Shopify plugin, ساهلة." : "Plug-and-play avec WooCommerce, Shopify ou via notre API REST."
+    },
+    {
+      q: language === 'ar' ? "متى ترجعلي فلوس ال COD؟" : "Quand recevrai-je mon COD ?",
+      a: language === 'ar' ? "رابروشمان أسبوعي واضح ومضبوط." : "Reversement structuré à J+1 ou selon le cycle convenu."
+    },
+    {
+      q: language === 'ar' ? "تخدمو في ولايتي؟" : "Livrez-vous dans ma ville ?",
+      a: language === 'ar' ? "24 ولاية، والمدن الكبرى <24h." : "Nous couvrons les 24 gouvernorats, avec des délais <24h sur les grandes villes."
+    }
+  ];
 
   return (
-    <section id="faq" className="py-24 bg-[#EEF4FF]" dir={isRTL ? "rtl" : "ltr"}>
-      <div className="container px-4 md:px-8 mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left Column (Sticky) */}
-          <div className="lg:sticky lg:top-32">
-            <motion.div
-              initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm">
-                <HelpCircle className="h-8 w-8 text-secondary" />
-              </div>
-              <p className="text-orange font-bold uppercase tracking-[0.2em] text-sm mb-4">
-                {t('faq_eyebrow')}
-              </p>
-              <h2 className="text-4xl md:text-5xl font-black text-primary mb-8 leading-tight uppercase">
-                {t('faq_title')}
-              </h2>
-              <p className="text-lg text-muted-foreground mb-10 max-w-md leading-relaxed font-medium">
-                {t('faq_whatsapp_text')}
-              </p>
-              <Button 
-                size="lg"
-                className="bg-[#25D366] hover:bg-[#25D366]/90 text-white rounded-full h-[60px] px-10 font-bold shadow-xl shadow-[#25D366]/20 transition-all hover:-translate-y-1 active:scale-95"
-              >
-                <MessageCircle className="mr-3 rtl:ml-3 rtl:mr-0 h-6 w-6" />
-                {t('faq_whatsapp_btn')}
-              </Button>
-            </motion.div>
-          </div>
-
-          {/* Right Column (Accordion) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-white p-6 md:p-10 rounded-[40px] shadow-2xl shadow-primary/5 border border-white"
-          >
-            <Accordion type="single" collapsible defaultValue="item-1" className="w-full space-y-4">
-              {faqs.map((num) => (
-                <AccordionItem 
-                  key={num} 
-                  value={`item-${num}`} 
-                  className="border-b border-primary/5 last:border-0 pb-2"
-                >
-                  <AccordionTrigger className="text-lg font-bold text-primary hover:text-secondary text-left rtl:text-right transition-all no-underline hover:no-underline py-6 [&[data-state=open]>svg]:rotate-180">
-                    {t(`faq_q${num}` as any)}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed text-[16px] pb-6 font-medium">
-                    {t(`faq_a${num}` as any)}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </motion.div>
+    <section id="faq" className="py-24 bg-gray-50">
+      <div className="max-w-[800px] mx-auto px-6">
+        <div className="text-center mb-16 space-y-4">
+          <HelpCircle className="mx-auto text-orange-500" size={48} />
+          <h2 className="text-3xl md:text-5xl font-black text-navy-900 tracking-tight">
+            {t("nav_faq")}
+          </h2>
         </div>
-      </div>
 
-      {/* Structured Data for FAQ */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map((num) => ({
-              "@type": "Question",
-              "name": t(`faq_q${num}` as any),
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": t(`faq_a${num}` as any)
-              }
-            }))
-          })
-        }}
-      />
+        <Accordion type="single" collapsible className="space-y-4">
+          {faqs.map((faq, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+            >
+              <AccordionItem value={`item-${idx}`} className="bg-white border border-gray-100 rounded-2xl px-6">
+                <AccordionTrigger className="text-left font-bold text-navy-900 py-6 hover:no-underline hover:text-blue-600">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-500 pb-6 leading-relaxed">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            </motion.div>
+          ))}
+        </Accordion>
+      </div>
     </section>
   );
 }

@@ -4,21 +4,27 @@ import { cn } from "@/lib/utils";
 
 export function Logo({ className }: { className?: string }) {
   return (
-    <div className={cn("flex items-center gap-3", className)}>
-      <svg 
-        viewBox="0 0 40 40" 
-        className="h-full aspect-square"
-        fill="none" 
+    <div className={cn("flex items-center gap-2", className)}>
+      <svg
+        viewBox="0 0 100 100"
+        fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className="w-10 h-10"
       >
-        <path d="M5 10C5 7.23858 7.23858 5 10 5H30C32.7614 5 35 7.23858 35 10V30C35 32.7614 32.7614 35 30 35H10C7.23858 35 5 32.7614 5 30V10Z" fill="#07163F"/>
-        <path d="M12 15H28V25H12V15Z" fill="#2563EB"/>
-        <path d="M12 18H28V22H12V18Z" fill="#FF8A1F"/>
-        <path d="M10 10V30" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+        {/* Left Facet - Navy */}
+        <path d="M50 80L15 60V25L50 45V80Z" fill="#0B2A6B" />
+        {/* Top Facet - Blue */}
+        <path d="M50 45L15 25L50 5L85 25L50 45Z" fill="#1F6FDB" />
+        {/* Inner Facet - Orange */}
+        <path d="M50 80L85 60V25L50 45V80Z" fill="#F7931E" />
       </svg>
       <div className="flex flex-col leading-none">
-        <span className="text-xl font-black text-[#07163F] tracking-tighter uppercase">Logistica</span>
-        <span className="text-[0.6rem] font-bold text-muted-foreground tracking-[0.3em] uppercase opacity-60">Tunisie</span>
+        <span className="font-heading font-black text-navy-900 text-lg md:text-xl tracking-tighter uppercase">
+          Logistica
+        </span>
+        <span className="font-sans font-bold text-[8px] md:text-[10px] text-gray-500 tracking-[0.2em] uppercase">
+          Tunisie
+        </span>
       </div>
     </div>
   );

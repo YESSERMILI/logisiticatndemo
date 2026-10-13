@@ -4,58 +4,56 @@
 
 @layer base {
   :root {
-    --background: 220 100% 99%;
+    --navy-900: 222 82% 23%; /* #0B2A6B */
+    --navy-800: 220 77% 31%; /* #123A8C */
+    --blue-600: 215 75% 49%; /* #1F6FDB */
+    --blue-100: 214 78% 95%; /* #E8F1FD */
+    --orange-500: 33 93% 54%; /* #F7931E */
+    --orange-100: 36 86% 94%; /* #FEF3E2 */
+    
+    --background: 0 0% 100%;
     --foreground: 222 47% 11%;
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
-    --primary: 222 47% 13%;
+    --primary: 222 82% 23%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 24 99% 54%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 33 93% 54%;
+    --secondary-foreground: 222 82% 23%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 217 91% 60%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 215 75% 49%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222 47% 11%;
+    --ring: 215 75% 49%;
     --radius: 1rem;
+  }
+
+  [dir="rtl"] {
+    text-align: right;
   }
 }
 
 @layer components {
   .glassmorphic {
-    @apply bg-white/80 backdrop-blur-xl border border-white/40 shadow-e1;
+    @apply bg-white/80 backdrop-blur-xl border border-white/40 shadow-sm;
+  }
+  
+  .btn-orange {
+    @apply bg-secondary text-primary font-bold rounded-full hover:scale-105 transition-all shadow-lg active:scale-95;
   }
 
-  .text-glow {
-    text-shadow: 0 0 20px rgba(253, 118, 26, 0.2);
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .reveal.in {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .route-line-bg {
-    background-image: radial-gradient(circle, #FF8A1F 1px, transparent 1px);
-    background-size: 24px 24px;
-    opacity: 0.05;
+  .text-gradient-orange {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#F7931E] to-[#EA580C];
   }
 }
 
 body {
-  @apply bg-background text-foreground antialiased selection:bg-secondary/20;
+  @apply bg-background text-foreground antialiased selection:bg-orange-500/20 overflow-x-hidden;
 }
 
 ::-webkit-scrollbar {
@@ -63,9 +61,15 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-surface;
+  @apply bg-blue-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary/10 rounded-full hover:bg-secondary/30 transition-colors;
+  @apply bg-navy-900/10 rounded-full hover:bg-orange-500/30 transition-colors;
+}
+
+.speed-lines-motif {
+  background-image: linear-gradient(90deg, transparent 0%, #F7931E 50%, transparent 100%);
+  background-size: 100px 2px;
+  background-repeat: no-repeat;
 }

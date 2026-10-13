@@ -1,77 +1,43 @@
 "use client";
 
 import { useTranslation } from "@/hooks/use-translation";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
-import { featuredQuizzes } from "@/lib/data";
-import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Badge } from "../ui/badge";
-import { Star, Users } from "lucide-react";
-import Link from "next/link";
+import { Package, MapPin, ShieldCheck, Clock } from "lucide-react";
+import { motion } from "framer-motion";
 
-export function FeaturedQuizzes() {
-  const { t, language } = useTranslation();
+export function StatsBar() {
+  const { t } = useTranslation();
 
-  const getDifficultyVariant = (level: "easy" | "medium" | "hard") => {
-    switch (level) {
-        case "easy": return "default";
-        case "medium": return "secondary";
-        case "hard": return "destructive";
-    }
-  }
-
-  const difficultyTranslations = {
-    easy: language === 'ar' ? 'سهل' : 'Facile',
-    medium: language === 'ar' ? 'متوسط' : 'Moyen',
-    hard: language === 'ar' ? 'صعب' : 'Difficile',
-  }
+  const stats = [
+    { icon: Package, value: "+12,000", label: t("stats_deliveries") },
+    { icon: MapPin, value: "24", label: t("stats_states") },
+    { icon: ShieldCheck, value: "98%", label: t("stats_success") },
+    { icon: Clock, value: "<24h", label: t("stats_speed") },
+  ];
 
   return (
-    <section dir={language === "ar" ? "rtl" : "ltr"}>
-        <div className="mb-6">
-            <h2 className="font-heading text-3xl font-bold text-glow">{t('featured_quizzes')}</h2>
-            <p className="text-muted-foreground">{t('handpicked_by_team')}</p>
+    <section className="bg-navy-900 py-12">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="flex flex-col items-center text-center space-y-2"
+            >
+              <stat.icon className="text-orange-500 mb-2" size={28} />
+              <h3 className="text-3xl md:text-4xl font-black text-white font-heading tracking-tighter">
+                {stat.value}
+              </h3>
+              <p className="text-blue-100/60 text-xs md:text-sm font-bold uppercase tracking-widest">
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredQuizzes.map(quiz => {
-                const image = PlaceHolderImages.find(p => p.id === quiz.imageId);
-                return (
-                    <Link key={quiz.id} href={`/quiz/${quiz.id}`} passHref>
-                        <Card className="glassmorphic group overflow-hidden h-full flex flex-col">
-                            <CardHeader className="p-0 relative h-40">
-                                {image && (
-                                    <Image 
-                                        src={image.imageUrl}
-                                        alt={quiz.title}
-                                        fill
-                                        className="object-cover transition-transform duration-300 group-hover:scale-110"
-                                        data-ai-hint={image.imageHint}
-                                    />
-                                )}
-                                <Badge variant={getDifficultyVariant(quiz.difficulty)} className="absolute top-3 right-3">
-                                    {difficultyTranslations[quiz.difficulty]}
-                                </Badge>
-                            </CardHeader>
-                            <CardContent className="p-4 flex-grow flex flex-col">
-                                <p className="text-sm text-primary font-semibold">{quiz.category}</p>
-                                <CardTitle className="font-heading text-lg font-bold mt-1 flex-grow">{quiz.title}</CardTitle>
-                                <p className="text-xs text-muted-foreground mt-2">By {quiz.author}</p>
-                            </CardContent>
-                            <CardFooter className="p-4 text-xs text-muted-foreground flex justify-between items-center">
-                                <div className="flex items-center gap-1">
-                                    <Star className="w-4 h-4 text-accent" />
-                                    <span>{quiz.rating}</span>
-                                </div>
-                                <div className="flex items-center gap-1">
-                                    <Users className="w-4 h-4" />
-                                    <span>{quiz.questionCount}</span>
-                                </div>
-                            </CardFooter>
-                        </Card>
-                    </Link>
-                )
-            })}
-        </div>
+      </div>
     </section>
   );
 }
