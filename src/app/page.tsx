@@ -18,61 +18,105 @@ import { Slider } from "@/components/ui/slider";
 import { Logo } from "@/components/logo";
 import { DashboardShowcase } from "@/components/home/dashboard-showcase";
 
-// Detailed Isometric Carton Illustration
+// Professional Isometric Carton Illustration Component
 const DetailedCarton = ({ type }: { type: 'picking' | 'packing' | 'labeling' | 'ready' }) => {
   return (
-    <svg viewBox="0 0 200 200" className="w-32 h-32 drop-shadow-2xl overflow-visible">
-      {/* Shadow */}
-      <ellipse cx="100" cy="160" rx="60" ry="20" fill="rgba(0,0,0,0.2)" />
-      
-      <motion.g
-        initial={{ y: 0 }}
-        animate={{ y: [-5, 5, -5] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      >
-        {/* Main Box Structure */}
-        <path d="M100 40 L160 70 L100 100 L40 70 Z" fill="#F8FAFC" stroke="#0B2A6B" strokeWidth="2" /> {/* Top */}
-        <path d="M100 100 L160 70 L160 140 L100 170 Z" fill="#E2E8F0" stroke="#0B2A6B" strokeWidth="2" /> {/* Right */}
-        <path d="M100 100 L40 70 L40 140 L100 170 Z" fill="#CBD5E1" stroke="#0B2A6B" strokeWidth="2" /> {/* Left */}
+    <div className="relative w-40 h-40 flex items-center justify-center">
+      <svg viewBox="0 0 240 240" className="w-full h-full overflow-visible" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="boxTop" x1="120" y1="40" x2="120" y2="100" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#F8FAFC" />
+            <stop offset="1" stopColor="#E2E8F0" />
+          </linearGradient>
+          <linearGradient id="boxSideRight" x1="160" y1="70" x2="160" y2="170" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#CBD5E1" />
+            <stop offset="1" stopColor="#94A3B8" />
+          </linearGradient>
+          <linearGradient id="boxSideLeft" x1="80" y1="70" x2="80" y2="170" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#E2E8F0" />
+            <stop offset="1" stopColor="#CBD5E1" />
+          </linearGradient>
+          <filter id="boxShadow" x="0" y="140" width="240" height="60" filterUnits="userSpaceOnUse">
+            <feGaussianBlur stdDeviation="8" />
+          </filter>
+        </defs>
 
-        {/* Logo on side */}
-        <path d="M60 100 L80 110 L60 120 Z" fill="#1F6FDB" opacity="0.4" />
-        
-        {/* Specific Details based on type */}
-        {type === 'picking' && (
-          <>
-            <path d="M80 50 L120 70 L100 80 L60 60 Z" fill="#F7931E" opacity="0.3" /> {/* Item inside */}
-            <motion.path 
-              d="M100 30 V10" stroke="#F7931E" strokeWidth="3" strokeLinecap="round"
-              animate={{ y: [0, -10, 0] }} transition={{ duration: 2, repeat: Infinity }}
-            />
-          </>
-        )}
+        {/* Dynamic Floor Shadow */}
+        <ellipse cx="120" cy="185" rx="70" ry="20" fill="#0B2A6B" fillOpacity="0.15" filter="url(#boxShadow)" />
 
-        {type === 'packing' && (
-          <path d="M100 40 L160 70 L100 100 L40 70 Z" fill="none" stroke="#F7931E" strokeWidth="8" strokeDasharray="100" strokeDashoffset="50" /> 
-        )}
+        <motion.g
+          initial={{ y: 0 }}
+          animate={{ y: [-4, 4, -4] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {/* Main Box Structure (Common for all types except when opened) */}
+          {type !== 'picking' && (
+            <path d="M120 40 L190 75 L120 110 L50 75 Z" fill="url(#boxTop)" stroke="#0B2A6B" strokeWidth="1.5" />
+          )}
+          
+          <path d="M120 110 L190 75 V145 L120 180 Z" fill="url(#boxSideRight)" stroke="#0B2A6B" strokeWidth="1.5" />
+          <path d="M120 110 L50 75 V145 L120 180 Z" fill="url(#boxSideLeft)" stroke="#0B2A6B" strokeWidth="1.5" />
 
-        {type === 'labeling' && (
-          <g>
-            <rect x="110" y="75" width="30" height="20" rx="2" fill="white" stroke="#0B2A6B" strokeWidth="1" transform="skewY(25)" />
-            <motion.rect 
-              x="115" y="80" width="20" height="2" fill="#F7931E" 
-              animate={{ opacity: [0, 1, 0] }} transition={{ duration: 1, repeat: Infinity }}
-              transform="skewY(25)"
-            />
-          </g>
-        )}
+          {/* Logistica Pattern on the side */}
+          <path d="M75 100 L95 110 L75 120 Z" fill="#1F6FDB" fillOpacity="0.2" />
+          <path d="M145 100 L165 110 L145 120 Z" fill="#F7931E" fillOpacity="0.2" />
 
-        {type === 'ready' && (
-          <g transform="translate(10, -20) scale(0.6)">
-             <path d="M100 40 L160 70 L100 100 L40 70 Z" fill="#F7931E" stroke="#0B2A6B" strokeWidth="2" />
-             <path d="M100 100 L160 70 L160 140 L100 170 Z" fill="#E0861A" stroke="#0B2A6B" strokeWidth="2" />
-             <path d="M100 100 L40 70 L40 140 L100 170 Z" fill="#C97817" stroke="#0B2A6B" strokeWidth="2" />
-          </g>
-        )}
-      </motion.g>
-    </svg>
+          {/* Specific Stage Details */}
+          {type === 'picking' && (
+            <g transform="translate(0, -10)">
+              {/* Open Flaps */}
+              <path d="M50 75 L10 65 L80 30 L120 40 Z" fill="#F1F5F9" stroke="#0B2A6B" strokeWidth="1.5" /> {/* Left Flap */}
+              <path d="M190 75 L230 65 L160 30 L120 40 Z" fill="#E2E8F0" stroke="#0B2A6B" strokeWidth="1.5" /> {/* Right Flap */}
+              <rect x="90" y="55" width="60" height="40" rx="4" fill="#F7931E" fillOpacity="0.8" transform="skewY(20)" /> {/* Item Inside */}
+              <motion.path 
+                d="M120 20 V0 M110 10 L120 20 L130 10" stroke="#F7931E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
+                animate={{ y: [0, -10, 0] }} transition={{ duration: 2, repeat: Infinity }}
+              />
+            </g>
+          )}
+
+          {type === 'packing' && (
+            <g>
+              {/* Orange Tape with Texture */}
+              <path d="M120 40 L190 75 L120 110 L50 75 Z" fill="url(#boxTop)" stroke="#0B2A6B" strokeWidth="1.5" />
+              <path d="M85 57 L155 92 L155 102 L85 67 Z" fill="#F7931E" />
+              <path d="M85 57 L155 92" stroke="#E0861A" strokeWidth="1" strokeDasharray="2 2" />
+              {/* Vertical Side Tapes */}
+              <path d="M155 92 V115" stroke="#F7931E" strokeWidth="10" strokeLinecap="square" />
+              <path d="M85 67 V90" stroke="#F7931E" strokeWidth="10" strokeLinecap="square" />
+            </g>
+          )}
+
+          {type === 'labeling' && (
+            <g>
+              {/* Shipping Label Detail */}
+              <rect x="135" y="85" width="40" height="25" rx="2" fill="white" stroke="#0B2A6B" strokeWidth="0.5" transform="matrix(1, 0.5, 0, 1, 0, 0)" />
+              <g transform="matrix(1, 0.5, 0, 1, 140, 90)">
+                <rect width="30" height="2" fill="#0B2A6B" />
+                <rect y="4" width="20" height="1" fill="#94A3B8" />
+                <rect y="7" width="10" height="4" fill="#1F6FDB" /> {/* "Barcode" */}
+              </g>
+              {/* Scan Beam */}
+              <motion.path 
+                d="M130 70 L180 95" stroke="#F7931E" strokeWidth="2" strokeLinecap="round" opacity="0.6"
+                animate={{ x: [-5, 5, -5], opacity: [0, 1, 0] }} transition={{ duration: 1.5, repeat: Infinity }}
+              />
+            </g>
+          )}
+
+          {type === 'ready' && (
+            <g transform="translate(15, -20) scale(0.65)">
+               {/* A mini duplicate box stacked behind */}
+               <g transform="translate(-40, 20)">
+                  <path d="M120 40 L190 75 L120 110 L50 75 Z" fill="#F7931E" stroke="#0B2A6B" strokeWidth="2" />
+                  <path d="M120 110 L190 75 V145 L120 180 Z" fill="#E0861A" stroke="#0B2A6B" strokeWidth="2" />
+                  <path d="M120 110 L50 75 V145 L120 180 Z" fill="#C97817" stroke="#0B2A6B" strokeWidth="2" />
+               </g>
+            </g>
+          )}
+        </motion.g>
+      </svg>
+    </div>
   );
 };
 
