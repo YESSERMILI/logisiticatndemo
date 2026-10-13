@@ -127,7 +127,6 @@ export default function HomePage() {
       )}>
         <div className="max-w-[1200px] mx-auto px-6 w-full flex items-center justify-between">
           <Link href="#" className="transition-transform hover:-translate-y-1 group">
-            {/* The Logo component handles its own colors via the variant prop */}
             <Logo variant="white" />
           </Link>
 
@@ -311,11 +310,16 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: idx * 0.2 }}
                 viewport={{ once: true }}
-                className="relative z-10 flex flex-col items-center text-center"
+                className="relative z-10 flex flex-col items-center text-center group"
               >
-                <div className="w-20 h-20 rounded-full bg-[#081E4E] border-4 border-[#F7931E] flex items-center justify-center text-[#F7931E] shadow-xl transition-transform hover:scale-110">
+                <div className="relative w-20 h-20 rounded-full bg-[#081E4E] border-4 border-[#F7931E] flex items-center justify-center text-[#F7931E] shadow-xl transition-transform group-hover:scale-110">
                   <step.icon size={32} />
-                  <span className="absolute -top-2 -right-2 w-8 h-8 bg-[#F7931E] text-[#0B2A6B] rounded-full flex items-center justify-center font-bold text-xs">{step.id}</span>
+                  <span className={cn(
+                    "absolute -top-1 -right-1 w-8 h-8 bg-[#F7931E] text-[#0B2A6B] rounded-full flex items-center justify-center font-bold text-xs shadow-md border-2 border-[#0B2A6B]",
+                    language === 'ar' && "-right-auto -left-1"
+                  )}>
+                    {step.id}
+                  </span>
                 </div>
                 <h3 className="text-white mt-6 mb-2 text-lg font-bold">{t(step.t as any)}</h3>
                 <p className="text-xs text-[#9FB2DE] leading-relaxed px-4">{t(step.d as any)}</p>
