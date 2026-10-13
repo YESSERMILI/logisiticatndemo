@@ -19,11 +19,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 // --- Components ---
 
-function Counter({ value, label, suffix = "", id }: { value: number; label: string; suffix?: string; id?: string }) {
+function Counter({ value, label, suffix = "" }: { value: number; label: string; suffix?: string }) {
   const [count, setCount] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
 
@@ -102,7 +101,7 @@ export default function HomePage() {
   const returns = calcOrders * (calcRet / 100) * 4;
   const total = Math.round(storage + prep + delivery + returns);
 
-  // Dashboard Mock Data - Stability for hydration
+  // Dashboard Mock Data - Fixed values for stability
   const dashData = [
     { k: [184, 171, 9420, 9], t: [12, 5, 8, 2], b: [40, 55, 48, 70, 62, 85, 74] },
     { k: [1240, 1186, 63800, 52], t: [15, 4, 11, 4], b: [60, 72, 65, 80, 70, 90, 95] },
@@ -277,7 +276,7 @@ export default function HomePage() {
       </div>
 
       {/* Stats */}
-      <section className="bg-[#0B2A6B]">
+      <section className="bg-[#0B2A6B] py-20">
         <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-6">
           <Counter value={12000} label={t('s1')} />
           <Counter value={24} label={t('s2')} />
@@ -290,7 +289,7 @@ export default function HomePage() {
       </section>
 
       {/* How it works */}
-      <section id={t('n0').toLowerCase()}>
+      <section id={t('n0').toLowerCase()} className="py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-20">
             <span className="inline-block px-3 py-1 bg-orange-100 text-orange-600 font-black text-xs uppercase tracking-widest rounded-full mb-4">{t('hwe')}</span>
@@ -329,7 +328,7 @@ export default function HomePage() {
       </section>
 
       {/* Services Grid */}
-      <section className="bg-[#0E3580]" id={t('n1').toLowerCase()}>
+      <section className="bg-[#0E3580] py-24" id={t('n1').toLowerCase()}>
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="mb-16">
             <span className="text-orange-500 font-bold uppercase tracking-widest text-xs">{t('chip')}</span>
@@ -367,7 +366,7 @@ export default function HomePage() {
       </section>
 
       {/* Warehouse / Conveyor */}
-      <section>
+      <section className="py-24">
         <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <div className="reveal">
             <span className="text-orange-500 font-bold text-xs uppercase tracking-widest">{t('wre')}</span>
@@ -386,7 +385,7 @@ export default function HomePage() {
           <div className="bg-[#0B2A6B] p-8 border-2 border-white/10 rounded-md shadow-2xl reveal d2 overflow-hidden">
              <svg viewBox="0 0 480 240" className="w-full h-auto" role="img">
                 <rect x="0" y="180" width="480" height="20" fill="#081E4E"/>
-                <path d="M0 190 H480" stroke="rgba(255,255,255,0.2)" strokeWidth="3" strokeDasharray="10 10" className="animate-[road_0.6s_linear_infinite]"/>
+                <path d="M0 190 H480" stroke="rgba(255,255,255,0.2)" strokeWidth={3} strokeDasharray="10 10" className="animate-[road_0.6s_linear_infinite]"/>
                 
                 {/* Boxes on belt */}
                 {[0, 160, 320].map((offset, idx) => (
@@ -396,7 +395,7 @@ export default function HomePage() {
                     transition={{ duration: 6, repeat: Infinity, delay: idx * 2, ease: "linear" }}
                   >
                     <rect x="0" y="144" width="46" height="36" fill={idx === 1 ? "#fff" : idx === 2 ? "#1F6FDB" : "#F7931E"} className="shadow-lg"/>
-                    <path d="M0 160h46M23 144v36" stroke={idx === 1 ? "#1F6FDB" : "#0B2A6B"} strokeWidth="2" opacity="0.3"/>
+                    <path d="M0 160h46M23 144v36" stroke={idx === 1 ? "#1F6FDB" : "#0B2A6B"} strokeWidth={2} opacity="0.3"/>
                   </motion.g>
                 ))}
 
@@ -421,7 +420,7 @@ export default function HomePage() {
       </section>
 
       {/* Tracking Demo */}
-      <section className="bg-[#081E4E]" id={t('n5').toLowerCase()}>
+      <section className="bg-[#081E4E] py-24" id={t('n5').toLowerCase()}>
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-orange-500 font-bold uppercase tracking-widest text-xs">{t('tke')}</span>
@@ -488,7 +487,7 @@ export default function HomePage() {
       </section>
 
       {/* Coverage Map */}
-      <section id={t('n6').toLowerCase()}>
+      <section id={t('n6').toLowerCase()} className="py-24">
         <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <motion.div 
             initial={{ opacity: 0 }}
@@ -501,7 +500,7 @@ export default function HomePage() {
                   d="M70 20L150 8L185 30L228 28L222 70L212 118L205 170L202 205L192 255L220 285L205 300L185 335L180 385L135 405L100 330L62 295L50 240L58 170L40 110L45 60Z"
                   fill="rgba(31,111,219,0.1)"
                   stroke="#1F6FDB"
-                  strokeWidth="2"
+                  strokeWidth={2}
                   initial={{ pathLength: 0 }}
                   whileInView={{ pathLength: 1 }}
                   transition={{ duration: 3 }}
@@ -543,7 +542,7 @@ export default function HomePage() {
       </section>
 
       {/* COD Flow */}
-      <section className="bg-[#0E3580]">
+      <section className="bg-[#0E3580] py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-orange-500 font-bold uppercase tracking-widest text-xs">{t('coe')}</span>
@@ -568,7 +567,7 @@ export default function HomePage() {
                 </div>
                 {idx < 3 && (
                   <svg className="hidden lg:block w-16 text-orange-500/30" viewBox="0 0 54 20" fill="none">
-                    <path d="M0 10H48M42 4l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeDasharray="5 5" className="animate-[road_1s_linear_infinite]"/>
+                    <path d="M0 10H48M42 4l6 6-6 6" stroke="currentColor" strokeWidth={2} strokeDasharray="5 5" className="animate-[road_1s_linear_infinite]"/>
                   </svg>
                 )}
               </div>
@@ -578,7 +577,7 @@ export default function HomePage() {
       </section>
 
       {/* Dashboard Mockup */}
-      <section>
+      <section className="py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-orange-500 font-bold uppercase tracking-widest text-xs">{t('dbe')}</span>
@@ -662,7 +661,7 @@ export default function HomePage() {
       </section>
 
       {/* Cost Calculator */}
-      <section className="bg-[#0E3580]" id={t('n4').toLowerCase()}>
+      <section className="bg-[#0E3580] py-24" id={t('n4').toLowerCase()}>
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-orange-500 font-bold uppercase tracking-widest text-xs">{t('cae')}</span>
@@ -739,7 +738,7 @@ export default function HomePage() {
       </section>
 
       {/* Why Logistica */}
-      <section id={t('n2').toLowerCase()}>
+      <section id={t('n2').toLowerCase()} className="py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-orange-500 font-bold uppercase tracking-widest text-xs">{t('whye')}</span>
@@ -774,7 +773,7 @@ export default function HomePage() {
       </section>
 
       {/* Plans */}
-      <section className="bg-[#081E4E]" id={t('n7').toLowerCase()}>
+      <section className="bg-[#081E4E] py-24" id={t('n7').toLowerCase()}>
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-orange-500 font-bold uppercase tracking-widest text-xs">{t('ple')}</span>
@@ -817,7 +816,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#0E3580]" id={t('n3').toLowerCase()}>
+      <section className="bg-[#0E3580] py-24" id={t('n3').toLowerCase()}>
         <div className="max-w-[820px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-orange-500 font-bold uppercase tracking-widest text-xs">{t('n3')}</span>
@@ -841,7 +840,7 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA */}
-      <section id="cta">
+      <section id="cta" className="py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="bg-orange-500 rounded-md p-12 md:p-20 text-center relative overflow-hidden shadow-2xl">
              <svg className="absolute -right-20 -bottom-20 w-80 opacity-10 animate-[spin_40s_linear_infinite]" viewBox="0 0 175 175">
@@ -927,4 +926,3 @@ export default function HomePage() {
     </div>
   );
 }
-
