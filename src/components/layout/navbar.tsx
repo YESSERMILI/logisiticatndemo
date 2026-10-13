@@ -12,6 +12,7 @@ export function Navbar() {
   const { t, language } = useTranslation();
   const { toggleLanguage } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -29,7 +30,10 @@ export function Navbar() {
           <Logo />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className={cn(
+          "hidden lg:flex items-center gap-8",
+          mobileMenuOpen && "flex flex-col absolute top-20 left-0 right-0 bg-[#0B2A6B] p-6 border-b border-white/10 lg:static lg:bg-transparent lg:p-0 lg:border-0 lg:flex-row"
+        )}>
           <Link href="#services" className="text-[#B9C8EC] hover:text-[#F7931E] font-bold text-sm uppercase transition-colors">{t('nav_services')}</Link>
           <Link href="#why" className="text-[#B9C8EC] hover:text-[#F7931E] font-bold text-sm uppercase transition-colors">{t('nav_why')}</Link>
           <Link href="#faq" className="text-[#B9C8EC] hover:text-[#F7931E] font-bold text-sm uppercase transition-colors">{t('nav_faq')}</Link>
@@ -57,6 +61,10 @@ export function Navbar() {
           <Button variant="secondary" size="sm" className="bg-[#F7931E] text-[#0B2A6B] font-bold shadow-lg hover:bg-[#E0861A] border-none rounded-sm px-6">
             {t('nav_signup')}
           </Button>
+
+          <button className="lg:hidden text-white text-2xl" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            ☰
+          </button>
         </div>
       </div>
     </header>
