@@ -9,7 +9,8 @@ import {
   ShoppingCart, Box, Truck, 
   MapPin, Wallet, Zap, Check, 
   ArrowRight, Scan, Package, 
-  MessageCircle, Search, ClipboardCheck
+  MessageCircle, Search, ClipboardCheck,
+  Target, Cpu, Layers, Activity
 } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -18,149 +19,89 @@ import { Slider } from "@/components/ui/slider";
 import { Logo } from "@/components/logo";
 import { DashboardShowcase } from "@/components/home/dashboard-showcase";
 
-// Professional Isometric Carton Illustration Component - DEEP BUILD
-const DetailedCarton = ({ type }: { type: 'picking' | 'packing' | 'labeling' | 'ready' }) => {
+// Technical Blueprint Process Visual Component - NEW STYLE
+const ProcessVisual = ({ type }: { type: 'picking' | 'packing' | 'labeling' | 'ready' }) => {
   return (
-    <div className="relative w-48 h-48 flex items-center justify-center">
-      <svg viewBox="0 0 240 240" className="w-full h-full overflow-visible" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div className="relative w-full h-full flex items-center justify-center p-8">
+      <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
         <defs>
-          <linearGradient id="boxTop" x1="120" y1="40" x2="120" y2="100" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#FDFCFB" />
-            <stop offset="1" stopColor="#E2E8F0" />
-          </linearGradient>
-          <linearGradient id="boxSideRight" x1="160" y1="70" x2="160" y2="170" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#CBD5E1" />
-            <stop offset="1" stopColor="#94A3B8" />
-          </linearGradient>
-          <linearGradient id="boxSideLeft" x1="80" y1="70" x2="80" y2="170" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#E2E8F0" />
-            <stop offset="1" stopColor="#CBD5E1" />
-          </linearGradient>
-          <filter id="boxShadow" x="0" y="140" width="240" height="60" filterUnits="userSpaceOnUse">
-            <feGaussianBlur stdDeviation="8" />
-          </filter>
-          <filter id="glowScan" x="-20%" y="-20%" width="140%" height="140%">
+          <filter id="glowProcess">
             <feGaussianBlur stdDeviation="3" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
           </filter>
-          <linearGradient id="tapeGradient" x1="85" y1="57" x2="155" y2="92" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#F7931E" />
-            <stop offset="1" stopColor="#D97706" />
-          </linearGradient>
         </defs>
 
-        {/* Dynamic Floor Shadow */}
-        <ellipse cx="120" cy="190" rx="80" ry="25" fill="#0B2A6B" fillOpacity="0.15" filter="url(#boxShadow)" />
+        {/* Technical Circular Base */}
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#1F6FDB" strokeWidth="0.5" strokeDasharray="4 4" opacity="0.3" />
+        <circle cx="100" cy="100" r="85" fill="none" stroke="#F7931E" strokeWidth="1" strokeDasharray="1 10" opacity="0.2" />
 
-        <motion.g
-          initial={{ y: 0 }}
-          animate={{ y: [-3, 3, -3] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          {/* Main Box Structure (Bottom Part) */}
-          <path d="M120 110 L190 75 V145 L120 180 Z" fill="url(#boxSideRight)" stroke="#0B2A6B" strokeWidth="1.2" />
-          <path d="M120 110 L50 75 V145 L120 180 Z" fill="url(#boxSideLeft)" stroke="#0B2A6B" strokeWidth="1.2" />
+        {/* Dynamic Background Elements */}
+        <motion.circle 
+          cx="100" cy="100" r="70" fill="none" stroke="#1F6FDB" strokeWidth="2" 
+          strokeDasharray="20 100"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+        />
 
-          {/* Branding Logo on Left Side */}
-          <g transform="translate(70, 100) scale(0.12)">
-             <path d="M 0,174 L 174,87 L 61,87 Z" fill="#0B2A6B" fillOpacity="0.2" />
-             <path d="M 61,87 L 174,87 L 0,0 Z" fill="#1F6FDB" fillOpacity="0.2" />
-             <path d="M 0,174 L 61,87 L 0,87 Z" fill="#F7931E" fillOpacity="0.2" />
+        {/* Center Content based on Type */}
+        {type === 'picking' && (
+          <g>
+            <Target className="text-[#F7931E]" x="70" y="70" size={60} strokeWidth={1} filter="url(#glowProcess)" />
+            <motion.rect 
+              x="85" y="85" width="30" height="30" rx="4" fill="#1F6FDB" 
+              animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+            <path d="M 60,100 H 140 M 100,60 V 140" stroke="#F7931E" strokeWidth="0.5" opacity="0.3" />
           </g>
+        )}
 
-          {/* Specific Stage Details */}
-          {type === 'picking' && (
-            <g>
-              {/* Internal Bottom */}
-              <path d="M120 110 L50 75 L120 40 L190 75 Z" fill="#1e293b" fillOpacity="0.1" />
-              {/* Open Flaps with real depth */}
-              <path d="M50 75 L10 55 L80 20 L120 40 Z" fill="#F1F5F9" stroke="#0B2A6B" strokeWidth="1.2" /> {/* Left Flap */}
-              <path d="M190 75 L230 55 L160 20 L120 40 Z" fill="#E2E8F0" stroke="#0B2A6B" strokeWidth="1.2" /> {/* Right Flap */}
-              
-              {/* Item being picked - Animated */}
-              <motion.g
-                animate={{ y: [0, -25, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <rect x="95" y="55" width="50" height="40" rx="4" fill="#F7931E" stroke="#0B2A6B" strokeWidth="1" />
-                <path d="M110 75 L118 83 L132 68" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-              </motion.g>
-            </g>
-          )}
+        {type === 'packing' && (
+          <g>
+            <Layers className="text-[#1F6FDB]" x="70" y="70" size={60} strokeWidth={1} />
+            <motion.path 
+              d="M 60,140 L 100,160 L 140,140" fill="none" stroke="#F7931E" strokeWidth="3" strokeLinecap="round"
+              animate={{ y: [-20, 0, -20] }}
+              transition={{ duration: 3, repeat: Infinity }}
+              filter="url(#glowProcess)"
+            />
+            <motion.path 
+              d="M 60,60 L 100,40 L 140,60" fill="none" stroke="#F7931E" strokeWidth="3" strokeLinecap="round"
+              animate={{ y: [20, 0, 20] }}
+              transition={{ duration: 3, repeat: Infinity }}
+              filter="url(#glowProcess)"
+            />
+          </g>
+        )}
 
-          {type !== 'picking' && (
-            <path d="M120 40 L190 75 L120 110 L50 75 Z" fill="url(#boxTop)" stroke="#0B2A6B" strokeWidth="1.2" />
-          )}
+        {type === 'labeling' && (
+          <g>
+            <Cpu className="text-[#F7931E]" x="70" y="70" size={60} strokeWidth={1} />
+            <motion.line 
+              x1="50" y1="100" x2="150" y2="100" stroke="#F7931E" strokeWidth="2"
+              animate={{ y: [-40, 40, -40] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              filter="url(#glowProcess)"
+            />
+            <rect x="75" y="75" width="50" height="50" fill="none" stroke="#1F6FDB" strokeWidth="0.5" strokeDasharray="2 2" />
+          </g>
+        )}
 
-          {type === 'packing' && (
-            <g>
-              {/* Branded Heavy-Duty Sealing Tape */}
-              {/* Top horizontal tape */}
-              <path d="M85 57 L155 92" stroke="url(#tapeGradient)" strokeWidth="12" strokeLinecap="square" />
-              {/* Tape wrapping down the front right edge */}
-              <path d="M155 92 V135" stroke="url(#tapeGradient)" strokeWidth="12" strokeLinecap="round" />
-              {/* Tape wrapping down the back left edge */}
-              <path d="M85 57 V100" stroke="url(#tapeGradient)" strokeWidth="12" strokeLinecap="round" />
-              
-              {/* Tape Detail: Reflective Shine Line */}
-              <path d="M88 60 L152 92" stroke="white" strokeWidth="1.5" strokeOpacity="0.25" strokeLinecap="round" />
-              
-              {/* Tape Detail: Branded Dots/Logos (simulated) */}
-              <g opacity="0.4">
-                <circle cx="95" cy="62" r="1.5" fill="white" />
-                <circle cx="110" cy="69" r="1.5" fill="white" />
-                <circle cx="125" cy="77" r="1.5" fill="white" />
-                <circle cx="140" cy="85" r="1.5" fill="white" />
-              </g>
-
-              {/* Reinforcement cross-tape (optional for extra "packing" feel) */}
-              <path d="M100 95 L140 75" stroke="#F7931E" strokeWidth="8" strokeOpacity="0.4" strokeLinecap="square" />
-            </g>
-          )}
-
-          {type === 'labeling' && (
-            <g>
-              {/* Shipping Label on Right Side */}
-              <rect x="140" y="90" width="40" height="30" rx="2" fill="white" stroke="#0B2A6B" strokeWidth="1" transform="matrix(1, 0.5, 0, 1, 0, 0)" />
-              <g transform="matrix(1, 0.5, 0, 1, 145, 95)">
-                <rect width="30" height="3" fill="#0B2A6B" opacity="0.8" />
-                <rect y="6" width="20" height="1" fill="#94A3B8" />
-                <rect y="9" width="20" height="1" fill="#94A3B8" />
-                <rect y="13" width="10" height="8" fill="#000" /> {/* Barcode area */}
-                <rect x="12" y="13" width="2" height="8" fill="#000" />
-                <rect x="16" y="13" width="4" height="8" fill="#000" />
-              </g>
-              {/* Laser Scan Line Animated */}
-              <motion.line 
-                x1="130" y1="85" x2="185" y2="115"
-                stroke="#F7931E" strokeWidth="3" strokeLinecap="round"
-                filter="url(#glowScan)"
-                animate={{ opacity: [0, 1, 0], x: [-10, 10, -10] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+        {type === 'ready' && (
+          <g>
+            <Activity className="text-[#10B981]" x="70" y="70" size={60} strokeWidth={1} filter="url(#glowProcess)" />
+            {Array.from({length: 8}).map((_, i) => (
+              <motion.circle 
+                key={i}
+                cx="100" cy="100" r="80" fill="#10B981"
+                initial={{ scale: 0, opacity: 0.5 }}
+                animate={{ scale: 1.2, opacity: 0 }}
+                transition={{ duration: 2, repeat: Infinity, delay: i * 0.25 }}
               />
-            </g>
-          )}
-
-          {type === 'ready' && (
-            <g transform="translate(15, -15)">
-               {/* Small Box stacked behind */}
-               <g transform="translate(-40, 30) scale(0.7)">
-                  <path d="M120 40 L190 75 L120 110 L50 75 Z" fill="#F7931E" stroke="#0B2A6B" strokeWidth="2" />
-                  <path d="M120 110 L190 75 V145 L120 180 Z" fill="#E0861A" stroke="#0B2A6B" strokeWidth="2" />
-                  <path d="M120 110 L50 75 V145 L120 180 Z" fill="#C97817" stroke="#0B2A6B" strokeWidth="2" />
-               </g>
-               {/* Ready Indicator Checkmark */}
-               <motion.g
-                 initial={{ scale: 0 }}
-                 whileInView={{ scale: 1 }}
-                 transition={{ type: 'spring', delay: 0.5 }}
-               >
-                 <circle cx="190" cy="80" r="28" fill="#10B981" stroke="white" strokeWidth="4" />
-                 <path d="M180 80 L187 87 L202 72" stroke="white" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-               </motion.g>
-            </g>
-          )}
-        </motion.g>
+            ))}
+            <Truck className="text-white" x="80" y="80" size={40} />
+          </g>
+        )}
       </svg>
     </div>
   );
@@ -208,20 +149,20 @@ export default function HomePage() {
 
       <header className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300 h-20 flex items-center",
-        scrolled ? "bg-white border-b border-gray-100 shadow-sm" : "bg-transparent"
+        scrolled ? "bg-[#0B2A6B]/90 backdrop-blur-xl border-b border-white/10" : "bg-transparent"
       )}>
         <div className="max-w-[1200px] mx-auto px-6 w-full flex items-center justify-between">
           <Link href="/" className="transition-transform hover:-translate-y-1 group">
-            <Logo variant={scrolled ? 'default' : 'white'} />
+            <Logo variant="white" />
           </Link>
 
           <nav className={cn(
             "hidden lg:flex items-center gap-8",
             mobileMenu && "flex flex-col absolute top-20 left-0 right-0 bg-[#0B2A6B] p-6 border-b border-white/10 lg:static lg:bg-transparent lg:p-0 lg:border-0 lg:flex-row"
           )}>
-            <a href="#stockage" className={cn("font-bold text-sm transition-colors uppercase tracking-wider", scrolled ? "text-[#0B2A6B] hover:text-[#F7931E]" : "text-white/80 hover:text-[#F7931E]")}>{t('n1')}</a>
-            <a href="#coverage" className={cn("font-bold text-sm transition-colors uppercase tracking-wider", scrolled ? "text-[#0B2A6B] hover:text-[#F7931E]" : "text-white/80 hover:text-[#F7931E]")}>{t('n6')}</a>
-            <a href="#faq" className={cn("font-bold text-sm transition-colors uppercase tracking-wider", scrolled ? "text-[#0B2A6B] hover:text-[#F7931E]" : "text-white/80 hover:text-[#F7931E]")}>{t('n3')}</a>
+            <a href="#stockage" className="font-bold text-sm text-white/80 hover:text-[#F7931E] transition-colors uppercase tracking-wider">{t('n1')}</a>
+            <a href="#coverage" className="font-bold text-sm text-white/80 hover:text-[#F7931E] transition-colors uppercase tracking-wider">{t('n6')}</a>
+            <a href="#faq" className="font-bold text-sm text-white/80 hover:text-[#F7931E] transition-colors uppercase tracking-wider">{t('n3')}</a>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -232,7 +173,7 @@ export default function HomePage() {
             <Button variant="secondary" size="sm" className="hidden sm:flex bg-[#F7931E] text-[#0B2A6B] font-bold shadow-lg hover:bg-[#E0861A] border-none rounded-sm px-6" asChild>
               <Link href="#calc">{t('n4')}</Link>
             </Button>
-            <button className={cn("lg:hidden text-2xl", scrolled ? "text-[#0B2A6B]" : "text-white")} onClick={() => setMobileMenu(!mobileMenu)}>☰</button>
+            <button className="lg:hidden text-white text-2xl" onClick={() => setMobileMenu(!mobileMenu)}>☰</button>
           </div>
         </div>
       </header>
@@ -405,7 +346,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Preparation & Emballage Section (DEEP BUILD SVGS) */}
+      {/* Preparation & Emballage Section (TECHNICAL BLUEPRINT STYLE) */}
       <section id="preparation" className="py-24 bg-white/10">
         <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
           <div className="relative order-2 lg:order-1">
@@ -421,9 +362,9 @@ export default function HomePage() {
                     initial={{ opacity: 0, scale: 0.9, y: 20 }}
                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="aspect-square bg-gradient-to-b from-[#081E4E] to-[#0B2A6B] rounded-[32px] border border-white/5 flex flex-col items-center justify-center relative group hover:border-[#F7931E]/20 transition-all shadow-xl"
+                    className="aspect-square bg-gradient-to-b from-[#081E4E] to-[#0B2A6B] rounded-[32px] border border-white/5 flex flex-col items-center justify-center relative group hover:border-[#F7931E]/20 transition-all shadow-xl overflow-hidden"
                   >
-                    <DetailedCarton type={item.type as any} />
+                    <ProcessVisual type={item.type as any} />
                     <p className="absolute bottom-6 text-[10px] font-black uppercase tracking-widest text-[#9FB2DE]/40 group-hover:text-[#F7931E] transition-colors">{item.label}</p>
                   </motion.div>
                 ))}
@@ -470,7 +411,6 @@ export default function HomePage() {
       <section id="coverage" className="py-24 overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <div className="flex justify-center items-center p-4 relative overflow-visible group bg-[#081E4E]/40 border border-white/5 rounded-[40px] max-w-[400px] mx-auto aspect-[1/2]">
-             {/* High Fidelity Tunisian Map with All Internal Borders */}
              <svg viewBox="0 0 550 1100" className="w-full h-full drop-shadow-2xl overflow-visible" role="img" preserveAspectRatio="xMidYMid meet">
                 <g stroke="white" strokeWidth="1.2" fill="rgba(31,111,219,0.2)">
                   <path d="M 211.3,38.4 L 211.3,40.1 L 211.3,45.8 L 211.3,50 L 211.3,52.8 L 214.8,54.2 L 218.4,57.1 L 222.6,57.1 L 223.3,59.9 L 228.3,69.1 L 231.1,74 L 236,81.1 L 241.7,88.2 L 244.5,91.7 L 248,94.5 L 252.3,98.1 L 255.1,98.1 L 258.7,95.3 L 264.3,90.3 L 266.4,87.5 L 270,86.1 L 271.4,84 L 271.4,81.8 L 275.6,80.4 L 280.6,78.3 L 288.4,75.5 L 295.4,71.2 L 301.8,68.4 L 305.3,69.1 L 308.1,69.8 L 311,70.5 L 313.8,71.2 L 318.8,71.9 L 320,71.9 L 321.6,67 L 325.1,62 L 332.2,49.3 L 334.3,47.2 L 338.5,46.5 L 343.5,45 L 346.4,45.9 L 347,45 L 345.6,44.4 L 340.7,42.2 L 336.5,39.4 L 337.1,38.7 L 342.8,38.7 L 349.9,39.4 L 351.3,38 L 350.6,35.1 L 342.1,30.9 L 332.9,26 L 324.4,24.5 L 314.5,26.7 L 308.9,27.4 L 304.6,29.5 L 303.9,30.2 L 308.1,31.6 L 310.3,32.3 L 312.4,33 L 311.7,36.6 L 310.3,40.1 L 303.9,42.2 L 297.5,40.1 L 294.7,37.3 L 295.4,33 L 295.4,29.5 L 298.3,27.4 L 300.4,27.4 L 304.6,25.3 L 306,23.1 L 306,21 L 302.5,16.8 L 294,13.2 L 283.4,14 L 275.6,16.8 L 260.8,23.1 L 239.6,30.9 L 229.7,33.7 L 211.3,38.4 z" />

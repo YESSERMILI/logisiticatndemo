@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { 
   Package, TrendingUp, Wallet, Box, CheckCircle2, 
-  LayoutDashboard, Users, ArrowUpRight, Bell
+  LayoutDashboard, Bell, Search
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -32,7 +32,6 @@ export function DashboardShowcase() {
 
   return (
     <section id="dashboard" className="py-24 bg-[#0B2A6B] text-white overflow-hidden relative">
-      {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#1F6FDB]/10 rounded-full blur-[120px] opacity-40 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#F7931E]/5 rounded-full blur-[100px] opacity-30 pointer-events-none" />
       
@@ -59,7 +58,6 @@ export function DashboardShowcase() {
           </p>
         </div>
 
-        {/* Dashboard Mockup Container */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +65,6 @@ export function DashboardShowcase() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="relative w-full rounded-[40px] bg-[#081E4E]/80 backdrop-blur-xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] overflow-hidden"
         >
-          {/* Mockup Header/Browser Bar */}
           <div className="flex items-center justify-between px-8 py-6 border-b border-white/5 bg-white/[0.02]">
             <div className="flex items-center gap-6">
               <div className="flex gap-2">
@@ -103,7 +100,6 @@ export function DashboardShowcase() {
           </div>
 
           <div className="p-8 md:p-12 space-y-10">
-            {/* KPIs Grid */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
               {kpis.map((kpi, idx) => (
                 <motion.div 
@@ -125,7 +121,6 @@ export function DashboardShowcase() {
               ))}
             </div>
 
-            {/* Advanced Chart Section */}
             <div className="p-8 rounded-[32px] bg-black/20 border border-white/5 relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#1F6FDB]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
@@ -149,7 +144,6 @@ export function DashboardShowcase() {
                 </div>
               </div>
 
-              {/* The Refined Curve */}
               <div className="h-64 w-full relative pt-4">
                  <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 600 160">
                     <defs>
@@ -163,18 +157,15 @@ export function DashboardShowcase() {
                       </filter>
                     </defs>
 
-                    {/* Grid Lines */}
                     {[0, 40, 80, 120, 160].map((y) => (
                       <line key={y} x1="0" y1={y} x2="600" y2={y} stroke="white" strokeWidth="0.5" strokeOpacity="0.05" />
                     ))}
 
-                    {/* Area Fill */}
                     <path 
                       d="M 0,140 Q 50,110 100,120 T 200,70 T 300,90 T 400,40 T 500,30 T 600,10 L 600,160 L 0,160 Z" 
                       fill="url(#chartGradient)" 
                     />
 
-                    {/* Main Curve Path */}
                     <motion.path 
                       initial={{ pathLength: 0 }}
                       whileInView={{ pathLength: 1 }}
@@ -187,7 +178,6 @@ export function DashboardShowcase() {
                       filter="url(#glow)"
                     />
 
-                    {/* Blue Secondary Curve Path */}
                     <motion.path 
                       initial={{ pathLength: 0 }}
                       whileInView={{ pathLength: 1 }}
@@ -201,7 +191,6 @@ export function DashboardShowcase() {
                       opacity="0.5"
                     />
 
-                    {/* Interactive Dots on Curve */}
                     {[
                       {x: 100, y: 120}, {x: 300, y: 90}, {x: 500, y: 30}
                     ].map((dot, i) => (
@@ -218,7 +207,6 @@ export function DashboardShowcase() {
                  </svg>
               </div>
               
-              {/* Bottom Labeling */}
               <div className="flex justify-between mt-6 px-2 text-[9px] font-black text-[#9FB2DE]/30 uppercase tracking-[0.3em]">
                 <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
               </div>
@@ -226,7 +214,6 @@ export function DashboardShowcase() {
           </div>
         </motion.div>
 
-        {/* Feature Tags Bottom */}
         <div className="mt-16 flex flex-wrap justify-center gap-x-12 gap-y-6">
           {features.map((f, i) => (
             <motion.div 
