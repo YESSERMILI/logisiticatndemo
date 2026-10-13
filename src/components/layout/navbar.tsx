@@ -26,8 +26,8 @@ export function Navbar() {
       scrolled ? "bg-[#0B2A6B]/90 backdrop-blur-xl border-b border-white/10 py-3" : "bg-transparent py-6"
     )}>
       <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
-        <Link href="/" className="bg-white p-2 px-4 rounded-md shadow-lg transition-transform hover:-translate-y-1 group">
-          <Logo />
+        <Link href="/" className="transition-transform hover:-translate-y-1 group">
+          <Logo variant="white" />
         </Link>
 
         <nav className={cn(
