@@ -1,88 +1,70 @@
 "use client";
 
-import { useLanguage } from "@/contexts/language-context";
-import { useTranslation } from "@/hooks/use-translation";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useTranslation } from "@/hooks/use-translation";
+import { useLanguage } from "@/contexts/language-context";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 export function Navbar() {
-  const { language, toggleLanguage } = useLanguage();
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const { toggleLanguage } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-6",
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent"
-      )}
-    >
-      <div className="max-w-[1200px] mx-auto flex items-center justify-between">
-        {/* LOGO */}
+    <header className={cn(
+      "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+      scrolled ? "bg-[#0B2A6B]/90 backdrop-blur-xl border-b border-white/10 py-3" : "bg-transparent py-6"
+    )}>
+      <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="relative w-10 h-10">
-            <motion.div 
-              className="absolute inset-0 bg-blue-600 rounded-lg rotate-12 group-hover:rotate-0 transition-transform" 
-              animate={{ rotate: 12 }}
-            />
-            <div className="absolute inset-0 bg-navy-900 rounded-lg flex items-center justify-center font-black text-white text-xl">L</div>
+          <div className="w-10 h-10 bg-white rounded-sm flex items-center justify-center font-black text-[#0B2A6B] text-xl transition-transform group-hover:scale-110">
+            L
           </div>
           <div className="flex flex-col leading-none">
-            <span className="font-black text-navy-900 text-xl tracking-tighter uppercase">Logistica</span>
-            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Tunisie</span>
+            <span className="text-white font-black text-xl tracking-tighter uppercase">Logistica</span>
+            <span className="text-[#F7931E] font-bold text-[8px] uppercase tracking-[0.2em]">Tunisie</span>
           </div>
         </Link>
 
-        {/* NAV LINKS */}
-        <nav className="hidden md:flex items-center gap-10">
-          {[
-            { href: "#services", label: t("nav_services") },
-            { href: "#process", label: t("nav_process") },
-            { href: "#why-us", label: t("nav_why") },
-            { href: "#faq", label: t("nav_faq") },
-          ].map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-black text-navy-900/60 hover:text-blue-600 uppercase tracking-wider transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav className="hidden md:flex items-center gap-8">
+          <Link href="#services" className="text-[#B9C8EC] hover:text-[#F7931E] font-bold text-sm uppercase transition-colors">{t('nav_services')}</Link>
+          <Link href="#why" className="text-[#B9C8EC] hover:text-[#F7931E] font-bold text-sm uppercase transition-colors">{t('nav_why')}</Link>
+          <Link href="#faq" className="text-[#B9C8EC] hover:text-[#F7931E] font-bold text-sm uppercase transition-colors">{t('nav_faq')}</Link>
         </nav>
 
-        {/* ACTIONS */}
-        <div className="flex items-center gap-6">
-          <button
+        <div className="flex items-center gap-4">
+          <div 
+            className="flex bg-white/10 rounded-full p-1 cursor-pointer border border-white/5" 
             onClick={toggleLanguage}
-            className="flex items-center bg-gray-100 p-1 rounded-full text-[11px] font-black shadow-inner"
           >
             <span className={cn(
-              "px-3 py-1.5 rounded-full transition-all",
-              language === 'ar' ? "bg-white text-navy-900 shadow-sm" : "text-gray-400"
+              "px-3 py-1 rounded-full text-xs font-bold transition-all",
+              language === 'ar' ? "bg-[#F7931E] text-[#0B2A6B]" : "text-[#B9C8EC]"
             )}>عربية</span>
             <span className={cn(
-              "px-3 py-1.5 rounded-full transition-all",
-              language === 'fr' ? "bg-white text-navy-900 shadow-sm" : "text-gray-400"
+              "px-3 py-1 rounded-full text-xs font-bold transition-all",
+              language === 'fr' ? "bg-[#F7931E] text-[#0B2A6B]" : "text-[#B9C8EC]"
             )}>FR</span>
-          </button>
+          </div>
           
-          <Button className="btn-orange text-navy-900 h-11 px-8 hidden sm:flex">
-            {t("nav_cta")}
-          </Button>
+          <Link href="/login" className="text-white font-bold text-sm hover:text-[#F7931E] hidden sm:block">
+            {t('nav_signin')}
+          </Link>
+          
+          <Link href="/register" className="btn-bold !py-2 !px-6 !text-sm !shadow-none">
+            {t('nav_signup')}
+          </Link>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 }

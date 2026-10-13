@@ -1,20 +1,31 @@
 import type { Metadata } from "next";
-import { Inter, Sora, Tajawal, IBM_Plex_Sans_Arabic } from "next/font/google";
+import { Tajawal, Inter, Sora } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/language-context";
 import { Toaster } from "@/components/ui/toaster";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-const sora = Sora({ subsets: ["latin"], variable: "--font-heading" });
 const tajawal = Tajawal({ 
   subsets: ["arabic"], 
-  weight: ["400", "500", "700", "800", "900"],
+  weight: ["400", "500", "700", "800"],
   variable: "--font-arabic" 
 });
 
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-sans" 
+});
+
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-heading"
+});
+
 export const metadata: Metadata = {
-  title: "Logistica Tunisie — De la commande à la livraison",
-  description: "Solution intégrée d'entreposage, de distribution et de gestion COD conçue pour l'e-commerce tunisien.",
+  title: "Logistica Tunisie — De la commande à la livraison, tout simplement.",
+  description: "Solution intégrée de fulfillment, stockage et livraison pour l'e-commerce en Tunisie.",
+  icons: {
+    icon: "/favicon.ico",
+  }
 };
 
 export default function RootLayout({
@@ -23,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" suppressHydrationWarning>
-      <body className={`${inter.variable} ${sora.variable} ${tajawal.variable} font-sans`}>
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
+      <body className={`${tajawal.variable} ${inter.variable} ${sora.variable} font-sans antialiased text-white selection:bg-[#F7931E] selection:text-[#0B2A6B]`}>
         <LanguageProvider>
           {children}
           <Toaster />
