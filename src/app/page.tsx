@@ -9,19 +9,21 @@ import {
   MapPin, Wallet, RefreshCw, Headset, BarChart, 
   Zap, ShieldCheck, Phone, Heart, Check, Plus, 
   ArrowRight, Store, MessageCircle, Scan, Link as LinkIcon,
-  Calculator, Search, Info, FileCheck
+  Calculator, Search, Info, FileCheck, Star, 
+  ChevronRight, ArrowUpRight, Banknote, Package, 
+  PackageOpen, Layers, Headphones, LayoutDashboard
 } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { Slider } from "@/components/ui/slider";
 
 // --- Components ---
 
 function Counter({ value, label, suffix = "", id }: { value: number; label: string; suffix?: string; id?: string }) {
   const [count, setCount] = useState(0);
-  const nodeRef = useRef(null);
   const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
@@ -44,12 +46,11 @@ function Counter({ value, label, suffix = "", id }: { value: number; label: stri
 
   return (
     <motion.div 
-      ref={nodeRef}
       onViewportEnter={() => setHasStarted(true)}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="flex flex-col items-center text-center p-6 bg-white/5 border border-white/10 rounded-md"
+      className="flex flex-col items-center text-center p-8 bg-white/5 border border-white/10 rounded-md"
     >
       <b className="text-4xl md:text-5xl font-bold text-orange-500 font-sans tracking-tighter tabular-nums">
         {value >= 1000 ? `+${count.toLocaleString('en')}` : count}{suffix}
@@ -72,7 +73,6 @@ export default function HomePage() {
   const [dashRange, setDashRange] = useState(0);
   const [mobileMenu, setMobileMenu] = useState(false);
 
-  const containerRef = useRef(null);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -121,7 +121,11 @@ export default function HomePage() {
       )}>
         <div className="max-w-[1200px] mx-auto px-6 w-full flex items-center justify-between">
           <a href="#" className="flex items-center gap-3 bg-white p-2 px-4 rounded-md shadow-lg transition-transform hover:-translate-y-1">
-            <svg viewBox="0 0 175 175" className="h-8 w-auto" aria-hidden="true"><polygon points="0,174.5 174.5,87.3 61.1,87.3" fill="#0b2a6b"/><polygon points="61.1,87.3 174.5,87.3 0,0" fill="#1f6fdb"/><polygon points="0,174.5 61.1,87.3 0,87.3" fill="#f7931e"/></svg>
+            <svg viewBox="0 0 175 175" className="h-8 w-auto" aria-hidden="true">
+              <polygon points="0,174.5 174.5,87.3 61.1,87.3" fill="#0b2a6b"/>
+              <polygon points="61.1,87.3 174.5,87.3 0,0" fill="#1f6fdb"/>
+              <polygon points="0,174.5 61.1,87.3 0,87.3" fill="#f7931e"/>
+            </svg>
             <b className="font-sans font-extrabold tracking-widest text-navy-900 text-xl">LOGISTICA</b>
           </a>
 
@@ -218,7 +222,7 @@ export default function HomePage() {
                   <g className="animate-[bob_0.5s_ease-in-out_infinite_alternate]">
                     <rect x="40" y="206" width="140" height="82" rx="4" fill="#1F6FDB" className="shadow-lg"/>
                     <path d="M180 226h44l28 32v30h-72z" fill="#fff"/>
-                    <text x="62" y="256" fill="#fff" font-family="Inter" font-weight="800" font-size="18" letter-spacing="2">LOGISTICA</text>
+                    <text x="62" y="256" fill="#fff" fontFamily="Inter" fontWeight="800" fontSize="18" letterSpacing="2">LOGISTICA</text>
                     <g className="animate-spin origin-center" style={{ transformOrigin: '82px 292px' }}><circle cx="82" cy="292" r="17" fill="#0B2A6B"/><circle cx="82" cy="292" r="7" fill="#F7931E"/></g>
                     <g className="animate-spin origin-center" style={{ transformOrigin: '150px 292px' }}><circle cx="150" cy="292" r="17" fill="#0B2A6B"/><circle cx="150" cy="292" r="7" fill="#F7931E"/></g>
                   </g>
@@ -272,7 +276,7 @@ export default function HomePage() {
           <Counter value={12000} label={t('s1')} />
           <Counter value={24} label={t('s2')} />
           <Counter value={98} suffix="%" label={t('s3')} />
-          <div className="flex flex-col items-center text-center p-6 bg-white/5 border border-white/10 rounded-md">
+          <div className="flex flex-col items-center text-center p-8 bg-white/5 border border-white/10 rounded-md">
             <b className="text-4xl md:text-5xl font-bold text-orange-500 font-sans tracking-tighter tabular-nums">{t('s4b')}</b>
             <span className="text-muted-foreground text-sm font-medium mt-2">{t('s4')}</span>
           </div>
@@ -507,7 +511,7 @@ export default function HomePage() {
                   <g key={i}>
                     <circle cx={c.x} cy={c.y} r="8" fill="#F7931E" className="animate-ping opacity-40"/>
                     <circle cx={c.x} cy={c.y} r="5" fill="#F7931E"/>
-                    <text x={c.x + 12} y={c.y + 4} fill="#fff" font-size="12" font-weight="600">{c.n}</text>
+                    <text x={c.x + 12} y={c.y + 4} fill="#fff" fontSize="12" fontWeight="600">{c.n}</text>
                   </g>
                 ))}
              </svg>
@@ -664,7 +668,14 @@ export default function HomePage() {
             <div className="bg-white p-8 rounded-md shadow-2xl text-navy-900">
                <div className="mb-10">
                  <label className="flex justify-between font-bold mb-4"><span>{t('ca1')}</span> <b className="text-blue-600 font-sans">{calcOrders.toLocaleString('en')}</b></label>
-                 <input type="range" min="50" max="5000" step="50" value={calcOrders} onChange={(e) => setCalcOrders(+e.target.value)} className="w-full accent-orange-500 h-2 bg-gray-100 rounded-full cursor-pointer"/>
+                 <Slider 
+                   min={50} 
+                   max={5000} 
+                   step={50} 
+                   value={[calcOrders]} 
+                   onValueChange={(val) => setCalcOrders(val[0])} 
+                   className="cursor-pointer"
+                 />
                </div>
                
                <div className="mb-10">
@@ -687,7 +698,14 @@ export default function HomePage() {
 
                <div>
                  <label className="flex justify-between font-bold mb-4"><span>{t('ca6')}</span> <b className="text-blue-600 font-sans">{calcRet}%</b></label>
-                 <input type="range" min="0" max="30" step="1" value={calcRet} onChange={(e) => setCalcRet(+e.target.value)} className="w-full accent-orange-500 h-2 bg-gray-100 rounded-full cursor-pointer"/>
+                 <Slider 
+                   min={0} 
+                   max={30} 
+                   step={1} 
+                   value={[calcRet]} 
+                   onValueChange={(val) => setCalcRet(val[0])} 
+                   className="cursor-pointer"
+                 />
                </div>
             </div>
 
@@ -820,10 +838,14 @@ export default function HomePage() {
       <section id="cta">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="bg-orange-500 rounded-md p-12 md:p-20 text-center relative overflow-hidden shadow-2xl">
-             <svg className="absolute -right-20 -bottom-20 w-80 opacity-10 animate-[spin_40s_linear_infinite]" viewBox="0 0 175 175"><polygon points="0,174.5 174.5,87.3 61.1,87.3" fill="#0b2a6b"/><polygon points="61.1,87.3 174.5,87.3 0,0" fill="#1f6fdb"/><polygon points="0,174.5 61.1,87.3 0,87.3" fill="#fff"/></svg>
+             <svg className="absolute -right-20 -bottom-20 w-80 opacity-10 animate-[spin_40s_linear_infinite]" viewBox="0 0 175 175">
+               <polygon points="0,174.5 174.5,87.3 61.1,87.3" fill="#0b2a6b"/>
+               <polygon points="61.1,87.3 174.5,87.3 0,0" fill="#1f6fdb"/>
+               <polygon points="0,174.5 61.1,87.3 0,87.3" fill="#fff"/>
+             </svg>
              <div className="relative z-10">
                 <h2 className="text-navy-900 text-3xl md:text-5xl font-bold mb-6 max-w-3xl mx-auto">{t('ctat')}</h2>
-                <p className="text-navy-900/80 mb-10 max-w-xl mx-auto font-medium">{t('ctas')}</p>
+                <p className="text-navy-900/80 mb-10 max-wxl mx-auto font-medium">{t('ctas')}</p>
                 <div className="flex flex-wrap justify-center gap-4">
                    <Button className="h-16 px-12 bg-navy-900 text-white font-bold text-xl shadow-xl hover:bg-navy-800 border-none rounded-sm">
                      {t('ctab')}
@@ -842,7 +864,11 @@ export default function HomePage() {
         <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <svg viewBox="0 0 175 175" className="h-8 w-auto"><polygon points="0,174.5 174.5,87.3 61.1,87.3" fill="#0b2a6b"/><polygon points="61.1,87.3 174.5,87.3 0,0" fill="#1f6fdb"/><polygon points="0,174.5 61.1,87.3 0,87.3" fill="#f7931e"/></svg>
+              <svg viewBox="0 0 175 175" className="h-8 w-auto">
+                <polygon points="0,174.5 174.5,87.3 61.1,87.3" fill="#0b2a6b"/>
+                <polygon points="61.1,87.3 174.5,87.3 0,0" fill="#1f6fdb"/>
+                <polygon points="0,174.5 61.1,87.3 0,87.3" fill="#f7931e"/>
+              </svg>
               <b className="font-sans font-extrabold tracking-widest text-white text-xl">LOGISTICA</b>
             </div>
             <p className="text-sm text-[#7E93C4] leading-relaxed">{t('fa')}</p>
@@ -895,4 +921,3 @@ export default function HomePage() {
     </div>
   );
 }
-
