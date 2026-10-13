@@ -1,96 +1,121 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Package, Truck, MapPin, CheckCircle2, Clock, Box } from "lucide-react";
 
 export function HeroIllustration() {
   return (
-    <div className="relative w-full aspect-square max-w-[500px] mx-auto">
-      {/* Dashed Route Line */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" viewBox="0 0 500 500">
+    <div className="relative w-full aspect-[4/3] max-w-[600px] mx-auto">
+      <svg viewBox="0 0 800 420" className="w-full h-full" fill="none">
+        {/* Ground Line */}
+        <line x1="0" y1="340" x2="800" y2="340" stroke="#E4E7EC" strokeWidth="2" strokeDasharray="8 8" />
+        
+        {/* Animated Dashed Route Dot */}
+        <motion.circle
+          cx="0" cy="340" r="4" fill="#F7931E"
+          animate={{ cx: [0, 800] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+        />
+
+        {/* Isometric Box Center */}
+        <g transform="translate(320, 180) scale(1.5)">
+          <motion.path 
+            initial={{ scale: 0.6, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            fill="#1F6FDB" d="M87,18 L152,55 L87,92 L22,55 Z" 
+          />
+          <motion.path 
+            initial={{ scale: 0.6, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            fill="#0B2A6B" d="M22,55 L87,92 L87,162 L22,125 Z" 
+          />
+          <motion.path 
+            initial={{ scale: 0.6, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            fill="#F7931E" d="M152,55 L87,92 L87,162 L152,125 Z" 
+          />
+        </g>
+
+        {/* 3 Parcels dropping */}
+        {[2.2, 2.6, 3.0].map((delay, i) => (
+          <motion.g
+            key={i}
+            initial={{ opacity: 0, y: -70 }}
+            animate={{ 
+              opacity: [0, 1, 1, 1, 0],
+              y: [-70, 0, 0, 0, 0],
+              scale: [1, 0.9, 1.1, 1, 1]
+            }}
+            transition={{ duration: 6, repeat: Infinity, delay }}
+            transform={`translate(${380 + (i * 25)}, 160)`}
+          >
+            <rect width="20" height="20" fill={i % 2 === 0 ? "#1F6FDB" : "#F7931E"} rx="2" />
+          </motion.g>
+        ))}
+
+        {/* Truck Group */}
+        <motion.g
+          animate={{
+            x: [-260, 150, 150, 150, 900]
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            times: [0, 0.18, 0.3, 0.75, 1],
+            ease: "easeInOut"
+          }}
+          transform="translate(0, 270)"
+        >
+          {/* Truck Body */}
+          <rect width="140" height="60" fill="#1F6FDB" rx="10" />
+          <path d="M140,20 L170,20 L170,60 L140,60 Z" fill="#0B2A6B" />
+          
+          {/* Wheels */}
+          <motion.circle 
+            cx="35" cy="65" r="14" fill="#0B2A6B"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          />
+          <circle cx="35" cy="65" r="6" fill="#F7931E" />
+          
+          <motion.circle 
+            cx="105" cy="65" r="14" fill="#0B2A6B"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          />
+          <circle cx="105" cy="65" r="6" fill="#F7931E" />
+        </motion.g>
+
+        {/* Pin drop */}
         <motion.path
-          d="M 50,400 Q 150,400 250,250 T 450,100"
-          fill="none"
-          stroke="#0B2A6B"
-          strokeWidth="3"
-          strokeDasharray="8 12"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+          d="M400,260 L410,285 L390,285 Z"
+          fill="#E91E63"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ 
+            opacity: [0, 0, 1, 1, 0],
+            scale: [0, 0, 1.2, 1, 0],
+            y: [-20, -20, 0, 0, 0]
+          }}
+          transition={{ duration: 6, repeat: Infinity, times: [0, 0.58, 0.64, 0.9, 1] }}
         />
       </svg>
-
-      {/* Main Box - Logo Colors */}
+      
+      {/* Floating Status Cards (HTML) */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64 flex items-center justify-center z-10"
-        initial={{ scale: 0, rotate: -20 }}
-        animate={{ scale: 1, rotate: 0 }}
-        transition={{ type: "spring", duration: 1 }}
+        className="absolute top-10 left-10 glassmorphic px-4 py-2 rounded-xl text-xs font-bold text-navy-900 border-l-4 border-blue-600 shadow-lg"
+        animate={{ opacity: [0, 1, 1, 0], y: [10, 0, 0, -10] }}
+        transition={{ duration: 6, repeat: Infinity, times: [0, 0.1, 0.4, 0.5] }}
       >
-        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-lg">
-          <path d="M50 85L10 65V30L50 50V85Z" fill="#0B2A6B" />
-          <path d="M50 50L10 30L50 10L90 30L50 50Z" fill="#1F6FDB" />
-          <path d="M50 85L90 65V30L50 50V85Z" fill="#F7931E" />
-        </svg>
+        Commande reçue ✓
       </motion.div>
-
-      {/* Floating Status Cards */}
       <motion.div
-        className="absolute top-1/4 right-0 glassmorphic p-4 rounded-xl flex items-center gap-3 z-20"
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 4, repeat: Infinity }}
+        className="absolute bottom-40 right-10 glassmorphic px-4 py-2 rounded-xl text-xs font-bold text-green-600 border-l-4 border-green-500 shadow-lg"
+        animate={{ opacity: [0, 0, 1, 0], y: [10, 10, 0, -10] }}
+        transition={{ duration: 6, repeat: Infinity, times: [0, 0.6, 0.8, 0.9] }}
       >
-        <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center text-green-600">
-          <CheckCircle2 size={24} />
-        </div>
-        <div>
-          <p className="text-[10px] font-bold text-gray-400 uppercase">Livraison</p>
-          <p className="text-sm font-bold text-navy-900">Livré avec succès ✓</p>
-        </div>
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-1/4 left-0 glassmorphic p-4 rounded-xl flex items-center gap-3 z-20"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 3, repeat: Infinity }}
-      >
-        <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600">
-          <Clock size={24} />
-        </div>
-        <div>
-          <p className="text-[10px] font-bold text-gray-400 uppercase">Status</p>
-          <p className="text-sm font-bold text-navy-900">En préparation...</p>
-        </div>
-      </motion.div>
-
-      {/* Truck Animation */}
-      <motion.div
-        className="absolute z-30"
-        animate={{
-          x: ["10%", "80%", "10%"],
-          y: ["80%", "20%", "80%"],
-          scaleX: [1, 1, -1, -1, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <div className="bg-navy-900 text-white p-2 rounded-lg shadow-xl relative">
-          <Truck size={24} />
-          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-orange-500 rounded-full animate-ping" />
-        </div>
-      </motion.div>
-
-      {/* Location Pin */}
-      <motion.div
-        className="absolute top-[15%] right-[10%] text-orange-500 z-20"
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 1, duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
-      >
-        <MapPin size={32} fill="currentColor" fillOpacity={0.2} />
+        Colis livré ✓
       </motion.div>
     </div>
   );

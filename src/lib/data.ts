@@ -1,5 +1,4 @@
-
-// Data library reset for new project
+// Dummy content to prevent errors with existing components
 export const categories = [];
 export const featuredQuizzes = [];
 export const trendingQuizzes = [];
