@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,6 +25,18 @@
     --ring: 33 93% 54%;
     --radius: 0.5rem;
   }
+
+  [dir="rtl"] {
+    font-family: var(--font-arabic), sans-serif;
+  }
+
+  [dir="ltr"] {
+    font-family: var(--font-sans), sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), var(--font-arabic), sans-serif;
+  }
 }
 
 @layer components {
@@ -40,12 +53,16 @@
   }
 
   .reveal {
-    @apply opacity-0 translate-y-6 transition-all duration-700;
-    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    @apply opacity-0 translate-y-6 transition-all duration-700 ease-out;
   }
 
   .reveal.in {
     @apply opacity-100 translate-y-0;
+  }
+
+  /* Specific line height for Arabic to make it look modern and spaced */
+  [dir="rtl"] p, [dir="rtl"] span, [dir="rtl"] div {
+    line-height: 1.8;
   }
 }
 

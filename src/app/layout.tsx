@@ -1,14 +1,9 @@
+
 import type { Metadata } from "next";
-import { Tajawal, Inter, Sora } from "next/font/google";
+import { Inter, Sora, IBM_Plex_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/language-context";
 import { Toaster } from "@/components/ui/toaster";
-
-const tajawal = Tajawal({ 
-  subsets: ["arabic"], 
-  weight: ["400", "500", "700", "800"],
-  variable: "--font-arabic" 
-});
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -18,6 +13,12 @@ const inter = Inter({
 const sora = Sora({
   subsets: ["latin"],
   variable: "--font-heading"
+});
+
+const ibmPlexArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-arabic",
 });
 
 export const metadata: Metadata = {
@@ -35,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
-      <body className={`${tajawal.variable} ${inter.variable} ${sora.variable} font-sans antialiased text-white selection:bg-[#F7931E] selection:text-[#0B2A6B]`}>
+      <body className={`${ibmPlexArabic.variable} ${inter.variable} ${sora.variable} font-sans antialiased text-white selection:bg-[#F7931E] selection:text-[#0B2A6B]`}>
         <LanguageProvider>
           {children}
           <Toaster />
