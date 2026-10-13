@@ -55,7 +55,7 @@ export const translations = {
     service_shipping: "الإرسال",
     service_shipping_desc: "تنظيم انتقال الطلبية لمرحلة التوصيل.",
     service_tracking: "متابعة التوصيل",
-    service_tracking_desc: "رؤية أوضح لحالة كل طلبie ومراحلها.",
+    service_tracking_desc: "رؤية أوضح لحالة كل طلبية ومراحلها.",
     service_cod: "الاستخلاص (COD)",
     service_cod_desc: "متابعة مرحلة الدفع عند التسليم وخلاصك في J+1.",
     service_returns: "الرجوع والتبديل",
