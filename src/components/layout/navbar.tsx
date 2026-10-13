@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -6,7 +5,7 @@ import Link from "next/link";
 import { useTranslation } from "@/hooks/use-translation";
 import { useLanguage } from "@/contexts/language-context";
 import { cn } from "@/lib/utils";
-import { Menu, X, ArrowRight, Globe, LocalShipping } from "lucide-react";
+import { Menu, X, ArrowRight, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { motion, AnimatePresence } from "framer-motion";
@@ -44,43 +43,41 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-10">
+        <nav className="hidden xl:flex items-center gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-xs font-heading font-black text-primary uppercase tracking-[0.15em] hover:text-secondary transition-colors"
+              className="text-[10px] font-heading font-black text-primary uppercase tracking-[0.2em] hover:text-secondary transition-colors"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-6">
-          <Button
-            variant="ghost"
-            size="sm"
+        <div className="hidden xl:flex items-center gap-6">
+          <button
             onClick={toggleLanguage}
-            className="flex items-center gap-2 font-heading font-black text-[10px] tracking-widest uppercase hover:bg-surface-container"
+            className="flex items-center gap-2 font-heading font-black text-[10px] tracking-widest uppercase hover:text-secondary transition-colors"
           >
             <Globe className="h-4 w-4 text-secondary" />
             {language === 'ar' ? 'FR' : 'TN'}
-          </Button>
+          </button>
           
-          <Link href="/login" className="text-xs font-heading font-black text-primary uppercase tracking-[0.15em] hover:text-secondary transition-colors px-4">
+          <Link href="/login" className="text-[10px] font-heading font-black text-primary uppercase tracking-[0.2em] hover:text-secondary transition-colors">
             {t('sign_in')}
           </Link>
 
-          <Button className="bg-primary hover:bg-primary-container text-white rounded-xl px-8 h-12 font-heading font-black uppercase text-[10px] tracking-[0.2em] shadow-lg transition-all active:scale-95 group" asChild>
-            <Link href="/register" className="flex items-center gap-3">
+          <Button className="bg-primary hover:bg-secondary text-white rounded-xl px-8 h-12 font-heading font-black uppercase text-[10px] tracking-[0.2em] transition-all group" asChild>
+            <Link href="/register">
               {t('create_account')}
-              <ArrowRight className={cn("h-4 w-4 transition-transform group-hover:translate-x-1", language === 'ar' && "rotate-180")} />
+              <ArrowRight className={cn("ml-2 h-4 w-4 transition-transform group-hover:translate-x-1", language === 'ar' && "rotate-180")} />
             </Link>
           </Button>
         </div>
 
         {/* Mobile Toggle */}
-        <button className="lg:hidden w-12 h-12 rounded-2xl bg-surface-container flex items-center justify-center text-primary" onClick={() => setIsOpen(!isOpen)}>
+        <button className="xl:hidden w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X /> : <Menu />}
         </button>
       </div>
@@ -92,7 +89,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-e3 overflow-hidden"
+            className="xl:hidden absolute top-full left-0 right-0 bg-white shadow-e3 overflow-hidden"
           >
             <div className="p-8 flex flex-col gap-6">
               {navLinks.map((link) => (
@@ -110,7 +107,7 @@ export function Navbar() {
                   {language === 'ar' ? 'Passer au Français' : 'تبديل للعربية'}
                   <Globe className="h-5 w-5" />
                 </Button>
-                <Button asChild className="h-16 rounded-2xl bg-secondary font-heading font-black uppercase text-xs shadow-orange">
+                <Button asChild className="h-16 rounded-2xl bg-secondary text-white font-heading font-black uppercase text-xs">
                   <Link href="/register">{t('create_account')}</Link>
                 </Button>
               </div>

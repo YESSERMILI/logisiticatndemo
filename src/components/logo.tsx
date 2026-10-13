@@ -1,10 +1,8 @@
-
 "use client";
 
 import { cn } from "@/lib/utils";
 
 export function Logo({ className }: { className?: string }) {
-  // Logo fidèle aux couleurs et à la forme demandée
   return (
     <div className={cn("flex items-center gap-3", className)}>
       <svg 
@@ -24,8 +22,4 @@ export function Logo({ className }: { className?: string }) {
       </div>
     </div>
   );
-}
-
-export function AppName() {
-  return <Logo className="h-8" />;
 }

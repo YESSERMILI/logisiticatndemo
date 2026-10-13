@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -22,6 +21,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui"],
         heading: ["var(--font-heading)", "sans-serif"],
+        display: ["var(--font-display)", "sans-serif"],
         arabic: ["var(--font-arabic)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
@@ -76,24 +76,21 @@ const config: Config = {
           container: "#5c2400",
           fixed: "#341100",
         },
-        error: {
-          DEFAULT: "#ba1a1a",
-          container: "#ffdad6",
-        },
         success: "#12B76A",
         warning: "#F79009",
+        error: "#EF4444",
         outline: {
           DEFAULT: "#76777d",
           variant: "#c6c6cd",
         }
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 4px)",
-        sm: "calc(var(--radius) - 8px)",
-        xl: "1rem",
-        "2xl": "1.5rem",
-        "3xl": "2rem",
+        lg: "1rem",
+        md: "0.75rem",
+        sm: "0.5rem",
+        xl: "1.5rem",
+        "2xl": "2rem",
+        "3xl": "3rem",
         full: "9999px",
       },
       boxShadow: {
@@ -103,14 +100,6 @@ const config: Config = {
         orange: "0 8px 32px rgba(253, 118, 26, 0.25)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
         "dash-flow": {
           to: { "stroke-dashoffset": "-24" }
         },
@@ -120,8 +109,6 @@ const config: Config = {
         }
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
         "dash-flow": "dash-flow 2s linear infinite",
         "float": "float 5s ease-in-out infinite",
       },
