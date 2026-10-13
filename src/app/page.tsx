@@ -50,7 +50,7 @@ function Counter({ value, label, suffix = "" }: { value: number; label: string; 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="flex flex-col items-center text-center p-8 bg-white/5 border border-white/10 rounded-md reveal"
+      className="flex flex-col items-center text-center p-8 bg-white/5 border border-white/10 rounded-md"
     >
       <b className="text-4xl md:text-5xl font-bold text-orange-500 font-sans tracking-tighter tabular-nums">
         {value >= 1000 ? `+${count.toLocaleString('en')}` : count}{suffix}
@@ -542,31 +542,47 @@ export default function HomePage() {
       </section>
 
       {/* COD Flow */}
-      <section className="bg-[#0E3580] py-24">
+      <section className="bg-[#0E3580] py-24" id="cod">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-orange-500 font-bold uppercase tracking-widest text-xs">{t('coe')}</span>
             <h2 className="text-white text-3xl md:text-5xl font-bold mt-2">{t('cot')}</h2>
-            <p className="text-[#9FB2DE] mt-4 font-light">{t('cos')}</p>
+            <p className="text-[#9FB2DE] mt-4 font-light max-w-2xl mx-auto">{t('cos')}</p>
           </div>
           
-          <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-12">
+          <div className="flex flex-wrap items-center justify-center gap-4 lg:gap-8">
             {[
-              { i: Store, t: 'f1', d: 'f1d' },
-              { i: Truck, t: 'f2', d: 'f2d' },
-              { i: Clock, t: 'f3', d: 'f3d' }, 
-              { i: BarChart, t: 'f4', d: 'f4d' }
+              { i: Store, t: 'f1', d: 'f1d', type: 'icon' },
+              { i: Truck, t: 'f2', d: 'f2d', type: 'icon' },
+              { i: 'coin', t: 'f3', d: 'f3d', type: 'coin' }, 
+              { i: BarChart, t: 'f4', d: 'f4d', type: 'icon' }
             ].map((node, idx) => (
-              <div key={idx} className="flex items-center gap-6 lg:gap-12">
-                <div className="flex flex-col items-center text-center bg-white/5 border border-white/10 p-8 rounded-md w-44 shadow-lg transition-transform hover:-translate-y-2">
-                  <div className="bg-orange-500/10 p-4 rounded-full mb-4">
-                    <node.i className="text-orange-500" size={32} />
+              <div key={idx} className="flex items-center gap-4 lg:gap-8">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="flex flex-col items-center text-center bg-white/5 border border-white/10 p-8 rounded-md w-48 shadow-brutal transition-transform hover:-translate-y-2 hover:border-orange-500/50"
+                >
+                  <div className="w-16 h-16 rounded-full bg-orange-500/10 flex items-center justify-center mb-6 relative">
+                    {node.type === 'coin' ? (
+                       <div className="animate-coin">
+                          <svg viewBox="0 0 40 40" width="40" height="40">
+                            <circle cx="20" cy="20" r="16" fill="#F7931E"/>
+                            <circle cx="20" cy="20" r="11" fill="none" stroke="#0B2A6B" strokeWidth="2"/>
+                            <text x="20" y="25" textAnchor="middle" fontFamily="Inter" fontWeight="800" fontSize="13" fill="#0B2A6B">DT</text>
+                          </svg>
+                       </div>
+                    ) : (
+                      <node.i className="text-orange-500" size={32} />
+                    )}
                   </div>
-                  <b className="block mb-1 font-bold">{t(node.t as any)}</b>
-                  <small className="text-[#9FB2DE] text-[10px]">{t(node.d as any)}</small>
-                </div>
+                  <b className="block mb-2 font-bold text-white text-lg">{t(node.t as any)}</b>
+                  <p className="text-[#9FB2DE] text-xs leading-relaxed">{t(node.d as any)}</p>
+                </motion.div>
+                
                 {idx < 3 && (
-                  <svg className="hidden lg:block w-16 text-orange-500/30" viewBox="0 0 54 20" fill="none">
+                  <svg className={cn("hidden lg:block w-12 text-orange-500/40", language === 'ar' && "rotate-180")} viewBox="0 0 54 20" fill="none">
                     <path d="M0 10H48M42 4l6 6-6 6" stroke="currentColor" strokeWidth={2} strokeDasharray="5 5" className="animate-[road_1s_linear_infinite]"/>
                   </svg>
                 )}
@@ -918,10 +934,12 @@ export default function HomePage() {
         <MessageCircle size={32} />
       </a>
 
-      {/* Global CSS for animations used in SVGs */}
+      {/* Global CSS for animations used in SVGs and COD Coin */}
       <style jsx global>{`
         @keyframes road { from { strokeDashoffset: 0; } to { strokeDashoffset: -30; } }
         @keyframes bob { to { transform: translateY(-3px); } }
+        @keyframes coin { 0%, 100% { transform: rotateY(0); } 50% { transform: rotateY(180deg); } }
+        .animate-coin { animation: coin 3s ease-in-out infinite; transform-style: preserve-3d; }
       `}</style>
     </div>
   );
