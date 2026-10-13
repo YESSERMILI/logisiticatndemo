@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -19,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
+import { Logo } from "@/components/logo";
 
 // --- Components ---
 
@@ -101,7 +101,7 @@ export default function HomePage() {
   const returns = calcOrders * (calcRet / 100) * 4;
   const total = Math.round(storage + prep + delivery + returns);
 
-  // Dashboard Mock Data - Fixed values for stability
+  // Dashboard Mock Data
   const dashData = [
     { k: [184, 171, 9420, 9], t: [12, 5, 8, 2], b: [40, 55, 48, 70, 62, 85, 74] },
     { k: [1240, 1186, 63800, 52], t: [15, 4, 11, 4], b: [60, 72, 65, 80, 70, 90, 95] },
@@ -125,13 +125,8 @@ export default function HomePage() {
         scrolled ? "bg-[#0B2A6B]/90 backdrop-blur-xl border-b border-white/10" : "bg-transparent"
       )}>
         <div className="max-w-[1200px] mx-auto px-6 w-full flex items-center justify-between">
-          <a href="#" className="flex items-center gap-3 bg-white p-2 px-4 rounded-md shadow-lg transition-transform hover:-translate-y-1">
-            <svg viewBox="0 0 175 175" className="h-8 w-auto" aria-hidden="true">
-              <polygon points="0,174.5 174.5,87.3 61.1,87.3" fill="#0b2a6b"/>
-              <polygon points="61.1,87.3 174.5,87.3 0,0" fill="#1f6fdb"/>
-              <polygon points="0,174.5 61.1,87.3 0,87.3" fill="#f7931e"/>
-            </svg>
-            <b className="font-sans font-extrabold tracking-widest text-navy-900 text-xl">LOGISTICA</b>
+          <a href="#" className="bg-white p-2 px-4 rounded-md shadow-lg transition-transform hover:-translate-y-1">
+            <Logo />
           </a>
 
           <nav className={cn(
@@ -885,12 +880,7 @@ export default function HomePage() {
         <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <svg viewBox="0 0 175 175" className="h-8 w-auto">
-                <polygon points="0,174.5 174.5,87.3 61.1,87.3" fill="#0b2a6b"/>
-                <polygon points="61.1,87.3 174.5,87.3 0,0" fill="#1f6fdb"/>
-                <polygon points="0,174.5 61.1,87.3 0,87.3" fill="#f7931e"/>
-              </svg>
-              <b className="font-sans font-extrabold tracking-widest text-white text-xl">LOGISTICA</b>
+              <Logo variant="white" />
             </div>
             <p className="text-sm text-[#7E93C4] leading-relaxed">{t('fa')}</p>
           </div>
@@ -944,3 +934,4 @@ export default function HomePage() {
     </div>
   );
 }
+
