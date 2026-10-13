@@ -125,7 +125,7 @@ export default function HomePage() {
         scrolled ? "bg-[#0B2A6B]/90 backdrop-blur-xl border-b border-white/10" : "bg-transparent"
       )}>
         <div className="max-w-[1200px] mx-auto px-6 w-full flex items-center justify-between">
-          <a href="#" className="bg-white p-2 px-4 rounded-md shadow-lg transition-transform hover:-translate-y-1">
+          <a href="#" className="bg-white p-2 px-4 rounded-md shadow-lg transition-transform hover:-translate-y-1 group">
             <Logo />
           </a>
 
@@ -155,8 +155,8 @@ export default function HomePage() {
 
       {/* Hero */}
       <section className="relative pt-40 pb-20 overflow-hidden min-h-screen flex items-center">
-        <div className="absolute top-1/4 left-0 text-[12vw] font-black text-white/5 select-none pointer-events-none tracking-tighter leading-none whitespace-nowrap">
-          LOGISTICA TUNISIE
+        <div className="absolute top-1/4 left-0 text-[12vw] font-black text-white/5 select-none pointer-events-none tracking-tighter leading-none whitespace-nowrap uppercase">
+          Logistica Tunisie
         </div>
         
         <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
@@ -222,7 +222,7 @@ export default function HomePage() {
                   <g className="animate-[bob_0.5s_ease-in-out_infinite_alternate]">
                     <rect x="40" y="206" width="140" height="82" rx="4" fill="#1F6FDB" className="shadow-lg"/>
                     <path d="M180 226h44l28 32v30h-72z" fill="#fff"/>
-                    <text x="62" y="256" fill="#fff" fontFamily="Inter" fontWeight="800" fontSize="18" letterSpacing="2">LOGISTICA</text>
+                    <text x="62" y="256" fill="#fff" fontFamily="Inter" fontWeight="800" fontSize="14" letterSpacing="1">LOGISTICA</text>
                     <g className="animate-spin origin-center" style={{ transformOrigin: '82px 292px' }}><circle cx="82" cy="292" r="17" fill="#0B2A6B"/><circle cx="82" cy="292" r="7" fill="#F7931E"/></g>
                     <g className="animate-spin origin-center" style={{ transformOrigin: '150px 292px' }}><circle cx="150" cy="292" r="17" fill="#0B2A6B"/><circle cx="150" cy="292" r="7" fill="#F7931E"/></g>
                   </g>
@@ -263,8 +263,8 @@ export default function HomePage() {
       <div className="marquee overflow-hidden bg-orange-500 text-navy-900 font-bold text-xl py-4 border-y-4 border-navy-900 -rotate-1 relative z-20">
         <div className="animate-marquee whitespace-nowrap flex gap-12">
           {[1,2,3,4].map(i => (
-            <span key={i} className="flex gap-12">
-              LOGISTICA ✦ {t('mq')} ✦ COD ✦ 24 GOUVERNORATS ✦ STOCKAGE ✦ PICKING ✦ PACKING ✦ LIVRAISON
+            <span key={i} className="flex gap-12 uppercase">
+              Logistica Tunisie ✦ {t('mq')} ✦ COD ✦ 24 GOUVERNORATS ✦ STOCKAGE ✦ PICKING ✦ PACKING ✦ LIVRAISON
             </span>
           ))}
         </div>
@@ -934,4 +934,3 @@ export default function HomePage() {
     </div>
   );
 }
-
