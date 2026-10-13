@@ -6,11 +6,9 @@ import { useTranslation } from "@/hooks/use-translation";
 import { useLanguage } from "@/contexts/language-context";
 import { 
   ShoppingCart, Box, Truck, 
-  MapPin, Wallet, BarChart, 
-  Zap, ShieldCheck, Check, 
-  ArrowRight, Store, MessageCircle, Scan, 
-  ChevronRight, ArrowUpRight, Banknote, 
-  Package, PackageOpen, Layers, LayoutDashboard, Plus, Clock, Star, HelpCircle
+  MapPin, Wallet, Zap, Check, 
+  ArrowRight, Scan, Package, 
+  PackageOpen, Layers, MessageCircle, Clock, Star, HelpCircle
 } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
