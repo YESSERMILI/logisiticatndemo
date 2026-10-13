@@ -52,49 +52,47 @@ const ProcessVisual = ({ type }: { type: 'picking' | 'packing' | 'labeling' | 'r
 
         {/* Packing Context: Industrial Sealing Process */}
         {type === 'packing' && (
-          <g transform="translate(10, 10)">
-            {/* Box Body */}
-            <path d="M 40,80 L 100,110 L 160,80 L 100,50 Z" fill="#0B2A6B" fillOpacity="0.05" />
-            <path d="M 40,80 L 40,140 L 100,170 L 100,110 Z" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="1.5" />
-            <path d="M 160,80 L 160,140 L 100,170 L 100,110 Z" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="1.5" />
+          <g>
+            {/* Box Body (Isometric) */}
+            <path d="M 40,80 L 100,110 L 160,80 L 100,50 Z" fill="#0B2A6B" fillOpacity="0.1" />
+            <path d="M 40,80 L 40,140 L 100,170 L 100,110 Z" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="2" />
+            <path d="M 160,80 L 160,140 L 100,170 L 100,110 Z" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="2" />
             
-            {/* Inner stuff - simulation of bubble wrap or items */}
-            <path d="M 65,75 Q 80,68 100,75 T 135,75" fill="none" stroke="#1F6FDB" strokeWidth="1" strokeDasharray="2 2" opacity="0.3" />
+            {/* Inner items visualization */}
+            <path d="M 60,75 Q 80,68 100,75 T 140,75" fill="none" stroke="#1F6FDB" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.4" />
             
-            {/* Flaps (Open) */}
-            <path d="M 40,80 L 15,55 L 75,25 L 100,50 Z" fill="#081E4E" stroke="#1F6FDB" strokeWidth="1" />
-            <path d="M 160,80 L 185,55 L 125,25 L 100,50 Z" fill="#081E4E" stroke="#1F6FDB" strokeWidth="1" />
+            {/* Flaps (Open for processing) */}
+            <path d="M 40,80 L 10,50 L 70,20 L 100,50 Z" fill="#081E4E" stroke="#1F6FDB" strokeWidth="1.5" />
+            <path d="M 160,80 L 190,50 L 130,20 L 100,50 Z" fill="#081E4E" stroke="#1F6FDB" strokeWidth="1.5" />
 
             {/* Tape Gun Application */}
-            <motion.g>
-              <motion.path 
-                d="M 100,45 L 100,110 L 100,170" 
-                fill="none" stroke="#F7931E" strokeWidth="10" strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
-                filter="url(#glowProcess)"
-              />
-              {/* Tape Brand Stripe */}
-              <motion.path 
-                d="M 100,50 L 100,165" 
-                fill="none" stroke="white" strokeWidth="1" strokeDasharray="4 4"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
-                opacity="0.3"
-              />
-            </motion.g>
+            <motion.path 
+              d="M 100,50 L 100,110 L 100,170" 
+              fill="none" stroke="#F7931E" strokeWidth="12" strokeLinecap="round"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+              filter="url(#glowProcess)"
+            />
+            {/* Tape Decorative Element */}
+            <motion.path 
+              d="M 100,55 L 100,165" 
+              fill="none" stroke="white" strokeWidth="1.5" strokeDasharray="5 5"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+              opacity="0.5"
+            />
 
-            {/* Roller Tool Head */}
+            {/* Tape Gun Roller */}
             <motion.g
-              animate={{ y: [0, 60, 125], opacity: [0, 1, 1, 0] }}
+              animate={{ y: [0, 60, 120], opacity: [0, 1, 1, 0] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-              style={{ x: 100, y: 45 }}
+              style={{ x: 100, y: 50 }}
             >
-              <rect x="-12" y="-12" width="24" height="24" rx="4" fill="#F7931E" />
-              <circle cx="0" cy="0" r="10" fill="none" stroke="white" strokeWidth="2" strokeDasharray="3 3" />
-              <path d="M -15,0 H 15" stroke="white" strokeWidth="1" opacity="0.5" />
+              <rect x="-15" y="-15" width="30" height="30" rx="6" fill="#F7931E" />
+              <circle cx="0" cy="0" r="10" fill="none" stroke="white" strokeWidth="2.5" />
+              <path d="M -8,0 H 8" stroke="white" strokeWidth="1.5" />
             </motion.g>
           </g>
         )}
@@ -384,10 +382,10 @@ export default function HomePage() {
           <div className="relative order-2 lg:order-1">
              <div className="grid grid-cols-2 gap-8">
                 {[
-                  { type: 'picking', label: t('t3') },
-                  { type: 'packing', label: t('t4') },
-                  { type: 'labeling', label: t('tL') },
-                  { type: 'ready', label: t('tR') }
+                  { type: 'picking', label: 'Picking' },
+                  { type: 'packing', label: 'Packing' },
+                  { type: 'labeling', label: 'Étiquetage' },
+                  { type: 'ready', label: 'Ready' }
                 ].map((item, i) => (
                   <motion.div 
                     key={i}
