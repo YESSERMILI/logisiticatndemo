@@ -6,7 +6,7 @@ export const translations = {
     "n0": "كيفاش نخدمو", "n1": "الخدمات", "n3": "أسئلة تجينا ديما", "n4": "ابدأ توة", "n5": "تتبّع كولي", "n6": "التغطية", "n7": "العروض",
     "nav_services": "الخدمات", "nav_why": "علاش أحنا", "nav_faq": "أسئلة", "nav_signin": "تسجيل دخول", "nav_signup": "ابدأ معانا",
     "login_title": "مرحباً بعودتك", "login_subtitle": "دخل معلوماتك باش تدخل لحسابك", "login_email": "البريد الإلكتروني", "login_password": "كلمة السر", "login_forgot": "نسيت كلمة السر؟", "login_submit": "دخول", "login_no_account": "ما عندكش حساب؟", "login_register": "سجّل توة",
-    "register_title": "حل حساب جديد", "register_subtitle": "انضم لعائلة Logistica وابدا بيع براحتك", "register_name": "الاسم الكامل", "register_shop": "اسم المتجر", "register_phone": "رقم الهاتف", "register_submit": "صحيح الحساب", "register_have_account": "عندك حساب؟", "register_login": "ادخل من هنا",
+    "register_title": "حل حساب جديد", "register_subtitle": "انضم لعائلة Logistica وابدا بيع براحتك", "register_name": "الاسم الكامل", "register_shop": "اسم المتجر", "register_phone": "رقم الهاتف", "register_submit": "إنشاء حساب", "register_have_account": "عندك حساب؟", "register_login": "ادخل من هنا",
     "chip": "فولفيلمنت للتجارة الإلكترونية في تونس",
     "h1a": "بِيع براحتك…", "h1b": "والتوصيل علينا.",
     "sub": "Logistica تستقبل البضاعة، تخزّنها، تجهّz الطلبات وتوصّلها لزبونك — من الكوموند لليفريزون، بسيطة كيما الحكاية.",
