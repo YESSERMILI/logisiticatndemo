@@ -19,61 +19,65 @@ import { DashboardShowcase } from "@/components/home/dashboard-showcase";
 import { BentoServices } from "@/components/home/services-bento";
 import { FAQ } from "@/components/home/faq";
 
-// Scrolling ticker component - Fixed Width, Loop, and Improved Fonts
+// Scrolling ticker component - Optimized for perfect loop and rich content
 const ScrollingTicker = () => {
-  const { language } = useTranslation();
   const items = [
     { text: "LOGISTICA TUNISIE", lang: "fr" },
-    { text: "COD & REVERSEMENT", lang: "fr" },
-    { text: "GOUVERNORATS 24", lang: "fr" },
+    { text: "من الكوموند لليفريزون", lang: "ar" },
+    { text: "LIVRAISON 24 GOUVERNORATS", lang: "fr" },
+    { text: "بِيع براحتك والتوصيل علينا", lang: "ar" },
+    { text: "COD & REVERSEMENT J+1", lang: "fr" },
     { text: "STOCKAGE SÉCURISÉ", lang: "fr" },
-    { text: "PICKING EXPRESS", lang: "fr" },
-    { text: "PACKING PRO", lang: "fr" },
-    { text: "LIVRAISON < 24H", lang: "fr" },
-    { text: "من الكوموند لليفريزon", lang: "ar" },
-    { text: "DE LA COMMANDE À LA LIVRAISON", lang: "fr" }
+    { text: "تتبع كوليك في كل لحظة", lang: "ar" },
+    { text: "PICKING & PACKING PRO", lang: "fr" },
+    { text: "DASHBOARD SAAS REAL-TIME", lang: "fr" }
   ];
 
-  // Repeat items to ensure content is wide enough for seamless loop
-  const content = [...items, ...items, ...items];
-
   return (
-    <div className="relative z-20 h-16 md:h-20 flex items-center overflow-hidden">
-      {/* Container is 200% screen width and centered to ensure coverage during tilt */}
-      <div className="bg-[#F7931E] py-3 md:py-4 border-y border-[#0B2A6B]/10 -rotate-1 w-[200vw] absolute left-[-50vw] shadow-2xl flex items-center">
-        {/* We force dir="ltr" on the mover to keep marquee logic consistent */}
-        <div dir="ltr" className="flex whitespace-nowrap animate-marquee">
+    <div className="relative z-20 h-14 md:h-16 flex items-center overflow-hidden bg-[#0B2A6B]">
+      <div className="bg-[#F7931E] py-3 border-y border-[#0B2A6B]/20 -rotate-1 w-[200vw] absolute left-[-50vw] shadow-2xl flex items-center">
+        <div dir="ltr" className="flex whitespace-nowrap animate-marquee-slow">
+          {/* Main Group */}
           <div className="flex items-center">
-            {content.map((item, j) => (
+            {items.map((item, j) => (
               <span 
                 key={j} 
                 className={cn(
-                  "flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-lg tracking-[0.2em] mx-10 md:mx-14",
-                  item.lang === "ar" ? "font-arabic normal-case" : "font-sans"
+                  "flex items-center text-[#0B2A6B] font-black uppercase text-xs md:text-sm tracking-[0.15em] mx-8 md:mx-12",
+                  item.lang === "ar" ? "font-arabic normal-case text-sm md:text-base" : "font-sans"
                 )}
               >
                 {item.text}
-                <span className="ms-10 md:ms-14 text-[#0B2A6B]/20 text-xl">✦</span>
+                <span className="ms-8 md:ms-12 text-[#0B2A6B]/30 text-lg">✦</span>
               </span>
             ))}
           </div>
-          {/* Duplicate for seamless loop */}
+          {/* Duplicate Group for seamless loop */}
           <div className="flex items-center">
-            {content.map((item, j) => (
+            {items.map((item, j) => (
               <span 
                 key={`dup-${j}`} 
                 className={cn(
-                  "flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-lg tracking-[0.2em] mx-10 md:mx-14",
-                  item.lang === "ar" ? "font-arabic normal-case" : "font-sans"
+                  "flex items-center text-[#0B2A6B] font-black uppercase text-xs md:text-sm tracking-[0.15em] mx-8 md:mx-12",
+                  item.lang === "ar" ? "font-arabic normal-case text-sm md:text-base" : "font-sans"
                 )}
               >
                 {item.text}
-                <span className="ms-10 md:ms-14 text-[#0B2A6B]/20 text-xl">✦</span>
+                <span className="ms-8 md:ms-12 text-[#0B2A6B]/30 text-lg">✦</span>
               </span>
             ))}
           </div>
         </div>
       </div>
+      <style jsx>{`
+        @keyframes marquee-infinite {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-slow {
+          animation: marquee-infinite 45s linear infinite;
+        }
+      `}</style>
     </div>
   );
 };
