@@ -59,185 +59,75 @@ const ScrollingTicker = () => {
 
 const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'delivery' | 'cash' }) => {
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-4">
-      <svg viewBox="0 0 200 160" className="w-full h-full overflow-visible">
-        <defs>
-          <filter id="glowVisual" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
-
-        {/* Step 1: Order - Complex Digital Interface */}
+    <div className="relative w-full h-full flex items-center justify-center p-6">
+      <svg viewBox="0 0 160 120" className="w-full h-full overflow-visible">
+        {/* Step 1: Order - Simple Notification UI */}
         {type === 'order' && (
           <g>
-            <rect x="20" y="30" width="160" height="100" rx="8" fill="#081E4E" stroke="#1F6FDB" strokeWidth="2" />
-            <rect x="20" y="30" width="160" height="15" rx="8" fill="#1F6FDB" />
-            <circle cx="30" cy="37.5" r="3" fill="#FF5F56" />
-            <circle cx="40" cy="37.5" r="3" fill="#FFBD2E" />
-            <circle cx="50" cy="37.5" r="3" fill="#27C93F" />
-            
-            <g transform="translate(35, 55)">
-              {[0, 15, 30].map((y) => (
-                <motion.rect 
-                  key={y} x="0" y={y} width="130" height="8" rx="2" fill="#0B2A6B"
-                  animate={{ opacity: [0.3, 0.6, 0.3] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: y/30 }}
-                />
-              ))}
-            </g>
-
-            <motion.g
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ repeat: Infinity, duration: 3, repeatType: "reverse" }}
-            >
-              <rect x="110" y="65" width="60" height="40" rx="6" fill="#F7931E" filter="url(#glowVisual)" />
-              <text x="140" y="85" textAnchor="middle" fill="#0B2A6B" fontSize="9" fontWeight="900" dominantBaseline="middle">NEW</text>
-              <text x="140" y="95" textAnchor="middle" fill="#0B2A6B" fontSize="9" fontWeight="900" dominantBaseline="middle">ORDER</text>
-            </motion.g>
+            <rect x="20" y="20" width="120" height="80" rx="8" fill="#081E4E" stroke="#1F6FDB" strokeWidth="2" />
+            <rect x="20" y="20" width="120" height="12" rx="8" fill="#1F6FDB" />
+            <rect x="35" y="45" width="90" height="6" rx="2" fill="#1F6FDB" opacity="0.3" />
+            <rect x="35" y="58" width="60" height="6" rx="2" fill="#1F6FDB" opacity="0.3" />
+            <motion.rect 
+              x="30" y="75" width="100" height="20" rx="4" fill="#F7931E"
+              animate={{ opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+            <text x="80" y="85" textAnchor="middle" fill="#0B2A6B" fontSize="8" fontWeight="900" dominantBaseline="middle">NEW ORDER</text>
           </g>
         )}
 
-        {/* Step 2: Storage - High-Density Racks with Laser */}
+        {/* Step 2: Storage - Warehouse Shelves */}
         {type === 'storage' && (
           <g>
-            {/* Perspective Shelves */}
-            <path d="M40 30 L160 30 M40 60 H160 M40 90 H160 M40 120 H160" stroke="#1F6FDB" strokeWidth="1" opacity="0.3" />
-            <path d="M40 30 L40 130 M80 30 L80 130 M120 30 L120 130 M160 30 L160 130" stroke="#1F6FDB" strokeWidth="1" opacity="0.3" />
-            
-            {/* Animated Boxes */}
-            {[
-              {x: 45, y: 35}, {x: 85, y: 35}, {x: 125, y: 35},
-              {x: 45, y: 65}, {x: 125, y: 65},
-              {x: 85, y: 95}, {x: 125, y: 95}
-            ].map((pos, i) => (
-              <motion.rect
-                key={i} x={pos.x} y={pos.y} width="30" height="20" rx="2" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="1"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: i * 0.2 }}
-              />
-            ))}
-
-            {/* Moving Laser Scanner */}
-            <motion.g
-              animate={{ y: [0, 90, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <line x1="30" y1="35" x2="170" y2="35" stroke="#F7931E" strokeWidth="2" filter="url(#glowVisual)" />
-              <rect x="25" y="32" width="5" height="6" fill="#F7931E" />
-              <rect x="170" y="32" width="5" height="6" fill="#F7931E" />
-            </motion.g>
+            <path d="M30 20 V100 M80 20 V100 M130 20 V100" stroke="#1F6FDB" strokeWidth="2" opacity="0.5" />
+            <path d="M30 40 H130 M30 70 H130 M30 100 H130" stroke="#1F6FDB" strokeWidth="2" opacity="0.5" />
+            <motion.rect x="35" y="25" width="40" height="12" rx="2" fill="#F7931E" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }} />
+            <motion.rect x="85" y="25" width="40" height="12" rx="2" fill="#0B2A6B" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.4 }} />
+            <motion.rect x="35" y="55" width="40" height="12" rx="2" fill="#0B2A6B" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.6 }} />
+            <motion.rect x="85" y="55" width="40" height="12" rx="2" fill="#F7931E" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.8 }} />
           </g>
         )}
 
-        {/* Step 3: Prep - Industrial Packing Line */}
+        {/* Step 3: Prep - Packing Box */}
         {type === 'prep' && (
           <g>
-            <motion.g
-              animate={{ y: [0, -5, 0] }}
-              transition={{ repeat: Infinity, duration: 3 }}
-            >
-              {/* Box Assembly */}
-              <path d="M50 80 L100 110 L150 80 L100 50 Z" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="2" />
-              <path d="M50 80 L50 125 L100 155 L100 110 Z" fill="#081E4E" stroke="#1F6FDB" strokeWidth="2" />
-              <path d="M150 80 L150 125 L100 155 L100 110 Z" fill="#081E4E" stroke="#1F6FDB" strokeWidth="2" />
-              
-              {/* Tape Roller */}
-              <motion.g
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 1, repeat: Infinity, repeatDelay: 1 }}
-              >
-                <rect x="70" y="65" width="60" height="6" fill="#F7931E" rx="3" transform="rotate(31, 100, 80)" />
-                <circle cx="125" cy="65" r="10" fill="#0B2A6B" stroke="#F7931E" strokeWidth="2" />
-                <path d="M120 65 L130 65 M125 60 L125 70" stroke="#F7931E" strokeWidth="1" />
-              </motion.g>
-
-              {/* Logistica Logo decal on box */}
-              <motion.path 
-                d="M90 120 L110 120 L100 135 Z" 
-                fill="#F7931E" 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.5, repeat: Infinity, repeatDelay: 1.5 }}
-              />
+            <motion.g animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 3 }}>
+              <rect x="40" y="40" width="80" height="60" rx="2" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="2" />
+              <path d="M40 40 L80 60 L120 40" fill="none" stroke="#1F6FDB" strokeWidth="2" />
+              <rect x="65" y="30" width="30" height="40" rx="1" fill="#F7931E" opacity="0.8" />
+              <path d="M75 80 L85 80 L80 90 Z" fill="#F7931E" />
             </motion.g>
           </g>
         )}
 
-        {/* Step 4: Delivery - Dynamic Route Tracking */}
+        {/* Step 4: Delivery - Simple Route */}
         {type === 'delivery' && (
           <g>
-            {/* Map lines */}
-            <path d="M30 40 L60 40 L60 80 L100 80 L100 120 L160 120" fill="none" stroke="#1F6FDB" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
-            
-            {/* Main active route */}
-            <motion.path 
-              d="M40 100 Q 100 20 160 100" 
-              fill="none" stroke="#1F6FDB" strokeWidth="3" opacity="0.4"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
-
+            <path d="M20 100 Q 80 20 140 100" fill="none" stroke="#1F6FDB" strokeWidth="2" strokeDasharray="4 4" />
             <motion.g
-              initial={{ offsetDistance: "0%" }}
+              style={{ offsetPath: "path('M20 100 Q 80 20 140 100')" }}
               animate={{ offsetDistance: "100%" }}
-              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-              style={{ offsetPath: "path('M40 100 Q 100 20 160 100')" }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             >
-              <g transform="translate(-15, -15)">
-                <Truck size={30} className="text-[#F7931E]" />
-                <motion.circle r="15" cx="15" cy="15" fill="#F7931E" fillOpacity="0.1" stroke="#F7931E" strokeWidth="1" strokeDasharray="3 3">
-                   <animateTransform attributeName="transform" type="rotate" from="0 15 15" to="360 15 15" dur="3s" repeatCount="indefinite" />
-                </motion.circle>
-              </g>
+              <Truck size={24} className="text-[#F7931E]" transform="translate(-12, -12)" />
             </motion.g>
-
-            <MapPin x="155" y="90" className="text-[#F7931E]" size={24} />
-            <motion.circle cx="167" cy="102" r="12" stroke="#F7931E" fill="none" 
-              animate={{ r: [8, 20], opacity: [1, 0] }} 
-              transition={{ repeat: Infinity, duration: 1.5 }} 
-            />
+            <MapPin x="130" y="80" size={24} className="text-[#F7931E]" />
           </g>
         )}
 
-        {/* Step 5: Cash - Secure Financial Transfer */}
+        {/* Step 5: Cash - Successful Payment */}
         {type === 'cash' && (
           <g>
-            {/* Bank Card / Phone UI */}
-            <rect x="50" y="20" width="100" height="120" rx="12" fill="#081E4E" stroke="#1F6FDB" strokeWidth="2" />
-            <rect x="60" y="35" width="80" height="40" rx="6" fill="#0B2A6B" />
-            
-            {/* Flowing Coins */}
-            <motion.g
-              animate={{ y: [-10, 15], opacity: [0, 1, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              <circle cx="100" cy="85" r="15" fill="#F7931E" filter="url(#glowVisual)" />
-              <text x="100" y="89" textAnchor="middle" fill="#0B2A6B" fontSize="12" fontWeight="bold">DT</text>
-            </motion.g>
-
-            {/* Success List Entries */}
-            <g transform="translate(65, 90)">
-               {[0, 12, 24].map((y) => (
-                 <motion.rect 
-                   key={y} x="0" y={y} width="70" height="6" rx="2" fill="#1F6FDB" fillOpacity="0.2"
-                   animate={{ opacity: [0.1, 0.4, 0.1] }}
-                   transition={{ duration: 2, repeat: Infinity, delay: y/24 }}
-                 />
-               ))}
-            </g>
-
-            {/* Success Checkmark */}
+            <rect x="50" y="20" width="60" height="100" rx="8" fill="#081E4E" stroke="#1F6FDB" strokeWidth="2" />
+            <circle cx="80" cy="50" r="15" fill="#F7931E" />
+            <text x="80" y="54" textAnchor="middle" fill="#0B2A6B" fontSize="10" fontWeight="bold">DT</text>
             <motion.path 
-              d="M130 45 L140 55 L160 35" 
-              fill="none" stroke="#27C93F" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"
+              d="M70 85 L78 95 L95 75" 
+              fill="none" stroke="#27C93F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 0.8, repeat: Infinity, repeatDelay: 2 }}
+              transition={{ duration: 1, repeat: Infinity, repeatDelay: 1 }}
             />
           </g>
         )}
@@ -412,11 +302,11 @@ export default function HomePage() {
               { id: 'delivery', title: t('h4t'), desc: t('h4d') },
               { id: 'cash', title: t('h5t'), desc: t('h5d') }
             ].map((step) => (
-              <Card key={step.id} className="bg-white/5 border-white/10 hover:border-[#F7931E]/50 transition-all group overflow-hidden border-none text-white">
-                <div className="h-48 bg-[#081E4E]/50 relative">
+              <Card key={step.id} className="bg-white/5 border-white/10 hover:border-[#F7931E]/50 transition-all group overflow-hidden border-none text-white h-full flex flex-col">
+                <div className="h-40 bg-[#081E4E]/50 relative flex-shrink-0">
                   <ProcessVisual type={step.id as any} />
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex-grow">
                   <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
                   <p className="text-sm text-[#9FB2DE] leading-relaxed">{step.desc}</p>
                 </div>
@@ -513,3 +403,4 @@ export default function HomePage() {
     </div>
   );
 }
+
