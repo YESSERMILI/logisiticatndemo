@@ -1,4 +1,4 @@
-/* Ratio 480/944 portrait map alignment. No cropping or scaling. */
+/* Ratio 290/440 portrait map alignment. No cropping or scaling. */
 .tn-map-slot {
   width: 100%;
   display: flex;
@@ -8,8 +8,8 @@
 }
 .tn-map {
   width: 100%;
-  max-width: 480px;
-  aspect-ratio: 480/944;
+  max-width: 290px;
+  aspect-ratio: 290/440;
   margin-inline: auto;
   line-height: 0;
 }

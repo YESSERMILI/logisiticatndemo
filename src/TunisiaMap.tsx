@@ -6,9 +6,9 @@ export default function TunisiaMap({ className = "" }: { className?: string }) {
       <div className={`tn-map ${className}`} dir="ltr">
         <img
           src="/images/tunisia-map-animated.svg"
-          alt="Map of Tunisia with its 24 governorates"
-          width={480}
-          height={944}
+          alt="Logistica delivery coverage across Tunisia"
+          width={290}
+          height={440}
           decoding="async"
           fetchPriority="high"
           draggable={false}

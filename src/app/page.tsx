@@ -99,59 +99,61 @@ const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'deliver
         {type === 'order' && (
           <g>
             <rect x="10" y="25" width="80" height="50" rx="8" stroke="#F7931E" strokeWidth="2.5" />
-            <rect x="20" y="38" width="40" height="4" rx="2" fill="#F7931E" fillOpacity="0.2" />
-            <rect x="20" y="50" width="30" height="4" rx="2" fill="#F7931E" fillOpacity="0.2" />
             <motion.circle 
-              cx="75" cy="40" r="10" fill="#F7931E"
-              animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
+              cx="50" cy="50" r="8" fill="#F7931E"
+              animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
+            <rect x="25" y="40" width="30" height="4" rx="2" fill="white" fillOpacity="0.2" />
           </g>
         )}
         {type === 'storage' && (
           <g>
-            <path d="M20 20 H80 V80 H20 Z" stroke="white" strokeWidth="2" strokeOpacity="0.2" />
-            <path d="M20 40 H80 M20 60 H80" stroke="white" strokeWidth="1.5" strokeOpacity="0.1" />
+            <rect x="20" y="20" width="60" height="60" rx="4" stroke="white" strokeWidth="1.5" strokeOpacity="0.3" />
             <motion.line 
-              x1="15" y1="20" x2="85" y2="20" stroke="#F7931E" strokeWidth="3" strokeLinecap="round"
-              animate={{ y: [0, 60, 0] }}
+              x1="15" y1="20" x2="85" y2="20" stroke="#F7931E" strokeWidth="2" strokeLinecap="round"
+              animate={{ y: [10, 60, 10] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             />
           </g>
         )}
         {type === 'prep' && (
           <g>
-            <rect x="25" y="35" width="50" height="40" rx="4" fill="white" fillOpacity="0.05" stroke="white" strokeWidth="2" strokeOpacity="0.2" />
+            <rect x="25" y="30" width="50" height="40" rx="4" stroke="white" strokeWidth="2" strokeOpacity="0.4" />
             <motion.path 
-              d="M40 55 L48 63 L65 47" 
+              d="M40 50 L47 57 L60 40" 
               stroke="#F7931E" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" fill="none"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 0.8, repeat: Infinity, repeatDelay: 1.5 }}
+              transition={{ duration: 0.8, repeat: Infinity, repeatDelay: 1 }}
             />
           </g>
         )}
         {type === 'delivery' && (
           <motion.g
-            animate={{ x: [-5, 5, -5] }}
+            animate={{ x: [-3, 3, -3] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
             <rect x="15" y="40" width="45" height="30" rx="4" fill="#F7931E" />
             <path d="M60 45 L80 45 L85 70 L60 70 Z" fill="#F7931E" />
-            <circle cx="30" cy="75" r="6" fill="white" />
-            <circle cx="70" cy="75" r="6" fill="white" />
+            <circle cx="30" cy="75" r="5" fill="white" />
+            <circle cx="70" cy="75" r="5" fill="white" />
           </motion.g>
         )}
         {type === 'cash' && (
           <g>
-            <circle cx="50" cy="50" r="40" stroke="#F7931E" strokeWidth="2" strokeDasharray="8 6" opacity="0.3" />
-            <text x="50" y="58" textAnchor="middle" fill="#F7931E" fontSize="24" fontWeight="900">DT</text>
+            <motion.circle 
+              cx="50" cy="50" r="35" stroke="#F7931E" strokeWidth="2.5" strokeDasharray="10 6"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            />
+            <text x="50" y="58" textAnchor="middle" fill="#F7931E" fontSize="22" fontWeight="900" fontStyle="italic">DT</text>
             <motion.path 
               d="M75 25 L82 35 L95 15" 
               stroke="#27C93F" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"
               initial={{ scale: 0 }}
-              animate={{ scale: 1.2 }}
-              transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
+              animate={{ scale: 1.1 }}
+              transition={{ duration: 0.4, repeat: Infinity, repeatDelay: 2 }}
             />
           </g>
         )}
@@ -330,16 +332,16 @@ export default function HomePage() {
       <BentoServices />
 
       {/* Coverage Map Section - Integrated Animation */}
-      <section id="coverage" className="py-24 bg-white">
+      <section id="coverage" className="py-24 bg-[#0B2A6B]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-12">
               <div className="space-y-4">
                 <span className="text-[#F7931E] font-black text-xs uppercase tracking-[0.2em]">{t('cve')}</span>
-                <h2 className="text-4xl md:text-6xl font-black text-[#0B2A6B] tracking-tight leading-none">
+                <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-none">
                   {t('cvt')}
                 </h2>
-                <p className="text-lg text-slate-500 font-medium">
+                <p className="text-lg text-[#9FB2DE] font-medium">
                   {t('cvs')}
                 </p>
               </div>
@@ -351,13 +353,13 @@ export default function HomePage() {
                   { id: 'z3', title: t('z3t'), desc: t('z3d'), label: t('z3') }
                 ].map((zone, idx) => (
                   <div key={idx} className="flex items-start gap-6 group">
-                    <div className="w-14 h-14 rounded-2xl bg-[#0B2A6B]/5 flex items-center justify-center text-[#0B2A6B] shrink-0 font-black text-xl group-hover:bg-[#F7931E] group-hover:text-white transition-all">
+                    <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-white shrink-0 font-black text-xl group-hover:bg-[#F7931E] group-hover:text-[#0B2A6B] transition-all border border-white/10">
                       {idx + 1}
                     </div>
                     <div>
                       <p className="text-[10px] font-black uppercase text-[#F7931E] tracking-widest mb-1">{zone.label}</p>
-                      <h4 className="text-xl font-bold text-[#0B2A6B] mb-2">{zone.title}</h4>
-                      <p className="text-slate-500 text-sm">{zone.desc}</p>
+                      <h4 className="text-xl font-bold text-white mb-2">{zone.title}</h4>
+                      <p className="text-[#9FB2DE] text-sm">{zone.desc}</p>
                     </div>
                   </div>
                 ))}
