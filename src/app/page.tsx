@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -25,7 +24,7 @@ import { DashboardShowcase } from "@/components/home/dashboard-showcase";
 import { BentoServices } from "@/components/home/services-bento";
 import { FAQ } from "@/components/home/faq";
 
-// Scrolling ticker component - Optimized Size and Span
+// Scrolling ticker component - Fixed Width and Loop
 const ScrollingTicker = () => {
   const { language } = useTranslation();
   const items = [
@@ -39,20 +38,32 @@ const ScrollingTicker = () => {
     language === 'ar' ? "من الكوموند لليفريزون" : "DE LA COMMANDE À LA LIVRAISON"
   ];
 
+  // Repeat items to ensure content is wide enough for translation loop
+  const content = [...items, ...items, ...items];
+
   return (
-    <div className="relative z-20 h-12 md:h-16 flex items-center overflow-hidden">
-      <div className="bg-[#F7931E] py-2 md:py-3 border-y border-black/5 -rotate-1 w-[140%] -translate-x-[20%] shadow-xl">
-        <div className="flex whitespace-nowrap animate-marquee">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="flex items-center">
-              {items.map((item, j) => (
-                <span key={j} className="flex items-center text-[#0B2A6B] font-black uppercase text-[10px] md:text-sm tracking-[0.15em] mx-6 md:mx-10">
-                  {item}
-                  <span className="ms-6 md:ms-10 text-[#0B2A6B]/30 text-xs">✦</span>
-                </span>
-              ))}
-            </div>
-          ))}
+    <div className="relative z-20 h-16 md:h-20 flex items-center overflow-hidden">
+      {/* Container is 200% screen width and centered to ensure coverage during tilt */}
+      <div className="bg-[#F7931E] py-3 md:py-4 border-y border-[#0B2A6B]/10 -rotate-1 w-[200vw] absolute left-[-50vw] shadow-2xl flex items-center">
+        {/* We force dir="ltr" on the mover to keep marquee logic consistent */}
+        <div dir="ltr" className="flex whitespace-nowrap animate-marquee">
+          <div className="flex items-center">
+            {content.map((item, j) => (
+              <span key={j} className="flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-lg tracking-[0.2em] mx-10 md:mx-14">
+                {item}
+                <span className="ms-10 md:ms-14 text-[#0B2A6B]/20 text-xl">✦</span>
+              </span>
+            ))}
+          </div>
+          {/* Duplicate for seamless loop */}
+          <div className="flex items-center">
+            {content.map((item, j) => (
+              <span key={`dup-${j}`} className="flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-lg tracking-[0.2em] mx-10 md:mx-14">
+                {item}
+                <span className="ms-10 md:ms-14 text-[#0B2A6B]/20 text-xl">✦</span>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -203,7 +214,7 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-12 min-h-[85vh] flex items-center overflow-visible">
+      <section className="relative pt-40 pb-12 min-h-[85vh] flex items-center">
         <div className="absolute top-1/4 left-0 text-[12vw] font-black text-white/5 select-none pointer-events-none tracking-tighter leading-none whitespace-nowrap uppercase">
           Logistica Tunisie
         </div>
