@@ -24,21 +24,22 @@ import { DashboardShowcase } from "@/components/home/dashboard-showcase";
 import { BentoServices } from "@/components/home/services-bento";
 import { FAQ } from "@/components/home/faq";
 
-// Scrolling ticker component - Fixed Width and Loop
+// Scrolling ticker component - Fixed Width, Loop, and Improved Fonts
 const ScrollingTicker = () => {
   const { language } = useTranslation();
   const items = [
-    "LOGISTICA TUNISIE",
-    "COD & REVERSEMENT",
-    "GOUVERNORATS 24",
-    "STOCKAGE SÉCURISÉ",
-    "PICKING EXPRESS",
-    "PACKING PRO",
-    "LIVRAISON < 24H",
-    language === 'ar' ? "من الكوموند لليفريزون" : "DE LA COMMANDE À LA LIVRAISON"
+    { text: "LOGISTICA TUNISIE", lang: "fr" },
+    { text: "COD & REVERSEMENT", lang: "fr" },
+    { text: "GOUVERNORATS 24", lang: "fr" },
+    { text: "STOCKAGE SÉCURISÉ", lang: "fr" },
+    { text: "PICKING EXPRESS", lang: "fr" },
+    { text: "PACKING PRO", lang: "fr" },
+    { text: "LIVRAISON < 24H", lang: "fr" },
+    { text: "من الكوموند لليفريزon", lang: "ar" },
+    { text: "DE LA COMMANDE À LA LIVRAISON", lang: "fr" }
   ];
 
-  // Repeat items to ensure content is wide enough for translation loop
+  // Repeat items to ensure content is wide enough for seamless loop
   const content = [...items, ...items, ...items];
 
   return (
@@ -49,8 +50,14 @@ const ScrollingTicker = () => {
         <div dir="ltr" className="flex whitespace-nowrap animate-marquee">
           <div className="flex items-center">
             {content.map((item, j) => (
-              <span key={j} className="flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-lg tracking-[0.2em] mx-10 md:mx-14">
-                {item}
+              <span 
+                key={j} 
+                className={cn(
+                  "flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-lg tracking-[0.2em] mx-10 md:mx-14",
+                  item.lang === "ar" ? "font-arabic normal-case" : "font-sans"
+                )}
+              >
+                {item.text}
                 <span className="ms-10 md:ms-14 text-[#0B2A6B]/20 text-xl">✦</span>
               </span>
             ))}
@@ -58,8 +65,14 @@ const ScrollingTicker = () => {
           {/* Duplicate for seamless loop */}
           <div className="flex items-center">
             {content.map((item, j) => (
-              <span key={`dup-${j}`} className="flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-lg tracking-[0.2em] mx-10 md:mx-14">
-                {item}
+              <span 
+                key={`dup-${j}`} 
+                className={cn(
+                  "flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-lg tracking-[0.2em] mx-10 md:mx-14",
+                  item.lang === "ar" ? "font-arabic normal-case" : "font-sans"
+                )}
+              >
+                {item.text}
                 <span className="ms-10 md:ms-14 text-[#0B2A6B]/20 text-xl">✦</span>
               </span>
             ))}
@@ -294,7 +307,7 @@ export default function HomePage() {
                   <stat.icon size={24} />
                 </div>
                 <p className="text-3xl md:text-5xl font-black text-white mb-1 tracking-tighter tabular-nums">{stat.value}</p>
-                <p className="text-[10px] md:text-xs font-bold text-white/40 uppercase tracking-widest">{stat.label}</p>
+                <p className="text-[10px] font-black text-white/40 uppercase tracking-widest">{stat.label}</p>
              </div>
            ))}
         </div>
