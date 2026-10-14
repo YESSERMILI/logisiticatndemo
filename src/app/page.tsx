@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -9,7 +10,12 @@ import {
   CheckCircle2,
   ChevronRight,
   Menu,
-  X
+  X,
+  ShoppingCart,
+  Box,
+  Scan,
+  Truck,
+  Wallet
 } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -92,72 +98,26 @@ const ScrollingTicker = () => {
   );
 };
 
-const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'delivery' | 'cash' }) => {
+const ProcessVisual = ({ type, stepNumber }: { type: 'order' | 'storage' | 'prep' | 'delivery' | 'cash', stepNumber: number }) => {
+  const IconComponent = {
+    order: ShoppingCart,
+    storage: Box,
+    prep: Scan,
+    delivery: Truck,
+    cash: Wallet
+  }[type];
+
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-6">
-      <svg viewBox="0 0 100 100" className="w-20 h-20 overflow-visible" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {type === 'order' && (
-          <g>
-            <rect x="10" y="25" width="80" height="50" rx="8" stroke="#F7931E" strokeWidth="2.5" />
-            <motion.circle 
-              cx="50" cy="50" r="8" fill="#F7931E"
-              animate={{ scale: [1, 1.3, 1], opacity: [0.6, 1, 0.6] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <rect x="25" y="40" width="30" height="4" rx="2" fill="white" fillOpacity="0.2" />
-          </g>
-        )}
-        {type === 'storage' && (
-          <g>
-            <rect x="20" y="20" width="60" height="60" rx="4" stroke="white" strokeWidth="1.5" strokeOpacity="0.3" />
-            <motion.line 
-              x1="15" y1="20" x2="85" y2="20" stroke="#F7931E" strokeWidth="2" strokeLinecap="round"
-              animate={{ y: [10, 60, 10] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </g>
-        )}
-        {type === 'prep' && (
-          <g>
-            <rect x="25" y="30" width="50" height="40" rx="4" stroke="white" strokeWidth="2" strokeOpacity="0.4" />
-            <motion.path 
-              d="M40 50 L47 57 L60 40" 
-              stroke="#F7931E" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" fill="none"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 0.8, repeat: Infinity, repeatDelay: 1 }}
-            />
-          </g>
-        )}
-        {type === 'delivery' && (
-          <motion.g
-            animate={{ x: [-3, 3, -3] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <rect x="15" y="40" width="45" height="30" rx="4" fill="#F7931E" />
-            <path d="M60 45 L80 45 L85 70 L60 70 Z" fill="#F7931E" />
-            <circle cx="30" cy="75" r="5" fill="white" />
-            <circle cx="70" cy="75" r="5" fill="white" />
-          </motion.g>
-        )}
-        {type === 'cash' && (
-          <g>
-            <motion.circle 
-              cx="50" cy="50" r="35" stroke="#F7931E" strokeWidth="2.5" strokeDasharray="10 6"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            />
-            <text x="50" y="58" textAnchor="middle" fill="#F7931E" fontSize="22" fontWeight="900" fontStyle="italic">DT</text>
-            <motion.path 
-              d="M75 25 L82 35 L95 15" 
-              stroke="#27C93F" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1.1 }}
-              transition={{ duration: 0.4, repeat: Infinity, repeatDelay: 2 }}
-            />
-          </g>
-        )}
-      </svg>
+    <div className="relative mb-6 group flex flex-col items-center">
+      {/* Circular container */}
+      <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border-2 border-[#F7931E] flex items-center justify-center relative transition-all duration-500 group-hover:bg-[#F7931E]/10 group-hover:shadow-[0_0_30px_rgba(247,147,30,0.2)]">
+        <IconComponent size={36} className="text-[#F7931E] transition-transform duration-500 group-hover:scale-110" strokeWidth={1.5} />
+        
+        {/* Step Badge */}
+        <div className="absolute -top-1 -left-1 w-8 h-8 bg-[#F7931E] rounded-full flex items-center justify-center text-[#0B2A6B] font-black text-sm shadow-xl ring-4 ring-[#0B2A6B]">
+          {stepNumber}
+        </div>
+      </div>
     </div>
   );
 };
@@ -295,31 +255,36 @@ export default function HomePage() {
       {/* Scrolling Ticker Section */}
       <ScrollingTicker />
 
-      {/* Preparation Section */}
+      {/* Preparation Section (L'Image Design) */}
       <section id="preparation" className="py-24 bg-[#0B2A6B]">
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-[#F7931E] font-black text-xs uppercase tracking-[0.2em]">{t('hwe')}</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 tracking-tight">{t('hwt')}</h2>
+          <div className="text-center mb-20">
+            <span className="inline-block bg-white text-[#F7931E] font-bold text-xs px-4 py-1.5 rounded-full mb-6 shadow-sm uppercase tracking-wider">
+              {t('hwe')}
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">{t('hwt')}</h2>
+            <p className="text-lg text-[#9FB2DE] font-medium max-w-2xl mx-auto opacity-80">
+              {t('hws')}
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-16 gap-x-8">
             {[
-              { id: 'order', title: t('h1t'), desc: t('h1d') },
-              { id: 'storage', title: t('h2t'), desc: t('h2d') },
-              { id: 'prep', title: t('h3t'), desc: t('h3d') },
-              { id: 'delivery', title: t('h4t'), desc: t('h4d') },
-              { id: 'cash', title: t('h5t'), desc: t('h5d') }
+              { id: 'order', title: t('h1t'), desc: t('h1d'), num: 1 },
+              { id: 'storage', title: t('h2t'), desc: t('h2d'), num: 2 },
+              { id: 'prep', title: t('h3t'), desc: t('h3d'), num: 3 },
+              { id: 'delivery', title: t('h4t'), desc: t('h4d'), num: 4 },
+              { id: 'cash', title: t('h5t'), desc: t('h5d'), num: 5 }
             ].map((step) => (
-              <Card key={step.id} className="bg-white/5 border-white/10 hover:border-[#F7931E]/50 transition-all group overflow-hidden border-none text-white h-full flex flex-col">
-                <div className="h-44 bg-[#081E4E]/50 relative flex-shrink-0">
-                  <ProcessVisual type={step.id as any} />
+              <div key={step.id} className="flex flex-col items-center text-center">
+                <ProcessVisual type={step.id as any} stepNumber={step.num} />
+                <div className="mt-4 space-y-2 px-2">
+                  <h3 className="text-xl font-bold text-white uppercase tracking-tight">{step.title}</h3>
+                  <p className="text-sm text-[#9FB2DE] leading-relaxed font-medium">
+                    {step.desc}
+                  </p>
                 </div>
-                <div className="p-6 flex-grow">
-                  <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
-                  <p className="text-sm text-[#9FB2DE] leading-relaxed">{step.desc}</p>
-                </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
@@ -331,11 +296,11 @@ export default function HomePage() {
       {/* Services Section */}
       <BentoServices />
 
-      {/* Coverage Map Section - Integrated Animation */}
+      {/* Coverage Map Section */}
       <section id="coverage" className="py-24 bg-[#0B2A6B]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-12">
+            <div className="space-y-12 text-white">
               <div className="space-y-4">
                 <span className="text-[#F7931E] font-black text-xs uppercase tracking-[0.2em]">{t('cve')}</span>
                 <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-none">
