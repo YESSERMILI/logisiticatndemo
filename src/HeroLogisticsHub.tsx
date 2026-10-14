@@ -6,8 +6,8 @@ export default function HeroLogisticsHub({ className = "" }: { className?: strin
       <img
         src="/images/hero-logistics-hub.svg"
         alt="Logistica logistics hub: truck loading parcels at the warehouse"
-        width={600}
-        height={504}
+        width={560}
+        height={340}
         decoding="async"
         fetchPriority="high"
       />

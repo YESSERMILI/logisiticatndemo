@@ -50,11 +50,11 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold tracking-tight;
-    line-height: 1.2;
+    line-height: 1.25;
   }
 
   [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
-    line-height: 1.4;
+    line-height: 1.35;
   }
 }
 
@@ -100,6 +100,6 @@
 }
 
 /* Hero Hub Integration Styles (STRICT) */
-.hero-hub{width:100%;max-width:600px;margin-inline:auto;aspect-ratio:600/504;line-height:0}
+.hero-hub{width:100%;max-width:560px;margin-inline:auto;aspect-ratio:560/340;line-height:0}
 .hero-hub img{display:block;width:100%;height:100%;object-fit:contain;
   transform:none!important;animation:none!important;filter:none}

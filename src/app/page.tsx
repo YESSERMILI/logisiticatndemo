@@ -106,57 +106,59 @@ const ProcessVisual = ({ type, stepNumber }: { type: 'order' | 'storage' | 'prep
     cash: Wallet
   }[type];
 
-  // SVG Concept: Circular Technical UI Style
+  // SVG Concept: Technical UI Style with precise animations
   const SvgPaths = {
     order: (
       <g>
-        <rect x="25" y="30" width="50" height="40" rx="4" fill="white" fillOpacity="0.05" stroke="#F7931E" strokeWidth="2" />
-        <line x1="35" y1="45" x2="65" y2="45" stroke="#F7931E" strokeWidth="2" strokeLinecap="round" />
-        <line x1="35" y1="55" x2="55" y2="55" stroke="#F7931E" strokeWidth="2" strokeLinecap="round" />
-        <motion.circle cx="75" cy="30" r="8" fill="#F7931E" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 2 }} />
+        <rect x="20" y="25" width="60" height="45" rx="4" fill="none" stroke="#F7931E" strokeWidth="2" />
+        <rect x="28" y="35" width="44" height="2" rx="1" fill="#F7931E" opacity="0.3" />
+        <rect x="28" y="45" width="30" height="2" rx="1" fill="#F7931E" opacity="0.3" />
+        <motion.circle cx="75" cy="25" r="7" fill="#F7931E" animate={{ scale: [1, 1.4, 1], opacity: [1, 0.6, 1] }} transition={{ repeat: Infinity, duration: 2 }} />
+        <path d="M45 55 L55 65 L75 45" fill="none" stroke="#F7931E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity="0.2" />
       </g>
     ),
     storage: (
       <g>
-        <motion.path d="M50 25 L80 40 L50 55 L20 40 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
-        <path d="M20 40 L20 70 L50 85 L50 55 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
-        <path d="M80 40 L80 70 L50 85 L50 55 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
-        <motion.line x1="15" y1="40" x2="85" y2="40" stroke="#F7931E" strokeWidth="1" strokeDasharray="4 4" animate={{ y: [0, 30, 0] }} transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }} />
+        <motion.path d="M50 20 L85 38 L50 56 L15 38 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
+        <path d="M15 38 L15 75 L50 93 L50 56 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
+        <path d="M85 38 L85 75 L50 93 L50 56 Z" fill="none" stroke="#F7931E" strokeWidth="2" opacity="0.5" />
+        <motion.line x1="10" y1="40" x2="90" y2="40" stroke="#F7931E" strokeWidth="1" animate={{ y: [0, 45, 0] }} transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }} />
       </g>
     ),
     prep: (
       <g>
-        <rect x="25" y="30" width="50" height="50" rx="2" fill="none" stroke="#F7931E" strokeWidth="2" />
-        <path d="M25 45 H75" stroke="#F7931E" strokeWidth="4" strokeOpacity="0.2" />
-        <motion.path d="M40 55 L48 63 L65 45" fill="none" stroke="#F7931E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 0.8 }} />
+        <rect x="20" y="30" width="60" height="45" rx="2" fill="none" stroke="#F7931E" strokeWidth="2" />
+        <motion.path d="M20 45 H80" stroke="#F7931E" strokeWidth="4" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 1 }} />
+        <circle cx="50" cy="52" r="12" fill="none" stroke="#F7931E" strokeWidth="1" strokeDasharray="4 2" />
+        <motion.path d="M44 52 L48 56 L56 48" fill="none" stroke="#F7931E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ delay: 0.8, duration: 0.5 }} />
       </g>
     ),
     delivery: (
       <g>
-        <motion.g animate={{ x: [-2, 2, -2] }} transition={{ repeat: Infinity, duration: 0.5 }}>
-          <path d="M20 40 H60 L75 55 V75 H20 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
-          <rect x="25" y="70" width="10" height="10" rx="5" fill="#F7931E" />
-          <rect x="55" y="70" width="10" height="10" rx="5" fill="#F7931E" />
-          <line x1="60" y1="40" x2="60" y2="75" stroke="#F7931E" strokeWidth="2" />
+        <motion.g animate={{ x: [-2, 2, -2] }} transition={{ repeat: Infinity, duration: 0.6 }}>
+          <path d="M20 40 H65 L85 60 V80 H20 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
+          <circle cx="35" cy="80" r="8" fill="#F7931E" />
+          <circle cx="70" cy="80" r="8" fill="#F7931E" />
+          <line x1="65" y1="40" x2="65" y2="80" stroke="#F7931E" strokeWidth="2" opacity="0.3" />
         </motion.g>
-        <motion.path d="M10 85 H90" stroke="#F7931E" strokeWidth="1" strokeDasharray="4 4" animate={{ strokeDashoffset: [0, -8] }} transition={{ repeat: Infinity, duration: 0.5, ease: "linear" }} />
+        <motion.path d="M0 95 H100" stroke="#F7931E" strokeWidth="1" strokeDasharray="6 6" animate={{ strokeDashoffset: [0, -12] }} transition={{ repeat: Infinity, duration: 0.5, ease: "linear" }} />
       </g>
     ),
     cash: (
       <g>
-        <circle cx="50" cy="50" r="35" fill="none" stroke="#F7931E" strokeWidth="2" strokeDasharray="10 5" />
-        <motion.circle cx="50" cy="50" r="35" fill="none" stroke="#F7931E" strokeWidth="2" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ repeat: Infinity, duration: 4, ease: "linear" }} />
-        <text x="50" y="58" textAnchor="middle" fill="#F7931E" fontSize="20" fontWeight="900" className="font-sans">DT</text>
-        <rect x="65" y="25" width="24" height="24" rx="12" fill="#F7931E" />
-        <path d="M72 37 L76 41 L82 33" fill="none" stroke="#0B2A6B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#F7931E" strokeWidth="2" opacity="0.2" />
+        <motion.circle cx="50" cy="50" r="40" fill="none" stroke="#F7931E" strokeWidth="2" strokeDasharray="10 5" initial={{ rotate: 0 }} animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 8, ease: "linear" }} />
+        <text x="50" y="58" textAnchor="middle" fill="#F7931E" fontSize="22" fontWeight="900" className="font-sans">DT</text>
+        <rect x="68" y="18" width="24" height="24" rx="12" fill="#F7931E" />
+        <path d="M74 30 L78 34 L86 26" fill="none" stroke="#0B2A6B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
       </g>
     )
   }[type];
 
   return (
     <div className="relative mb-8 group flex flex-col items-center">
-      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-white/10 flex items-center justify-center relative transition-all duration-500 group-hover:border-[#F7931E]/30 bg-white/[0.02]">
-        <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20 drop-shadow-[0_0_15px_rgba(247,147,30,0.1)]">
+      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-white/10 flex items-center justify-center relative transition-all duration-500 group-hover:border-[#F7931E]/40 bg-white/[0.03]">
+        <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20 drop-shadow-[0_0_20px_rgba(247,147,30,0.15)]">
           {SvgPaths}
         </svg>
         <div className="absolute -top-1 -left-1 w-8 h-8 bg-[#F7931E] rounded-full flex items-center justify-center text-[#0B2A6B] font-black text-sm shadow-xl ring-4 ring-[#0B2A6B]">
@@ -250,7 +252,7 @@ export default function HomePage() {
               {t('chip')}
             </span>
             <h1 className={cn(
-              "text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.15] mb-8",
+              "text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.25] mb-8",
               language === 'ar' && "font-arabic"
             )}>
               {t('h1a')} <br />
@@ -298,14 +300,16 @@ export default function HomePage() {
           </motion.div>
 
           <div className="relative min-w-0 flex items-center justify-center">
-            {/* HUB LOGISTICS SVG VIA IMG */}
-            <img
-              src="/images/hero-logistics-hub.svg"
-              alt="Logistica logistics hub"
-              width={600}
-              height={504}
-              className="max-w-full h-auto"
-            />
+            {/* NEW HERO LOGISTICS SVG VIA IMG */}
+            <div className="hero-hub">
+              <img
+                src="/images/hero-logistics-hub.svg"
+                alt="Logistica logistics hub"
+                width={560}
+                height={340}
+                className="max-w-full h-auto"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -320,7 +324,7 @@ export default function HomePage() {
               {t('hwe')}
             </span>
             <h2 className={cn(
-              "text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-[1.3]",
+              "text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-[1.35]",
               language === 'ar' && "font-arabic"
             )}>{t('hwt')}</h2>
             <p className={cn(
@@ -357,13 +361,13 @@ export default function HomePage() {
 
       <BentoServices />
 
-      {/* Coverage Section - Redesigned with Rich Information */}
+      {/* Coverage Section */}
       <section id="coverage" className="py-24 bg-[#0B2A6B] relative overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <span className="text-[#F7931E] font-black text-xs uppercase tracking-[0.2em] mb-4 block">{t('cve')}</span>
             <h2 className={cn(
-              "text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1.2]",
+              "text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1.25]",
               language === 'ar' && "font-arabic"
             )}>
               {t('cvt')}
@@ -435,7 +439,7 @@ export default function HomePage() {
             className="max-w-3xl mx-auto space-y-10"
           >
             <h2 className={cn(
-              "text-4xl md:text-6xl font-black text-white leading-[1.3]",
+              "text-4xl md:text-6xl font-black text-white leading-[1.35]",
               language === 'ar' && "font-arabic"
             )}>
               {language === 'ar' ? "جاهز باش تخرّج البيزنس متاعك للنيفو الجاي ؟" : "Prêt à faire passer votre business au niveau supérieur ?"}

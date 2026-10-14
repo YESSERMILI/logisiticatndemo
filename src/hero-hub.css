@@ -1,4 +1,4 @@
-/* Alignment: the SVG viewBox is 600x504 (ratio 1.19). Never override it. */
-.hero-hub{width:100%;max-width:600px;margin-inline:auto;aspect-ratio:600/504;line-height:0}
+/* Alignment: the SVG viewBox is 560x340 (ratio 1.65). Never override it. */
+.hero-hub{width:100%;max-width:560px;margin-inline:auto;aspect-ratio:560/340;line-height:0}
 .hero-hub img{display:block;width:100%;height:100%;object-fit:contain;
   transform:none!important;animation:none!important;filter:none}
