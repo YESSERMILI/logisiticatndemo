@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useTranslation } from "@/hooks/use-translation";
@@ -45,13 +44,13 @@ export function DashboardShowcase() {
             Logistica Portal v4.0
           </motion.span>
           <h2 className={cn(
-            "text-4xl md:text-6xl font-bold mb-6 tracking-tight",
+            "text-4xl md:text-6xl font-bold mb-8 tracking-tight leading-[1.25]",
             language === 'ar' && "font-arabic"
           )}>
             {t('db_title')}
           </h2>
           <p className={cn(
-            "text-[#9FB2DE] text-lg font-medium leading-relaxed max-w-2xl mx-auto",
+            "text-[#9FB2DE] text-lg font-medium leading-[1.6] max-w-2xl mx-auto",
             language === 'ar' && "font-arabic"
           )}>
             {t('db_desc')}

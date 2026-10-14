@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -107,10 +106,59 @@ const ProcessVisual = ({ type, stepNumber }: { type: 'order' | 'storage' | 'prep
     cash: Wallet
   }[type];
 
+  // SVG Concept: Circular Technical UI Style
+  const SvgPaths = {
+    order: (
+      <g>
+        <rect x="25" y="30" width="50" height="40" rx="4" fill="white" fillOpacity="0.05" stroke="#F7931E" strokeWidth="2" />
+        <line x1="35" y1="45" x2="65" y2="45" stroke="#F7931E" strokeWidth="2" strokeLinecap="round" />
+        <line x1="35" y1="55" x2="55" y2="55" stroke="#F7931E" strokeWidth="2" strokeLinecap="round" />
+        <motion.circle cx="75" cy="30" r="8" fill="#F7931E" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 2 }} />
+      </g>
+    ),
+    storage: (
+      <g>
+        <motion.path d="M50 25 L80 40 L50 55 L20 40 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
+        <path d="M20 40 L20 70 L50 85 L50 55 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
+        <path d="M80 40 L80 70 L50 85 L50 55 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
+        <motion.line x1="15" y1="40" x2="85" y2="40" stroke="#F7931E" strokeWidth="1" strokeDasharray="4 4" animate={{ y: [0, 30, 0] }} transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }} />
+      </g>
+    ),
+    prep: (
+      <g>
+        <rect x="25" y="30" width="50" height="50" rx="2" fill="none" stroke="#F7931E" strokeWidth="2" />
+        <path d="M25 45 H75" stroke="#F7931E" strokeWidth="4" strokeOpacity="0.2" />
+        <motion.path d="M40 55 L48 63 L65 45" fill="none" stroke="#F7931E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ duration: 0.8 }} />
+      </g>
+    ),
+    delivery: (
+      <g>
+        <motion.g animate={{ x: [-2, 2, -2] }} transition={{ repeat: Infinity, duration: 0.5 }}>
+          <path d="M20 40 H60 L75 55 V75 H20 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
+          <rect x="25" y="70" width="10" height="10" rx="5" fill="#F7931E" />
+          <rect x="55" y="70" width="10" height="10" rx="5" fill="#F7931E" />
+          <line x1="60" y1="40" x2="60" y2="75" stroke="#F7931E" strokeWidth="2" />
+        </motion.g>
+        <motion.path d="M10 85 H90" stroke="#F7931E" strokeWidth="1" strokeDasharray="4 4" animate={{ strokeDashoffset: [0, -8] }} transition={{ repeat: Infinity, duration: 0.5, ease: "linear" }} />
+      </g>
+    ),
+    cash: (
+      <g>
+        <circle cx="50" cy="50" r="35" fill="none" stroke="#F7931E" strokeWidth="2" strokeDasharray="10 5" />
+        <motion.circle cx="50" cy="50" r="35" fill="none" stroke="#F7931E" strokeWidth="2" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ repeat: Infinity, duration: 4, ease: "linear" }} />
+        <text x="50" y="58" textAnchor="middle" fill="#F7931E" fontSize="20" fontWeight="900" className="font-sans">DT</text>
+        <rect x="65" y="25" width="24" height="24" rx="12" fill="#F7931E" />
+        <path d="M72 37 L76 41 L82 33" fill="none" stroke="#0B2A6B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </g>
+    )
+  }[type];
+
   return (
-    <div className="relative mb-6 group flex flex-col items-center">
-      <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border-2 border-[#F7931E] flex items-center justify-center relative transition-all duration-500 group-hover:bg-[#F7931E]/10 group-hover:shadow-[0_0_30px_rgba(247,147,30,0.2)]">
-        <IconComponent size={36} className="text-[#F7931E] transition-transform duration-500 group-hover:scale-110" strokeWidth={1.5} />
+    <div className="relative mb-8 group flex flex-col items-center">
+      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-white/10 flex items-center justify-center relative transition-all duration-500 group-hover:border-[#F7931E]/30 bg-white/[0.02]">
+        <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20 drop-shadow-[0_0_15px_rgba(247,147,30,0.1)]">
+          {SvgPaths}
+        </svg>
         <div className="absolute -top-1 -left-1 w-8 h-8 bg-[#F7931E] rounded-full flex items-center justify-center text-[#0B2A6B] font-black text-sm shadow-xl ring-4 ring-[#0B2A6B]">
           {stepNumber}
         </div>
@@ -201,7 +249,10 @@ export default function HomePage() {
             <span className="inline-block bg-[#F7931E] text-[#0B2A6B] font-bold text-xs px-4 py-2 rounded-sm mb-6 -rotate-2 shadow-lg w-fit">
               {t('chip')}
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-8">
+            <h1 className={cn(
+              "text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.15] mb-8",
+              language === 'ar' && "font-arabic"
+            )}>
               {t('h1a')} <br />
               <span className="text-[#F7931E] relative inline-block">
                 {t('h1b')}
@@ -213,7 +264,10 @@ export default function HomePage() {
                 />
               </span>
             </h1>
-            <p className="text-lg text-[#9FB2DE] font-light leading-relaxed max-w-lg mb-10">
+            <p className={cn(
+              "text-lg text-[#9FB2DE] font-light leading-relaxed max-w-lg mb-10",
+              language === 'ar' && "font-arabic"
+            )}>
               {t('sub')}
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
@@ -265,8 +319,14 @@ export default function HomePage() {
             <span className="inline-block bg-white text-[#F7931E] font-bold text-xs px-4 py-1.5 rounded-full mb-6 shadow-sm uppercase tracking-wider">
               {t('hwe')}
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">{t('hwt')}</h2>
-            <p className="text-lg text-[#9FB2DE] font-medium max-w-2xl mx-auto opacity-80">
+            <h2 className={cn(
+              "text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-[1.3]",
+              language === 'ar' && "font-arabic"
+            )}>{t('hwt')}</h2>
+            <p className={cn(
+              "text-lg text-[#9FB2DE] font-medium max-w-2xl mx-auto opacity-80",
+              language === 'ar' && "font-arabic"
+            )}>
               {t('hws')}
             </p>
           </div>
@@ -282,8 +342,8 @@ export default function HomePage() {
               <div key={step.id} className="flex flex-col items-center text-center">
                 <ProcessVisual type={step.id as any} stepNumber={step.num} />
                 <div className="mt-4 space-y-2 px-2">
-                  <h3 className="text-xl font-bold text-white uppercase tracking-tight">{step.title}</h3>
-                  <p className="text-sm text-[#9FB2DE] leading-relaxed font-medium">
+                  <h3 className={cn("text-xl font-bold text-white uppercase tracking-tight", language === 'ar' && "font-arabic text-2xl")}>{step.title}</h3>
+                  <p className={cn("text-sm text-[#9FB2DE] leading-relaxed font-medium", language === 'ar' && "font-arabic")}>
                     {step.desc}
                   </p>
                 </div>
@@ -303,12 +363,15 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <span className="text-[#F7931E] font-black text-xs uppercase tracking-[0.2em] mb-4 block">{t('cve')}</span>
             <h2 className={cn(
-              "text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1]",
+              "text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1.2]",
               language === 'ar' && "font-arabic"
             )}>
               {t('cvt')}
             </h2>
-            <p className="text-lg text-[#9FB2DE] font-medium opacity-80 max-w-2xl mx-auto mt-6">
+            <p className={cn(
+              "text-lg text-[#9FB2DE] font-medium opacity-80 max-w-2xl mx-auto mt-6",
+              language === 'ar' && "font-arabic"
+            )}>
               {t('cvs')}
             </p>
           </div>
@@ -330,11 +393,11 @@ export default function HomePage() {
                   <zone.icon size={28} />
                 </div>
                 <p className="text-[10px] font-black uppercase text-[#F7931E] tracking-widest mb-3">{zone.label}</p>
-                <h4 className="text-2xl font-bold text-white mb-4">{zone.title}</h4>
+                <h4 className={cn("text-2xl font-bold text-white mb-4", language === 'ar' && "font-arabic text-3xl")}>{zone.title}</h4>
                 <div className="bg-white/5 px-4 py-2 rounded-lg inline-block text-[#F7931E] font-black text-xs mb-6 uppercase tracking-wider">
                   Délai : {zone.title.includes('48') || zone.id === 'z2' ? '24h - 48h' : zone.id === 'z1' ? '< 24h' : '48h - 72h'}
                 </div>
-                <p className="text-[#9FB2DE] text-sm leading-relaxed opacity-80">{zone.desc}</p>
+                <p className={cn("text-[#9FB2DE] text-sm leading-relaxed opacity-80", language === 'ar' && "font-arabic")}>{zone.desc}</p>
                 
                 <ul className="mt-8 space-y-3">
                    {['Suivi GPS temps réel', 'Confirmation SMS', 'Gestion automatique des retours'].map((feat, i) => (
@@ -350,11 +413,11 @@ export default function HomePage() {
 
           <div className="mt-16 p-8 rounded-[40px] bg-gradient-to-r from-[#F7931E] to-[#E0861A] flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-[#0B2A6B]">
-              <h4 className="text-2xl md:text-3xl font-black uppercase leading-none mb-2">Besoin d'une livraison urgente ?</h4>
-              <p className="font-bold opacity-80">On couvre les 24 gouvernorats sans exception.</p>
+              <h4 className={cn("text-2xl md:text-3xl font-black uppercase leading-[1.3] mb-2", language === 'ar' && "font-arabic text-4xl")}>{language === 'ar' ? "تحب تبعث كولي على السريع؟" : "Besoin d'une livraison urgente ?"}</h4>
+              <p className={cn("font-bold opacity-80", language === 'ar' && "font-arabic")}>{language === 'ar' ? "نغطيو الـ 24 ولاية من غير استثناء." : "On couvre les 24 gouvernorats sans exception."}</p>
             </div>
             <Button className="bg-[#0B2A6B] text-white font-black px-10 h-16 rounded-2xl hover:bg-[#081E4E] transition-all uppercase tracking-widest text-xs" asChild>
-              <Link href="https://wa.me/21699201552">Contacter un agent</Link>
+              <Link href="https://wa.me/21699201552">{language === 'ar' ? "كلم أجون" : "Contacter un agent"}</Link>
             </Button>
           </div>
         </div>
@@ -369,19 +432,25 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto space-y-8"
+            className="max-w-3xl mx-auto space-y-10"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">
+            <h2 className={cn(
+              "text-4xl md:text-6xl font-black text-white leading-[1.3]",
+              language === 'ar' && "font-arabic"
+            )}>
               {language === 'ar' ? "جاهز باش تخرّج البيزنس متاعك للنيفو الجاي ؟" : "Prêt à faire passer votre business au niveau supérieur ?"}
             </h2>
-            <p className="text-xl text-[#9FB2DE]">
-              {language === 'ar' ? "انضم لأكثر من 500 تاجر إلكتروني يثقوا in Logistica لتسيير عملياتهم اليومية." : "Rejoignez plus de 500 e-commerçants qui font confiance à Logistica pour piloter leurs opérations quotidiennes."}
+            <p className={cn(
+              "text-xl text-[#9FB2DE] leading-relaxed",
+              language === 'ar' && "font-arabic"
+            )}>
+              {language === 'ar' ? "انضم لأكثر من 500 تاجر إلكتروني يثقوا في Logistica لتسيير عملياتهم اليومية." : "Rejoignez plus de 500 e-commerçants qui font confiance à Logistica pour piloter leurs opérations quotidiennes."}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button size="lg" className="h-16 px-10 text-xl font-bold bg-[#F7931E] text-[#0B2A6B] rounded-sm shadow-2xl hover:bg-[#E0861A] border-none" asChild>
                 <Link href="https://wa.me/21699201552">
-                  Démarrer mon intégration
-                  <ChevronRight className="ml-2" />
+                  {language === 'ar' ? "ابدأ توة" : "Démarrer mon intégration"}
+                  <ChevronRight className={cn("ml-2", language === 'ar' && "rotate-180 mr-2 ml-0")} />
                 </Link>
               </Button>
             </div>

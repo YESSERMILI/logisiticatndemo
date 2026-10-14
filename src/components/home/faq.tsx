@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useTranslation } from "@/hooks/use-translation";
@@ -48,13 +47,13 @@ export function FAQ() {
             <HelpCircle className="text-[#F7931E]" size={40} />
           </motion.div>
           <h2 className={cn(
-            "text-4xl md:text-5xl font-black text-white tracking-tight",
+            "text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.3]",
             isAr && "font-arabic"
           )}>
             {t("n3")}
           </h2>
           <p className={cn(
-            "text-[#9FB2DE] max-w-xl mx-auto",
+            "text-[#9FB2DE] max-w-xl mx-auto leading-relaxed",
             isAr && "font-arabic"
           )}>
             {isAr ? "كل شي تحب تعرفو على خدماتنا اللوجستية باش تطور بيزنسك" : "Toutes les réponses à vos questions techniques et opérationnelles."}
@@ -72,7 +71,7 @@ export function FAQ() {
             >
               <AccordionItem value={`item-${idx}`} className="bg-white/5 border border-white/10 rounded-2xl px-6 overflow-hidden hover:bg-white/[0.07] transition-colors border-none">
                 <AccordionTrigger className={cn(
-                  "text-left font-bold text-white py-6 hover:no-underline text-lg",
+                  "text-left font-bold text-white py-6 hover:no-underline text-lg leading-snug",
                   isAr && "text-right font-arabic"
                 )}>
                   {faq.q}
