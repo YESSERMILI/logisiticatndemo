@@ -106,61 +106,23 @@ const ProcessVisual = ({ type, stepNumber }: { type: 'order' | 'storage' | 'prep
     cash: Wallet
   }[type];
 
-  // SVG Concept: Technical UI Style with precise animations
-  const SvgPaths = {
-    order: (
-      <g>
-        <rect x="20" y="25" width="60" height="45" rx="4" fill="none" stroke="#F7931E" strokeWidth="2" />
-        <rect x="28" y="35" width="44" height="2" rx="1" fill="#F7931E" opacity="0.3" />
-        <rect x="28" y="45" width="30" height="2" rx="1" fill="#F7931E" opacity="0.3" />
-        <motion.circle cx="75" cy="25" r="7" fill="#F7931E" animate={{ scale: [1, 1.4, 1], opacity: [1, 0.6, 1] }} transition={{ repeat: Infinity, duration: 2 }} />
-        <path d="M45 55 L55 65 L75 45" fill="none" stroke="#F7931E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity="0.2" />
-      </g>
-    ),
-    storage: (
-      <g>
-        <motion.path d="M50 20 L85 38 L50 56 L15 38 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
-        <path d="M15 38 L15 75 L50 93 L50 56 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
-        <path d="M85 38 L85 75 L50 93 L50 56 Z" fill="none" stroke="#F7931E" strokeWidth="2" opacity="0.5" />
-        <motion.line x1="10" y1="40" x2="90" y2="40" stroke="#F7931E" strokeWidth="1" animate={{ y: [0, 45, 0] }} transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }} />
-      </g>
-    ),
-    prep: (
-      <g>
-        <rect x="20" y="30" width="60" height="45" rx="2" fill="none" stroke="#F7931E" strokeWidth="2" />
-        <motion.path d="M20 45 H80" stroke="#F7931E" strokeWidth="4" initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 1 }} />
-        <circle cx="50" cy="52" r="12" fill="none" stroke="#F7931E" strokeWidth="1" strokeDasharray="4 2" />
-        <motion.path d="M44 52 L48 56 L56 48" fill="none" stroke="#F7931E" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} transition={{ delay: 0.8, duration: 0.5 }} />
-      </g>
-    ),
-    delivery: (
-      <g>
-        <motion.g animate={{ x: [-2, 2, -2] }} transition={{ repeat: Infinity, duration: 0.6 }}>
-          <path d="M20 40 H65 L85 60 V80 H20 Z" fill="none" stroke="#F7931E" strokeWidth="2" />
-          <circle cx="35" cy="80" r="8" fill="#F7931E" />
-          <circle cx="70" cy="80" r="8" fill="#F7931E" />
-          <line x1="65" y1="40" x2="65" y2="80" stroke="#F7931E" strokeWidth="2" opacity="0.3" />
-        </motion.g>
-        <motion.path d="M0 95 H100" stroke="#F7931E" strokeWidth="1" strokeDasharray="6 6" animate={{ strokeDashoffset: [0, -12] }} transition={{ repeat: Infinity, duration: 0.5, ease: "linear" }} />
-      </g>
-    ),
-    cash: (
-      <g>
-        <circle cx="50" cy="50" r="40" fill="none" stroke="#F7931E" strokeWidth="2" opacity="0.2" />
-        <motion.circle cx="50" cy="50" r="40" fill="none" stroke="#F7931E" strokeWidth="2" strokeDasharray="10 5" initial={{ rotate: 0 }} animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 8, ease: "linear" }} />
-        <text x="50" y="58" textAnchor="middle" fill="#F7931E" fontSize="22" fontWeight="900" className="font-sans">DT</text>
-        <rect x="68" y="18" width="24" height="24" rx="12" fill="#F7931E" />
-        <path d="M74 30 L78 34 L86 26" fill="none" stroke="#0B2A6B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      </g>
-    )
+  const animations = {
+    order: { scale: [1, 1.1, 1], transition: { repeat: Infinity, duration: 2, ease: "easeInOut" } },
+    storage: { y: [0, 4, 0], transition: { repeat: Infinity, duration: 3, ease: "easeInOut" } },
+    prep: { opacity: [0.6, 1, 0.6], transition: { repeat: Infinity, duration: 2 } },
+    delivery: { x: [-3, 3, -3], transition: { repeat: Infinity, duration: 1, ease: "easeInOut" } },
+    cash: { rotate: [0, 5, 0, -5, 0], transition: { repeat: Infinity, duration: 4, ease: "easeInOut" } }
   }[type];
 
   return (
     <div className="relative mb-8 group flex flex-col items-center">
-      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-white/10 flex items-center justify-center relative transition-all duration-500 group-hover:border-[#F7931E]/40 bg-white/[0.03]">
-        <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20 drop-shadow-[0_0_20px_rgba(247,147,30,0.15)]">
-          {SvgPaths}
-        </svg>
+      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-white/10 flex items-center justify-center relative transition-all duration-500 group-hover:border-[#F7931E]/40 bg-white/[0.03] shadow-inner">
+        <motion.div
+          animate={animations}
+          className="text-[#F7931E]"
+        >
+          <IconComponent className="w-10 h-10 md:w-14 md:h-14 drop-shadow-[0_0_10px_rgba(247,147,30,0.4)]" strokeWidth={1.5} />
+        </motion.div>
         <div className="absolute -top-1 -left-1 w-8 h-8 bg-[#F7931E] rounded-full flex items-center justify-center text-[#0B2A6B] font-black text-sm shadow-xl ring-4 ring-[#0B2A6B]">
           {stepNumber}
         </div>
@@ -300,7 +262,6 @@ export default function HomePage() {
           </motion.div>
 
           <div className="relative min-w-0 flex items-center justify-center">
-            {/* NEW HERO LOGISTICS SVG VIA IMG */}
             <div className="hero-hub">
               <img
                 src="/images/hero-logistics-hub.svg"
@@ -370,7 +331,7 @@ export default function HomePage() {
               "text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1.25]",
               language === 'ar' && "font-arabic"
             )}>
-              {t('cvt')}
+              {language === 'ar' ? "من بنزرت لبنقردان" : "De Bizerte à Ben Guerdane"}
             </h2>
             <p className={cn(
               "text-lg text-[#9FB2DE] font-medium opacity-80 max-w-2xl mx-auto mt-6",
