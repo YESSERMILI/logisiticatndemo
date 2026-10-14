@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -14,10 +15,7 @@ import {
   Box,
   Scan,
   Truck,
-  Wallet,
-  MapPin,
-  Clock,
-  Navigation
+  Wallet
 } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -26,8 +24,9 @@ import { Logo } from "@/components/logo";
 import { DashboardShowcase } from "@/components/home/dashboard-showcase";
 import { BentoServices } from "@/components/home/services-bento";
 import { FAQ } from "@/components/home/faq";
+import { Footer } from "@/components/layout/footer";
 
-// Scrolling ticker component - Fixed for perfect infinite loop
+// Scrolling ticker component
 const ScrollingTicker = () => {
   const items = [
     { text: "LOGISTICA TUNISIE", lang: "fr" },
@@ -106,22 +105,14 @@ const ProcessVisual = ({ type, stepNumber }: { type: 'order' | 'storage' | 'prep
     cash: Wallet
   }[type];
 
-  const animations = {
-    order: { scale: [1, 1.1, 1], transition: { repeat: Infinity, duration: 2, ease: "easeInOut" } },
-    storage: { y: [0, 4, 0], transition: { repeat: Infinity, duration: 3, ease: "easeInOut" } },
-    prep: { opacity: [0.6, 1, 0.6], transition: { repeat: Infinity, duration: 2 } },
-    delivery: { x: [-3, 3, -3], transition: { repeat: Infinity, duration: 1, ease: "easeInOut" } },
-    cash: { rotate: [0, 5, 0, -5, 0], transition: { repeat: Infinity, duration: 4, ease: "easeInOut" } }
-  }[type];
-
   return (
     <div className="relative mb-8 group flex flex-col items-center">
-      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-white/10 flex items-center justify-center relative transition-all duration-500 group-hover:border-[#F7931E]/40 bg-white/[0.03] shadow-inner">
+      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-[#F7931E]/20 flex items-center justify-center relative transition-all duration-500 group-hover:border-[#F7931E]/60 bg-white/[0.03] shadow-[0_0_20px_rgba(247,147,30,0.05)]">
         <motion.div
-          animate={animations}
+          whileHover={{ scale: 1.1, rotate: 5 }}
           className="text-[#F7931E]"
         >
-          <IconComponent className="w-10 h-10 md:w-14 md:h-14 drop-shadow-[0_0_10px_rgba(247,147,30,0.4)]" strokeWidth={1.5} />
+          <IconComponent className="w-10 h-10 md:w-14 md:h-14 drop-shadow-[0_0_15px_rgba(247,147,30,0.4)]" strokeWidth={1.5} />
         </motion.div>
         <div className="absolute -top-1 -left-1 w-8 h-8 bg-[#F7931E] rounded-full flex items-center justify-center text-[#0B2A6B] font-black text-sm shadow-xl ring-4 ring-[#0B2A6B]">
           {stepNumber}
@@ -168,7 +159,7 @@ export default function HomePage() {
       )}>
         <div className="max-w-[1200px] mx-auto px-6 w-full flex items-center justify-between">
           <Link href="/" className="transition-transform hover:-translate-y-1 group">
-            <Logo variant="white" />
+            <Logo />
           </Link>
 
           <nav className={cn(
@@ -285,7 +276,7 @@ export default function HomePage() {
               {t('hwe')}
             </span>
             <h2 className={cn(
-              "text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-[1.35]",
+              "text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-[1.3]",
               language === 'ar' && "font-arabic"
             )}>{t('hwt')}</h2>
             <p className={cn(
@@ -337,53 +328,34 @@ export default function HomePage() {
               "text-lg text-[#9FB2DE] font-medium opacity-80 max-w-2xl mx-auto mt-6",
               language === 'ar' && "font-arabic"
             )}>
-              {t('cvs')}
+              {language === 'ar' ? "نغطّيو كامل الولايات بشبكة توصيل منظّمة." : "Nous couvrons l'ensemble des gouvernorats avec un réseau de livraison structuré."}
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { id: 'z1', title: t('z1t'), desc: t('z1d'), label: t('z1'), icon: MapPin },
-              { id: 'z2', title: t('z2t'), desc: t('z2d'), label: t('z2'), icon: Navigation },
-              { id: 'z3', title: t('z3t'), desc: t('z3d'), label: t('z3'), icon: Clock }
+              { id: 'z1', title: t('z1t'), desc: t('z1d'), label: t('z1') },
+              { id: 'z2', title: t('z2t'), desc: t('z2d'), label: t('z2') },
+              { id: 'z3', title: t('z3t'), desc: t('z3d'), label: t('z3') }
             ].map((zone, idx) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
-                className="p-8 rounded-[32px] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all group"
+                className="p-8 rounded-[32px] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all"
               >
-                <div className="w-14 h-14 rounded-2xl bg-[#F7931E]/20 flex items-center justify-center text-[#F7931E] mb-8 group-hover:scale-110 transition-transform">
-                  <zone.icon size={28} />
-                </div>
                 <p className="text-[10px] font-black uppercase text-[#F7931E] tracking-widest mb-3">{zone.label}</p>
                 <h4 className={cn("text-2xl font-bold text-white mb-4", language === 'ar' && "font-arabic text-3xl")}>{zone.title}</h4>
-                <div className="bg-white/5 px-4 py-2 rounded-lg inline-block text-[#F7931E] font-black text-xs mb-6 uppercase tracking-wider">
-                  Délai : {zone.title.includes('48') || zone.id === 'z2' ? '24h - 48h' : zone.id === 'z1' ? '< 24h' : '48h - 72h'}
-                </div>
                 <p className={cn("text-[#9FB2DE] text-sm leading-relaxed opacity-80", language === 'ar' && "font-arabic")}>{zone.desc}</p>
-                
-                <ul className="mt-8 space-y-3">
-                   {['Suivi GPS temps réel', 'Confirmation SMS', 'Gestion automatique des retours'].map((feat, i) => (
-                     <li key={i} className="flex items-center gap-2 text-[10px] font-bold text-white/40 uppercase tracking-wider">
-                       <CheckCircle2 size={12} className="text-[#F7931E]/40" />
-                       {feat}
-                     </li>
-                   ))}
-                </ul>
+                <div className="mt-8 pt-8 border-t border-white/5">
+                   <div className="flex items-center gap-2 text-[10px] font-bold text-white/40 uppercase tracking-wider">
+                     <CheckCircle2 size={12} className="text-[#F7931E]/40" />
+                     {language === 'ar' ? "تتبع في الوقت الحقيقي" : "Suivi temps réel"}
+                   </div>
+                </div>
               </motion.div>
             ))}
-          </div>
-
-          <div className="mt-16 p-8 rounded-[40px] bg-gradient-to-r from-[#F7931E] to-[#E0861A] flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-[#0B2A6B]">
-              <h4 className={cn("text-2xl md:text-3xl font-black uppercase leading-[1.3] mb-2", language === 'ar' && "font-arabic text-4xl")}>{language === 'ar' ? "تحب تبعث كولي على السريع؟" : "Besoin d'une livraison urgente ?"}</h4>
-              <p className={cn("font-bold opacity-80", language === 'ar' && "font-arabic")}>{language === 'ar' ? "نغطيو الـ 24 ولاية من غير استثناء." : "On couvre les 24 gouvernorats sans exception."}</p>
-            </div>
-            <Button className="bg-[#0B2A6B] text-white font-black px-10 h-16 rounded-2xl hover:bg-[#081E4E] transition-all uppercase tracking-widest text-xs" asChild>
-              <Link href="https://wa.me/21699201552">{language === 'ar' ? "كلم أجون" : "Contacter un agent"}</Link>
-            </Button>
           </div>
         </div>
       </section>
@@ -400,7 +372,7 @@ export default function HomePage() {
             className="max-w-3xl mx-auto space-y-10"
           >
             <h2 className={cn(
-              "text-4xl md:text-6xl font-black text-white leading-[1.35]",
+              "text-4xl md:text-6xl font-black text-white leading-[1.3]",
               language === 'ar' && "font-arabic"
             )}>
               {language === 'ar' ? "جاهز باش تخرّج البيزنس متاعك للنيفو الجاي ؟" : "Prêt à faire passer votre business au niveau supérieur ?"}
@@ -425,52 +397,7 @@ export default function HomePage() {
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#1F6FDB]/10 rounded-full blur-[100px]" />
       </section>
 
-      <footer className="bg-[#0B2A6B] py-20 border-t border-white/5 text-center relative overflow-hidden">
-        <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-          <Logo variant="white" className="mx-auto mb-12" />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-left mb-16">
-            <div>
-              <h4 className="text-[#F7931E] font-black uppercase text-xs tracking-widest mb-6">Solutions</h4>
-              <ul className="space-y-4 text-sm text-white/60 font-bold">
-                <li><Link href="#preparation">Fulfillment</Link></li>
-                <li><Link href="#services">Stockage</Link></li>
-                <li><Link href="#services">Dernier Kilomètre</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-[#F7931E] font-black uppercase text-xs tracking-widest mb-6">Entreprise</h4>
-              <ul className="space-y-4 text-sm text-white/60 font-bold">
-                <li><Link href="#">À propos</Link></li>
-                <li><Link href="#">Contact</Link></li>
-                <li><Link href="#">Carrières</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-[#F7931E] font-black uppercase text-xs tracking-widest mb-6">Support</h4>
-              <ul className="space-y-4 text-sm text-white/60 font-bold">
-                <li><Link href="#">Help Center</Link></li>
-                <li><Link href="#">API Docs</Link></li>
-                <li><Link href="#">Status</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-[#F7931E] font-black uppercase text-xs tracking-widest mb-6">Contact</h4>
-              <ul className="space-y-4 text-sm text-white/60 font-bold">
-                <li>+216 99 201 552</li>
-                <li>contact@logistica.tn</li>
-                <li>Tunis, Tunisie</li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">{t('foot')}</p>
-            <div className="flex gap-8">
-              <Link href="https://wa.me/21699201552" className="text-white/40 hover:text-[#F7931E] transition-colors font-bold uppercase text-[10px] tracking-widest">WhatsApp</Link>
-              <Link href="tel:+21699201552" className="text-white/40 hover:text-[#F7931E] transition-colors font-bold uppercase text-[10px] tracking-widest">Téléphone</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
