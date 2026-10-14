@@ -7,11 +7,11 @@ import {
   Filter, 
   Download, 
   MoreHorizontal, 
-  ArrowUpDown,
   ExternalLink,
   Clock,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  ArrowUpDown
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,7 +28,7 @@ import {
   Card, 
   CardContent, 
   CardHeader, 
-  CardTitle, 
+  CardTitle,
   CardDescription 
 } from "@/components/ui/card";
 
@@ -44,57 +44,57 @@ const orders = [
 
 const getStatusBadge = (status: string) => {
   switch (status) {
-    case 'Livrée': return <Badge className="bg-emerald-50 text-emerald-600 border-none px-3 font-bold">LIVRÉE</Badge>;
-    case 'En préparation': return <Badge className="bg-amber-50 text-amber-600 border-none px-3 font-bold">PRÉPARATION</Badge>;
-    case 'À préparer': return <Badge className="bg-blue-50 text-blue-600 border-none px-3 font-bold">À PRÉPARER</Badge>;
-    case 'Expédiée': return <Badge className="bg-[#1F6FDB]/10 text-[#1F6FDB] border-none px-3 font-bold">EXPÉDIÉE</Badge>;
-    case 'À valider': return <Badge className="bg-slate-50 text-slate-500 border-none px-3 font-bold">À VALIDER</Badge>;
-    case 'En livraison': return <Badge className="bg-purple-50 text-purple-600 border-none px-3 font-bold">LIVRAISON</Badge>;
-    case 'Annulée': return <Badge className="bg-rose-50 text-rose-600 border-none px-3 font-bold">ANNULÉE</Badge>;
+    case 'Livrée': return <Badge className="bg-emerald-50 text-emerald-600 border-none px-3 font-bold rounded-lg h-7">LIVRÉE</Badge>;
+    case 'En préparation': return <Badge className="bg-amber-50 text-amber-600 border-none px-3 font-bold rounded-lg h-7">PRÉPARATION</Badge>;
+    case 'À préparer': return <Badge className="bg-blue-50 text-blue-600 border-none px-3 font-bold rounded-lg h-7">À PRÉPARER</Badge>;
+    case 'Expédiée': return <Badge className="bg-[#1F6FDB]/10 text-[#1F6FDB] border-none px-3 font-bold rounded-lg h-7">EXPÉDIÉE</Badge>;
+    case 'À valider': return <Badge className="bg-slate-50 text-slate-500 border-none px-3 font-bold rounded-lg h-7">À VALIDER</Badge>;
+    case 'En livraison': return <Badge className="bg-purple-50 text-purple-600 border-none px-3 font-bold rounded-lg h-7">LIVRAISON</Badge>;
+    case 'Annulée': return <Badge className="bg-rose-50 text-rose-600 border-none px-3 font-bold rounded-lg h-7">ANNULÉE</Badge>;
     default: return <Badge variant="outline">{status}</Badge>;
   }
 };
 
 const getPriorityBadge = (priority: string) => {
-  if (priority === 'Urgente') return <div className="flex items-center gap-1.5 text-rose-600 font-black text-[10px] uppercase"><AlertCircle size={12} /> {priority}</div>;
-  if (priority === 'Haute') return <div className="flex items-center gap-1.5 text-amber-600 font-black text-[10px] uppercase"><Clock size={12} /> {priority}</div>;
-  return <div className="text-slate-400 font-bold text-[10px] uppercase">{priority}</div>;
+  if (priority === 'Urgente') return <div className="flex items-center gap-1.5 text-rose-600 font-black text-[10px] uppercase tracking-widest"><AlertCircle size={12} /> {priority}</div>;
+  if (priority === 'Haute') return <div className="flex items-center gap-1.5 text-amber-600 font-black text-[10px] uppercase tracking-widest"><Clock size={12} /> {priority}</div>;
+  return <div className="text-slate-400 font-bold text-[10px] uppercase tracking-widest">{priority}</div>;
 };
 
 export default function OrdersPage() {
   return (
-    <div className="space-y-8 animate-in fade-in duration-500">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-black text-[#0B2A6B] tracking-tight">Gestion des Commandes</h1>
-          <p className="text-slate-500 font-medium mt-1">Gérez l'intégralité du cycle de vie de vos commandes clients.</p>
+    <div className="space-y-10 animate-in fade-in duration-700">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="space-y-1">
+          <h1 className="text-4xl font-black text-[#0B2A6B] tracking-tight">Commandes Clients</h1>
+          <p className="text-slate-400 font-bold text-sm tracking-wide uppercase text-[10px]">Gestion du cycle de vie complet • 1,248 ordres au total</p>
         </div>
-        <div className="flex items-center gap-2">
-           <Button variant="outline" className="border-slate-200 text-slate-600 font-bold h-10 rounded-xl gap-2">
-             <Download size={16} /> Exporter
+        <div className="flex items-center gap-3">
+           <Button variant="outline" className="border-slate-200 text-slate-600 font-black h-12 px-6 rounded-2xl gap-2 shadow-sm">
+             <Download size={18} /> Exporter
            </Button>
-           <Button className="bg-[#F7931E] text-[#0B2A6B] font-black h-10 rounded-xl hover:bg-[#E0861A] gap-2">
-             <Plus size={18} strokeWidth={3} /> Créer une commande
+           <Button className="bg-[#F7931E] text-[#0B2A6B] font-black h-12 px-6 rounded-2xl hover:bg-[#E0861A] gap-2 shadow-lg shadow-orange-500/10 transition-all">
+             <Plus size={20} strokeWidth={3} /> Nouvelle commande
            </Button>
         </div>
       </div>
 
-      <Card className="border-none shadow-sm bg-white overflow-hidden">
-        <CardHeader className="pb-4">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <div className="relative w-full md:max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 h-4 w-4" />
+      <Card className="border-none shadow-sm bg-white rounded-[32px] overflow-hidden">
+        <CardHeader className="p-8 pb-4">
+          <div className="flex flex-col md:flex-row gap-6 items-center justify-between">
+            <div className="relative w-full md:max-w-xl">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 h-4 w-4" />
               <Input 
-                placeholder="Rechercher par référence, client..." 
-                className="pl-10 h-10 bg-slate-50 border-none text-sm rounded-xl focus:ring-2 focus:ring-[#1F6FDB]/10"
+                placeholder="Rechercher par référence, nom client, boutique..." 
+                className="pl-11 h-12 bg-slate-50 border-none text-sm rounded-2xl focus:ring-2 focus:ring-[#1F6FDB]/10"
               />
             </div>
-            <div className="flex items-center gap-2 w-full md:w-auto">
-              <Button variant="outline" className="flex-1 md:flex-none h-10 rounded-xl border-slate-200 text-slate-600 font-bold gap-2">
-                <Filter size={16} /> Filtres
+            <div className="flex items-center gap-3 w-full md:w-auto">
+              <Button variant="outline" className="flex-1 md:flex-none h-12 px-6 rounded-2xl border-slate-200 text-slate-500 font-black gap-2 text-[10px] uppercase tracking-widest">
+                <Filter size={16} /> Filtres Avancés
               </Button>
-              <div className="h-8 w-px bg-slate-100 hidden md:block" />
-              <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest whitespace-nowrap">7 Commandes trouvées</span>
+              <div className="h-10 w-px bg-slate-100 hidden md:block" />
+              <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em] whitespace-nowrap hidden lg:block">7 ordres trouvés</span>
             </div>
           </div>
         </CardHeader>
@@ -102,33 +102,33 @@ export default function OrdersPage() {
           <Table>
             <TableHeader className="bg-slate-50/50">
               <TableRow className="border-slate-100">
-                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-6">Référence</TableHead>
-                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Client</TableHead>
-                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Date</TableHead>
-                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Lignes / Qté</TableHead>
-                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Priorité</TableHead>
-                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Statut</TableHead>
-                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-widest text-right px-6">Actions</TableHead>
+                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] px-8 h-14">Référence</TableHead>
+                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Client / Boutique</TableHead>
+                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Date d'entrée</TableHead>
+                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Lignes / Qté</TableHead>
+                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Priorité</TableHead>
+                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Statut Actuel</TableHead>
+                <TableHead className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-right px-8">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {orders.map((order) => (
-                <TableRow key={order.ref} className="border-slate-50 hover:bg-slate-50/30 transition-colors group">
-                  <TableCell className="px-6 font-bold text-[#0B2A6B]">{order.ref}</TableCell>
-                  <TableCell className="font-semibold text-slate-600">{order.customer}</TableCell>
-                  <TableCell className="text-slate-500 text-xs font-medium">{order.date}</TableCell>
-                  <TableCell className="text-slate-500 text-xs font-bold">
-                    {order.items} <span className="text-[10px] text-slate-300 mx-1">/</span> {order.qty}
+                <TableRow key={order.ref} className="border-slate-50 hover:bg-slate-50/30 transition-all group">
+                  <TableCell className="px-8 font-mono text-xs font-black text-[#1F6FDB]">{order.ref}</TableCell>
+                  <TableCell className="font-bold text-slate-600">{order.customer}</TableCell>
+                  <TableCell className="text-slate-400 text-xs font-bold uppercase tracking-tight">{order.date}</TableCell>
+                  <TableCell className="text-slate-500 text-xs font-black">
+                    {order.items} <span className="text-slate-200 mx-1">|</span> {order.qty}
                   </TableCell>
                   <TableCell>{getPriorityBadge(order.priority)}</TableCell>
                   <TableCell>{getStatusBadge(order.status)}</TableCell>
-                  <TableCell className="text-right px-6">
-                    <div className="flex items-center justify-end gap-1">
-                      <Button variant="ghost" size="icon" className="h-8 w-8 rounded-lg text-slate-400 hover:text-[#1F6FDB] hover:bg-[#1F6FDB]/10">
-                        <ExternalLink size={14} />
+                  <TableCell className="text-right px-8">
+                    <div className="flex items-center justify-end gap-2">
+                      <Button variant="ghost" size="icon" className="h-9 w-9 rounded-xl text-slate-300 hover:text-[#1F6FDB] hover:bg-[#1F6FDB]/10 transition-all">
+                        <ExternalLink size={16} />
                       </Button>
-                      <Button variant="ghost" size="icon" className="h-8 w-8 rounded-lg text-slate-400 hover:bg-slate-100">
-                        <MoreHorizontal size={14} />
+                      <Button variant="ghost" size="icon" className="h-9 w-9 rounded-xl text-slate-300 hover:bg-slate-100">
+                        <MoreHorizontal size={16} />
                       </Button>
                     </div>
                   </TableCell>
@@ -136,11 +136,11 @@ export default function OrdersPage() {
               ))}
             </TableBody>
           </Table>
-          <div className="p-4 bg-slate-50/30 flex items-center justify-between border-t border-slate-50">
-            <span className="text-[10px] font-bold text-slate-400 uppercase">Page 1 sur 24</span>
-            <div className="flex gap-1">
-              <Button disabled variant="outline" size="sm" className="h-8 px-4 rounded-lg text-[10px] font-black uppercase">Précédent</Button>
-              <Button variant="outline" size="sm" className="h-8 px-4 rounded-lg text-[10px] font-black uppercase">Suivant</Button>
+          <div className="p-8 bg-slate-50/20 flex items-center justify-between border-t border-slate-50">
+            <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">Page 1 sur 24 • Ordres 1-7 de 1,248</span>
+            <div className="flex gap-2">
+              <Button disabled variant="outline" size="sm" className="h-10 px-6 rounded-xl text-[10px] font-black uppercase tracking-widest border-slate-200">Précédent</Button>
+              <Button variant="outline" size="sm" className="h-10 px-6 rounded-xl text-[10px] font-black uppercase tracking-widest border-slate-200">Suivant</Button>
             </div>
           </div>
         </CardContent>

@@ -7,7 +7,6 @@ import {
   Package,
   Truck,
   Box,
-  Users,
   Settings,
   BarChart3,
   ClipboardList,
@@ -16,7 +15,8 @@ import {
   Warehouse,
   FileText,
   CreditCard,
-  ShieldCheck,
+  LogOut,
+  ChevronRight
 } from "lucide-react";
 
 import {
@@ -41,7 +41,7 @@ export function AppSidebar() {
 
   const navItems = [
     {
-      title: "Vue d'ensemble",
+      title: "Navigation",
       items: [
         { title: "Tableau de bord", icon: LayoutDashboard, url: "/dashboard" },
       ]
@@ -52,14 +52,14 @@ export function AppSidebar() {
         { title: "Commandes", icon: ClipboardList, url: "/dashboard/orders" },
         { title: "Préparations", icon: Package, url: "/dashboard/preparations" },
         { title: "Expéditions", icon: Truck, url: "/dashboard/shipments" },
-        { title: "Retours & Anomalies", icon: AlertTriangle, url: "/dashboard/issues", badge: "3" },
+        { title: "Retours", icon: AlertTriangle, url: "/dashboard/issues", badge: "3" },
       ]
     },
     {
       title: "Entrepôt",
       items: [
-        { title: "Stock total", icon: Warehouse, url: "/dashboard/inventory" },
-        { title: "Catalogue Articles", icon: Box, url: "/dashboard/products" },
+        { title: "Stock & WMS", icon: Warehouse, url: "/dashboard/inventory" },
+        { title: "Catalogue", icon: Box, url: "/dashboard/products" },
         { title: "Réceptions", icon: History, url: "/dashboard/receipts" },
       ]
     },
@@ -67,45 +67,52 @@ export function AppSidebar() {
       title: "Pilotage",
       items: [
         { title: "Analyses", icon: BarChart3, url: "/dashboard/analytics" },
-        { title: "Documents", icon: FileText, url: "/dashboard/documents" },
         { title: "Facturation", icon: CreditCard, url: "/dashboard/billing" },
       ]
     }
   ];
 
   return (
-    <Sidebar className="border-r border-slate-200 bg-[#0B2A6B] text-white">
-      <SidebarHeader className="p-6">
-        <Link href="/">
-          <Logo className="h-8 w-auto brightness-0 invert" />
+    <Sidebar className="border-none bg-[#0B2A6B] text-white shadow-2xl">
+      <SidebarHeader className="p-8">
+        <Link href="/" className="transition-transform hover:scale-105 active:scale-95">
+          <Logo className="h-10 w-auto brightness-0 invert" />
         </Link>
       </SidebarHeader>
       
       <SidebarContent className="px-4">
         {navItems.map((group, idx) => (
-          <SidebarGroup key={idx} className="mb-4">
-            <SidebarGroupLabel className="text-white/30 text-[10px] uppercase font-black tracking-widest px-2 mb-2">
+          <SidebarGroup key={idx} className="mb-6">
+            <SidebarGroupLabel className="text-white/20 text-[10px] uppercase font-black tracking-[0.2em] px-4 mb-3">
               {group.title}
             </SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu>
+              <SidebarMenu className="gap-1">
                 {group.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton 
                       asChild 
                       isActive={pathname === item.url}
                       className={cn(
-                        "hover:bg-white/10 transition-all rounded-xl h-10 px-3",
-                        pathname === item.url ? "bg-[#F7931E] text-[#0B2A6B] font-black" : "text-white/60 hover:text-white"
+                        "group/btn relative transition-all duration-300 rounded-xl h-11 px-4",
+                        pathname === item.url 
+                          ? "bg-[#1F6FDB] text-white font-bold shadow-lg shadow-blue-500/20" 
+                          : "text-white/50 hover:text-white hover:bg-white/5"
                       )}
                     >
                       <Link href={item.url} className="flex items-center gap-3">
-                        <item.icon size={18} className={cn(pathname === item.url ? "text-[#0B2A6B]" : "text-white/40")} />
-                        <span className="text-sm font-semibold">{item.title}</span>
+                        <item.icon size={20} className={cn(
+                          "transition-colors",
+                          pathname === item.url ? "text-white" : "text-white/30 group-hover/btn:text-white"
+                        )} />
+                        <span className="text-sm">{item.title}</span>
                         {item.badge && (
-                          <span className="ml-auto bg-red-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded-full">
+                          <span className="ml-auto bg-[#F7931E] text-[#0B2A6B] text-[9px] font-black px-1.5 py-0.5 rounded-full">
                             {item.badge}
                           </span>
+                        )}
+                        {pathname === item.url && (
+                           <ChevronRight size={14} className="ml-auto opacity-50" />
                         )}
                       </Link>
                     </SidebarMenuButton>
@@ -117,12 +124,20 @@ export function AppSidebar() {
         ))}
       </SidebarContent>
 
-      <SidebarFooter className="p-4 mt-auto border-t border-white/5">
-        <SidebarMenu>
+      <SidebarFooter className="p-6 border-t border-white/5 mt-auto">
+        <SidebarMenu className="gap-2">
           <SidebarMenuItem>
-            <SidebarMenuButton className="text-white/40 hover:text-white hover:bg-white/5 transition-all rounded-xl h-10 px-3">
-              <Settings size={18} />
-              <span className="text-sm font-semibold">Configuration</span>
+            <SidebarMenuButton className="text-white/40 hover:text-white hover:bg-white/5 transition-all rounded-xl h-11 px-4">
+              <Settings size={20} />
+              <span className="text-sm font-semibold">Paramètres</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild className="text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 transition-all rounded-xl h-11 px-4">
+              <Link href="/">
+                <LogOut size={20} />
+                <span className="text-sm font-semibold">Déconnexion</span>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
