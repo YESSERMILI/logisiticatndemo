@@ -48,7 +48,6 @@ const ScrollingTicker = () => {
     <div className="relative z-20 h-16 md:h-20 flex items-center overflow-hidden bg-[#0B2A6B]">
       <div className="absolute left-[-100vw] w-[300vw] bg-[#F7931E] py-3 md:py-4 -rotate-1 shadow-2xl border-y border-white/10 flex items-center">
         <div dir="ltr" className="flex whitespace-nowrap animate-ticker-forever">
-          {/* First set content */}
           <div className="flex items-center">
             {items.map((item, i) => (
               <span 
@@ -63,7 +62,6 @@ const ScrollingTicker = () => {
               </span>
             ))}
           </div>
-          {/* Second identical set for seamless loop */}
           <div className="flex items-center">
             {items.map((item, i) => (
               <span 
@@ -96,96 +94,90 @@ const ScrollingTicker = () => {
 const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'delivery' | 'cash' }) => {
   return (
     <div className="relative w-full h-full flex items-center justify-center p-8">
-      <svg viewBox="0 0 100 100" className="w-20 h-20 overflow-visible" fill="none" stroke="currentColor">
-        {/* Step 1: Order */}
+      <svg viewBox="0 0 100 100" className="w-20 h-20 overflow-visible" fill="none">
+        {/* Step 1: Order - Simple pulsing UI */}
         {type === 'order' && (
-          <g strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="10" y="20" width="80" height="60" rx="4" strokeOpacity="0.2" />
-            <path d="M10 35 H90" strokeOpacity="0.2" />
-            <motion.path 
-              d="M30 55 H70 M30 65 H50" 
-              initial={{ pathLength: 0 }} 
-              animate={{ pathLength: 1 }} 
+          <g>
+            <rect x="15" y="25" width="70" height="50" rx="4" stroke="currentColor" strokeWidth="2.5" strokeOpacity="0.3" />
+            <line x1="25" y1="40" x2="60" y2="40" stroke="currentColor" strokeWidth="2.5" strokeOpacity="0.2" strokeLinecap="round" />
+            <line x1="25" y1="50" x2="50" y2="50" stroke="currentColor" strokeWidth="2.5" strokeOpacity="0.2" strokeLinecap="round" />
+            <motion.circle 
+              cx="75" cy="35" r="5" fill="#F7931E"
+              animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             />
-            <motion.circle 
-              cx="80" cy="20" r="6" fill="#F7931E" stroke="none"
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-            />
           </g>
         )}
 
-        {/* Step 2: Storage */}
+        {/* Step 2: Storage - Scanning cube */}
         {type === 'storage' && (
-          <g strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="20" y="20" width="60" height="60" rx="4" strokeOpacity="0.2" />
+          <g>
             <motion.path 
-              d="M35 40 L50 30 L65 40 L65 65 L50 75 L35 65 Z" 
-              fill="#F7931E" fillOpacity="0.1" stroke="#F7931E"
-              animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              d="M30 40 L50 30 L70 40 L70 65 L50 75 L30 65 Z" 
+              stroke="#F7931E" strokeWidth="2.5" strokeLinejoin="round"
+              fill="#F7931E" fillOpacity="0.1"
             />
             <motion.line 
-              x1="15" y1="50" x2="85" y2="50" stroke="#F7931E" strokeWidth="1" strokeDasharray="4 4"
-              animate={{ y: [-20, 30, -20] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              x1="20" y1="45" x2="80" y2="45" stroke="#F7931E" strokeWidth="2" strokeLinecap="round"
+              animate={{ y: [-15, 25, -15] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             />
           </g>
         )}
 
-        {/* Step 3: Prep */}
+        {/* Step 3: Prep - Verified package */}
         {type === 'prep' && (
-          <g strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M20 40 L50 25 L80 40 L80 75 L50 90 L20 75 Z" strokeOpacity="0.2" />
-            <path d="M20 40 L50 55 L80 40 M50 55 V90" strokeOpacity="0.2" />
-            <motion.path 
-              d="M30 35 L70 35" 
-              stroke="#F7931E" 
-              initial={{ pathLength: 0 }} 
-              animate={{ pathLength: 1 }} 
-              transition={{ duration: 1, repeat: Infinity, repeatDelay: 0.5 }}
-            />
-            <motion.circle 
-              cx="50" cy="55" r="10" fill="#F7931E" stroke="#0B2A6B" strokeWidth="2"
-              initial={{ scale: 0 }} animate={{ scale: 1 }}
-              transition={{ delay: 0.5, type: "spring" }}
-            />
-          </g>
-        )}
-
-        {/* Step 4: Delivery */}
-        {type === 'delivery' && (
-          <g strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M10 80 H90" strokeDasharray="4 6" strokeOpacity="0.2" />
+          <g>
+            <rect x="25" y="35" width="50" height="40" rx="2" stroke="currentColor" strokeWidth="2.5" strokeOpacity="0.3" />
+            <path d="M25 45 H75" stroke="currentColor" strokeWidth="2" strokeOpacity="0.3" />
             <motion.g
-              animate={{ x: [-20, 80] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
             >
-              <rect x="0" y="55" width="25" height="15" rx="2" fill="#F7931E" />
-              <rect x="20" y="55" width="8" height="15" rx="1" fill="#0B2A6B" />
-              <circle cx="5" cy="73" r="3" fill="currentColor" />
-              <circle cx="20" cy="73" r="3" fill="currentColor" />
+              <circle cx="70" cy="40" r="10" fill="#27C93F" />
+              <path d="M66 40 L69 44 L75 37" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </motion.g>
           </g>
         )}
 
-        {/* Step 5: Cash */}
+        {/* Step 4: Delivery - Moving van */}
+        {type === 'delivery' && (
+          <g>
+            <motion.g
+              animate={{ x: [-10, 10, -10] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <rect x="20" y="45" width="40" height="20" rx="3" fill="#F7931E" />
+              <rect x="55" y="45" width="15" height="20" rx="2" fill="#0B2A6B" />
+              <circle cx="30" cy="65" r="4" fill="#0B2A6B" />
+              <circle cx="60" cy="65" r="4" fill="#0B2A6B" />
+              <motion.path 
+                d="M10 55 H18" stroke="#F7931E" strokeWidth="2" strokeLinecap="round"
+                animate={{ opacity: [0, 1, 0], x: [0, -5, 0] }}
+                transition={{ duration: 0.8, repeat: Infinity }}
+              />
+            </motion.g>
+          </g>
+        )}
+
+        {/* Step 5: Cash - J+1 Validation */}
         {type === 'cash' && (
-          <g strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="50" cy="50" r="35" strokeOpacity="0.2" />
+          <g>
+            <circle cx="50" cy="50" r="30" stroke="#27C93F" strokeWidth="2.5" fill="#27C93F" fillOpacity="0.05" />
             <motion.path 
-              d="M35 50 L45 60 L65 40" 
-              stroke="#27C93F" 
-              initial={{ pathLength: 0 }} 
-              animate={{ pathLength: 1 }} 
-              transition={{ duration: 0.8, repeat: Infinity, repeatDelay: 1 }}
+              d="M38 52 L46 60 L62 42" 
+              stroke="#27C93F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             />
             <motion.text 
-              x="50" y="85" textAnchor="middle" fill="#F7931E" fontSize="14" fontWeight="900"
-              animate={{ opacity: [0, 1, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >J+1</motion.text>
+              x="50" y="92" textAnchor="middle" fill="#F7931E" fontSize="12" fontWeight="900"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >J+1 DT</motion.text>
           </g>
         )}
       </svg>
