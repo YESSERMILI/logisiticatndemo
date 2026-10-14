@@ -6,8 +6,15 @@ import { useTranslation } from "@/hooks/use-translation";
 import { useLanguage } from "@/contexts/language-context";
 import { 
   ArrowRight,
+  CheckCircle2,
+  Package,
   Truck,
-  CheckCircle2
+  MapPin,
+  Clock,
+  ShieldCheck,
+  Zap,
+  HelpCircle,
+  ChevronRight
 } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -15,23 +22,26 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Logo } from "@/components/logo";
 import HeroLogisticsHub from "@/HeroLogisticsHub";
+import { DashboardShowcase } from "@/components/home/dashboard-showcase";
+import { BentoServices } from "@/components/home/services-bento";
+import { FAQ } from "@/components/home/faq";
 
 // scrolling ticker component
 const ScrollingTicker = () => {
   const { t, language } = useTranslation();
   const items = [
     "LOGISTICA TUNISIE",
-    "COD",
+    "COD & REVERSEMENT",
     "24 GOUVERNORATS",
-    "STOCKAGE",
-    "PICKING",
-    "PACKING",
-    "LIVRAISON",
+    "STOCKAGE SÉCURISÉ",
+    "PICKING EXPRESS",
+    "PACKING PRO",
+    "LIVRAISON < 24H",
     language === 'ar' ? "من الكوموند لليفريزون" : "DE LA COMMANDE À LA LIVRAISON"
   ];
 
   return (
-    <div className="bg-[#F7931E] py-4 md:py-6 overflow-hidden border-y border-black/10 -rotate-1 w-[110%] -translate-x-[5%] relative z-20 shadow-2xl">
+    <div className="bg-[#F7931E] py-4 md:py-6 overflow-hidden border-y border-black/10 -rotate-1 w-[115%] -translate-x-[7.5%] relative z-20 shadow-2xl">
       <div className="flex whitespace-nowrap animate-marquee">
         {[...Array(4)].map((_, i) => (
           <div key={i} className="flex items-center">
@@ -77,7 +87,6 @@ const ProcessVisual = ({ type }: { type: 'picking' | 'packing' | 'labeling' | 'r
               transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
               filter="url(#glowProcess)"
             />
-            <path d="M 100,50 V 80 M 90,65 H 110" stroke="#F7931E" strokeWidth="1" strokeDasharray="2 2" />
           </g>
         )}
 
@@ -176,7 +185,7 @@ export default function HomePage() {
           )}>
             <a href="#preparation" className="font-bold text-sm text-white/80 hover:text-[#F7931E] transition-colors uppercase tracking-wider">{t('n0')}</a>
             <a href="#services" className="font-bold text-sm text-white/80 hover:text-[#F7931E] transition-colors uppercase tracking-wider">{t('n1')}</a>
-            <a href="#coverage" className="font-bold text-sm text-white/80 hover:text-[#F7931E] transition-colors uppercase tracking-wider">{t('n6')}</a>
+            <a href="#dashboard" className="font-bold text-sm text-white/80 hover:text-[#F7931E] transition-colors uppercase tracking-wider">Dashboard</a>
             <a href="#faq" className="font-bold text-sm text-white/80 hover:text-[#F7931E] transition-colors uppercase tracking-wider">{t('n3')}</a>
           </nav>
 
@@ -194,7 +203,7 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-12 min-h-[90vh] flex items-center">
+      <section className="relative pt-40 pb-12 min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute top-1/4 left-0 text-[12vw] font-black text-white/5 select-none pointer-events-none tracking-tighter leading-none whitespace-nowrap uppercase">
           Logistica Tunisie
         </div>
@@ -261,28 +270,34 @@ export default function HomePage() {
       <ScrollingTicker />
 
       {/* Stats Bar */}
-      <section className="bg-[#081E4E] py-12 border-y border-white/5 relative z-10">
+      <section className="bg-[#081E4E] py-16 border-y border-white/5 relative z-10">
         <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
            {[
-             { label: t('stats_l1'), value: '+12000' },
-             { label: t('stats_l2'), value: '24' },
-             { label: t('stats_l3'), value: '98%' },
-             { label: t('stats_l4'), value: '<24h' }
+             { label: t('stats_l1'), value: '+12 000', icon: Package },
+             { label: t('stats_l2'), value: '24', icon: MapPin },
+             { label: t('stats_l3'), value: '98%', icon: ShieldCheck },
+             { label: t('stats_l4'), value: '< 24h', icon: Clock }
            ].map((stat, i) => (
-             <div key={i} className="text-center">
-                <p className="text-3xl font-black text-[#F7931E] mb-1">{stat.value}</p>
-                <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">{stat.label}</p>
+             <div key={i} className="text-center group">
+                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#F7931E] mx-auto mb-4 group-hover:bg-[#F7931E] group-hover:text-[#0B2A6B] transition-all duration-300">
+                  <stat.icon size={24} />
+                </div>
+                <p className="text-3xl md:text-5xl font-black text-white mb-1 tracking-tighter tabular-nums">{stat.value}</p>
+                <p className="text-[10px] md:text-xs font-bold text-white/40 uppercase tracking-widest">{stat.label}</p>
              </div>
            ))}
         </div>
       </section>
+
+      {/* Dashboard Showcase (Le Dashboard de nouveau parfaitement animé) */}
+      <DashboardShowcase />
 
       {/* Preparation Section */}
       <section id="preparation" className="py-24 bg-[#0B2A6B]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-[#F7931E] font-black text-xs uppercase tracking-[0.2em]">{t('hwe')}</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mt-4">{t('hwt')}</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 tracking-tight">{t('hwt')}</h2>
           </div>
 
           <div className="grid md:grid-cols-4 gap-6">
@@ -292,7 +307,7 @@ export default function HomePage() {
               { id: 'labeling', title: 'Étiquetage', desc: t('dL') },
               { id: 'ready', title: 'Ready', desc: t('dR') }
             ].map((step) => (
-              <Card key={step.id} className="bg-white/5 border-white/10 hover:border-[#F7931E]/50 transition-all group overflow-hidden">
+              <Card key={step.id} className="bg-white/5 border-white/10 hover:border-[#F7931E]/50 transition-all group overflow-hidden border-none text-white">
                 <div className="h-48 bg-[#081E4E]/50 relative">
                   <ProcessVisual type={step.id as any} />
                 </div>
@@ -306,14 +321,85 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="bg-[#081E4E] py-12 border-t border-white/5 text-center">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <Logo variant="white" className="mx-auto mb-8" />
-          <div className="flex justify-center gap-8 mb-8">
-            <Link href="https://wa.me/21699201552" className="text-white/60 hover:text-[#F7931E] transition-colors font-bold uppercase text-xs tracking-widest">WhatsApp</Link>
-            <Link href="tel:+21699201552" className="text-white/60 hover:text-[#F7931E] transition-colors font-bold uppercase text-xs tracking-widest">Téléphone</Link>
+      {/* Services Section */}
+      <BentoServices />
+
+      {/* FAQ Section */}
+      <FAQ />
+
+      {/* Closing CTA */}
+      <section className="py-24 bg-[#081E4E] relative overflow-hidden">
+        <div className="max-w-[1200px] mx-auto px-6 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto space-y-8"
+          >
+            <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">
+              {language === 'ar' ? "جاهز باش تخرّج البيزنس متاعك للنيفو الجاي ؟" : "Prêt à faire passer votre business au niveau supérieur ?"}
+            </h2>
+            <p className="text-xl text-[#9FB2DE]">
+              {language === 'ar' ? "انضم لأكثر من 500 تاجر إلكتروني يثقوا في Logistica لتسيير عملياتهم اليومية." : "Rejoignez plus de 500 e-commerçants qui font confiance à Logistica pour piloter leurs opérations quotidiennes."}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="h-16 px-10 text-xl font-bold bg-[#F7931E] text-[#0B2A6B] rounded-sm shadow-2xl hover:bg-[#E0861A] border-none" asChild>
+                <Link href="https://wa.me/21699201552">
+                  Démarrer mon intégration
+                  <ChevronRight className="ml-2" />
+                </Link>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#F7931E]/10 rounded-full blur-[100px]" />
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#1F6FDB]/10 rounded-full blur-[100px]" />
+      </section>
+
+      <footer className="bg-[#0B2A6B] py-20 border-t border-white/5 text-center relative overflow-hidden">
+        <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+          <Logo variant="white" className="mx-auto mb-12" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-left mb-16">
+            <div>
+              <h4 className="text-[#F7931E] font-black uppercase text-xs tracking-widest mb-6">Solutions</h4>
+              <ul className="space-y-4 text-sm text-white/60 font-bold">
+                <li><Link href="#preparation">Fulfillment</Link></li>
+                <li><Link href="#services">Stockage</Link></li>
+                <li><Link href="#services">Dernier Kilomètre</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-[#F7931E] font-black uppercase text-xs tracking-widest mb-6">Entreprise</h4>
+              <ul className="space-y-4 text-sm text-white/60 font-bold">
+                <li><Link href="#">À propos</Link></li>
+                <li><Link href="#">Contact</Link></li>
+                <li><Link href="#">Carrières</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-[#F7931E] font-black uppercase text-xs tracking-widest mb-6">Support</h4>
+              <ul className="space-y-4 text-sm text-white/60 font-bold">
+                <li><Link href="#">Help Center</Link></li>
+                <li><Link href="#">API Docs</Link></li>
+                <li><Link href="#">Status</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-[#F7931E] font-black uppercase text-xs tracking-widest mb-6">Contact</h4>
+              <ul className="space-y-4 text-sm text-white/60 font-bold">
+                <li>+216 99 201 552</li>
+                <li>contact@logistica.tn</li>
+                <li>Tunis, Tunisie</li>
+              </ul>
+            </div>
           </div>
-          <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">{t('foot')}</p>
+          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">{t('foot')}</p>
+            <div className="flex gap-8">
+              <Link href="https://wa.me/21699201552" className="text-white/40 hover:text-[#F7931E] transition-colors font-bold uppercase text-[10px] tracking-widest">WhatsApp</Link>
+              <Link href="tel:+21699201552" className="text-white/40 hover:text-[#F7931E] transition-colors font-bold uppercase text-[10px] tracking-widest">Téléphone</Link>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
