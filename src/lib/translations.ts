@@ -3,8 +3,8 @@ export type Language = "ar" | "fr";
 
 export const translations = {
   ar: {
-    "n0": "كيفاش نخدمو", "n1": "الخدمات", "n3": "أسئلة تجينا ديما", "n4": "احسب التكلفة", "n5": "تتبّع كولي", "n6": "التغطية", "n7": "العروض",
-    "nav_services": "الخدمات", "nav_why": "علاش أحنا", "nav_faq": "أسئلة", "nav_signin": "تسجيل دخول", "nav_signup": "ابدأ توة",
+    "n0": "كيفاش نخدمو", "n1": "الخدمات", "n3": "أسئلة تجينا ديما", "n4": "ابدأ توة", "n5": "تتبّع كولي", "n6": "التغطية", "n7": "العروض",
+    "nav_services": "الخدمات", "nav_why": "علاش أحنا", "nav_faq": "أسئلة", "nav_signin": "تسجيل دخول", "nav_signup": "ابدأ معانا",
     "login_title": "مرحباً بعودتك", "login_subtitle": "دخل معلوماتك باش تدخل لحسابك", "login_email": "البريد الإلكتروني", "login_password": "كلمة السر", "login_forgot": "نسيت كلمة السر؟", "login_submit": "دخول", "login_no_account": "ما عندكش حساب؟", "login_register": "سجّل توة",
     "register_title": "حل حساب جديد", "register_subtitle": "انضم لعائلة Logistica وابدا بيع براحتك", "register_name": "الاسم الكامل", "register_shop": "اسم المتجر", "register_phone": "رقم الهاتف", "register_submit": "صحيح الحساب", "register_have_account": "عندك حساب؟", "register_login": "ادخل من هنا",
     "chip": "فولفيلمنت للتجارة الإلكترونية في تونس",
@@ -23,7 +23,7 @@ export const translations = {
     "foot": "© 2026 Logistica Tunisie — Fièrement tunisien 🇹🇳"
   },
   fr: {
-    "n0": "Le process", "n1": "Services", "n3": "FAQ", "n4": "Estimer mon coût", "n5": "Suivi colis", "n6": "Couverture", "n7": "Offres",
+    "n0": "Le process", "n1": "Services", "n3": "FAQ", "n4": "Démarrer", "n5": "Suivi colis", "n6": "Couverture", "n7": "Offres",
     "nav_services": "Services", "nav_why": "Pourquoi nous", "nav_faq": "FAQ", "nav_signin": "Connexion", "nav_signup": "S'inscrire",
     "login_title": "Bon retour", "login_subtitle": "Connectez-vous à votre portail commerçant", "login_email": "E-mail", "login_password": "Mot de passe", "login_forgot": "Oublié ?", "login_submit": "Se connecter", "login_no_account": "Pas de compte ?", "login_register": "Créer un compte",
     "register_title": "Inscription", "register_subtitle": "Rejoignez plus de 500 marchands aujourd'hui", "register_name": "Nom complet", "register_shop": "Nom boutique", "register_phone": "Téléphone", "register_submit": "Créer mon compte", "register_have_account": "Déjà client ?", "register_login": "Se connecter",

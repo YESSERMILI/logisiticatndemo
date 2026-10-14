@@ -70,7 +70,6 @@ const ScrollingTicker = () => {
 
   return (
     <div className="relative z-20 h-16 md:h-24 flex items-center overflow-hidden bg-[#0B2A6B]">
-      {/* Rotated strip - using a robust 2-set translate-50% approach for perfect loop */}
       <div className="absolute inset-x-0 -rotate-1 scale-110 flex items-center bg-[#F7931E] py-4 md:py-6 shadow-2xl border-y border-white/10">
         <div className="flex whitespace-nowrap animate-ticker-loop">
           <TickerSet />
@@ -85,7 +84,7 @@ const ScrollingTicker = () => {
           100% { transform: translateX(-25%); }
         }
         .animate-ticker-loop {
-          animation: ticker-loop 50s linear infinite;
+          animation: ticker-loop 40s linear infinite;
         }
       `}} />
     </div>
@@ -115,7 +114,6 @@ const ProcessVisual = ({ type, stepNumber }: { type: 'order' | 'storage' | 'prep
           <IconComponent className="w-10 h-10 md:w-14 md:h-14 drop-shadow-[0_0_15px_rgba(247,147,30,0.4)]" strokeWidth={1.5} />
         </motion.div>
         
-        {/* Floating Step Number Badge */}
         <div className="absolute -top-1 -left-1 w-8 h-8 bg-[#F7931E] rounded-full flex items-center justify-center text-[#0B2A6B] font-black text-sm shadow-xl ring-4 ring-[#0B2A6B] z-10">
           {stepNumber}
         </div>
@@ -181,7 +179,7 @@ export default function HomePage() {
               <span className={cn("px-4 py-1.5 rounded-full text-xs font-bold transition-all", language === 'fr' ? "bg-[#F7931E] text-[#0B2A6B]" : "text-white/60")}>FR</span>
             </div>
             <Button variant="secondary" size="sm" className="hidden sm:flex bg-[#F7931E] text-[#0B2A6B] font-bold shadow-lg hover:bg-[#E0861A] border-none rounded-sm px-6" asChild>
-              <Link href="https://wa.me/21699201552">{t('n4')}</Link>
+              <Link href="/register">{t('n4')}</Link>
             </Button>
             <button className="lg:hidden text-white text-2xl" onClick={() => setMobileMenu(!mobileMenu)}>
               {mobileMenu ? <X /> : <Menu />}
@@ -208,7 +206,7 @@ export default function HomePage() {
             </span>
             <h1 className={cn(
               "text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.2] mb-8",
-              language === 'ar' && "font-arabic leading-[1.3]"
+              language === 'ar' && "font-arabic leading-[1.35]"
             )}>
               {t('h1a')} <br />
               <span className="text-[#F7931E] relative inline-block">
@@ -229,7 +227,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
               <Button className="h-14 px-8 text-lg font-bold bg-[#F7931E] text-[#0B2A6B] shadow-xl hover:shadow-[#F7931E]/20 transition-all rounded-sm group border-none" asChild>
-                <Link href="https://wa.me/21699201552">
+                <Link href="/register">
                   {t('cta1')}
                   <ArrowRight className={cn("transition-transform group-hover:translate-x-1", language === 'ar' && "rotate-180 ml-2 mr-0")} />
                 </Link>
@@ -278,8 +276,8 @@ export default function HomePage() {
               {t('hwe')}
             </span>
             <h2 className={cn(
-              "text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-[1.2]",
-              language === 'ar' && "font-arabic leading-[1.3]"
+              "text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-[1.25]",
+              language === 'ar' && "font-arabic leading-[1.35]"
             )}>{t('hwt')}</h2>
             <p className={cn(
               "text-lg text-[#9FB2DE] font-medium max-w-2xl mx-auto opacity-80",
@@ -321,8 +319,8 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <span className="text-[#F7931E] font-black text-xs uppercase tracking-[0.2em] mb-4 block">{t('cve')}</span>
             <h2 className={cn(
-              "text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1.2]",
-              language === 'ar' && "font-arabic leading-[1.3]"
+              "text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1.3]",
+              language === 'ar' && "font-arabic leading-[1.35]"
             )}>
               {language === 'ar' ? "من بنزرت لبنقردان" : "De Bizerte à Ben Guerdane"}
             </h2>
@@ -374,8 +372,8 @@ export default function HomePage() {
             className="max-w-3xl mx-auto space-y-12"
           >
             <h2 className={cn(
-              "text-4xl md:text-6xl font-black text-white leading-[1.2]",
-              language === 'ar' && "font-arabic leading-[1.3]"
+              "text-4xl md:text-6xl font-black text-white leading-[1.3]",
+              language === 'ar' && "font-arabic leading-[1.4]"
             )}>
               {language === 'ar' ? "جاهز باش تخرّج البيزنس متاعك للنيفو الجاي ؟" : "Prêt à faire passer votre business au niveau supérieur ?"}
             </h2>
@@ -387,7 +385,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
               <Button size="lg" className="h-16 px-10 text-xl font-bold bg-[#F7931E] text-[#0B2A6B] rounded-sm shadow-2xl hover:bg-[#E0861A] border-none" asChild>
-                <Link href="https://wa.me/21699201552">
+                <Link href="/register">
                   {language === 'ar' ? "ابدأ توة" : "Démarrer mon intégration"}
                   <ChevronRight className={cn("ml-2", language === 'ar' && "rotate-180 mr-2 ml-0")} />
                 </Link>
