@@ -9,7 +9,7 @@ export const translations = {
     "register_title": "حل حساب جديد", "register_subtitle": "انضم لعائلة Logistica وابدا بيع براحتك", "register_name": "الاسم الكامل", "register_shop": "اسم المتجر", "register_phone": "رقم الهاتف", "register_submit": "صحيح الحساب", "register_have_account": "عندك حساب؟", "register_login": "ادخل من هنا",
     "chip": "فولفيلمنت للتجارة الإلكترونية في تونس",
     "h1a": "بِيع براحتك…", "h1b": "والتوصيل علينا.",
-    "sub": "Logistica تستقبل البضاعة، تخزّنها، تجهّز الطلبات وتوصّلها لزبونك — من الكوموند لليفريزون، بسيطة كيما الحكاية.",
+    "sub": "Logistica تستقبل البضاعة، تخزّنها، تجهّz الطلبات وتوصّلها لزبونك — من الكوموند لليفريزون، بسيطة كيما الحكاية.",
     "cta1": "ابدا معانا اليوم", "cta2": "شوف كيفاش نخدمو",
     "hwe": "الطريقة", "hwt": "خمس خطوات وتوصل الكولي", "hws": "من نهار يدخلك الكوموند لين يرجعلك الكاش — كلشي مرتّب وتتبعو.",
     "h1t": "الكوموند توصل", "h1d": "من سيتك، ماركت بلاصة ولا سوشيال.",
@@ -19,7 +19,10 @@ export const translations = {
     "h5t": "الكاش", "h5d": "نجمعو COD ونرجعوهالك مرتّب.",
     "db_title": "الداشبورد متاعك", "db_desc": "من الكوموندات للستوك حتى للفلوس (COD)، كل المعلومات قدامك في الوقت الحقيقي وبكل دقة.",
     "db_tab1": "طلبات", "db_tab2": "ستوك", "db_tab3": "فلوس", "db_tab4": "أداء",
-    "cve": "التغطية الوطنية", "cvt": "من بنزرت لبنقردان", "z1": "المدن الكبرى (Hubs)", "z2": "كامل ولايات الجمهورية", "z3": "المطق البعيدة",
+    "cve": "التغطية الوطنية", "cvt": "من بنزرت لبنقردان", 
+    "z1": "المدن الكبرى (Hubs)", "z1t": "توصيل في 24 ساعة", "z1d": "تغطية كاملة لتونس الكبرى، سوسة، وصفاقس مع مراكز فرز ذكية.",
+    "z2": "كامل ولايات الجمهورية", "z2t": "توصيل في 24-48 ساعة", "z2d": "شبكة توصيل تغطي الـ 24 ولاية مع تتبع دقيق لكل خطوة.",
+    "z3": "المناطق البعيدة", "z3t": "المناطق الحدودية", "z3d": "نوصلو حتى لأبعد نقطة في تونس بأسعار مدروسة وجدولة منظمة.",
     "foot": "© 2026 Logistica Tunisie — Fièrement tunisien 🇹🇳"
   },
   fr: {
@@ -36,7 +39,10 @@ export const translations = {
     "h5t": "Encaissement", "h5d": "On collecte le COD et on vous reverse.",
     "db_title": "Votre Dashboard", "db_desc": "Des commandes au stock jusqu'au cash (COD), toutes les informations sont devant vous en temps réel.",
     "db_tab1": "Commandes", "db_tab2": "Stocks", "db_tab3": "Finance", "db_tab4": "KPIs",
-    "cve": "Couverture Nationale", "cvt": "De Bizerte à Ben Guerdane", "z1": "Villes Hubs", "z2": "Gouvernorats", "z3": "Zones éloignées",
+    "cve": "Couverture Nationale", "cvt": "De Bizerte à Ben Guerdane", 
+    "z1": "Villes Hubs", "z1t": "Livraison en 24h", "z1d": "Couverture totale du Grand Tunis, Sousse et Sfax avec centres de tri intelligents.",
+    "z2": "Gouvernorats", "z2t": "Livraison 24h-48h", "z2d": "Réseau couvrant les 24 gouvernorats avec suivi précis de chaque étape.",
+    "z3": "Zones éloignées", "z3t": "Zones frontalières", "z3d": "Nous livrons jusqu'au point le plus éloigné avec une tarification optimisée.",
     "foot": "© 2026 Logistica Tunisie — Fièrement tunisien 🇹🇳"
   }
 };

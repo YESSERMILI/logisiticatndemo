@@ -322,7 +322,7 @@ export default function HomePage() {
               "text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1.3]",
               language === 'ar' && "font-arabic leading-[1.35]"
             )}>
-              {language === 'ar' ? "من بنزرت لبنقردان" : "De Bizerte à Ben Guerdane"}
+              {t('cvt')}
             </h2>
             <p className={cn(
               "text-lg text-[#9FB2DE] font-medium opacity-80 max-w-2xl mx-auto mt-6",
@@ -350,8 +350,8 @@ export default function HomePage() {
                 <p className={cn("text-[#9FB2DE] text-sm leading-relaxed opacity-80", language === 'ar' && "font-arabic")}>{zone.desc}</p>
                 <div className="mt-8 pt-8 border-t border-white/5">
                    <div className="flex items-center gap-2 text-[10px] font-bold text-white/40 uppercase tracking-wider">
-                     <CheckCircle2 size={12} className="text-[#F7931E]/40" />
-                     {language === 'ar' ? "تتبع في الوقت الحقيقي" : "Suivi temps réel"}
+                     <CheckCircle2 size={12} className="text-[#F7931E]" />
+                     {language === 'ar' ? "تتبع في الوقت الحقيقي" : "Suivi en temps réel"}
                    </div>
                 </div>
               </motion.div>
