@@ -10,6 +10,7 @@ import { Logo } from "@/components/logo";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const BackgroundShapes = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -45,6 +46,12 @@ const BackgroundShapes = () => (
 export default function LoginPage() {
   const { t, language } = useTranslation();
   const isAr = language === 'ar';
+  const router = useRouter();
+
+  const handleLogin = () => {
+    // Direct access to dashboard as requested
+    router.push("/dashboard");
+  };
 
   return (
     <div className="h-screen w-full bg-[#0B2A6B] flex flex-col items-center justify-center p-4 relative overflow-hidden" dir={isAr ? 'rtl' : 'ltr'}>
@@ -101,7 +108,10 @@ export default function LoginPage() {
               />
             </div>
 
-            <Button className="w-full h-12 text-lg font-black bg-[#F7931E] text-[#0B2A6B] hover:bg-[#E0861A] border-none shadow-xl active:scale-95 transition-transform mt-2">
+            <Button 
+              onClick={handleLogin}
+              className="w-full h-12 text-lg font-black bg-[#F7931E] text-[#0B2A6B] hover:bg-[#E0861A] border-none shadow-xl active:scale-95 transition-transform mt-2"
+            >
               {t('login_submit')}
             </Button>
           </CardContent>
