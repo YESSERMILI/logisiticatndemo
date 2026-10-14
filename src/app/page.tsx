@@ -26,8 +26,10 @@ import { BentoServices } from "@/components/home/services-bento";
 import { FAQ } from "@/components/home/faq";
 import { Footer } from "@/components/layout/footer";
 
-// Scrolling ticker component
+// Scrolling ticker component with perfect infinite loop
 const ScrollingTicker = () => {
+  const { t } = useTranslation();
+  
   const items = [
     { text: "LOGISTICA TUNISIE", lang: "fr" },
     { text: "✦", isSep: true },
@@ -49,47 +51,41 @@ const ScrollingTicker = () => {
     { text: "✦", isSep: true },
   ];
 
+  const TickerSet = () => (
+    <div className="flex items-center flex-shrink-0">
+      {items.map((item, i) => (
+        <span 
+          key={i} 
+          className={cn(
+            "inline-flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-2xl tracking-tighter px-8 md:px-16",
+            item.lang === "ar" ? "font-arabic" : "font-sans",
+            item.isSep ? "opacity-25" : ""
+          )}
+        >
+          {item.text}
+        </span>
+      ))}
+    </div>
+  );
+
   return (
-    <div className="relative z-20 h-16 md:h-20 flex items-center overflow-hidden bg-[#0B2A6B]">
-      <div className="absolute left-[-100vw] w-[300vw] bg-[#F7931E] py-3 md:py-4 -rotate-1 shadow-2xl border-y border-white/10 flex items-center">
-        <div dir="ltr" className="flex whitespace-nowrap animate-ticker-forever">
-          <div className="flex items-center">
-            {items.map((item, i) => (
-              <span 
-                key={`set1-${i}`} 
-                className={cn(
-                  "inline-flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-xl tracking-tighter px-8 md:px-12",
-                  item.lang === "ar" ? "font-arabic" : "font-sans",
-                  item.isSep ? "opacity-20" : ""
-                )}
-              >
-                {item.text}
-              </span>
-            ))}
-          </div>
-          <div className="flex items-center">
-            {items.map((item, i) => (
-              <span 
-                key={`set2-${i}`} 
-                className={cn(
-                  "inline-flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-xl tracking-tighter px-8 md:px-12",
-                  item.lang === "ar" ? "font-arabic" : "font-sans",
-                  item.isSep ? "opacity-20" : ""
-                )}
-              >
-                {item.text}
-              </span>
-            ))}
-          </div>
+    <div className="relative z-20 h-16 md:h-24 flex items-center overflow-hidden bg-[#0B2A6B]">
+      {/* Rotated strip - using a robust 2-set translate-50% approach for perfect loop */}
+      <div className="absolute inset-x-0 -rotate-1 scale-110 flex items-center bg-[#F7931E] py-4 md:py-6 shadow-2xl border-y border-white/10">
+        <div className="flex whitespace-nowrap animate-ticker-loop">
+          <TickerSet />
+          <TickerSet />
+          <TickerSet />
+          <TickerSet />
         </div>
       </div>
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes ticker-forever {
+        @keyframes ticker-loop {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          100% { transform: translateX(-25%); }
         }
-        .animate-ticker-forever {
-          animation: ticker-forever 80s linear infinite;
+        .animate-ticker-loop {
+          animation: ticker-loop 50s linear infinite;
         }
       `}} />
     </div>
@@ -107,17 +103,23 @@ const ProcessVisual = ({ type, stepNumber }: { type: 'order' | 'storage' | 'prep
 
   return (
     <div className="relative mb-8 group flex flex-col items-center">
-      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-[#F7931E]/20 flex items-center justify-center relative transition-all duration-500 group-hover:border-[#F7931E]/60 bg-white/[0.03] shadow-[0_0_20px_rgba(247,147,30,0.05)]">
+      <motion.div 
+        whileHover={{ scale: 1.05 }}
+        className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-[#F7931E]/20 flex items-center justify-center relative transition-all duration-500 group-hover:border-[#F7931E]/60 bg-white/[0.03] shadow-[0_0_20px_rgba(247,147,30,0.05)] overflow-visible"
+      >
         <motion.div
-          whileHover={{ scale: 1.1, rotate: 5 }}
+          animate={{ y: [0, -4, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           className="text-[#F7931E]"
         >
           <IconComponent className="w-10 h-10 md:w-14 md:h-14 drop-shadow-[0_0_15px_rgba(247,147,30,0.4)]" strokeWidth={1.5} />
         </motion.div>
-        <div className="absolute -top-1 -left-1 w-8 h-8 bg-[#F7931E] rounded-full flex items-center justify-center text-[#0B2A6B] font-black text-sm shadow-xl ring-4 ring-[#0B2A6B]">
+        
+        {/* Floating Step Number Badge */}
+        <div className="absolute -top-1 -left-1 w-8 h-8 bg-[#F7931E] rounded-full flex items-center justify-center text-[#0B2A6B] font-black text-sm shadow-xl ring-4 ring-[#0B2A6B] z-10">
           {stepNumber}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
@@ -205,8 +207,8 @@ export default function HomePage() {
               {t('chip')}
             </span>
             <h1 className={cn(
-              "text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.25] mb-8",
-              language === 'ar' && "font-arabic"
+              "text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.2] mb-8",
+              language === 'ar' && "font-arabic leading-[1.3]"
             )}>
               {t('h1a')} <br />
               <span className="text-[#F7931E] relative inline-block">
@@ -229,7 +231,7 @@ export default function HomePage() {
               <Button className="h-14 px-8 text-lg font-bold bg-[#F7931E] text-[#0B2A6B] shadow-xl hover:shadow-[#F7931E]/20 transition-all rounded-sm group border-none" asChild>
                 <Link href="https://wa.me/21699201552">
                   {t('cta1')}
-                  <ArrowRight className={cn("transition-transform group-hover:translate-x-1", language === 'ar' && "rotate-180")} />
+                  <ArrowRight className={cn("transition-transform group-hover:translate-x-1", language === 'ar' && "rotate-180 ml-2 mr-0")} />
                 </Link>
               </Button>
               <Button variant="outline" className="h-14 px-8 text-lg font-bold border-2 border-white text-white hover:bg-white hover:text-[#0B2A6B] rounded-sm bg-transparent" asChild>
@@ -276,8 +278,8 @@ export default function HomePage() {
               {t('hwe')}
             </span>
             <h2 className={cn(
-              "text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-[1.3]",
-              language === 'ar' && "font-arabic"
+              "text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-[1.2]",
+              language === 'ar' && "font-arabic leading-[1.3]"
             )}>{t('hwt')}</h2>
             <p className={cn(
               "text-lg text-[#9FB2DE] font-medium max-w-2xl mx-auto opacity-80",
@@ -319,8 +321,8 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <span className="text-[#F7931E] font-black text-xs uppercase tracking-[0.2em] mb-4 block">{t('cve')}</span>
             <h2 className={cn(
-              "text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1.25]",
-              language === 'ar' && "font-arabic"
+              "text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1.2]",
+              language === 'ar' && "font-arabic leading-[1.3]"
             )}>
               {language === 'ar' ? "من بنزرت لبنقردان" : "De Bizerte à Ben Guerdane"}
             </h2>
@@ -369,11 +371,11 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto space-y-10"
+            className="max-w-3xl mx-auto space-y-12"
           >
             <h2 className={cn(
-              "text-4xl md:text-6xl font-black text-white leading-[1.3]",
-              language === 'ar' && "font-arabic"
+              "text-4xl md:text-6xl font-black text-white leading-[1.2]",
+              language === 'ar' && "font-arabic leading-[1.3]"
             )}>
               {language === 'ar' ? "جاهز باش تخرّج البيزنس متاعك للنيفو الجاي ؟" : "Prêt à faire passer votre business au niveau supérieur ?"}
             </h2>
@@ -383,7 +385,7 @@ export default function HomePage() {
             )}>
               {language === 'ar' ? "انضم لأكثر من 500 تاجر إلكتروني يثقوا في Logistica لتسيير عملياتهم اليومية." : "Rejoignez plus de 500 e-commerçants qui font confiance à Logistica pour piloter leurs opérations quotidiennes."}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
               <Button size="lg" className="h-16 px-10 text-xl font-bold bg-[#F7931E] text-[#0B2A6B] rounded-sm shadow-2xl hover:bg-[#E0861A] border-none" asChild>
                 <Link href="https://wa.me/21699201552">
                   {language === 'ar' ? "ابدأ توة" : "Démarrer mon intégration"}
