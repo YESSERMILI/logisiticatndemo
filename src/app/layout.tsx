@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Readex_Pro } from "next/font/google";
 import "./globals.css";
+import "../tn-map.css";
 import { LanguageProvider } from "@/contexts/language-context";
 import { Toaster } from "@/components/ui/toaster";
 

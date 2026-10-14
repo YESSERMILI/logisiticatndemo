@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Logo } from "@/components/logo";
 import HeroLogisticsHub from "@/HeroLogisticsHub";
+import TunisiaMap from "@/TunisiaMap";
 import { DashboardShowcase } from "@/components/home/dashboard-showcase";
 import { BentoServices } from "@/components/home/services-bento";
 import { FAQ } from "@/components/home/faq";
@@ -93,42 +94,42 @@ const ScrollingTicker = () => {
 
 const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'delivery' | 'cash' }) => {
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-8">
+    <div className="relative w-full h-full flex items-center justify-center p-6">
       <svg viewBox="0 0 100 100" className="w-20 h-20 overflow-visible" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Step 1: Order - Simple Screen */}
+        {/* Step 1: Order - SaaS Interface Notification */}
         {type === 'order' && (
           <g>
-            <rect x="15" y="25" width="70" height="50" rx="4" stroke="#F7931E" strokeWidth="3" />
-            <line x1="25" y1="40" x2="60" y2="40" stroke="#F7931E" strokeWidth="3" strokeLinecap="round" opacity="0.4" />
-            <line x1="25" y1="50" x2="50" y2="50" stroke="#F7931E" strokeWidth="3" strokeLinecap="round" opacity="0.4" />
+            <rect x="10" y="25" width="80" height="50" rx="8" stroke="#F7931E" strokeWidth="2.5" />
+            <rect x="20" y="38" width="40" height="4" rx="2" fill="#F7931E" fillOpacity="0.2" />
+            <rect x="20" y="50" width="30" height="4" rx="2" fill="#F7931E" fillOpacity="0.2" />
             <motion.circle 
-              cx="75" cy="25" r="8" fill="#F7931E"
-              animate={{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }}
+              cx="75" cy="40" r="10" fill="#F7931E"
+              animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
           </g>
         )}
 
-        {/* Step 2: Storage - Box with Scan */}
+        {/* Step 2: Storage - Rack Scanning */}
         {type === 'storage' && (
           <g>
-            <rect x="25" y="25" width="50" height="50" rx="2" stroke="white" strokeWidth="3" strokeOpacity="0.3" />
-            <path d="M25 50 L50 60 L75 50" stroke="white" strokeWidth="2" fill="none" strokeOpacity="0.2" />
+            <path d="M20 20 H80 V80 H20 Z" stroke="white" strokeWidth="2" strokeOpacity="0.2" />
+            <path d="M20 40 H80 M20 60 H80" stroke="white" strokeWidth="1.5" strokeOpacity="0.1" />
             <motion.line 
-              x1="20" y1="30" x2="80" y2="30" stroke="#F7931E" strokeWidth="2"
-              animate={{ y: [0, 40, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              x1="15" y1="20" x2="85" y2="20" stroke="#F7931E" strokeWidth="3" strokeLinecap="round"
+              animate={{ y: [0, 60, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             />
           </g>
         )}
 
-        {/* Step 3: Prep - Box + Checkmark */}
+        {/* Step 3: Prep - Packing Verification */}
         {type === 'prep' && (
           <g>
-            <rect x="25" y="30" width="50" height="40" rx="2" stroke="white" strokeWidth="3" strokeOpacity="0.3" />
+            <rect x="25" y="35" width="50" height="40" rx="4" fill="white" fillOpacity="0.05" stroke="white" strokeWidth="2" strokeOpacity="0.2" />
             <motion.path 
-              d="M40 50 L48 58 L65 42" 
-              stroke="#F7931E" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"
+              d="M40 55 L48 63 L65 47" 
+              stroke="#F7931E" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" fill="none"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={{ pathLength: 1, opacity: 1 }}
               transition={{ duration: 0.8, repeat: Infinity, repeatDelay: 1.5 }}
@@ -136,31 +137,29 @@ const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'deliver
           </g>
         )}
 
-        {/* Step 4: Delivery - Simple Truck Icon */}
+        {/* Step 4: Delivery - Kinetic Truck */}
         {type === 'delivery' && (
-          <g>
-            <motion.g
-              animate={{ x: [-2, 2, -2] }}
-              transition={{ duration: 0.4, repeat: Infinity }}
-            >
-              <rect x="20" y="40" width="40" height="25" fill="#F7931E" />
-              <path d="M60 45 H75 L80 65 H60 Z" fill="#F7931E" />
-              <circle cx="30" cy="70" r="5" fill="white" />
-              <circle cx="65" cy="70" r="5" fill="white" />
-            </motion.g>
-          </g>
+          <motion.g
+            animate={{ x: [-5, 5, -5] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <rect x="15" y="40" width="45" height="30" rx="4" fill="#F7931E" />
+            <path d="M60 45 L80 45 L85 70 L60 70 Z" fill="#F7931E" />
+            <circle cx="30" cy="75" r="6" fill="white" />
+            <circle cx="70" cy="75" r="6" fill="white" />
+          </motion.g>
         )}
 
-        {/* Step 5: Cash - DT success */}
+        {/* Step 5: Trésorerie - Cash Success */}
         {type === 'cash' && (
           <g>
-            <circle cx="50" cy="50" r="38" stroke="white" strokeWidth="2" strokeDasharray="6 4" strokeOpacity="0.2" />
-            <text x="50" y="57" textAnchor="middle" fill="#F7931E" fontSize="22" fontWeight="900" fontFamily="sans-serif">DT</text>
+            <circle cx="50" cy="50" r="40" stroke="#F7931E" strokeWidth="2" strokeDasharray="8 6" opacity="0.3" />
+            <text x="50" y="58" textAnchor="middle" fill="#F7931E" fontSize="24" fontWeight="900">DT</text>
             <motion.path 
-              d="M70 30 L75 38 L85 25" 
-              stroke="#27C93F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none"
+              d="M75 25 L82 35 L95 15" 
+              stroke="#27C93F" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"
               initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
+              animate={{ scale: 1.2 }}
               transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
             />
           </g>
@@ -217,6 +216,7 @@ export default function HomePage() {
             <a href="#preparation" className="font-bold text-sm text-white/80 hover:text-[#F7931E] transition-colors uppercase tracking-wider">{t('n0')}</a>
             <a href="#services" className="font-bold text-sm text-white/80 hover:text-[#F7931E] transition-colors uppercase tracking-wider">{t('n1')}</a>
             <a href="#dashboard" className="font-bold text-sm text-white/80 hover:text-[#F7931E] transition-colors uppercase tracking-wider">Dashboard</a>
+            <a href="#coverage" className="font-bold text-sm text-white/80 hover:text-[#F7931E] transition-colors uppercase tracking-wider">{t('n6')}</a>
             <a href="#faq" className="font-bold text-sm text-white/80 hover:text-[#F7931E] transition-colors uppercase tracking-wider">{t('n3')}</a>
           </nav>
 
@@ -337,6 +337,48 @@ export default function HomePage() {
 
       {/* Services Section */}
       <BentoServices />
+
+      {/* Coverage Map Section */}
+      <section id="coverage" className="py-24 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-12">
+              <div className="space-y-4">
+                <span className="text-[#F7931E] font-black text-xs uppercase tracking-[0.2em]">{t('cve')}</span>
+                <h2 className="text-4xl md:text-6xl font-black text-[#0B2A6B] tracking-tight leading-none">
+                  {t('cvt')}
+                </h2>
+                <p className="text-lg text-slate-500 font-medium">
+                  {t('cvs')}
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                {[
+                  { id: 'z1', title: t('z1t'), desc: t('z1d'), label: t('z1') },
+                  { id: 'z2', title: t('z2t'), desc: t('z2d'), label: t('z2') },
+                  { id: 'z3', title: t('z3t'), desc: t('z3d'), label: t('z3') }
+                ].map((zone, idx) => (
+                  <div key={idx} className="flex items-start gap-6 group">
+                    <div className="w-14 h-14 rounded-2xl bg-[#0B2A6B]/5 flex items-center justify-center text-[#0B2A6B] shrink-0 font-black text-xl group-hover:bg-[#F7931E] group-hover:text-white transition-all">
+                      {idx + 1}
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-black uppercase text-[#F7931E] tracking-widest mb-1">{zone.label}</p>
+                      <h4 className="text-xl font-bold text-[#0B2A6B] mb-2">{zone.title}</h4>
+                      <p className="text-slate-500 text-sm">{zone.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="min-w-0">
+              <TunisiaMap />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* FAQ Section */}
       <FAQ />
