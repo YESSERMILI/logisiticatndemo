@@ -25,9 +25,9 @@ import { DashboardShowcase } from "@/components/home/dashboard-showcase";
 import { BentoServices } from "@/components/home/services-bento";
 import { FAQ } from "@/components/home/faq";
 
-// scrolling ticker component
+// Scrolling ticker component - Optimized Size and Span
 const ScrollingTicker = () => {
-  const { t, language } = useTranslation();
+  const { language } = useTranslation();
   const items = [
     "LOGISTICA TUNISIE",
     "COD & REVERSEMENT",
@@ -40,18 +40,20 @@ const ScrollingTicker = () => {
   ];
 
   return (
-    <div className="bg-[#F7931E] py-4 md:py-6 overflow-hidden border-y border-black/10 -rotate-2 w-[120%] -translate-x-[10%] relative z-20 shadow-2xl">
-      <div className="flex whitespace-nowrap animate-marquee">
-        {[...Array(4)].map((_, i) => (
-          <div key={i} className="flex items-center">
-            {items.map((item, j) => (
-              <span key={j} className="flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-xl tracking-[0.2em] mx-10">
-                {item}
-                <span className="ms-10 text-[#0B2A6B]/40">✦</span>
-              </span>
-            ))}
-          </div>
-        ))}
+    <div className="relative z-20 h-12 md:h-16 flex items-center overflow-hidden">
+      <div className="bg-[#F7931E] py-2 md:py-3 border-y border-black/5 -rotate-1 w-[140%] -translate-x-[20%] shadow-xl">
+        <div className="flex whitespace-nowrap animate-marquee">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="flex items-center">
+              {items.map((item, j) => (
+                <span key={j} className="flex items-center text-[#0B2A6B] font-black uppercase text-[10px] md:text-sm tracking-[0.15em] mx-6 md:mx-10">
+                  {item}
+                  <span className="ms-6 md:ms-10 text-[#0B2A6B]/30 text-xs">✦</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -61,73 +63,74 @@ const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'deliver
   return (
     <div className="relative w-full h-full flex items-center justify-center p-6">
       <svg viewBox="0 0 160 120" className="w-full h-full overflow-visible">
-        {/* Step 1: Order - Simple Notification UI */}
+        {/* Step 1: Order */}
         {type === 'order' && (
           <g>
-            <rect x="20" y="20" width="120" height="80" rx="8" fill="#081E4E" stroke="#1F6FDB" strokeWidth="2" />
-            <rect x="20" y="20" width="120" height="12" rx="8" fill="#1F6FDB" />
-            <rect x="35" y="45" width="90" height="6" rx="2" fill="#1F6FDB" opacity="0.3" />
-            <rect x="35" y="58" width="60" height="6" rx="2" fill="#1F6FDB" opacity="0.3" />
+            <rect x="30" y="30" width="100" height="70" rx="6" fill="#081E4E" stroke="#1F6FDB" strokeWidth="2" />
+            <rect x="30" y="30" width="100" height="12" rx="6" fill="#1F6FDB" />
+            <circle cx="40" cy="36" r="2" fill="#F7931E" />
             <motion.rect 
-              x="30" y="75" width="100" height="20" rx="4" fill="#F7931E"
-              animate={{ opacity: [0.7, 1, 0.7] }}
+              x="45" y="55" width="70" height="25" rx="4" fill="#F7931E"
+              animate={{ opacity: [0.6, 1, 0.6] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
-            <text x="80" y="85" textAnchor="middle" fill="#0B2A6B" fontSize="8" fontWeight="900" dominantBaseline="middle">NEW ORDER</text>
+            <text x="80" y="68" textAnchor="middle" fill="#0B2A6B" fontSize="7" fontWeight="900" dominantBaseline="middle">NEW ORDER</text>
           </g>
         )}
 
-        {/* Step 2: Storage - Warehouse Shelves */}
+        {/* Step 2: Storage */}
         {type === 'storage' && (
           <g>
-            <path d="M30 20 V100 M80 20 V100 M130 20 V100" stroke="#1F6FDB" strokeWidth="2" opacity="0.5" />
-            <path d="M30 40 H130 M30 70 H130 M30 100 H130" stroke="#1F6FDB" strokeWidth="2" opacity="0.5" />
-            <motion.rect x="35" y="25" width="40" height="12" rx="2" fill="#F7931E" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }} />
-            <motion.rect x="85" y="25" width="40" height="12" rx="2" fill="#0B2A6B" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.4 }} />
-            <motion.rect x="35" y="55" width="40" height="12" rx="2" fill="#0B2A6B" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.6 }} />
-            <motion.rect x="85" y="55" width="40" height="12" rx="2" fill="#F7931E" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.8 }} />
+            <rect x="25" y="20" width="110" height="80" rx="2" fill="none" stroke="#1F6FDB" strokeWidth="1" strokeDasharray="4 2" opacity="0.3" />
+            <path d="M25 50 H135 M25 80 H135" stroke="#1F6FDB" strokeWidth="1.5" />
+            <motion.rect x="35" y="30" width="30" height="15" rx="2" fill="#F7931E" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }} />
+            <motion.rect x="95" y="30" width="30" height="15" rx="2" fill="#0B2A6B" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.4 }} stroke="#1F6FDB" />
+            <motion.rect x="65" y="60" width="30" height="15" rx="2" fill="#F7931E" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.6 }} />
           </g>
         )}
 
-        {/* Step 3: Prep - Packing Box */}
+        {/* Step 3: Prep */}
         {type === 'prep' && (
           <g>
-            <motion.g animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 3 }}>
-              <rect x="40" y="40" width="80" height="60" rx="2" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="2" />
-              <path d="M40 40 L80 60 L120 40" fill="none" stroke="#1F6FDB" strokeWidth="2" />
-              <rect x="65" y="30" width="30" height="40" rx="1" fill="#F7931E" opacity="0.8" />
-              <path d="M75 80 L85 80 L80 90 Z" fill="#F7931E" />
+            <motion.g animate={{ y: [0, -3, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}>
+              <rect x="40" y="45" width="80" height="55" rx="2" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="2" />
+              <path d="M40 45 L80 65 L120 45" fill="none" stroke="#1F6FDB" strokeWidth="2" />
+              <rect x="65" y="35" width="30" height="45" rx="1" fill="#F7931E" opacity="0.9" />
+              <circle cx="80" cy="58" r="8" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="1" />
+              <text x="80" y="58" textAnchor="middle" fill="#F7931E" fontSize="5" fontWeight="900" dominantBaseline="middle">LOG</text>
             </motion.g>
           </g>
         )}
 
-        {/* Step 4: Delivery - Simple Route */}
+        {/* Step 4: Delivery */}
         {type === 'delivery' && (
           <g>
-            <path d="M20 100 Q 80 20 140 100" fill="none" stroke="#1F6FDB" strokeWidth="2" strokeDasharray="4 4" />
+            <path d="M20 90 Q 80 10 140 90" fill="none" stroke="#1F6FDB" strokeWidth="2" strokeDasharray="5 5" opacity="0.4" />
             <motion.g
-              style={{ offsetPath: "path('M20 100 Q 80 20 140 100')" }}
+              style={{ offsetPath: "path('M20 90 Q 80 10 140 90')" }}
               animate={{ offsetDistance: "100%" }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
             >
-              <Truck size={24} className="text-[#F7931E]" transform="translate(-12, -12)" />
+              <Truck size={20} className="text-[#F7931E]" transform="translate(-10, -10)" />
             </motion.g>
-            <MapPin x="130" y="80" size={24} className="text-[#F7931E]" />
+            <MapPin x="130" y="75" size={20} className="text-[#F7931E]" />
           </g>
         )}
 
-        {/* Step 5: Cash - Successful Payment */}
+        {/* Step 5: Cash */}
         {type === 'cash' && (
           <g>
-            <rect x="50" y="20" width="60" height="100" rx="8" fill="#081E4E" stroke="#1F6FDB" strokeWidth="2" />
-            <circle cx="80" cy="50" r="15" fill="#F7931E" />
-            <text x="80" y="54" textAnchor="middle" fill="#0B2A6B" fontSize="10" fontWeight="bold">DT</text>
+            <circle cx="80" cy="60" r="35" fill="none" stroke="#F7931E" strokeWidth="2" strokeDasharray="8 4" />
+            <motion.circle 
+              cx="80" cy="60" r="25" fill="#F7931E"
+              animate={{ scale: [0.9, 1.05, 0.9] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            />
+            <text x="80" y="63" textAnchor="middle" fill="#0B2A6B" fontSize="12" fontWeight="900" dominantBaseline="middle">DT</text>
             <motion.path 
-              d="M70 85 L78 95 L95 75" 
-              fill="none" stroke="#27C93F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1, repeat: Infinity, repeatDelay: 1 }}
+              d="M105 40 L120 25" 
+              stroke="#27C93F" strokeWidth="3" strokeLinecap="round"
+              initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ repeat: Infinity, duration: 1.5 }}
             />
           </g>
         )}
@@ -200,12 +203,12 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-12 min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative pt-40 pb-12 min-h-[85vh] flex items-center overflow-visible">
         <div className="absolute top-1/4 left-0 text-[12vw] font-black text-white/5 select-none pointer-events-none tracking-tighter leading-none whitespace-nowrap uppercase">
           Logistica Tunisie
         </div>
         
-        <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+        <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
           <motion.div 
             initial={{ opacity: 0, x: language === 'ar' ? 40 : -40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -257,7 +260,7 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          <div className="relative min-w-0">
+          <div className="relative min-w-0 flex items-center justify-center">
             <HeroLogisticsHub />
           </div>
         </div>
@@ -403,4 +406,3 @@ export default function HomePage() {
     </div>
   );
 }
-
