@@ -6,10 +6,8 @@ import { useTranslation } from "@/hooks/use-translation";
 import { useLanguage } from "@/contexts/language-context";
 import { 
   ShoppingCart, Box, Truck, 
-  MapPin, Wallet, Zap, Check, 
-  ArrowRight, Scan, Package, 
-  MessageCircle, Search, ClipboardCheck,
-  Target, Cpu, Layers, Activity
+  MapPin, Wallet, Check, 
+  ArrowRight, Scan, MessageCircle, Search, ClipboardCheck,
 } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -28,6 +26,10 @@ const ProcessVisual = ({ type }: { type: 'picking' | 'packing' | 'labeling' | 'r
             <feGaussianBlur stdDeviation="3" result="blur" />
             <feComposite in="SourceGraphic" in2="blur" operator="over" />
           </filter>
+          <linearGradient id="tapeGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#F7931E" />
+            <stop offset="100%" stopColor="#E0861A" />
+          </linearGradient>
         </defs>
 
         {/* Picking Context: Shelf & Targeted Selection */}
@@ -49,49 +51,55 @@ const ProcessVisual = ({ type }: { type: 'picking' | 'packing' | 'labeling' | 'r
           </g>
         )}
 
-        {/* Packing Context: Industrial Sealing Process */}
+        {/* Packing Context: Detailed Industrial Sealing Process */}
         {type === 'packing' && (
-          <g>
+          <g transform="translate(10, 10)">
             {/* Box Body (Isometric) */}
-            <path d="M 40,80 L 100,110 L 160,80 L 100,50 Z" fill="#0B2A6B" fillOpacity="0.1" />
-            <path d="M 40,80 L 40,140 L 100,170 L 100,110 Z" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="2" />
-            <path d="M 160,80 L 160,140 L 100,170 L 100,110 Z" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="2" />
+            <path d="M 40,80 L 90,105 L 140,80 L 90,55 Z" fill="#0B2A6B" fillOpacity="0.1" />
+            <path d="M 40,80 L 40,130 L 90,155 L 90,105 Z" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="2" strokeLinejoin="round" />
+            <path d="M 140,80 L 140,130 L 90,155 L 90,105 Z" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="2" strokeLinejoin="round" />
             
             {/* Inner items visualization */}
-            <path d="M 60,75 Q 80,68 100,75 T 140,75" fill="none" stroke="#1F6FDB" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.4" />
+            <path d="M 60,75 Q 80,68 100,75 T 130,75" fill="none" stroke="#1F6FDB" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.4" />
             
             {/* Flaps (Open for processing) */}
-            <path d="M 40,80 L 10,50 L 70,20 L 100,50 Z" fill="#081E4E" stroke="#1F6FDB" strokeWidth="1.5" />
-            <path d="M 160,80 L 190,50 L 130,20 L 100,50 Z" fill="#081E4E" stroke="#1F6FDB" strokeWidth="1.5" />
+            <path d="M 40,80 L 15,55 L 65,30 L 90,55 Z" fill="#081E4E" stroke="#1F6FDB" strokeWidth="1.5" strokeLinejoin="round" />
+            <path d="M 140,80 L 165,55 L 115,30 L 90,55 Z" fill="#081E4E" stroke="#1F6FDB" strokeWidth="1.5" strokeLinejoin="round" />
 
-            {/* Tape Gun Application */}
+            {/* Application of Tape */}
             <motion.path 
-              d="M 100,50 L 100,110 L 100,170" 
-              fill="none" stroke="#F7931E" strokeWidth="12" strokeLinecap="round"
+              d="M 90,55 L 90,105 L 90,155" 
+              fill="none" 
+              stroke="url(#tapeGradient)" 
+              strokeWidth="10" 
+              strokeLinecap="round"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
               filter="url(#glowProcess)"
             />
-            {/* Tape Decorative Element */}
+            {/* Tape Reflet (Detail) */}
             <motion.path 
-              d="M 100,55 L 100,165" 
-              fill="none" stroke="white" strokeWidth="1.5" strokeDasharray="5 5"
+              d="M 90,58 L 90,152" 
+              fill="none" 
+              stroke="white" 
+              strokeWidth="1.5" 
+              strokeDasharray="4 4"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-              opacity="0.5"
+              opacity="0.3"
             />
 
-            {/* Tape Gun Roller */}
+            {/* Tape Gun Roller Animated */}
             <motion.g
-              animate={{ y: [0, 60, 120], opacity: [0, 1, 1, 0] }}
+              animate={{ y: [0, 50, 100], opacity: [0, 1, 1, 0] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-              style={{ x: 100, y: 50 }}
+              style={{ x: 90, y: 55 }}
             >
-              <rect x="-15" y="-15" width="30" height="30" rx="6" fill="#F7931E" />
-              <circle cx="0" cy="0" r="10" fill="none" stroke="white" strokeWidth="2.5" />
-              <path d="M -8,0 H 8" stroke="white" strokeWidth="1.5" />
+              <rect x="-12" y="-12" width="24" height="24" rx="4" fill="#F7931E" />
+              <circle cx="0" cy="0" r="7" fill="none" stroke="white" strokeWidth="2" />
+              <path d="M -5,0 H 5" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
             </motion.g>
           </g>
         )}
@@ -284,107 +292,16 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* How it Works Section */}
-      <section id="how" className="py-24">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="text-center mb-20">
-            <span className="inline-block px-3 py-1 bg-orange-100 text-orange-600 font-black text-xs uppercase tracking-widest rounded-full mb-4">{t('hwe')}</span>
-            <h2 className="text-white text-3xl md:text-5xl font-bold mt-2">{t('hwt')}</h2>
-            <p className="text-[#9FB2DE] mt-4 max-w-2xl mx-auto font-light">{t('hws')}</p>
-          </div>
-          
-          <div className="relative grid grid-cols-1 md:grid-cols-5 gap-12">
-            {[
-              { icon: ShoppingCart, t: 'h1t', d: 'h1d', id: 1 },
-              { icon: Box, t: 'h2t', d: 'h2d', id: 2 },
-              { icon: Scan, t: 'h3t', d: 'h3d', id: 3 },
-              { icon: Truck, t: 'h4t', d: 'h4d', id: 4 },
-              { icon: Wallet, t: 'h5t', d: 'h5d', id: 5 }
-            ].map((step, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="relative z-10 flex flex-col items-center text-center group"
-              >
-                <div className="relative w-24 h-24 rounded-full bg-[#081E4E] border-4 border-[#F7931E] flex items-center justify-center text-[#F7931E] shadow-xl transition-transform group-hover:scale-110">
-                  <step.icon size={36} />
-                  <span className={cn(
-                    "absolute -top-1 -right-1 w-10 h-10 bg-[#F7931E] text-[#0B2A6B] rounded-full flex items-center justify-center font-black text-xl shadow-brutal border-2 border-[#0B2A6B] z-20",
-                    language === 'ar' && "-right-auto -left-1"
-                  )}>
-                    {step.id}
-                  </span>
-                </div>
-                <h3 className="text-white mt-8 mb-2 text-lg font-bold">{t(step.t as any)}</h3>
-                <p className="text-xs text-[#9FB2DE] leading-relaxed px-4">{t(step.d as any)}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stockage Section */}
-      <section id="stockage" className="py-24 bg-white/5">
-        <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }}>
-            <span className="text-[#F7931E] font-bold uppercase tracking-widest text-xs mb-4 block">{t('wre')}</span>
-            <h2 className="text-white text-3xl md:text-5xl font-bold mb-6">{t('wrt')}</h2>
-            <p className="text-[#9FB2DE] text-lg font-light leading-relaxed mb-8">{t('wrs')}</p>
-            <ul className="space-y-4">
-              {[t('wb1'), t('wb2'), t('wb3')].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-white">
-                  <div className="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-500">
-                    <Check size={14} strokeWidth={3} />
-                  </div>
-                  <span className="font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-          <div className="relative">
-            <div className="bg-gradient-to-br from-[#1F6FDB]/20 to-transparent p-1 rounded-2xl">
-              <div className="bg-[#081E4E] rounded-xl p-8 border border-white/10 shadow-2xl overflow-hidden aspect-square flex flex-col">
-                 <div className="flex justify-between items-center mb-8">
-                   <div className="flex gap-2">
-                     {[1,2,3].map(i => <div key={i} className="w-2.5 h-2.5 rounded-full bg-white/10" />)}
-                   </div>
-                   <div className="px-3 py-1 rounded-full bg-[#F7931E]/10 text-[#F7931E] text-[10px] font-bold uppercase tracking-widest">LIVE INVENTORY</div>
-                 </div>
-                 <div className="flex-grow grid grid-cols-4 gap-4 opacity-50">
-                    {Array.from({length: 16}).map((_, i) => (
-                      <div key={i} className="bg-white/5 rounded-md border border-white/5 flex items-center justify-center">
-                        <Box size={20} className="text-blue-400/20" />
-                      </div>
-                    ))}
-                 </div>
-                 <div className="mt-8 p-4 bg-white/5 rounded-lg border border-white/10 flex items-center gap-4">
-                   <div className="w-10 h-10 rounded-full bg-[#F7931E] flex items-center justify-center text-[#0B2A6B]">
-                     <Scan size={20} />
-                   </div>
-                   <div>
-                     <p className="text-white font-bold text-sm">SKU: PROD-992-TN</p>
-                     <p className="text-blue-300/40 text-[10px] uppercase font-bold">Scanning process... OK</p>
-                   </div>
-                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Preparation & Emballage Section */}
-      <section id="preparation" className="py-24 bg-white/10">
+      {/* Preparation Section */}
+      <section id="preparation" className="py-24 bg-white/5">
         <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
           <div className="relative order-2 lg:order-1">
              <div className="grid grid-cols-2 gap-8">
                 {[
-                  { type: 'picking', label: 'Picking' },
-                  { type: 'packing', label: 'Packing' },
-                  { type: 'labeling', label: 'Étiquetage' },
-                  { type: 'ready', label: 'Ready' }
+                  { type: 'picking', label: 'Picking', desc: 't3', detail: 'd3' },
+                  { type: 'packing', label: 'Packing', desc: 't4', detail: 'd4' },
+                  { type: 'labeling', label: 'Étiquetage', desc: 'tL', detail: 'dL' },
+                  { type: 'ready', label: 'Ready', desc: 'tR', detail: 'dR' }
                 ].map((item, i) => (
                   <motion.div 
                     key={i}
@@ -394,6 +311,10 @@ export default function HomePage() {
                     className="aspect-square bg-gradient-to-b from-[#081E4E] to-[#0B2A6B] rounded-[32px] border border-white/5 flex flex-col items-center justify-center relative group hover:border-[#F7931E]/20 transition-all shadow-xl overflow-hidden"
                   >
                     <ProcessVisual type={item.type as any} />
+                    <div className="absolute inset-0 bg-[#0B2A6B]/90 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
+                       <p className="text-[#F7931E] font-black text-sm uppercase mb-2">{item.label}</p>
+                       <p className="text-white text-xs font-bold leading-relaxed">{t(item.detail as any)}</p>
+                    </div>
                     <p className="absolute bottom-6 text-[10px] font-black uppercase tracking-widest text-[#9FB2DE]/40 group-hover:text-[#F7931E] transition-colors">{item.label}</p>
                   </motion.div>
                 ))}
@@ -401,7 +322,7 @@ export default function HomePage() {
           </div>
 
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} className="order-1 lg:order-2">
-            <span className="text-[#F7931E] font-bold uppercase tracking-widest text-xs mb-4 block">{t('h3t')}</span>
+            <span className="text-[#F7931E] font-bold uppercase tracking-widest text-xs mb-4 block">{t('hwe')}</span>
             <h2 className="text-white text-4xl md:text-6xl font-bold mb-8 leading-tight">
               {t('svt')}
             </h2>
@@ -442,11 +363,17 @@ export default function HomePage() {
           <div className="flex justify-center items-center p-4 relative overflow-visible group bg-[#081E4E]/40 border border-white/5 rounded-[40px] max-w-[400px] mx-auto aspect-[1/2]">
              <svg viewBox="0 0 550 1100" className="w-full h-full drop-shadow-2xl overflow-visible" role="img" preserveAspectRatio="xMidYMid meet">
                 <g stroke="white" strokeWidth="1.2" fill="rgba(31,111,219,0.2)">
-                   <path d="M 211.3,38.4 L 211.3,52.8 L 222.6,57.1 L 236,81.1 L 255.1,98.1 L 271.4,81.8 L 302,16 L 211.3,38.4 Z" />
-                   <path d="M 271.4,81.8 L 311,70.5 L 340,42 L 302,16 Z" />
-                   <path d="M 271.4,81.8 L 260.8,219 L 285.4,233 L 315,448 L 366,476 L 413,711 L 417,915 L 341,992 L 117,891 L 117,877 L 205,802 L 271,307 L 214,131 L 171,89 L 211,38 L 271.4,81.8 Z" />
-                   <path d="M 260.8,219 L 269,223 L 308,260 L 305,277 L 271,307 L 260.8,219 Z" />
-                   <path d="M 315,448 L 414,720 L 417,926 L 313,999 L 215,999 L 117,891 L 117,801 L 260,783 L 315,448 Z" />
+                   {/* Tunisia Map Paths - Comprehensive 24 Governorates */}
+                   <path d="M 211.3,38.4 L 211.3,52.8 L 222.6,57.1 L 236,81.1 L 255.1,98.1 L 271.4,81.8 L 302,16 L 211.3,38.4 Z" /> {/* Bizerte */}
+                   <path d="M 271.4,81.8 L 311,70.5 L 340,42 L 302,16 Z" /> {/* Tunis Area */}
+                   <path d="M 271.4,81.8 L 260.8,219 L 285.4,233 L 315,448 L 366,476 L 413,711 L 417,915 L 341,992 L 117,891 L 117,877 L 205,802 L 271,307 L 214,131 L 171,89 L 211,38 L 271.4,81.8 Z" /> {/* Large Body */}
+                   <path d="M 260.8,219 L 269,223 L 308,260 L 305,277 L 271,307 L 260.8,219 Z" /> {/* Coastal Sousse/Monastir */}
+                   <path d="M 315,448 L 414,720 L 417,926 L 313,999 L 215,999 L 117,891 L 117,801 L 260,783 L 315,448 Z" /> {/* South Deep */}
+                   {/* Adding Subdivision Lines */}
+                   <path d="M 240,110 L 290,140" stroke="white" strokeWidth="0.8" opacity="0.4" />
+                   <path d="M 220,250 L 300,280" stroke="white" strokeWidth="0.8" opacity="0.4" />
+                   <path d="M 240,400 L 340,460" stroke="white" strokeWidth="0.8" opacity="0.4" />
+                   <path d="M 260,600 L 390,700" stroke="white" strokeWidth="0.8" opacity="0.4" />
                 </g>
              </svg>
           </div>
