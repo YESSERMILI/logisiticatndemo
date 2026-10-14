@@ -21,8 +21,6 @@ import { FAQ } from "@/components/home/faq";
 
 // Scrolling ticker component - Fixed for perfect infinite loop
 const ScrollingTicker = () => {
-  const { language } = useLanguage();
-  
   const items = [
     { text: "LOGISTICA TUNISIE", lang: "fr" },
     { text: "✦", isSep: true },
@@ -44,38 +42,40 @@ const ScrollingTicker = () => {
     { text: "✦", isSep: true },
   ];
 
-  // Double content for seamless loop
-  const tickerArray = [...items, ...items];
-
   return (
-    <div className="relative z-20 h-20 md:h-24 flex items-center overflow-hidden bg-[#0B2A6B]">
-      <div className="absolute left-[-20vw] right-[-20vw] bg-[#F7931E] py-4 md:py-6 -rotate-1 shadow-2xl border-y border-white/10 flex items-center">
+    <div className="relative z-20 h-16 md:h-20 flex items-center overflow-hidden bg-[#0B2A6B]">
+      <div className="absolute left-[-100vw] w-[300vw] bg-[#F7931E] py-3 md:py-4 -rotate-1 shadow-2xl border-y border-white/10 flex items-center">
         <div dir="ltr" className="flex whitespace-nowrap animate-ticker-forever">
-          {tickerArray.map((item, i) => (
-            <span 
-              key={i} 
-              className={cn(
-                "inline-flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-xl tracking-tighter px-8",
-                item.lang === "ar" ? "font-arabic" : "font-sans",
-                item.isSep ? "text-[#0B2A6B]/20" : ""
-              )}
-            >
-              {item.text}
-            </span>
-          ))}
-          {/* Exactly repeated set for seamless transition */}
-          {tickerArray.map((item, i) => (
-            <span 
-              key={`dup-${i}`} 
-              className={cn(
-                "inline-flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-xl tracking-tighter px-8",
-                item.lang === "ar" ? "font-arabic" : "font-sans",
-                item.isSep ? "text-[#0B2A6B]/20" : ""
-              )}
-            >
-              {item.text}
-            </span>
-          ))}
+          {/* First set */}
+          <div className="flex items-center">
+            {items.map((item, i) => (
+              <span 
+                key={`set1-${i}`} 
+                className={cn(
+                  "inline-flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-xl tracking-tighter px-8 md:px-12",
+                  item.lang === "ar" ? "font-arabic" : "font-sans",
+                  item.isSep ? "opacity-20" : ""
+                )}
+              >
+                {item.text}
+              </span>
+            ))}
+          </div>
+          {/* Second set (Identical copy for seamless transition) */}
+          <div className="flex items-center">
+            {items.map((item, i) => (
+              <span 
+                key={`set2-${i}`} 
+                className={cn(
+                  "inline-flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-xl tracking-tighter px-8 md:px-12",
+                  item.lang === "ar" ? "font-arabic" : "font-sans",
+                  item.isSep ? "opacity-20" : ""
+                )}
+              >
+                {item.text}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
       <style dangerouslySetInnerHTML={{ __html: `
@@ -84,7 +84,7 @@ const ScrollingTicker = () => {
           100% { transform: translateX(-50%); }
         }
         .animate-ticker-forever {
-          animation: ticker-forever 120s linear infinite;
+          animation: ticker-forever 80s linear infinite;
         }
       `}} />
     </div>
@@ -243,7 +243,9 @@ export default function HomePage() {
             <Button variant="secondary" size="sm" className="hidden sm:flex bg-[#F7931E] text-[#0B2A6B] font-bold shadow-lg hover:bg-[#E0861A] border-none rounded-sm px-6" asChild>
               <Link href="https://wa.me/21699201552">{t('n4')}</Link>
             </Button>
-            <button className="lg:hidden text-white text-2xl" onClick={() => setMobileMenu(!mobileMenu)}>☰</button>
+            <button className="lg:hidden text-white text-2xl" onClick={() => setMobileMenu(!mobileMenu)}>
+              ☰
+            </button>
           </div>
         </div>
       </header>
