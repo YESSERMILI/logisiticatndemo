@@ -55,7 +55,6 @@ const KPICard = ({ title, value, trend, trendDir = 'up', icon: Icon, colorClass,
     whileHover={{ scale: 1.02, translateY: -5 }}
     className="relative group"
   >
-    <div className="absolute inset-0 bg-blue-500/5 blur-xl group-hover:bg-blue-500/10 transition-all rounded-[28px]" />
     <Card className="border-white/5 bg-[#0B2A6B]/40 backdrop-blur-xl relative overflow-hidden rounded-[24px] shadow-2xl">
       <CardContent className="p-6">
         <div className="flex justify-between items-start">
@@ -81,15 +80,15 @@ const KPICard = ({ title, value, trend, trendDir = 'up', icon: Icon, colorClass,
 
 export default function DashboardPage() {
   return (
-    <div className="space-y-8 pb-16 animate-in fade-in duration-1000">
+    <div className="space-y-10 pb-16 animate-in fade-in duration-1000">
       {/* Top Welcome Bar */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-blue-500/5 p-8 rounded-[32px] border border-white/5 backdrop-blur-sm">
         <div className="space-y-1">
           <div className="flex items-center gap-3">
              <span className="text-3xl">👋</span>
-             <h1 className="text-4xl font-black text-white tracking-tight">Bonjour, Ahmed</h1>
+             <h1 className="text-3xl font-black text-white tracking-tight">Bonjour, Ahmed</h1>
           </div>
-          <p className="text-slate-400 font-bold text-sm tracking-wide uppercase text-[10px] flex items-center gap-2">
+          <p className="text-slate-500 font-bold text-sm tracking-wide uppercase text-[10px] flex items-center gap-2">
             <Activity size={12} className="text-[#F7931E]" />
             HUB TUNIS SUD • SYSTEM ONLINE • v4.8.2
           </p>
@@ -107,7 +106,7 @@ export default function DashboardPage() {
       </div>
 
       {/* KPI Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <KPICard 
           title="Commandes" 
           value="1,248" 
@@ -143,10 +142,10 @@ export default function DashboardPage() {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         {/* Analytics Card */}
-        <Card className="lg:col-span-2 border-white/5 bg-[#0B2A6B]/30 backdrop-blur-xl shadow-2xl rounded-[32px] overflow-hidden">
-          <CardHeader className="flex flex-row items-center justify-between p-8 pb-4">
+        <Card className="lg:col-span-2 border-white/5 bg-[#0B2A6B]/30 backdrop-blur-xl shadow-2xl rounded-[40px] overflow-hidden">
+          <CardHeader className="flex flex-row items-center justify-between p-10 pb-4">
             <div>
               <CardTitle className="text-xl font-black text-white">Performance Opérationnelle</CardTitle>
               <CardDescription className="text-slate-500 font-medium text-xs">Analyse comparative des flux d'entrées et de sorties.</CardDescription>
@@ -162,7 +161,7 @@ export default function DashboardPage() {
                </div>
             </div>
           </CardHeader>
-          <CardContent className="h-[360px] p-8 pt-4">
+          <CardContent className="h-[400px] p-10 pt-4">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={chartData}>
                 <defs>
@@ -208,14 +207,14 @@ export default function DashboardPage() {
         </Card>
 
         {/* WMS Control Card */}
-        <div className="space-y-6">
-           <Card className="border-none shadow-2xl bg-gradient-to-br from-[#1F6FDB] to-[#0B2A6B] text-white rounded-[32px] overflow-hidden relative group">
+        <div className="flex flex-col gap-10">
+           <Card className="border-none shadow-2xl bg-gradient-to-br from-[#1F6FDB] to-[#0B2A6B] text-white rounded-[40px] overflow-hidden relative group flex-1">
               <div className="absolute top-0 right-0 p-8 opacity-10 transition-transform group-hover:scale-110 duration-700">
                 <Box size={100} strokeWidth={1} />
               </div>
               <CardHeader className="p-8 pb-4">
                 <CardTitle className="text-lg font-black tracking-tight uppercase">Capacité WMS</CardTitle>
-                <p className="text-white/40 text-[9px] font-bold uppercase tracking-[0.2em]">Occupation Temps Réel</p>
+                <p className="text-white/40 text-[9px] font-bold uppercase tracking-[0.2em]">Occupation Hub Tunis</p>
               </CardHeader>
               <CardContent className="p-8 pt-4">
                  <div className="flex items-end justify-between mb-4">
@@ -231,11 +230,11 @@ export default function DashboardPage() {
                     />
                  </div>
                  <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm">
+                    <div className="p-5 rounded-3xl bg-white/5 border border-white/5 backdrop-blur-sm">
                        <p className="text-[8px] font-black text-white/40 uppercase mb-1 tracking-widest">Emplacements</p>
                        <p className="text-xl font-black">3,200</p>
                     </div>
-                    <div className="p-4 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm">
+                    <div className="p-5 rounded-3xl bg-white/5 border border-white/5 backdrop-blur-sm">
                        <p className="text-[8px] font-black text-white/40 uppercase mb-1 tracking-widest">SKUs Actifs</p>
                        <p className="text-xl font-black">1,450</p>
                     </div>
@@ -243,19 +242,18 @@ export default function DashboardPage() {
               </CardContent>
            </Card>
 
-           <Card className="border-white/5 bg-[#0B2A6B]/40 backdrop-blur-xl rounded-[32px] overflow-hidden">
-              <CardHeader className="p-6 pb-2 flex flex-row items-center justify-between">
-                 <CardTitle className="text-sm font-black text-white uppercase tracking-widest">Équipe Active</CardTitle>
+           <Card className="border-white/5 bg-[#0B2A6B]/40 backdrop-blur-xl rounded-[40px] overflow-hidden">
+              <CardHeader className="p-8 pb-2 flex flex-row items-center justify-between">
+                 <CardTitle className="text-xs font-black text-white uppercase tracking-widest">Équipe Active</CardTitle>
                  <div className="flex items-center gap-1.5 text-[9px] font-black text-emerald-400 uppercase">
                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                    LIVE
                  </div>
               </CardHeader>
-              <CardContent className="p-6 pt-2 space-y-4">
+              <CardContent className="p-8 pt-2 space-y-4">
                  {[
                    { name: 'Sami Ben Ali', role: 'PICKING', status: 'En cours', img: 'https://picsum.photos/seed/sami/100' },
                    { name: 'Faten Riahi', role: 'RECEPTION', status: 'Pause', img: 'https://picsum.photos/seed/faten/100' },
-                   { name: 'Zied Kraiem', role: 'DISPATCH', status: 'En cours', img: 'https://picsum.photos/seed/zied/100' },
                  ].map((user, i) => (
                    <div key={i} className="flex items-center gap-4 p-3 rounded-2xl bg-white/5 border border-transparent hover:border-white/10 transition-all cursor-pointer group">
                       <div className="h-10 w-10 rounded-xl overflow-hidden border border-white/10 group-hover:scale-105 transition-transform">
@@ -266,7 +264,7 @@ export default function DashboardPage() {
                         <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">{user.role}</p>
                       </div>
                       <div className={cn(
-                        "w-1.5 h-1.5 rounded-full shadow-[0_0_8px_rgba(52,211,153,0.5)]",
+                        "w-1.5 h-1.5 rounded-full",
                         user.status === 'En cours' ? 'bg-emerald-400' : 'bg-slate-700'
                       )} />
                    </div>
@@ -277,13 +275,13 @@ export default function DashboardPage() {
       </div>
 
       {/* Operational Pipeline Flow */}
-      <Card className="border-white/5 bg-[#0B2A6B]/20 backdrop-blur-xl rounded-[40px] overflow-hidden shadow-2xl">
-        <CardHeader className="p-10 pb-4 text-center">
+      <Card className="border-white/5 bg-[#0B2A6B]/20 backdrop-blur-xl rounded-[48px] overflow-hidden shadow-2xl">
+        <CardHeader className="p-12 pb-6 text-center">
           <CardTitle className="text-2xl font-black text-white uppercase tracking-tighter">Pipeline Opérationnel Journalier</CardTitle>
-          <CardDescription className="text-slate-500 font-medium uppercase tracking-[0.2em] text-[9px]">Status des 1,248 ordres à travers le tunnel logistique</CardDescription>
+          <CardDescription className="text-slate-500 font-medium uppercase tracking-[0.2em] text-[9px]">Progression temps réel à travers le tunnel logistique</CardDescription>
         </CardHeader>
-        <CardContent className="p-10 pt-6">
-          <div className="flex flex-wrap items-start justify-between gap-8">
+        <CardContent className="p-12 pt-6">
+          <div className="flex flex-wrap items-start justify-between gap-10">
             {[
               { label: 'Reçues', count: '142', sub: 'Input', icon: ClipboardList, color: 'text-blue-400 bg-blue-500/10 border-blue-500/20' },
               { label: 'Picking', count: '58', sub: 'En cours', icon: Package, color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
@@ -291,17 +289,17 @@ export default function DashboardPage() {
               { label: 'Livraison', count: '412', sub: 'Dernier Km', icon: MapPin, color: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20' },
               { label: 'Livrées', count: '894', sub: 'SLA : 98.4%', icon: CheckCircle2, color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
             ].map((step, idx, arr) => (
-              <div key={idx} className="flex-1 min-w-[160px] relative">
+              <div key={idx} className="flex-1 min-w-[180px] relative">
                 <div className="flex flex-col items-center text-center group">
-                  <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all group-hover:scale-110 shadow-lg border", step.color)}>
-                    <step.icon size={24} strokeWidth={2.5} />
+                  <div className={cn("w-16 h-16 rounded-3xl flex items-center justify-center mb-8 transition-all group-hover:scale-110 shadow-lg border", step.color)}>
+                    <step.icon size={28} strokeWidth={2.5} />
                   </div>
-                  <h4 className="text-3xl font-black text-white tracking-tighter">{step.count}</h4>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mt-2">{step.label}</p>
+                  <h4 className="text-4xl font-black text-white tracking-tighter">{step.count}</h4>
+                  <p className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400 mt-3">{step.label}</p>
                   <p className="text-[9px] font-bold text-slate-600 mt-1 uppercase tracking-widest">{step.sub}</p>
                 </div>
                 {idx < arr.length - 1 && (
-                  <div className="absolute top-7 -right-4 w-8 h-px bg-white/5 hidden xl:block" />
+                  <div className="absolute top-8 -right-5 w-10 h-px bg-white/5 hidden xl:block" />
                 )}
               </div>
             ))}
