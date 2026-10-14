@@ -23,7 +23,7 @@ const BackgroundShapes = () => (
         repeat: Infinity,
         ease: "linear",
       }}
-      className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#1F6FDB]/20 rounded-full blur-[120px]"
+      className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#1F6FDB] opacity-20 rounded-full blur-[120px]"
     />
     <motion.div
       animate={{
@@ -36,7 +36,7 @@ const BackgroundShapes = () => (
         repeat: Infinity,
         ease: "linear",
       }}
-      className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#F7931E]/10 rounded-full blur-[140px]"
+      className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#F7931E] opacity-10 rounded-full blur-[140px]"
     />
   </div>
 );
@@ -46,26 +46,24 @@ export default function RegisterPage() {
   const isAr = language === 'ar';
 
   return (
-    <div className="h-screen w-full bg-[#0B2A6B] flex items-center justify-center p-6 relative overflow-hidden" dir={isAr ? 'rtl' : 'ltr'}>
+    <div className="min-h-screen w-full bg-[#0B2A6B] flex items-center justify-center p-4 py-8 relative overflow-hidden" dir={isAr ? 'rtl' : 'ltr'}>
       <BackgroundShapes />
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="w-full max-w-md relative z-10"
       >
         <div className="flex justify-center mb-6">
           <Link href="/" className="hover:opacity-80 transition-opacity">
-            <Logo className="h-12 w-auto" />
+            <Logo className="h-10 w-auto" />
           </Link>
         </div>
 
         <Card className="bg-white/5 border-white/10 backdrop-blur-2xl shadow-2xl overflow-hidden relative">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#F7931E] via-[#1F6FDB] to-[#F7931E]" />
-          
-          <CardHeader className="space-y-1 text-center pt-8">
-            <CardTitle className={cn("text-2xl font-black text-white tracking-tight", isAr && "font-arabic")}>
+          <CardHeader className="space-y-1 text-center pt-6 pb-2">
+            <CardTitle className={cn("text-2xl font-black text-white tracking-tight", isAr && "font-arabic text-3xl")}>
               {t('register_title')}
             </CardTitle>
             <CardDescription className={cn("text-[#9FB2DE] font-medium text-sm", isAr && "font-arabic")}>
@@ -74,12 +72,12 @@ export default function RegisterPage() {
           </CardHeader>
 
           <CardContent className="space-y-4 pt-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <Label htmlFor="name" className={cn("text-white/70 text-[9px] font-bold uppercase tracking-widest", isAr && "font-arabic")}>
                   {t('register_name')}
                 </Label>
-                <Input id="name" placeholder="Prénom Nom" className="bg-white/5 border-white/10 text-white h-11 focus:ring-[#F7931E] transition-all" />
+                <Input id="name" placeholder="Nom Complet" className="bg-white/5 border-white/10 text-white h-11 focus:ring-[#F7931E] transition-all" />
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="shop" className={cn("text-white/70 text-[9px] font-bold uppercase tracking-widest", isAr && "font-arabic")}>
@@ -110,12 +108,12 @@ export default function RegisterPage() {
               <Input id="password" type="password" className="bg-white/5 border-white/10 text-white h-11 focus:ring-[#F7931E] transition-all" />
             </div>
 
-            <Button className="w-full h-14 text-lg font-black bg-[#F7931E] text-[#0B2A6B] hover:bg-[#E0861A] border-none shadow-xl active:scale-95 transition-transform">
+            <Button className="w-full h-14 text-lg font-black bg-[#F7931E] text-[#0B2A6B] hover:bg-[#E0861A] border-none shadow-xl active:scale-95 transition-transform mt-2">
               {t('register_submit')}
             </Button>
           </CardContent>
 
-          <CardFooter className="flex flex-col space-y-4 pb-8">
+          <CardFooter className="flex flex-col space-y-4 pb-6">
             <p className={cn("text-center text-sm text-[#9FB2DE]", isAr && "font-arabic")}>
               {t('register_have_account')}{" "}
               <Link href="/login" className="text-[#F7931E] font-bold hover:underline">
@@ -125,9 +123,9 @@ export default function RegisterPage() {
           </CardFooter>
         </Card>
 
-        <div className="mt-6 text-center">
+        <div className="mt-4 text-center">
           <Link href="/" className="text-white/40 text-[10px] font-black uppercase tracking-[0.25em] hover:text-white transition-colors">
-            ← Retour à l'accueil
+            ← {isAr ? "الرجوع للرئيسية" : "Retour à l'accueil"}
           </Link>
         </div>
       </motion.div>
