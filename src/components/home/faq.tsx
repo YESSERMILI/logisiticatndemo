@@ -19,20 +19,20 @@ export function FAQ() {
 
   const faqs = [
     {
-      q: isAr ? "شحال تتكلف الخدمة بالظبط ؟" : "Comment est calculée la tarification ?",
-      a: isAr ? "التسعيرة تعتمد على حجم الطلبات الشهرية (Volume). نوفر أثمنة تنافسية تشمل التخزين، التحضير والتوصيل. اتصل بنا للحصول على عرض سعر مفصل." : "Notre tarification est dégressive selon votre volume mensuel. Elle inclut le stockage, le picking, l'emballage et la livraison avec recouvrement."
+      q: isAr ? "قداش تتكلف الخدمة بالضبط ؟" : "Comment est calculée la tarification ?",
+      a: isAr ? "التسعيرة تتبدل حسب قداش تخرج من كولي في الشهر. عنا أثمنة تنافسية تلم كل شي: stockage، تحضير الكولي، والتوصيل. كلمنا توة نعطيوك عرض سعر مفصل ليك إنتي." : "Notre tarification est dégressive selon votre volume mensuel. Elle inclut le stockage, le picking, l'emballage et la livraison avec recouvrement."
     },
     {
-      q: isAr ? "كيفاش نربط المتجر متاعي مع Logistica ؟" : "Comment intégrer mon site e-commerce ?",
-      a: isAr ? "نوفر ربط تقني سهل (Plug-and-play) مع Shopify و WooCommerce، بالإضافة إلى API مفتوحة للمنصات الخاصة." : "Nous proposons des connecteurs natifs pour Shopify et WooCommerce, ainsi qu'une API REST complète pour les solutions sur mesure."
+      q: isAr ? "كيفاش نربط السيت متاعي مع Logistica ؟" : "Comment intégrer mon site e-commerce ?",
+      a: isAr ? "الربط ساهل برشا وعنا Connecteurs حاضرين لـ Shopify و WooCommerce. وإذا عندك منصة خاصة، نوفرولك API REST كاملة باش تربط في فيسع." : "Nous proposons des connecteurs natifs pour Shopify et WooCommerce, ainsi qu'une API REST complète pour les solutions sur mesure."
     },
     {
-      q: isAr ? "وقتاش يرجعلي الكاش (COD) متاعي ؟" : "Quels sont les délais de versement du COD ?",
-      a: isAr ? "نحن نضمن تحويل مستحقاتك في ظرف J+1 بعد تأكيد التوصيل، مع متابعة دقيقة لكل مليم في الداشبورد الخاص بك." : "Nous effectuons les reversements à J+1 après livraison. Vous pouvez suivre l'état de votre trésorerie en temps réel sur votre dashboard."
+      q: isAr ? "خلاصي (COD) وقتاش يرجعلي ؟" : "Quels sont les délais de versement du COD ?",
+      a: isAr ? "خلاصك يرجعلك في ظرف J+1 يعني نهار بعد ما يتسلم الكولي. تنجم تتبع فلوسك مليم بمليم في الداشبورد متاعك في الوقت الحقيقي." : "Nous effectuons les reversements à J+1 après livraison. Vous pouvez suivre l'état de votre trésorerie en temps réel sur votre dashboard."
     },
     {
-      q: isAr ? "كيفاش يتم التعامل مع المرجوعات (Retours) ؟" : "Comment gérez-vous les retours et échanges ?",
-      a: isAr ? "المرجوعات تتم إدارتها بسرعة وبشكل آلي. يتم إرجاع المنتج للمخزن بعد فحصه، وتحديث الحالة فوراً في حسابك." : "Les retours sont traités quotidiennement. Chaque produit est inspecté avant d'être réintégré au stock ou renvoyé, selon vos instructions."
+      q: isAr ? "كيفاش تعملو مع الـ Retours ؟" : "Comment gérez-vous les retours et échanges ?",
+      a: isAr ? "المرجوعات تتخدم كل يوم. نفحصو السلعة مليح قبل ما نرجعوها للستوك، وإنتي تتبع الحالة متاعها في التاييم الحقيقي من حسابك." : "Les retours sont traités quotidiennement. Chaque produit est inspecté avant d'être réintégré au stock ou renvoyé, selon vos instructions."
     }
   ];
 
@@ -51,10 +51,13 @@ export function FAQ() {
             "text-4xl md:text-5xl font-black text-white tracking-tight",
             isAr && "font-arabic"
           )}>
-            {t("nav_faq")}
+            {t("n3")}
           </h2>
-          <p className="text-[#9FB2DE] max-w-xl mx-auto">
-            {isAr ? "كل ما تريد معرفته عن خدماتنا اللوجستية" : "Toutes les réponses à vos questions techniques et opérationnelles."}
+          <p className={cn(
+            "text-[#9FB2DE] max-w-xl mx-auto",
+            isAr && "font-arabic"
+          )}>
+            {isAr ? "كل شي تحب تعرفو على خدماتنا اللوجستية باش تطور بيزنسك" : "Toutes les réponses à vos questions techniques et opérationnelles."}
           </p>
         </div>
 

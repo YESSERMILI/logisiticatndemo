@@ -3,7 +3,7 @@ export type Language = "ar" | "fr";
 
 export const translations = {
   ar: {
-    "n0": "كيفاش نخدمو", "n1": "الخدمات", "n3": "الأسئلة", "n4": "احسب التكلفة", "n5": "تتبّع كولي", "n6": "التغطية", "n7": "العروض",
+    "n0": "كيفاش نخدمو", "n1": "الخدمats", "n3": "أسئلة تجينا ديما", "n4": "احسب التكلفة", "n5": "تتبّع كولي", "n6": "التغطية", "n7": "العروض",
     "chip": "فولفيلمنت للتجارة الإلكترونية في تونس",
     "h1a": "بِيع براحتك…", "h1b": "والتوصيل علينا.",
     "sub": "Logistica تستقبل البضاعة، تخزّنها، تجهّز الطلبات وتوصّلها لزبونك — من الكوموند لليفريزون، بسيطة كيما الحكاية.",
@@ -28,10 +28,10 @@ export const translations = {
     "db_kpi1": "كوليات اليوم", "db_kpi2": "نسبة النجاح", "db_kpi3": "فلوس تستنى", "db_kpi4": "تنبيه ستوك",
     "db_chart_title": "أداء التوصيل (آخر 7 أيام)",
     "db_feature1": "تتبع الطلبات", "db_feature2": "خلاص الـ COD", "db_feature3": "مؤشرات الأداء",
-    "cve": "التغطية", "cvt": "من بنزرت لبنقردان", "cvs": "نغطّيو كامل الولايات بشبكة توصيل منظّمة.",
-    "z1": "المدن الكبرى", "z1t": "تونس · سوسة · صفاقس", "z1d": "توصيل في أقل من 24 ساعة",
-    "z2": "الولايات الأخرى", "z2t": "24–48 ساعة", "z2d": "تغطية كاملة للشمال والوسط والجنوب",
-    "z3": "المناطق البعيدة", "z3t": "48–72 ساعة", "z3d": "توصيل حتى للجنوب الأقصى",
+    "cve": "التغطية الوطنية", "cvt": "من بنزرت لبنقردان", "cvs": "نغطّيو كامل الولايات بـ 3 مراكز فرز رئيسية وكرارط تدور كل يوم.",
+    "z1": "المدن الكبرى (Hubs)", "z1t": "تونس · سوسة · صفاقس", "z1d": "توصيل في أقل من 24 ساعة. التجميع والفرز يتم في وقت قياسي.",
+    "z2": "كامل ولايات الجمهورية", "z2t": "24–48 ساعة", "z2d": "شبكة لوجستية تغطي الشمال والوسط والجنوب برحلات يومية.",
+    "z3": "المناطق البعيدة", "z3t": "48–72 ساعة", "z3d": "توصيل حتى للمناطق الحدودية والجنوب الأقصى من غير تعتيل.",
     "ca1": "كومند في الشهر", "ca2": "نوع التوصيل", "ca3": "عادي", "ca4": "سريع", "ca5": "Express", "ca6": "نسبة الريتور", "ca7": "التقدير الشهري", "ca8": "التخزين", "ca9": "التجهيز", "ca10": "التوصيل", "ca11": "الريتور", "can": "تقدير تقريبي غير ملزم — الأسعار الحقيقية après devis.", "ca12": "اطلب عرض سعر",
     "fa": "فولفيلمنت وتوصيل للتجارة الإلكترونية في تونس.", "fh1": "الشركة", "fh2": "موارد", "fh3": "اتصل بينا", "foot": "© 2026 Logistica Tunisie — Fièrement tunisien 🇹🇳"
   },
@@ -58,10 +58,10 @@ export const translations = {
     "db_kpi1": "Expéditions", "db_kpi2": "Succès", "db_kpi3": "Cash en attente", "db_kpi4": "Alertes stock",
     "db_chart_title": "Performance des livraisons",
     "db_feature1": "Suivi des commandes", "db_feature2": "Encaissements COD", "db_feature3": "Indicateurs de performance",
-    "cve": "Couverture", "cvt": "De Bizerte à Ben Guerdane", "cvs": "Un réseau de livraison structuré sur tout le territoire.",
-    "z1": "Grandes villes", "z1t": "Tunis · Sousse · Sfax", "z1d": "Livraison en moins de 24h",
-    "z2": "Autres gouvernorats", "z2t": "24–48 h", "z2d": "Nord, centre et sud couverts",
-    "z3": "Zones éloignées", "z3t": "48–72 h", "z3d": "Jusqu'au grand sud",
+    "cve": "Couverture Nationale", "cvt": "De Bizerte à Ben Guerdane", "cvs": "Un réseau de livraison structuré avec 3 hubs régionaux et des tournées quotidiennes.",
+    "z1": "Villes Hubs", "z1t": "Tunis · Sousse · Sfax", "z1d": "Livraison en moins de 24h. Hubs de tri stratégiques pour une rapidité maximale.",
+    "z2": "Gouvernorats", "z2t": "24–48 h", "z2d": "Connectivité totale entre le Nord, le Centre et le Sud.",
+    "z3": "Zones éloignées", "z3t": "48–72 h", "z3d": "Service garanti jusqu'au grand sud et zones frontalières.",
     "ca1": "Commandes / mois", "ca2": "Type de livraison", "ca3": "Standard", "ca4": "Rapide", "ca5": "Express", "ca6": "Taux de retour", "ca7": "Estimation mensuelle", "ca8": "Stockage", "ca9": "Préparation", "ca10": "Livraison", "ca11": "Retours", "can": "Estimation indicative non contractuelle — tarifs réels sur devis.", "ca12": "Demander un devis",
     "fa": "Fulfillment et livraison e-commerce en Tunisie.", "fh1": "Entreprise", "fh2": "Ressources", "fh3": "Contact", "foot": "© 2026 Logistica Tunisie — Fièrement tunisien 🇹🇳"
   }

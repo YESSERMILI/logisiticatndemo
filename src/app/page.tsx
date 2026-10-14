@@ -15,14 +15,15 @@ import {
   Box,
   Scan,
   Truck,
-  Wallet
+  Wallet,
+  MapPin,
+  Clock,
+  Navigation
 } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
-import HeroLogisticsHub from "@/HeroLogisticsHub";
-import TunisiaMap from "@/TunisiaMap";
 import { DashboardShowcase } from "@/components/home/dashboard-showcase";
 import { BentoServices } from "@/components/home/services-bento";
 import { FAQ } from "@/components/home/faq";
@@ -108,11 +109,8 @@ const ProcessVisual = ({ type, stepNumber }: { type: 'order' | 'storage' | 'prep
 
   return (
     <div className="relative mb-6 group flex flex-col items-center">
-      {/* Circular container */}
       <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border-2 border-[#F7931E] flex items-center justify-center relative transition-all duration-500 group-hover:bg-[#F7931E]/10 group-hover:shadow-[0_0_30px_rgba(247,147,30,0.2)]">
         <IconComponent size={36} className="text-[#F7931E] transition-transform duration-500 group-hover:scale-110" strokeWidth={1.5} />
-        
-        {/* Step Badge */}
         <div className="absolute -top-1 -left-1 w-8 h-8 bg-[#F7931E] rounded-full flex items-center justify-center text-[#0B2A6B] font-black text-sm shadow-xl ring-4 ring-[#0B2A6B]">
           {stepNumber}
         </div>
@@ -246,15 +244,21 @@ export default function HomePage() {
           </motion.div>
 
           <div className="relative min-w-0 flex items-center justify-center">
-            <HeroLogisticsHub />
+            {/* HUB LOGISTICS SVG VIA IMG */}
+            <img
+              src="/images/hero-logistics-hub.svg"
+              alt="Logistica logistics hub"
+              width={600}
+              height={504}
+              className="max-w-full h-auto"
+            />
           </div>
         </div>
       </section>
 
-      {/* Scrolling Ticker Section */}
       <ScrollingTicker />
 
-      {/* Preparation Section (L'Image Design) */}
+      {/* Preparation Section */}
       <section id="preparation" className="py-24 bg-[#0B2A6B]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-20">
@@ -289,59 +293,73 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Dashboard Showcase */}
       <DashboardShowcase />
 
-      {/* Services Section */}
       <BentoServices />
 
-      {/* Coverage Map Section */}
-      <section id="coverage" className="py-24 bg-[#0B2A6B] overflow-hidden">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-12 text-white">
-              <div className="space-y-6">
-                <span className="text-[#F7931E] font-black text-xs uppercase tracking-[0.2em]">{t('cve')}</span>
-                <h2 className={cn(
-                  "text-4xl md:text-7xl font-bold text-white tracking-tight leading-[0.9]",
-                  language === 'ar' && "font-arabic"
-                )}>
-                  {language === 'ar' ? "من بنزرت لبنقردان" : "De Bizerte à Ben Guerdane"}
-                </h2>
-                <p className="text-lg text-[#9FB2DE] font-medium opacity-80 max-w-md">
-                  {t('cvs')}
-                </p>
-              </div>
+      {/* Coverage Section - Redesigned with Rich Information */}
+      <section id="coverage" className="py-24 bg-[#0B2A6B] relative overflow-hidden">
+        <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <span className="text-[#F7931E] font-black text-xs uppercase tracking-[0.2em] mb-4 block">{t('cve')}</span>
+            <h2 className={cn(
+              "text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1]",
+              language === 'ar' && "font-arabic"
+            )}>
+              {t('cvt')}
+            </h2>
+            <p className="text-lg text-[#9FB2DE] font-medium opacity-80 max-w-2xl mx-auto mt-6">
+              {t('cvs')}
+            </p>
+          </div>
 
-              <div className="space-y-8">
-                {[
-                  { id: 'z1', title: t('z1t'), desc: t('z1d'), label: t('z1') },
-                  { id: 'z2', title: t('z2t'), desc: t('z2d'), label: t('z2') },
-                  { id: 'z3', title: t('z3t'), desc: t('z3d'), label: t('z3') }
-                ].map((zone, idx) => (
-                  <div key={idx} className="flex items-start gap-6 group">
-                    <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-white shrink-0 font-black text-xl group-hover:bg-[#F7931E] group-hover:text-[#0B2A6B] transition-all border border-white/10 shadow-xl">
-                      {idx + 1}
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-black uppercase text-[#F7931E] tracking-widest mb-1">{zone.label}</p>
-                      <h4 className="text-xl font-bold text-white mb-2">{zone.title}</h4>
-                      <p className="text-[#9FB2DE] text-sm opacity-70 leading-relaxed">{zone.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { id: 'z1', title: t('z1t'), desc: t('z1d'), label: t('z1'), icon: MapPin },
+              { id: 'z2', title: t('z2t'), desc: t('z2d'), label: t('z2'), icon: Navigation },
+              { id: 'z3', title: t('z3t'), desc: t('z3d'), label: t('z3'), icon: Clock }
+            ].map((zone, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                className="p-8 rounded-[32px] bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all group"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-[#F7931E]/20 flex items-center justify-center text-[#F7931E] mb-8 group-hover:scale-110 transition-transform">
+                  <zone.icon size={28} />
+                </div>
+                <p className="text-[10px] font-black uppercase text-[#F7931E] tracking-widest mb-3">{zone.label}</p>
+                <h4 className="text-2xl font-bold text-white mb-4">{zone.title}</h4>
+                <div className="bg-white/5 px-4 py-2 rounded-lg inline-block text-[#F7931E] font-black text-xs mb-6 uppercase tracking-wider">
+                  Délai : {zone.title.includes('48') || zone.id === 'z2' ? '24h - 48h' : zone.id === 'z1' ? '< 24h' : '48h - 72h'}
+                </div>
+                <p className="text-[#9FB2DE] text-sm leading-relaxed opacity-80">{zone.desc}</p>
+                
+                <ul className="mt-8 space-y-3">
+                   {['Suivi GPS temps réel', 'Confirmation SMS', 'Gestion automatique des retours'].map((feat, i) => (
+                     <li key={i} className="flex items-center gap-2 text-[10px] font-bold text-white/40 uppercase tracking-wider">
+                       <CheckCircle2 size={12} className="text-[#F7931E]/40" />
+                       {feat}
+                     </li>
+                   ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
 
-            <div className="relative flex justify-center items-center">
-              <div className="absolute inset-0 bg-blue-600/5 blur-[120px] rounded-full" />
-              <TunisiaMap className="relative z-10" />
+          <div className="mt-16 p-8 rounded-[40px] bg-gradient-to-r from-[#F7931E] to-[#E0861A] flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="text-[#0B2A6B]">
+              <h4 className="text-2xl md:text-3xl font-black uppercase leading-none mb-2">Besoin d'une livraison urgente ?</h4>
+              <p className="font-bold opacity-80">On couvre les 24 gouvernorats sans exception.</p>
             </div>
+            <Button className="bg-[#0B2A6B] text-white font-black px-10 h-16 rounded-2xl hover:bg-[#081E4E] transition-all uppercase tracking-widest text-xs" asChild>
+              <Link href="https://wa.me/21699201552">Contacter un agent</Link>
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
       <FAQ />
 
       {/* Closing CTA */}
