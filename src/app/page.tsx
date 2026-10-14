@@ -48,7 +48,7 @@ const ScrollingTicker = () => {
     <div className="relative z-20 h-16 md:h-20 flex items-center overflow-hidden bg-[#0B2A6B]">
       <div className="absolute left-[-100vw] w-[300vw] bg-[#F7931E] py-3 md:py-4 -rotate-1 shadow-2xl border-y border-white/10 flex items-center">
         <div dir="ltr" className="flex whitespace-nowrap animate-ticker-forever">
-          {/* First set */}
+          {/* First set content */}
           <div className="flex items-center">
             {items.map((item, i) => (
               <span 
@@ -63,7 +63,7 @@ const ScrollingTicker = () => {
               </span>
             ))}
           </div>
-          {/* Second set (Identical copy for seamless transition) */}
+          {/* Second identical set for seamless loop */}
           <div className="flex items-center">
             {items.map((item, i) => (
               <span 
@@ -97,78 +97,84 @@ const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'deliver
   return (
     <div className="relative w-full h-full flex items-center justify-center p-8">
       <svg viewBox="0 0 100 80" className="w-full h-full overflow-visible" fill="none" stroke="currentColor">
-        {/* Step 1: Order */}
+        {/* Step 1: Order - Digital Tablet with Check */}
         {type === 'order' && (
-          <g>
-            <rect x="20" y="15" width="60" height="50" rx="6" strokeWidth="2.5" opacity="0.4" />
-            <rect x="30" y="28" width="30" height="4" rx="2" fill="currentColor" stroke="none" opacity="0.2" />
-            <rect x="30" y="38" width="20" height="4" rx="2" fill="currentColor" stroke="none" opacity="0.2" />
+          <g strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="25" y="15" width="50" height="50" rx="8" opacity="0.15" />
+            <motion.path 
+              d="M35 32 L65 32 M35 44 L55 44 M35 56 L45 56" 
+              strokeOpacity="0.3"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
+            />
             <motion.circle 
-              cx="70" cy="25" r="5" fill="#F7931E" stroke="none"
+              cx="72" cy="22" r="5" fill="#F7931E" stroke="none"
               animate={{ opacity: [0.4, 1, 0.4], scale: [0.9, 1.1, 0.9] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
           </g>
         )}
 
-        {/* Step 2: Storage */}
+        {/* Step 2: Storage - Isometric Boxes */}
         {type === 'storage' && (
-          <g stroke="none">
-            <rect x="15" y="20" width="22" height="18" rx="3" fill="currentColor" opacity="0.15" />
-            <rect x="42" y="20" width="22" height="18" rx="3" fill="currentColor" opacity="0.15" />
-            <rect x="69" y="20" width="22" height="18" rx="3" fill="currentColor" opacity="0.1" />
+          <g strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M15 35 L50 20 L85 35 L85 55 L50 70 L15 55 Z" opacity="0.1" />
+            <path d="M15 35 L50 50 L85 35" opacity="0.1" />
+            <path d="M50 50 L50 70" opacity="0.1" />
             <motion.rect 
-              x="15" y="42" width="30" height="18" rx="3" fill="#F7931E"
-              animate={{ opacity: [0.8, 1, 0.8] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              x="35" y="30" width="30" height="20" rx="2" stroke="#F7931E"
+              animate={{ y: [30, 25, 30] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             />
-            <rect x="50" y="42" width="20" height="18" rx="3" fill="currentColor" opacity="0.15" />
           </g>
         )}
 
-        {/* Step 3: Prep */}
+        {/* Step 3: Prep - Verified Package */}
         {type === 'prep' && (
-          <g strokeWidth="2.5">
+          <g strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="20" y="20" width="60" height="45" rx="4" opacity="0.15" />
             <motion.path 
-              d="M50 15 L85 32.5 L85 47.5 L50 65 L15 47.5 L15 32.5 Z" 
-              stroke="#F7931E"
-              animate={{ strokeOpacity: [0.3, 1, 0.3] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <path d="M15 32.5 L50 50 L85 32.5" strokeOpacity="0.3" />
-            <path d="M50 50 L50 65" strokeOpacity="0.3" />
-            <rect x="45" y="35" width="10" height="10" fill="#F7931E" stroke="none" rx="1" />
-          </g>
-        )}
-
-        {/* Step 4: Delivery */}
-        {type === 'delivery' && (
-          <g>
-            <path d="M15 55 Q 50 15 85 55" strokeWidth="2" strokeDasharray="6 6" opacity="0.2" />
-            <circle cx="15" cy="55" r="4" fill="currentColor" opacity="0.3" stroke="none" />
-            <circle cx="85" cy="55" r="4" fill="#F7931E" stroke="none" />
-            <motion.circle
-              r="5" fill="#F7931E" stroke="none"
-              animate={{ offsetDistance: ["0%", "100%"] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              style={{ offsetPath: "path('M15 55 Q 50 15 85 55')" }}
-            />
-          </g>
-        )}
-
-        {/* Step 5: Cash */}
-        {type === 'cash' && (
-          <g>
-            <rect x="25" y="15" width="50" height="55" rx="8" strokeWidth="2.5" opacity="0.3" />
-            <circle cx="50" cy="38" r="14" fill="#F7931E" stroke="none" opacity="0.2" />
-            <text x="50" y="43" textAnchor="middle" fill="#F7931E" fontSize="12" fontWeight="900" stroke="none" style={{ fontStyle: 'normal' }}>DT</text>
-            <motion.path 
-              d="M42 62 L50 68 L65 55" 
-              stroke="#27C93F" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none"
+              d="M35 42.5 L45 55 L70 30" 
+              stroke="#F7931E" strokeWidth="4"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 2 }}
+              transition={{ duration: 0.8, repeat: Infinity, repeatDelay: 1 }}
             />
+            <line x1="20" y1="42.5" x2="80" y2="42.5" opacity="0.1" />
+          </g>
+        )}
+
+        {/* Step 4: Delivery - Truck on Path */}
+        {type === 'delivery' && (
+          <g strokeWidth="2.5" strokeLinecap="round">
+            <path d="M15 55 Q 50 15 85 55" strokeDasharray="5 5" opacity="0.1" />
+            <circle cx="15" cy="55" r="3" fill="currentColor" opacity="0.3" />
+            <circle cx="85" cy="55" r="3" fill="#F7931E" />
+            <motion.g
+              animate={{ offsetDistance: ["0%", "100%"] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              style={{ offsetPath: "path('M15 55 Q 50 15 85 55')" }}
+            >
+              <rect x="-8" y="-5" width="16" height="10" rx="2" fill="#F7931E" stroke="none" />
+              <circle cx="5" cy="5" r="2" fill="#0B2A6B" />
+              <circle cx="-5" cy="5" r="2" fill="#0B2A6B" />
+            </motion.g>
+          </g>
+        )}
+
+        {/* Step 5: Cash - Success Coin */}
+        {type === 'cash' && (
+          <g strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="50" cy="40" r="30" opacity="0.1" />
+            <motion.path 
+              d="M30 42 L45 55 L75 25" 
+              stroke="#27C93F" strokeWidth="6"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 1.5 }}
+            />
+            <text x="50" y="47" textAnchor="middle" fill="#F7931E" fontSize="12" fontWeight="900" stroke="none" opacity="0.4">DT</text>
           </g>
         )}
       </svg>
@@ -241,7 +247,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Hero Section */}
+      {/* Hero Section - STRICT: Never modified */}
       <section className="relative pt-40 pb-12 min-h-[85vh] flex items-center">
         <div className="absolute top-1/4 left-0 text-[12vw] font-black text-white/5 select-none pointer-events-none tracking-tighter leading-none whitespace-nowrap uppercase">
           Logistica Tunisie
