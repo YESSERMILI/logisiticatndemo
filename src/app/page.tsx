@@ -20,7 +20,6 @@ import {
 import { motion, useScroll, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Logo } from "@/components/logo";
 import HeroLogisticsHub from "@/HeroLogisticsHub";
 import TunisiaMap from "@/TunisiaMap";
@@ -297,16 +296,19 @@ export default function HomePage() {
       <BentoServices />
 
       {/* Coverage Map Section */}
-      <section id="coverage" className="py-24 bg-[#0B2A6B]">
+      <section id="coverage" className="py-24 bg-[#0B2A6B] overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-12 text-white">
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <span className="text-[#F7931E] font-black text-xs uppercase tracking-[0.2em]">{t('cve')}</span>
-                <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-none">
-                  {t('cvt')}
+                <h2 className={cn(
+                  "text-4xl md:text-7xl font-bold text-white tracking-tight leading-[0.9]",
+                  language === 'ar' && "font-arabic"
+                )}>
+                  {language === 'ar' ? "من بنزرت لبنقردان" : "De Bizerte à Ben Guerdane"}
                 </h2>
-                <p className="text-lg text-[#9FB2DE] font-medium">
+                <p className="text-lg text-[#9FB2DE] font-medium opacity-80 max-w-md">
                   {t('cvs')}
                 </p>
               </div>
@@ -318,21 +320,22 @@ export default function HomePage() {
                   { id: 'z3', title: t('z3t'), desc: t('z3d'), label: t('z3') }
                 ].map((zone, idx) => (
                   <div key={idx} className="flex items-start gap-6 group">
-                    <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-white shrink-0 font-black text-xl group-hover:bg-[#F7931E] group-hover:text-[#0B2A6B] transition-all border border-white/10">
+                    <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-white shrink-0 font-black text-xl group-hover:bg-[#F7931E] group-hover:text-[#0B2A6B] transition-all border border-white/10 shadow-xl">
                       {idx + 1}
                     </div>
                     <div>
                       <p className="text-[10px] font-black uppercase text-[#F7931E] tracking-widest mb-1">{zone.label}</p>
                       <h4 className="text-xl font-bold text-white mb-2">{zone.title}</h4>
-                      <p className="text-[#9FB2DE] text-sm">{zone.desc}</p>
+                      <p className="text-[#9FB2DE] text-sm opacity-70 leading-relaxed">{zone.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="min-w-0">
-              <TunisiaMap />
+            <div className="relative flex justify-center items-center">
+              <div className="absolute inset-0 bg-blue-600/5 blur-[120px] rounded-full" />
+              <TunisiaMap className="relative z-10" />
             </div>
           </div>
         </div>
