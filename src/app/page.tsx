@@ -96,7 +96,6 @@ const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'deliver
   return (
     <div className="relative w-full h-full flex items-center justify-center p-6">
       <svg viewBox="0 0 100 100" className="w-20 h-20 overflow-visible" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Step 1: Order - SaaS Interface Notification */}
         {type === 'order' && (
           <g>
             <rect x="10" y="25" width="80" height="50" rx="8" stroke="#F7931E" strokeWidth="2.5" />
@@ -109,8 +108,6 @@ const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'deliver
             />
           </g>
         )}
-
-        {/* Step 2: Storage - Rack Scanning */}
         {type === 'storage' && (
           <g>
             <path d="M20 20 H80 V80 H20 Z" stroke="white" strokeWidth="2" strokeOpacity="0.2" />
@@ -122,8 +119,6 @@ const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'deliver
             />
           </g>
         )}
-
-        {/* Step 3: Prep - Packing Verification */}
         {type === 'prep' && (
           <g>
             <rect x="25" y="35" width="50" height="40" rx="4" fill="white" fillOpacity="0.05" stroke="white" strokeWidth="2" strokeOpacity="0.2" />
@@ -136,8 +131,6 @@ const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'deliver
             />
           </g>
         )}
-
-        {/* Step 4: Delivery - Kinetic Truck */}
         {type === 'delivery' && (
           <motion.g
             animate={{ x: [-5, 5, -5] }}
@@ -149,8 +142,6 @@ const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'deliver
             <circle cx="70" cy="75" r="6" fill="white" />
           </motion.g>
         )}
-
-        {/* Step 5: Trésorerie - Cash Success */}
         {type === 'cash' && (
           <g>
             <circle cx="50" cy="50" r="40" stroke="#F7931E" strokeWidth="2" strokeDasharray="8 6" opacity="0.3" />
@@ -235,7 +226,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Hero Section - STRICT: Never modified */}
+      {/* Hero Section */}
       <section className="relative pt-40 pb-12 min-h-[85vh] flex items-center">
         <div className="absolute top-1/4 left-0 text-[12vw] font-black text-white/5 select-none pointer-events-none tracking-tighter leading-none whitespace-nowrap uppercase">
           Logistica Tunisie
@@ -302,7 +293,7 @@ export default function HomePage() {
       {/* Scrolling Ticker Section */}
       <ScrollingTicker />
 
-      {/* Preparation Section (Le Processus en 5 étapes) */}
+      {/* Preparation Section */}
       <section id="preparation" className="py-24 bg-[#0B2A6B]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-16">
@@ -338,7 +329,7 @@ export default function HomePage() {
       {/* Services Section */}
       <BentoServices />
 
-      {/* Coverage Map Section */}
+      {/* Coverage Map Section - Integrated Animation */}
       <section id="coverage" className="py-24 bg-white">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
