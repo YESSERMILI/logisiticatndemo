@@ -95,131 +95,139 @@ const ScrollingTicker = () => {
 
 const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'delivery' | 'cash' }) => {
   return (
-    <div className="relative w-full h-full flex items-center justify-center p-8">
-      <svg viewBox="0 0 120 100" className="w-full h-full overflow-visible" fill="none" stroke="currentColor">
-        {/* Step 1: Order - Digital Terminal with Pulse */}
+    <div className="relative w-full h-full flex items-center justify-center p-6">
+      <svg viewBox="0 0 140 120" className="w-full h-full overflow-visible" fill="none" stroke="currentColor">
+        {/* Step 1: Detailed Order Dashboard */}
         {type === 'order' && (
-          <g strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <motion.rect 
-              x="20" y="20" width="80" height="60" rx="8" 
-              strokeOpacity="0.2" fill="currentColor" fillOpacity="0.03"
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            />
-            <path d="M35 40 H85 M35 55 H65" strokeOpacity="0.3" strokeWidth="3" />
-            <motion.circle 
-              cx="80" cy="40" r="4" fill="#F7931E" stroke="none"
-              animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
-            <motion.path 
-              d="M35 70 H45" 
-              stroke="#F7931E" strokeWidth="4"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 0.8, repeat: Infinity, repeatDelay: 1 }}
-            />
-          </g>
-        )}
-
-        {/* Step 2: Storage - Industrial Racks with Laser Scan */}
-        {type === 'storage' && (
           <g strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            {/* Racks */}
-            <path d="M20 20 V80 M60 20 V80 M100 20 V80" strokeOpacity="0.1" />
-            <path d="M20 30 H100 M20 55 H100 M20 80 H100" strokeOpacity="0.1" />
+            {/* Browser frame */}
+            <rect x="15" y="15" width="110" height="90" rx="8" strokeOpacity="0.15" fill="currentColor" fillOpacity="0.02" />
+            <path d="M15 35 H125" strokeOpacity="0.1" />
+            <circle cx="25" cy="25" r="2" fill="currentColor" fillOpacity="0.2" />
+            <circle cx="32" cy="25" r="2" fill="currentColor" fillOpacity="0.2" />
             
-            {/* Boxes */}
-            <rect x="25" y="35" width="25" height="15" rx="2" fill="currentColor" fillOpacity="0.05" />
-            <rect x="65" y="35" width="25" height="15" rx="2" fill="currentColor" fillOpacity="0.05" />
-            <rect x="25" y="60" width="25" height="15" rx="2" fill="#F7931E" fillOpacity="0.2" stroke="#F7931E" />
+            {/* Sidebar */}
+            <path d="M40 35 V105" strokeOpacity="0.05" />
+            <rect x="22" y="45" width="10" height="3" rx="1" fill="currentColor" fillOpacity="0.1" />
+            <rect x="22" y="55" width="10" height="3" rx="1" fill="currentColor" fillOpacity="0.1" />
             
-            {/* Laser Line */}
-            <motion.line 
-              x1="20" y1="20" x2="100" y2="20" 
-              stroke="#F7931E" strokeWidth="2"
-              animate={{ y: [0, 60, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </g>
-        )}
-
-        {/* Step 3: Prep - Box Sealing and Badge */}
-        {type === 'prep' && (
-          <g strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <motion.path 
-              d="M20 40 L60 25 L100 40 L100 75 L60 90 L20 75 Z" 
-              strokeOpacity="0.15"
-              fill="currentColor" fillOpacity="0.03"
-            />
-            <path d="M20 40 L60 55 L100 40 M60 55 V90" strokeOpacity="0.15" />
-            
-            {/* Verified Badge */}
-            <motion.circle 
-              cx="60" cy="55" r="12" 
-              fill="#F7931E" stroke="none"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-            />
-            <motion.path 
-              d="M55 55 L58 58 L65 52" 
-              stroke="white" strokeWidth="2.5"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ delay: 0.8, duration: 0.3 }}
-            />
-          </g>
-        )}
-
-        {/* Step 4: Delivery - Curved Smart Routing */}
-        {type === 'delivery' && (
-          <g strokeWidth="2.5" strokeLinecap="round">
-            <path d="M10 80 Q 60 10 110 80" strokeDasharray="4 6" strokeOpacity="0.1" />
-            
-            {/* Truck Icon */}
-            <motion.g
-              animate={{ offsetDistance: ["0%", "100%"] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-              style={{ offsetPath: "path('M10 80 Q 60 10 110 80')" }}
-            >
-              <rect x="-10" y="-6" width="16" height="12" rx="2" fill="#F7931E" stroke="none" />
-              <rect x="6" y="-6" width="4" height="12" rx="1" fill="#0B2A6B" stroke="none" />
-              <circle cx="-5" cy="8" r="2.5" fill="currentColor" />
-              <circle cx="5" cy="8" r="2.5" fill="currentColor" />
+            {/* Dashboard Items */}
+            <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+              <rect x="50" y="45" width="60" height="12" rx="3" strokeOpacity="0.1" fill="currentColor" fillOpacity="0.03" />
+              <rect x="50" y="62" width="60" height="12" rx="3" stroke="#F7931E" strokeOpacity="0.3" fill="#F7931E" fillOpacity="0.05" />
+              <rect x="50" y="79" width="60" height="12" rx="3" strokeOpacity="0.1" fill="currentColor" fillOpacity="0.03" />
             </motion.g>
 
-            {/* Destination Pulse */}
-            <circle cx="110" cy="80" r="3" fill="#F7931E" />
+            {/* Pulse Indicator on active item */}
             <motion.circle 
-              cx="110" cy="80" r="8" stroke="#F7931E" strokeWidth="1" fill="none"
-              animate={{ scale: [1, 2], opacity: [1, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+              cx="105" cy="68" r="4" fill="#F7931E" stroke="none"
+              animate={{ scale: [1, 1.8, 1], opacity: [0.3, 0.7, 0.3] }}
+              transition={{ duration: 2, repeat: Infinity }}
             />
           </g>
         )}
 
-        {/* Step 5: Cash - Transaction Successful J+1 */}
-        {type === 'cash' && (
-          <g strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="35" y="15" width="50" height="70" rx="6" strokeOpacity="0.2" />
-            <circle cx="60" cy="40" r="18" stroke="#27C93F" strokeWidth="3" />
-            <motion.path 
-              d="M52 40 L58 46 L68 34" 
-              stroke="#27C93F" strokeWidth="4"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
-            />
-            <text x="60" y="75" textAnchor="middle" fill="#F7931E" fontSize="10" fontWeight="900" fontStyle="normal" stroke="none">J+1 DT</text>
+        {/* Step 2: Industrial Racks with Depth */}
+        {type === 'storage' && (
+          <g strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+            {/* Rack structure with perspective */}
+            <path d="M20 20 L40 10 V90 L20 100 Z" fill="currentColor" fillOpacity="0.05" strokeOpacity="0.1" />
+            <path d="M100 20 L120 10 V90 L100 100 Z" fill="currentColor" fillOpacity="0.05" strokeOpacity="0.1" />
+            <path d="M20 30 H100 M20 60 H100 M20 90 H100" strokeOpacity="0.1" />
             
-            {/* Rising Coins */}
-            {[0, 1, 2].map((i) => (
+            {/* Stored Items */}
+            <rect x="30" y="38" width="18" height="12" rx="1" fill="currentColor" fillOpacity="0.05" strokeOpacity="0.1" />
+            <rect x="60" y="38" width="18" height="12" rx="1" fill="#F7931E" fillOpacity="0.1" stroke="#F7931E" strokeOpacity="0.4" />
+            <rect x="30" y="68" width="18" height="12" rx="1" fill="currentColor" fillOpacity="0.05" strokeOpacity="0.1" />
+            <rect x="80" y="68" width="18" height="12" rx="1" fill="currentColor" fillOpacity="0.05" strokeOpacity="0.1" />
+            
+            {/* Scanning Laser Beam */}
+            <motion.g animate={{ y: [0, 70, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
+              <line x1="20" y1="20" x2="120" y2="20" stroke="#F7931E" strokeWidth="2" filter="blur(1px)" />
+              <line x1="20" y1="20" x2="120" y2="20" stroke="#F7931E" strokeWidth="0.5" strokeOpacity="0.8" />
+            </motion.g>
+          </g>
+        )}
+
+        {/* Step 3: Packing Station & Seal */}
+        {type === 'prep' && (
+          <g strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            {/* Box unfolding perspective */}
+            <motion.path 
+              d="M30 50 L70 30 L110 50 L110 90 L70 110 L30 90 Z" 
+              fill="currentColor" fillOpacity="0.03" strokeOpacity="0.2"
+            />
+            <path d="M30 50 L70 70 L110 50 M70 70 V110" strokeOpacity="0.15" />
+            
+            {/* Packing tape animation */}
+            <motion.rect 
+              x="35" y="45" width="70" height="8" rx="1" fill="#F7931E" fillOpacity="0.1" stroke="#F7931E"
+              initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
+            />
+
+            {/* Quality Seal */}
+            <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.8, type: "spring" }}>
+              <circle cx="95" cy="85" r="14" fill="#F7931E" stroke="#fff" strokeWidth="2" />
+              <path d="M88 85 L93 90 L102 80" stroke="white" strokeWidth="2.5" />
+            </motion.g>
+          </g>
+        )}
+
+        {/* Step 4: Map Grid & Detailed Truck */}
+        {type === 'delivery' && (
+          <g strokeWidth="1.5" strokeLinecap="round">
+            {/* Background grid */}
+            <path d="M10 10 H130 M10 30 H130 M10 50 H130 M10 70 H130" strokeOpacity="0.03" />
+            <path d="M20 10 V90 M40 10 V90 M60 10 V90 M80 10 V90" strokeOpacity="0.03" />
+            
+            {/* Complex path */}
+            <path id="route" d="M20 90 Q 40 10 70 50 T 120 20" stroke="#F7931E" strokeOpacity="0.15" strokeDasharray="4 6" />
+            
+            {/* Truck Icon following path */}
+            <motion.g
+              animate={{ offsetDistance: ["0%", "100%"] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+              style={{ offsetPath: "path('M20 90 Q 40 10 70 50 T 120 20')" }}
+            >
+              <rect x="-8" y="-5" width="14" height="10" rx="2" fill="#F7931E" />
+              <rect x="6" y="-5" width="4" height="10" rx="1" fill="#0B2A6B" />
+              <circle cx="-4" cy="7" r="2" fill="currentColor" />
+              <circle cx="4" cy="7" r="2" fill="currentColor" />
+            </motion.g>
+
+            {/* Destination Hub */}
+            <g transform="translate(120, 20)">
+              <motion.circle r="12" fill="#F7931E" fillOpacity="0.1" animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.5, 0.2] }} transition={{ duration: 2, repeat: Infinity }} />
+              <path d="M0 0 C-4-5 -6-8 -6-11 a6 6 0 1 1 12 0 c0 3-2 6-6 11 Z" fill="#F7931E" />
+            </g>
+          </g>
+        )}
+
+        {/* Step 5: Cash Transaction UI */}
+        {type === 'cash' && (
+          <g strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            {/* Payment window */}
+            <rect x="25" y="15" width="90" height="90" rx="12" strokeOpacity="0.1" fill="currentColor" fillOpacity="0.02" />
+            
+            {/* Success Graphic */}
+            <motion.circle 
+              cx="70" cy="50" r="22" stroke="#27C93F" strokeWidth="3" fill="#27C93F" fillOpacity="0.05"
+              initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 0.5 }}
+            />
+            <motion.path 
+              d="M60 50 L67 60 L80 43" stroke="#27C93F" strokeWidth="4"
+              initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.6, delay: 0.3 }}
+            />
+
+            {/* Cash Detail */}
+            <text x="70" y="88" textAnchor="middle" fill="#F7931E" fontSize="12" fontWeight="900" style={{ fontStyle: 'normal' }}>J+1 DT</text>
+            
+            {/* Rising Flow Particles */}
+            {[0, 1, 2, 3].map((i) => (
               <motion.circle 
-                key={i} cx={40 + i * 20} cy="95" r="3" fill="#F7931E" fillOpacity="0.4" stroke="none"
-                animate={{ y: [-10, -50], opacity: [0, 0.6, 0] }}
-                transition={{ duration: 2, repeat: Infinity, delay: i * 0.4 }}
+                key={i} cx={40 + i * 20} cy="110" r="2" fill="#F7931E" fillOpacity="0.4"
+                animate={{ y: [-10, -60], opacity: [0, 1, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.5 }}
               />
             ))}
           </g>
@@ -378,7 +386,7 @@ export default function HomePage() {
               { id: 'cash', title: t('h5t'), desc: t('h5d') }
             ].map((step) => (
               <Card key={step.id} className="bg-white/5 border-white/10 hover:border-[#F7931E]/50 transition-all group overflow-hidden border-none text-white h-full flex flex-col">
-                <div className="h-40 bg-[#081E4E]/50 relative flex-shrink-0">
+                <div className="h-44 bg-[#081E4E]/50 relative flex-shrink-0">
                   <ProcessVisual type={step.id as any} />
                 </div>
                 <div className="p-6 flex-grow">
