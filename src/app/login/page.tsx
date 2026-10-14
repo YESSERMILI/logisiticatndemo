@@ -46,70 +46,70 @@ export default function LoginPage() {
   const isAr = language === 'ar';
 
   return (
-    <div className="min-h-screen w-full bg-[#0B2A6B] flex items-center justify-center p-4 relative overflow-hidden" dir={isAr ? 'rtl' : 'ltr'}>
+    <div className="h-screen w-full bg-[#0B2A6B] flex flex-col items-center justify-center p-4 relative overflow-hidden" dir={isAr ? 'rtl' : 'ltr'}>
       <BackgroundShapes />
       
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md relative z-10"
+        className="w-full max-w-md relative z-10 flex flex-col gap-6"
       >
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center">
           <Link href="/" className="hover:opacity-80 transition-opacity">
-            <Logo className="h-12 w-auto" />
+            <Logo className="h-10 w-auto" />
           </Link>
         </div>
 
         <Card className="bg-white/5 border-white/10 backdrop-blur-2xl shadow-2xl overflow-hidden relative">
-          <CardHeader className="space-y-2 text-center pt-8">
+          <CardHeader className="space-y-1 text-center pt-6 pb-2">
             <CardTitle className={cn("text-2xl font-black text-white tracking-tight", isAr && "font-arabic text-3xl")}>
               {t('login_title')}
             </CardTitle>
-            <CardDescription className={cn("text-[#9FB2DE] font-medium", isAr && "font-arabic")}>
+            <CardDescription className={cn("text-[#9FB2DE] font-medium text-sm", isAr && "font-arabic")}>
               {t('login_subtitle')}
             </CardDescription>
           </CardHeader>
 
-          <CardContent className="space-y-5 pt-4">
-            <div className="space-y-2">
-              <Label htmlFor="email" className={cn("text-white/70 text-[10px] font-bold uppercase tracking-[0.2em]", isAr && "font-arabic")}>
+          <CardContent className="space-y-4 pt-4">
+            <div className="space-y-1.5">
+              <Label htmlFor="email" className={cn("text-white/70 text-[9px] font-bold uppercase tracking-[0.2em]", isAr && "font-arabic")}>
                 {t('login_email')}
               </Label>
               <Input 
                 id="email" 
                 type="email" 
                 placeholder="contact@shop.tn" 
-                className="bg-white/5 border-white/10 text-white h-12 focus:ring-[#F7931E] focus:border-[#F7931E] transition-all placeholder:text-white/20"
+                className="bg-white/5 border-white/10 text-white h-11 focus:ring-[#F7931E] focus:border-[#F7931E] transition-all placeholder:text-white/10"
               />
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-1.5">
               <div className="flex items-center justify-between">
-                <Label htmlFor="password" className={cn("text-white/70 text-[10px] font-bold uppercase tracking-[0.2em]", isAr && "font-arabic")}>
+                <Label htmlFor="password" className={cn("text-white/70 text-[9px] font-bold uppercase tracking-[0.2em]", isAr && "font-arabic")}>
                   {t('login_password')}
                 </Label>
-                <Link href="#" className="text-[#F7931E] text-xs font-bold hover:text-white transition-colors">
+                <Link href="#" className="text-[#F7931E] text-[10px] font-bold hover:text-white transition-colors">
                   {t('login_forgot')}
                 </Link>
               </div>
               <Input 
                 id="password" 
                 type="password" 
-                className="bg-white/5 border-white/10 text-white h-12 focus:ring-[#F7931E] focus:border-[#F7931E] transition-all"
+                className="bg-white/5 border-white/10 text-white h-11 focus:ring-[#F7931E] focus:border-[#F7931E] transition-all"
               />
             </div>
 
-            <Button className="w-full h-14 text-lg font-black bg-[#F7931E] text-[#0B2A6B] hover:bg-[#E0861A] border-none shadow-xl active:scale-95 transition-transform mt-2">
+            <Button className="w-full h-12 text-lg font-black bg-[#F7931E] text-[#0B2A6B] hover:bg-[#E0861A] border-none shadow-xl active:scale-95 transition-transform mt-2">
               {t('login_submit')}
             </Button>
           </CardContent>
 
-          <CardFooter className="flex flex-col space-y-4 pb-8">
+          <CardFooter className="flex flex-col space-y-4 pb-6">
             <div className="flex items-center gap-4 w-full">
-              <div className="h-px bg-white/10 flex-1" />
-              <span className="text-white/20 text-[10px] font-black uppercase tracking-widest">{isAr ? "أو" : "OU"}</span>
-              <div className="h-px bg-white/10 flex-1" />
+              <div className="h-px bg-white/5 flex-1" />
+              <span className="text-white/10 text-[9px] font-black uppercase tracking-widest">{isAr ? "أو" : "OU"}</span>
+              <div className="h-px bg-white/5 flex-1" />
             </div>
             
             <p className={cn("text-center text-sm text-[#9FB2DE]", isAr && "font-arabic")}>
@@ -121,8 +121,8 @@ export default function LoginPage() {
           </CardFooter>
         </Card>
 
-        <div className="mt-6 text-center">
-          <Link href="/" className="text-white/40 text-[10px] font-black uppercase tracking-[0.25em] hover:text-white transition-colors">
+        <div className="text-center">
+          <Link href="/" className="text-white/40 text-[9px] font-black uppercase tracking-[0.25em] hover:text-white transition-colors">
             ← {isAr ? "الرجوع للرئيسية" : "Retour à l'accueil"}
           </Link>
         </div>
