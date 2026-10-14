@@ -25,62 +25,66 @@ const ScrollingTicker = () => {
   
   const items = [
     { text: "LOGISTICA TUNISIE", lang: "fr" },
-    { text: "من الكوموند لليفريزون", lang: "ar" },
+    { text: "✦", isSep: true },
     { text: "LIVRAISON 24 GOUVERNORATS", lang: "fr" },
+    { text: "✦", isSep: true },
     { text: "بِيع براحتك والتوصيل علينا", lang: "ar" },
+    { text: "✦", isSep: true },
     { text: "COD & REVERSEMENT J+1", lang: "fr" },
+    { text: "✦", isSep: true },
     { text: "STOCKAGE SÉCURISÉ", lang: "fr" },
+    { text: "✦", isSep: true },
     { text: "تتبع كوليك في كل لحظة", lang: "ar" },
+    { text: "✦", isSep: true },
     { text: "PICKING & PACKING PRO", lang: "fr" },
-    { text: "DASHBOARD SAAS REAL-TIME", lang: "fr" }
+    { text: "✦", isSep: true },
+    { text: "من الكوموند لليفريزون", lang: "ar" },
+    { text: "✦", isSep: true },
+    { text: "DASHBOARD SAAS REAL-TIME", lang: "fr" },
+    { text: "✦", isSep: true },
   ];
 
-  // Tripling content to ensure no gaps on very wide screens
-  const fullItems = [...items, ...items, ...items];
+  // Double content for seamless loop
+  const tickerArray = [...items, ...items];
 
   return (
-    <div className="relative z-20 h-16 flex items-center overflow-hidden bg-[#0B2A6B] border-y border-white/5">
-      <div className="bg-[#F7931E] py-4 -rotate-1 w-[240vw] absolute left-[-70vw] shadow-2xl flex items-center">
-        <div dir="ltr" className="flex whitespace-nowrap animate-ticker-infinite">
-          {/* Main Content Group */}
-          <div className="flex items-center">
-            {fullItems.map((item, j) => (
-              <span 
-                key={j} 
-                className={cn(
-                  "flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-base tracking-[0.1em] mx-6 md:mx-10",
-                  item.lang === "ar" ? "font-arabic normal-case" : "font-sans"
-                )}
-              >
-                {item.text}
-                <span className="ms-6 md:ms-10 text-[#0B2A6B]/20 text-xl">✦</span>
-              </span>
-            ))}
-          </div>
-          {/* Exact Copy for seamless looping */}
-          <div className="flex items-center">
-            {fullItems.map((item, j) => (
-              <span 
-                key={`dup-${j}`} 
-                className={cn(
-                  "flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-base tracking-[0.1em] mx-6 md:mx-10",
-                  item.lang === "ar" ? "font-arabic normal-case" : "font-sans"
-                )}
-              >
-                {item.text}
-                <span className="ms-6 md:ms-10 text-[#0B2A6B]/20 text-xl">✦</span>
-              </span>
-            ))}
-          </div>
+    <div className="relative z-20 h-20 md:h-24 flex items-center overflow-hidden bg-[#0B2A6B]">
+      <div className="absolute left-[-20vw] right-[-20vw] bg-[#F7931E] py-4 md:py-6 -rotate-1 shadow-2xl border-y border-white/10 flex items-center">
+        <div dir="ltr" className="flex whitespace-nowrap animate-ticker-forever">
+          {tickerArray.map((item, i) => (
+            <span 
+              key={i} 
+              className={cn(
+                "inline-flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-xl tracking-tighter px-8",
+                item.lang === "ar" ? "font-arabic" : "font-sans",
+                item.isSep ? "text-[#0B2A6B]/20" : ""
+              )}
+            >
+              {item.text}
+            </span>
+          ))}
+          {/* Exactly repeated set for seamless transition */}
+          {tickerArray.map((item, i) => (
+            <span 
+              key={`dup-${i}`} 
+              className={cn(
+                "inline-flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-xl tracking-tighter px-8",
+                item.lang === "ar" ? "font-arabic" : "font-sans",
+                item.isSep ? "text-[#0B2A6B]/20" : ""
+              )}
+            >
+              {item.text}
+            </span>
+          ))}
         </div>
       </div>
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes ticker-swipe {
+        @keyframes ticker-forever {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
-        .animate-ticker-infinite {
-          animation: ticker-swipe 65s linear infinite;
+        .animate-ticker-forever {
+          animation: ticker-forever 120s linear infinite;
         }
       `}} />
     </div>
@@ -94,78 +98,82 @@ const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'deliver
         {/* Step 1: Order */}
         {type === 'order' && (
           <g>
-            <rect x="10" y="10" width="80" height="60" rx="4" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.2" />
-            <rect x="15" y="20" width="70" height="8" rx="2" fill="currentColor" opacity="0.3" />
+            <rect x="10" y="15" width="80" height="50" rx="4" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.3" />
+            <rect x="15" y="22" width="50" height="6" rx="1" fill="currentColor" opacity="0.2" />
             <motion.rect 
-              x="15" y="35" width="40" height="6" rx="2" fill="#F7931E"
+              x="15" y="35" width="30" height="6" rx="1" fill="#F7931E"
               animate={{ opacity: [0.4, 1, 0.4] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
-            <rect x="15" y="45" width="70" height="2" rx="1" fill="currentColor" opacity="0.1" />
-            <rect x="15" y="50" width="70" height="2" rx="1" fill="currentColor" opacity="0.1" />
-            <motion.circle cx="80" cy="20" r="3" fill="#F7931E" animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1.5 }} />
+            <circle cx="80" cy="25" r="4" fill="#F7931E" />
+            <rect x="15" y="48" width="70" height="2" rx="1" fill="currentColor" opacity="0.1" />
           </g>
         )}
 
         {/* Step 2: Storage */}
         {type === 'storage' && (
           <g>
-            <path d="M10 20 H90 M10 45 H90 M10 70 H90" stroke="currentColor" strokeWidth="2" opacity="0.2" />
-            <path d="M20 20 V70 M50 20 V70 M80 20 V70" stroke="currentColor" strokeWidth="2" opacity="0.2" />
-            <motion.rect x="25" y="25" width="20" height="15" rx="1" fill="#F7931E" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} />
-            <motion.rect x="55" y="50" width="20" height="15" rx="1" fill="currentColor" opacity="0.3" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.2 }} />
-            <motion.rect x="25" y="50" width="20" height="15" rx="1" fill="#F7931E" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.4 }} />
+            <rect x="10" y="20" width="25" height="15" rx="2" fill="currentColor" opacity="0.2" />
+            <rect x="40" y="20" width="25" height="15" rx="2" fill="currentColor" opacity="0.2" />
+            <rect x="70" y="20" width="20" height="15" rx="2" fill="#F7931E" opacity="0.4" />
+            <rect x="10" y="45" width="25" height="15" rx="2" fill="#F7931E" />
+            <rect x="40" y="45" width="25" height="15" rx="2" fill="currentColor" opacity="0.2" />
+            <motion.rect 
+              x="10" y="45" width="25" height="15" rx="2" fill="#F7931E"
+              animate={{ opacity: [1, 0.5, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
           </g>
         )}
 
         {/* Step 3: Prep */}
         {type === 'prep' && (
           <g>
+            <path d="M20 50 L50 65 L80 50 V30 L50 15 L20 30 Z" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.2" />
             <motion.path 
-              d="M20 60 L50 75 L80 60 L80 30 L50 15 L20 30 Z" 
-              fill="none" stroke="currentColor" strokeWidth="2"
-              animate={{ strokeDashoffset: [0, 100] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              style={{ strokeDasharray: "5 5" }}
+              d="M50 15 L80 30 L50 45 L20 30 Z" 
+              fill="#F7931E"
+              animate={{ opacity: [0.6, 1, 0.6] }}
+              transition={{ duration: 2, repeat: Infinity }}
             />
-            <rect x="40" y="35" width="20" height="20" rx="1" fill="#F7931E" />
-            <path d="M40 45 H60 M50 35 V55" stroke="#0B2A6B" strokeWidth="2" opacity="0.5" />
+            <rect x="45" y="40" width="10" height="10" fill="#0B2A6B" />
           </g>
         )}
 
         {/* Step 4: Delivery */}
         {type === 'delivery' && (
           <g>
-            <path d="M10 60 Q 50 10 90 60" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
+            <path d="M10 50 Q 50 10 90 50" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
+            <circle cx="10" cy="50" r="3" fill="currentColor" opacity="0.5" />
+            <circle cx="90" cy="50" r="3" fill="#F7931E" />
             <motion.g
               animate={{ 
-                offsetDistance: ["0%", "100%"],
-                opacity: [0, 1, 1, 0]
+                offsetDistance: ["0%", "100%"]
               }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              style={{ offsetPath: "path('M10 60 Q 50 10 90 60')" }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              style={{ offsetPath: "path('M10 50 Q 50 10 90 50')" }}
             >
               <circle r="4" fill="#F7931E" />
+              <path d="M-2 0 H2 M0 -2 V2" stroke="white" strokeWidth="1" />
             </motion.g>
-            <circle cx="10" cy="60" r="3" fill="currentColor" opacity="0.5" />
-            <motion.circle cx="90" cy="60" r="5" fill="#F7931E" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 2 }} />
           </g>
         )}
 
         {/* Step 5: Cash */}
         {type === 'cash' && (
           <g>
-            <circle cx="50" cy="40" r="25" fill="none" stroke="#F7931E" strokeWidth="2" strokeDasharray="5 5" />
+            <rect x="30" y="15" width="40" height="50" rx="6" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.2" />
+            <circle cx="50" cy="40" r="12" fill="#F7931E" opacity="0.2" />
             <motion.text 
-              x="50" y="45" textAnchor="middle" fill="#F7931E" fontSize="16" fontWeight="900"
+              x="50" y="44" textAnchor="middle" fill="#F7931E" fontSize="12" fontWeight="900"
               animate={{ scale: [1, 1.1, 1] }}
               transition={{ repeat: Infinity, duration: 2 }}
             >
               DT
             </motion.text>
             <motion.path 
-              d="M40 70 L50 75 L65 60" 
-              fill="none" stroke="#27C93F" strokeWidth="3" strokeLinecap="round"
+              d="M45 55 L50 60 L60 50" 
+              fill="none" stroke="#27C93F" strokeWidth="2.5" strokeLinecap="round"
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
