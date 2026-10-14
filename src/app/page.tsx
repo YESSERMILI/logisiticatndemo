@@ -7,11 +7,6 @@ import { useLanguage } from "@/contexts/language-context";
 import { 
   ArrowRight,
   CheckCircle2,
-  Package,
-  Truck,
-  MapPin,
-  Clock,
-  ShieldCheck,
   ChevronRight
 } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
@@ -86,75 +81,85 @@ const ScrollingTicker = () => {
 const ProcessVisual = ({ type }: { type: 'order' | 'storage' | 'prep' | 'delivery' | 'cash' }) => {
   return (
     <div className="relative w-full h-full flex items-center justify-center p-6">
-      <svg viewBox="0 0 160 120" className="w-full h-full overflow-visible">
+      <svg viewBox="0 0 100 80" className="w-full h-full overflow-visible">
         {/* Step 1: Order */}
         {type === 'order' && (
           <g>
-            <rect x="30" y="30" width="100" height="70" rx="6" fill="#081E4E" stroke="#1F6FDB" strokeWidth="2" />
-            <rect x="30" y="30" width="100" height="12" rx="6" fill="#1F6FDB" />
-            <circle cx="40" cy="36" r="2" fill="#F7931E" />
+            <rect x="10" y="10" width="80" height="60" rx="4" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.2" />
+            <rect x="15" y="20" width="70" height="8" rx="2" fill="currentColor" opacity="0.3" />
             <motion.rect 
-              x="45" y="55" width="70" height="25" rx="4" fill="#F7931E"
-              animate={{ opacity: [0.6, 1, 0.6] }}
+              x="15" y="35" width="40" height="6" rx="2" fill="#F7931E"
+              animate={{ opacity: [0.4, 1, 0.4] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
-            <text x="80" y="68" textAnchor="middle" fill="#0B2A6B" fontSize="7" fontWeight="900" dominantBaseline="middle">NEW ORDER</text>
+            <rect x="15" y="45" width="70" height="2" rx="1" fill="currentColor" opacity="0.1" />
+            <rect x="15" y="50" width="70" height="2" rx="1" fill="currentColor" opacity="0.1" />
+            <motion.circle cx="80" cy="20" r="3" fill="#F7931E" animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 1.5 }} />
           </g>
         )}
 
         {/* Step 2: Storage */}
         {type === 'storage' && (
           <g>
-            <rect x="25" y="20" width="110" height="80" rx="2" fill="none" stroke="#1F6FDB" strokeWidth="1" strokeDasharray="4 2" opacity="0.3" />
-            <path d="M25 50 H135 M25 80 H135" stroke="#1F6FDB" strokeWidth="1.5" />
-            <motion.rect x="35" y="30" width="30" height="15" rx="2" fill="#F7931E" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }} />
-            <motion.rect x="95" y="30" width="30" height="15" rx="2" fill="#0B2A6B" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.4 }} stroke="#1F6FDB" />
-            <motion.rect x="65" y="60" width="30" height="15" rx="2" fill="#F7931E" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.6 }} />
+            <path d="M10 20 H90 M10 45 H90 M10 70 H90" stroke="currentColor" strokeWidth="2" opacity="0.2" />
+            <path d="M20 20 V70 M50 20 V70 M80 20 V70" stroke="currentColor" strokeWidth="2" opacity="0.2" />
+            <motion.rect x="25" y="25" width="20" height="15" rx="1" fill="#F7931E" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} />
+            <motion.rect x="55" y="50" width="20" height="15" rx="1" fill="currentColor" opacity="0.3" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.2 }} />
+            <motion.rect x="25" y="50" width="20" height="15" rx="1" fill="#F7931E" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.4 }} />
           </g>
         )}
 
         {/* Step 3: Prep */}
         {type === 'prep' && (
           <g>
-            <motion.g animate={{ y: [0, -3, 0] }} transition={{ repeat: Infinity, duration: 2.5 }}>
-              <rect x="40" y="45" width="80" height="55" rx="2" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="2" />
-              <path d="M40 45 L80 65 L120 45" fill="none" stroke="#1F6FDB" strokeWidth="2" />
-              <rect x="65" y="35" width="30" height="45" rx="1" fill="#F7931E" opacity="0.9" />
-              <circle cx="80" cy="58" r="8" fill="#0B2A6B" stroke="#1F6FDB" strokeWidth="1" />
-              <text x="80" y="58" textAnchor="middle" fill="#F7931E" fontSize="5" fontWeight="900" dominantBaseline="middle">LOG</text>
-            </motion.g>
+            <motion.path 
+              d="M20 60 L50 75 L80 60 L80 30 L50 15 L20 30 Z" 
+              fill="none" stroke="currentColor" strokeWidth="2"
+              animate={{ strokeDashoffset: [0, 100] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              style={{ strokeDasharray: "5 5" }}
+            />
+            <rect x="40" y="35" width="20" height="20" rx="1" fill="#F7931E" />
+            <path d="M40 45 H60 M50 35 V55" stroke="#0B2A6B" strokeWidth="2" opacity="0.5" />
           </g>
         )}
 
         {/* Step 4: Delivery */}
         {type === 'delivery' && (
           <g>
-            <path d="M20 90 Q 80 10 140 90" fill="none" stroke="#1F6FDB" strokeWidth="2" strokeDasharray="5 5" opacity="0.4" />
+            <path d="M10 60 Q 50 10 90 60" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
             <motion.g
-              style={{ offsetPath: "path('M20 90 Q 80 10 140 90')" }}
-              animate={{ offsetDistance: "100%" }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
+              animate={{ 
+                offsetDistance: ["0%", "100%"],
+                opacity: [0, 1, 1, 0]
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              style={{ offsetPath: "path('M10 60 Q 50 10 90 60')" }}
             >
-              <Truck size={20} className="text-[#F7931E]" transform="translate(-10, -10)" />
+              <circle r="4" fill="#F7931E" />
             </motion.g>
-            <MapPin x="130" y="75" size={20} className="text-[#F7931E]" />
+            <circle cx="10" cy="60" r="3" fill="currentColor" opacity="0.5" />
+            <motion.circle cx="90" cy="60" r="5" fill="#F7931E" animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 2 }} />
           </g>
         )}
 
         {/* Step 5: Cash */}
         {type === 'cash' && (
           <g>
-            <circle cx="80" cy="60" r="35" fill="none" stroke="#F7931E" strokeWidth="2" strokeDasharray="8 4" />
-            <motion.circle 
-              cx="80" cy="60" r="25" fill="#F7931E"
-              animate={{ scale: [0.9, 1.05, 0.9] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
-            <text x="80" y="63" textAnchor="middle" fill="#0B2A6B" fontSize="12" fontWeight="900" dominantBaseline="middle">DT</text>
+            <circle cx="50" cy="40" r="25" fill="none" stroke="#F7931E" strokeWidth="2" strokeDasharray="5 5" />
+            <motion.text 
+              x="50" y="45" textAnchor="middle" fill="#F7931E" fontSize="16" fontWeight="900"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+            >
+              DT
+            </motion.text>
             <motion.path 
-              d="M105 40 L120 25" 
-              stroke="#27C93F" strokeWidth="3" strokeLinecap="round"
-              initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ repeat: Infinity, duration: 1.5 }}
+              d="M40 70 L50 75 L65 60" 
+              fill="none" stroke="#27C93F" strokeWidth="3" strokeLinecap="round"
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
             />
           </g>
         )}
@@ -292,26 +297,6 @@ export default function HomePage() {
 
       {/* Scrolling Ticker Section */}
       <ScrollingTicker />
-
-      {/* Stats Bar */}
-      <section className="bg-[#081E4E] py-16 border-y border-white/5 relative z-10">
-        <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-           {[
-             { label: t('stats_l1'), value: '+12 000', icon: Package },
-             { label: t('stats_l2'), value: '24', icon: MapPin },
-             { label: t('stats_l3'), value: '98%', icon: ShieldCheck },
-             { label: t('stats_l4'), value: '< 24h', icon: Clock }
-           ].map((stat, i) => (
-             <div key={i} className="text-center group">
-                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#F7931E] mx-auto mb-4 group-hover:bg-[#F7931E] group-hover:text-[#0B2A6B] transition-all duration-300">
-                  <stat.icon size={24} />
-                </div>
-                <p className="text-3xl md:text-5xl font-black text-white mb-1 tracking-tighter tabular-nums">{stat.value}</p>
-                <p className="text-[10px] font-black text-white/40 uppercase tracking-widest">{stat.label}</p>
-             </div>
-           ))}
-        </div>
-      </section>
 
       {/* Preparation Section (Le Processus en 5 étapes) */}
       <section id="preparation" className="py-24 bg-[#0B2A6B]">
