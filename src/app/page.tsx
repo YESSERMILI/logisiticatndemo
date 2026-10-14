@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -264,18 +265,237 @@ export default function HomePage() {
             transition={{ duration: 1.2, delay: 0.2 }}
             className="relative hidden lg:block"
           >
-             <svg viewBox="0 0 560 340" className="w-full h-auto overflow-visible" role="img">
+             <svg viewBox="0 0 520 220" className="w-full h-auto overflow-visible" role="img">
                 <defs>
-                   <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#1F6FDB" stopOpacity=".15"/><stop offset="1" stopColor="#0B2A6B" stopOpacity="0"/></linearGradient>
+                  <linearGradient id="truckBody" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#3B82F6" stopOpacity={1} />
+                    <stop offset="100%" stopColor="#1D4ED8" stopOpacity={1} />
+                  </linearGradient>
+                  <linearGradient id="truckCab" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#FFFFFF" stopOpacity={1} />
+                    <stop offset="100%" stopColor="#E0E7FF" stopOpacity={1} />
+                  </linearGradient>
+                  <linearGradient id="roadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#1E3A5F" stopOpacity={0.3} />
+                    <stop offset="50%" stopColor="#1E3A5F" stopOpacity={0.8} />
+                    <stop offset="100%" stopColor="#1E3A5F" stopOpacity={0.3} />
+                  </linearGradient>
+                  <linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#F59E0B" stopOpacity={1} />
+                    <stop offset="100%" stopColor="#D97706" stopOpacity={1} />
+                  </linearGradient>
+                  <linearGradient id="boxGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#FBBF24" stopOpacity={1} />
+                    <stop offset="100%" stopColor="#F59E0B" stopOpacity={1} />
+                  </linearGradient>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge>
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                  <filter id="shadow">
+                    <feDropShadow dx={0} dy={4} stdDeviation={6} floodColor="#000" floodOpacity={0.3}/>
+                  </filter>
+                  <clipPath id="truckClip">
+                    <rect x="60" y="60" width="180" height="80" rx="6"/>
+                  </clipPath>
                 </defs>
-                <rect x="0" y="0" width="560" height="260" fill="url(#sky)" rx="8"/>
-                <circle cx="470" cy="70" r="34" fill="#F7931E" className="animate-pulse opacity-40"/>
-                <path d="M0 300 H560" stroke="rgba(255,255,255,0.2)" strokeWidth="4" strokeDasharray="14 16"/>
-                <motion.g animate={{ x: [-400, 30, 30, 650] }} transition={{ duration: 8, repeat: Infinity, times: [0, 0.25, 0.6, 1], ease: "easeInOut" }}>
-                  <rect x="40" y="206" width="140" height="82" rx="4" fill="#1F6FDB" className="shadow-lg"/>
-                  <path d="M180 226h44l28 32v30h-72z" fill="#fff"/>
-                  <circle cx="82" cy="292" r="17" fill="#0B2A6B"/><circle cx="150" cy="292" r="17" fill="#0B2A6B"/>
-                </motion.g>
+
+                <g>
+                  <line x1="20" y1="175" x2="500" y2="175" stroke="#1E3A5F" strokeWidth="3" strokeDasharray="12,8" opacity={0.5}>
+                    <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="1s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="20" y1="180" x2="500" y2="180" stroke="#1E3A5F" strokeWidth="1" opacity={0.2}/>
+                </g>
+
+                <ellipse cx="170" cy="178" rx="130" ry="8" fill="#0F172A" opacity={0.4}>
+                  <animate attributeName="rx" values="130;125;130" dur="0.6s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.4;0.3;0.4" dur="0.6s" repeatCount="indefinite"/>
+                </ellipse>
+
+                <g filter="url(#shadow)">
+                  <animateTransform attributeName="transform" type="translate" values="0,0;0,-3;0,0;0,-1;0,0" dur="0.8s" repeatCount="indefinite"/>
+                  <rect x="60" y="60" width="180" height="80" rx="6" fill="url(#truckBody)" stroke="#2563EB" strokeWidth="1.5"/>
+                  <line x1="70" y1="85" x2="230" y2="85" stroke="#2563EB" strokeWidth="0.8" opacity={0.4}/>
+                  <line x1="70" y1="110" x2="230" y2="110" stroke="#2563EB" strokeWidth="0.8" opacity={0.4}/>
+                  <line x1="150" y1="60" x2="150" y2="140" stroke="#2563EB" strokeWidth="1" opacity={0.3}/>
+                  <text x="105" y="105" fontFamily="Arial, sans-serif" fontSize="11" fontWeight="bold" fill="#FFFFFF" opacity={0.9} letterSpacing="2">LOGISTICA</text>
+                  <path d="M240,90 L240,140 L310,140 L310,100 L290,90 Z" fill="url(#truckCab)" stroke="#CBD5E1" strokeWidth="1.5"/>
+                  <path d="M250,95 L250,115 L295,115 L295,100 L285,95 Z" fill="#93C5FD" opacity={0.7}>
+                    <animate attributeName="opacity" values="0.7;0.9;0.7" dur="2s" repeatCount="indefinite"/>
+                  </path>
+                  <line x1="255" y1="97" x2="260" y2="113" stroke="#FFFFFF" strokeWidth="1.5" opacity={0.5}/>
+                  <rect x="305" y="120" width="8" height="12" rx="3" fill="#FBBF24">
+                    <animate attributeName="opacity" values="1;0.6;1" dur="1.5s" repeatCount="indefinite"/>
+                  </rect>
+                  <circle cx="315" cy="126" r="15" fill="#FBBF24" opacity={0.15}>
+                    <animate attributeName="r" values="15;20;15" dur="1.5s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.15;0.05;0.15" dur="1.5s" repeatCount="indefinite"/>
+                  </circle>
+                  <rect x={238} y={138} width={75} height={6} rx={3} fill="#64748B"/>
+                  <circle cx={275} cy={148} r={16} fill="#1E293B" stroke="#334155" strokeWidth={2}/>
+                  <circle cx={275} cy={148} r={8} fill="#475569"/>
+                  <circle cx={275} cy={148} r={3} fill="#94A3B8"/>
+                  <g>
+                    <animateTransform attributeName="transform" type="rotate" from="0 275 148" to="360 275 148" dur="0.5s" repeatCount="indefinite"/>
+                    <line x1={275} y1={134} x2={275} y2={162} stroke="#64748B" strokeWidth={1.5}/>
+                    <line x1={261} y1={148} x2={289} y2={148} stroke="#64748B" strokeWidth={1.5}/>
+                  </g>
+                  <circle cx={110} cy={148} r={16} fill="#1E293B" stroke="#334155" strokeWidth={2}/>
+                  <circle cx={110} cy={148} r={8} fill="#475569"/>
+                  <circle cx={110} cy={148} r={3} fill="#94A3B8"/>
+                  <g>
+                    <animateTransform attributeName="transform" type="rotate" from="0 110 148" to="360 110 148" dur="0.5s" repeatCount="indefinite"/>
+                    <line x1={110} y1={134} x2={110} y2={162} stroke="#64748B" strokeWidth={1.5}/>
+                    <line x1={96} y1={148} x2={124} y2={148} stroke="#64748B" strokeWidth={1.5}/>
+                  </g>
+                  <circle cx={190} cy={148} r={16} fill="#1E293B" stroke="#334155" strokeWidth={2}/>
+                  <circle cx={190} cy={148} r={8} fill="#475569"/>
+                  <circle cx={190} cy={148} r={3} fill="#94A3B8"/>
+                  <g>
+                    <animateTransform attributeName="transform" type="rotate" from="0 190 148" to="360 190 148" dur="0.5s" repeatCount="indefinite"/>
+                    <line x1={190} y1={134} x2={190} y2={162} stroke="#64748B" strokeWidth={1.5}/>
+                    <line x1={176} y1={148} x2={204} y2={148} stroke="#64748B" strokeWidth={1.5}/>
+                  </g>
+                </g>
+
+                <g>
+                  <animateTransform attributeName="transform" type="translate" values="0,0;0,-3;0,0;0,-1;0,0" dur="0.8s" repeatCount="indefinite"/>
+                  <rect x={80} y={38} width={30} height={22} rx={2} fill="url(#boxGrad)" stroke="#D97706" strokeWidth={1}>
+                    <animate attributeName="y" values="38;35;38" dur="1.2s" repeatCount="indefinite"/>
+                  </rect>
+                  <line x1={95} y1={38} x2={95} y2={60} stroke="#D97706" strokeWidth={1} opacity={0.6}>
+                    <animate attributeName="y1" values="38;35;38" dur="1.2s" repeatCount="indefinite"/>
+                    <animate attributeName="y2" values="60;57;60" dur="1.2s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1={80} y1={49} x2={110} y2={49} stroke="#D97706" strokeWidth={1} opacity={0.6}>
+                    <animate attributeName="y1" values="49;46;49" dur="1.2s" repeatCount="indefinite"/>
+                    <animate attributeName="y2" values="49;46;49" dur="1.2s" repeatCount="indefinite"/>
+                  </line>
+                  <rect x={115} y={42} width={25} height={18} rx={2} fill="url(#boxGrad2)" stroke="#F59E0B" strokeWidth={1}>
+                    <animate attributeName="y" values="42;39;42" dur="1.4s" repeatCount="indefinite"/>
+                  </rect>
+                  <line x1={127.5} y1={42} x2={127.5} y2={60} stroke="#F59E0B" strokeWidth={1} opacity={0.6}>
+                    <animate attributeName="y1" values="42;39;42" dur="1.4s" repeatCount="indefinite"/>
+                    <animate attributeName="y2" values="60;57;60" dur="1.4s" repeatCount="indefinite"/>
+                  </line>
+                  <rect x={145} y={46} width={20} height={14} rx={2} fill="#F97316" stroke="#EA580C" strokeWidth={1}>
+                    <animate attributeName="y" values="46;43;46" dur="1.1s" repeatCount="indefinite"/>
+                  </rect>
+                  <line x1={155} y1={46} x2={155} y2={60} stroke="#EA580C" strokeWidth={1} opacity={0.6}>
+                    <animate attributeName="y1" values="46;43;46" dur="1.1s" repeatCount="indefinite"/>
+                    <animate attributeName="y2" values="60;57;60" dur="1.1s" repeatCount="indefinite"/>
+                  </line>
+                </g>
+
+                <g opacity={0.6}>
+                  <rect x={10} y={80} width={22} height={18} rx={2} fill="url(#boxGrad)" stroke="#D97706" strokeWidth={0.8}>
+                    <animate attributeName="y" values="80;70;80" dur="3s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.6;0.3;0.6" dur="3s" repeatCount="indefinite"/>
+                  </rect>
+                  <line x1={21} y1={80} x2={21} y2={98} stroke="#D97706" strokeWidth={0.8} opacity={0.4}>
+                    <animate attributeName="y1" values="80;70;80" dur="3s" repeatCount="indefinite"/>
+                    <animate attributeName="y2" values="98;88;98" dur="3s" repeatCount="indefinite"/>
+                  </line>
+                </g>
+
+                <g opacity={0.5}>
+                  <rect x={340} y={60} width={28} height={22} rx={2} fill="url(#boxGrad2)" stroke="#F59E0B" strokeWidth={0.8}>
+                    <animate attributeName="y" values="60;50;60" dur="3.5s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.5;0.2;0.5" dur="3.5s" repeatCount="indefinite"/>
+                  </rect>
+                  <line x1={354} y1={60} x2={354} y2={82} stroke="#F59E0B" strokeWidth={0.8} opacity={0.4}>
+                    <animate attributeName="y1" values="60;50;60" dur="3.5s" repeatCount="indefinite"/>
+                    <animate attributeName="y2" values="82;72;82" dur="3.5s" repeatCount="indefinite"/>
+                  </line>
+                </g>
+
+                <g opacity={0.4}>
+                  <rect x={420} y={90} width={18} height={14} rx={2} fill="#F97316" stroke="#EA580C" strokeWidth={0.8}>
+                    <animate attributeName="y" values="90;82;90" dur="2.8s" repeatCount="indefinite"/>
+                  </rect>
+                </g>
+
+                <g opacity={0.3}>
+                  <line x1={20} y1={100} x2={50} y2={100} stroke="#60A5FA" strokeWidth={2} strokeLinecap="round">
+                    <animate attributeName="x1" values="20;-10;20" dur="0.8s" repeatCount="indefinite"/>
+                    <animate attributeName="x2" values="50;20;50" dur="0.8s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.3;0;0.3" dur="0.8s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1={15} y1={120} x2={45} y2={120} stroke="#60A5FA" strokeWidth={1.5} strokeLinecap="round">
+                    <animate attributeName="x1" values="15;-15;15" dur="1s" repeatCount="indefinite"/>
+                    <animate attributeName="x2" values="45;15;45" dur="1s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.3;0;0.3" dur="1s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1={25} y1={140} x2={55} y2={140} stroke="#60A5FA" strokeWidth="1" strokeLinecap="round">
+                    <animate attributeName="x1" values="25;-5;25" dur="0.9s" repeatCount="indefinite"/>
+                    <animate attributeName="x2" values="55;25;55" dur="0.9s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.3;0;0.3" dur="0.9s" repeatCount="indefinite"/>
+                  </line>
+                </g>
+
+                <g transform="translate(440, 50)">
+                  <path d="M0,-15 C-8,-15 -12,-8 -12,-2 C-12,8 0,18 0,18 C0,18 12,8 12,-2 C12,-8 8,-15 0,-15 Z" fill="#F97316" opacity={0.7}>
+                    <animate attributeName="opacity" values="0.7;0.4;0.7" dur="2s" repeatCount="indefinite"/>
+                  </path>
+                  <circle cx={0} cy={-3} r={4} fill="#FFFFFF" opacity={0.9}/>
+                  <animateTransform attributeName="transform" type="translate" values="440,50;440,44;440,50" dur="2s" repeatCount="indefinite"/>
+                </g>
+
+                <g transform="translate(470, 110)" opacity={0.6}>
+                  <circle cx={0} cy={0} r={14} fill="#10B981" opacity={0.3}>
+                    <animate attributeName="r" values="14;18;14" dur="2.5s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.3;0.1;0.3" dur="2.5s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx={0} cy={0} r={10} fill="#10B981" opacity={0.6}/>
+                  <path d="M-4,0 L-1,4 L5,-3" stroke="#FFFFFF" strokeWidth={2} fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                </g>
+
+                <path d="M320,130 Q380,100 440,65" stroke="#F59E0B" strokeWidth={2} strokeDasharray="6,4" fill="none" opacity={0.4}>
+                  <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1.5s" repeatCount="indefinite"/>
+                </path>
+
+                <circle cx={360} cy={115} r={3} fill="#F59E0B" opacity={0.5}>
+                  <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx={400} cy={90} r={3} fill="#F59E0B" opacity={0.5}>
+                  <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" begin="0.5s" repeatCount="indefinite"/>
+                </circle>
+
+                <g>
+                  <circle cx={55} cy={130} r={4} fill="#94A3B8" opacity={0}>
+                    <animate attributeName="cx" values="55;30;10" dur="2s" repeatCount="indefinite"/>
+                    <animate attributeName="cy" values="130;120;110" dur="2s" repeatCount="indefinite"/>
+                    <animate attributeName="r" values="4;8;12" dur="2s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.4;0.2;0" dur="2s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx={55} cy={135} r={3} fill="#94A3B8" opacity={0}>
+                    <animate attributeName="cx" values="55;35;15" dur="2.5s" repeatCount="indefinite"/>
+                    <animate attributeName="cy" values="135;125;115" dur="2.5s" repeatCount="indefinite"/>
+                    <animate attributeName="r" values="3;7;11" dur="2.5s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.3;0.15;0" dur="2.5s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx={55} cy={125} r={3} fill="#94A3B8" opacity={0}>
+                    <animate attributeName="cx" values="55;25;5" dur="1.8s" repeatCount="indefinite"/>
+                    <animate attributeName="cy" values="125;115;105" dur="1.8s" repeatCount="indefinite"/>
+                    <animate attributeName="r" values="3;6;10" dur="1.8s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.35;0.15;0" dur="1.8s" repeatCount="indefinite"/>
+                  </circle>
+                </g>
+
+                <g transform="translate(200, 55)" opacity={0.4}>
+                  <path d="M-8,-5 Q0,-12 8,-5" stroke="#60A5FA" strokeWidth={1.5} fill="none" strokeLinecap="round">
+                    <animate attributeName="opacity" values="0;0.6;0" dur="2s" repeatCount="indefinite"/>
+                  </path>
+                  <path d="M-14,-8 Q0,-18 14,-8" stroke="#60A5FA" strokeWidth={1.5} fill="none" strokeLinecap="round">
+                    <animate attributeName="opacity" values="0;0.4;0" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+                  </path>
+                  <path d="M-20,-11 Q0,-24 20,-11" stroke="#60A5FA" strokeWidth={1.5} fill="none" strokeLinecap="round">
+                    <animate attributeName="opacity" values="0;0.3;0" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+                  </path>
+                </g>
              </svg>
           </motion.div>
         </div>
