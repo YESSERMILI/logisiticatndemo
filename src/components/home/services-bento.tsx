@@ -4,7 +4,7 @@
 import { useTranslation } from "@/hooks/use-translation";
 import { 
   Box, Package, Truck, Banknote, RotateCcw, 
-  Headphones, ArrowRight, Zap, X, CheckCircle2 
+  Headphones, Zap, X, CheckCircle2 
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
@@ -19,7 +19,8 @@ export function BentoServices() {
       id: 0,
       title: language === 'ar' ? "إنت ركّز في البيع، وإحنا نتكفّلوا بالباقي" : "Concentrez-vous sur la vente, on gère le reste", 
       icon: Zap, 
-      size: "md:col-span-2 md:row-span-2", 
+      defaultSize: "md:col-span-2 md:row-span-2", 
+      expandedSize: "md:col-span-3 md:row-span-3",
       color: "bg-[#F7931E] text-[#0B2A6B]", 
       desc: language === 'ar' ? "Logistica تهز عليك حمل الستوك والتحضير والتوصيل باش إنتي تخدم على تكبير البيزنس متاعك." : "Logistica prend en charge le stock, la préparation et la livraison pour que vous puissiez vous concentrer sur votre croissance.",
       details: {
@@ -58,12 +59,13 @@ export function BentoServices() {
       id: 1,
       title: language === 'ar' ? "تحضير وتغليف الكوموندات" : "Préparation et emballage", 
       icon: Package, 
-      size: "md:col-span-1 md:row-span-1", 
+      defaultSize: "md:col-span-1 md:row-span-1", 
+      expandedSize: "md:col-span-2 md:row-span-2",
       color: "bg-white/5 text-white border-white/10", 
       desc: language === 'ar' ? "تغليف احترافي وسريع يخرّج الكولي متاعك في وقت قياسي." : "Picking rigoureux et emballage pro avant expédition immédiate.",
       details: {
         intro: language === 'ar'
-          ? "كل كوموند تتجهّز حسب المنتجات المطلوبة، مع عناية بالتجميع والتغليف قبل إرسالها للحريف."
+          ? "كل كوموند تتجهّز حسب المنتجات المطلوبة, مع عناية بالتجميع والتغليف قبل إرسالها للحريف."
           : "Chaque commande est préparée selon les produits demandés, avec un soin particulier apporté au regroupement et à l'emballage avant l'envoi au client.",
         how: language === 'ar' ? [
           "تحديد المنتجات المطلوبة.",
@@ -97,7 +99,8 @@ export function BentoServices() {
       id: 2,
       title: language === 'ar' ? "التوصيل للحرفاء في تونس" : "Livraison clients en Tunisie", 
       icon: Truck, 
-      size: "md:col-span-1 md:row-span-2", 
+      defaultSize: "md:col-span-1 md:row-span-2", 
+      expandedSize: "md:col-span-2 md:row-span-3",
       color: "bg-[#1F6FDB] text-white", 
       desc: language === 'ar' ? "شبكة توصيل تغطي تونس كاملة من بنزرت لبنقردان في أقل من 48 ساعة." : "Livraison express sur tout le territoire tunisien avec suivi temps réel.",
       details: {
@@ -134,12 +137,13 @@ export function BentoServices() {
       id: 3,
       title: language === 'ar' ? "متابعة خلاصات الكوموندات" : "Suivi des encaissements COD", 
       icon: Banknote, 
-      size: "md:col-span-1 md:row-span-1", 
+      defaultSize: "md:col-span-1 md:row-span-1", 
+      expandedSize: "md:col-span-2 md:row-span-2",
       color: "bg-white/5 text-white border-white/10", 
       desc: language === 'ar' ? "رجوع فلوسك (COD) في وقتها وبكل دقة ومن غير تكسير راس." : "Versement automatisé de vos encaissements dès le lendemain.",
       details: {
         intro: language === 'ar'
-          ? "تابع وضعية الكوموندات اللي تخلّصت عند التسليم (COD)، ونظّم معلومات مستحقّاتك باش تكون عندك رؤية أوضح على العمليات المالية المرتبطة بالتوصيل."
+          ? "تابع وضعية الكوموندات اللي تخلّصت عند التسليم (COD), ونظّم معلومات مستحقّاتك باش تكون عندك رؤية أوضح على العمليات المالية المرتبطة بالتوصيل."
           : "Suivez le statut des commandes payées à la livraison (COD) et organisez vos créances pour avoir une vision claire des opérations financières liées au transport.",
         how: language === 'ar' ? [
           "متابعة الكوموندات المعنيّة بالـ COD.",
@@ -171,12 +175,13 @@ export function BentoServices() {
       id: 4,
       title: language === 'ar' ? "متابعة الكولي المرجوعة" : "Gestion des retours", 
       icon: RotateCcw, 
-      size: "md:col-span-1 md:row-span-1", 
+      defaultSize: "md:col-span-1 md:row-span-1", 
+      expandedSize: "md:col-span-2 md:row-span-2",
       color: "bg-white/5 text-white border-white/10", 
       desc: language === 'ar' ? "إدارة المرجوعات والتبديل بكل سلاسة باش تحافظ على ثقة كليوناتك." : "Gestion simplifiée des retours pour garantir la satisfaction client.",
       details: {
         intro: language === 'ar'
-          ? "نتابعو وضعية الكولي اللي ما تمّش تسليمها، وننظّمو إجراءات الإرجاع حسب أسباب الرجوع وشروط الخدمة المتّفق عليها."
+          ? "نتابعو وضعية الكولي اللي ما تمّش تسليمها, وننظّمو إجراءات الإرجاع حسب أسباب الرجوع وشروط الخدمة المتّفق عليها."
           : "Nous suivons le statut des colis non livrés et organisons les procédures de retour selon les motifs et les conditions de service convenues.",
         how: language === 'ar' ? [
           "متابعة حالة الكولي المرجوعة.",
@@ -208,7 +213,8 @@ export function BentoServices() {
       id: 5,
       title: language === 'ar' ? "مرافقة ومتابعة لنشاطك" : "Accompagnement et suivi", 
       icon: Headphones, 
-      size: "md:col-span-1 md:row-span-1", 
+      defaultSize: "md:col-span-1 md:row-span-1", 
+      expandedSize: "md:col-span-2 md:row-span-2",
       color: "bg-white/5 text-white border-white/10", 
       desc: language === 'ar' ? "إكاونت مانجر معاك خطوة بخطوة باش يجاوب على كل استفساراتك." : "Un Account Manager dédié disponible sur WhatsApp pour vous accompagner.",
       details: {
@@ -243,8 +249,6 @@ export function BentoServices() {
     },
   ];
 
-  const activeService = selectedId !== null ? services.find(s => s.id === selectedId) : null;
-
   return (
     <section id="services" className="py-24 bg-[#0B2A6B]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-6">
@@ -264,120 +268,119 @@ export function BentoServices() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto">
-          {services.map((s) => (
-            <motion.div
-              key={s.id}
-              onClick={() => setSelectedId(selectedId === s.id ? null : s.id)}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: s.id * 0.1 }}
-              className={cn(
-                "rounded-[32px] p-8 flex flex-col justify-between group cursor-pointer transition-all duration-500 border relative overflow-hidden",
-                s.size,
-                s.color,
-                s.color.includes('bg-white/5') ? "border-white/5 hover:bg-white/10" : "border-transparent shadow-2xl",
-                selectedId === s.id && "ring-4 ring-[#F7931E]/40 border-[#F7931E]"
-              )}
-            >
-              <div className={cn(
-                "w-12 h-12 rounded-2xl flex items-center justify-center relative z-10 transition-transform group-hover:scale-110",
-                s.color.includes('bg-[#F7931E]') ? "bg-[#0B2A6B]/10 text-[#0B2A6B]" : "bg-white/10 text-white"
-              )}>
-                <s.icon className="h-6 w-6" strokeWidth={2} />
-              </div>
-              
-              <div className="relative z-10 mt-12">
-                <h3 className={cn(
-                  "text-xl font-bold mb-3 uppercase tracking-tight leading-tight",
-                  language === 'ar' && "font-arabic text-2xl"
-                )}>{s.title}</h3>
-                <p className={cn(
-                  "text-sm font-medium leading-relaxed opacity-80",
-                  language === 'ar' && "font-arabic"
-                )}>{s.desc}</p>
-              </div>
-
-              {/* Decorative background icon */}
-              <div className="absolute -bottom-10 -right-10 opacity-[0.05] transition-transform group-hover:scale-125 duration-700 pointer-events-none">
-                <s.icon className="w-48 h-48" />
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Shared Details Panel */}
-        <AnimatePresence mode="wait">
-          {activeService && (
-            <motion.div
-              key={activeService.id}
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="mt-12 overflow-hidden"
-            >
-              <div className="bg-[#081E4E] border border-white/10 rounded-[40px] p-8 md:p-12 relative">
-                <button 
-                  onClick={() => setSelectedId(null)}
-                  className="absolute top-8 rtl:left-8 ltr:right-8 w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white/40 hover:bg-[#F7931E] hover:text-[#0B2A6B] transition-all z-20"
-                >
-                  <X size={24} />
-                </button>
-
-                <div className="max-w-5xl">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-2xl bg-[#F7931E]/10 text-[#F7931E] flex items-center justify-center">
-                      <activeService.icon size={24} />
-                    </div>
-                    <h3 className={cn("text-2xl md:text-4xl font-black text-white uppercase tracking-tight", language === 'ar' && "font-arabic")}>
-                      {activeService.title}
-                    </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-min">
+          {services.map((s) => {
+            const isSelected = selectedId === s.id;
+            
+            return (
+              <motion.div
+                key={s.id}
+                layout
+                onClick={() => setSelectedId(isSelected ? null : s.id)}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+                className={cn(
+                  "rounded-[32px] p-8 flex flex-col group cursor-pointer transition-all duration-500 border relative overflow-hidden",
+                  isSelected ? s.expandedSize : s.defaultSize,
+                  s.color,
+                  s.color.includes('bg-white/5') ? "border-white/5 hover:bg-white/10" : "border-transparent shadow-2xl",
+                  isSelected && "ring-4 ring-[#F7931E]/40 border-[#F7931E] z-20"
+                )}
+              >
+                {/* Header Section (Always Visible) */}
+                <div className="flex items-center justify-between relative z-10">
+                  <div className={cn(
+                    "w-12 h-12 rounded-2xl flex items-center justify-center relative transition-transform group-hover:scale-110",
+                    s.color.includes('bg-[#F7931E]') ? "bg-[#0B2A6B]/10 text-[#0B2A6B]" : "bg-white/10 text-white"
+                  )}>
+                    <s.icon className="h-6 w-6" strokeWidth={2} />
                   </div>
-
-                  <p className={cn("text-lg text-[#9FB2DE] leading-relaxed mb-12 max-w-3xl", language === 'ar' && "font-arabic")}>
-                    {activeService.details.intro}
-                  </p>
-
-                  <div className="grid md:grid-cols-2 gap-12">
-                    <div className="space-y-6">
-                      <h4 className={cn("text-[#F7931E] font-black uppercase text-sm tracking-widest flex items-center gap-2", language === 'ar' && "font-arabic")}>
-                        <div className="w-1 h-4 bg-[#F7931E] rounded-full" />
-                        {language === 'ar' ? "كيفاش نخدمو؟" : "Comment ça marche ?"}
-                      </h4>
-                      <ul className="space-y-4">
-                        {activeService.details.how.map((item, i) => (
-                          <li key={i} className="flex items-start gap-3 group">
-                            <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/20 shrink-0 group-hover:bg-[#F7931E] transition-colors" />
-                            <span className={cn("text-white/70 text-sm md:text-base leading-relaxed", language === 'ar' && "font-arabic")}>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="space-y-6">
-                      <h4 className={cn("text-emerald-400 font-black uppercase text-sm tracking-widest flex items-center gap-2", language === 'ar' && "font-arabic")}>
-                        <div className="w-1 h-4 bg-emerald-400 rounded-full" />
-                        {language === 'ar' ? "شنوة تربح؟" : "Qu'est-ce que vous y gagnez ?"}
-                      </h4>
-                      <ul className="space-y-4">
-                        {activeService.details.benefits.map((item, i) => (
-                          <li key={i} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-emerald-400/20 transition-all">
-                            <CheckCircle2 size={18} className="text-emerald-400 shrink-0" />
-                            <span className={cn("text-white/80 font-bold text-sm md:text-base", language === 'ar' && "font-arabic")}>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                  {isSelected && (
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); setSelectedId(null); }}
+                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"
+                    >
+                      <X size={18} />
+                    </button>
+                  )}
                 </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                
+                <div className={cn("relative z-10", isSelected ? "mt-8" : "mt-12")}>
+                  <h3 className={cn(
+                    "font-bold mb-3 uppercase tracking-tight leading-tight",
+                    isSelected ? "text-2xl md:text-3xl" : "text-xl",
+                    language === 'ar' && "font-arabic"
+                  )}>{s.title}</h3>
+                  
+                  {!isSelected && (
+                    <p className={cn(
+                      "text-sm font-medium leading-relaxed opacity-80",
+                      language === 'ar' && "font-arabic"
+                    )}>{s.desc}</p>
+                  )}
+                </div>
+
+                {/* Expanded Content (Visible when selected) */}
+                <AnimatePresence>
+                  {isSelected && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="relative z-10 mt-6"
+                    >
+                      <p className={cn("text-lg text-inherit/80 leading-relaxed mb-10", language === 'ar' && "font-arabic")}>
+                        {s.details.intro}
+                      </p>
+
+                      <div className="grid md:grid-cols-2 gap-10">
+                        <div className="space-y-6">
+                          <h4 className={cn("font-black uppercase text-sm tracking-widest flex items-center gap-2", language === 'ar' && "font-arabic")}>
+                            <div className="w-1 h-4 bg-current/40 rounded-full" />
+                            {language === 'ar' ? "كيفاش نخدمو؟" : "Comment ça marche ?"}
+                          </h4>
+                          <ul className="space-y-3">
+                            {s.details.how.map((item, i) => (
+                              <li key={i} className="flex items-start gap-3 opacity-90">
+                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-current/30 shrink-0" />
+                                <span className={cn("text-sm md:text-base leading-relaxed", language === 'ar' && "font-arabic")}>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <div className="space-y-6">
+                          <h4 className={cn("font-black uppercase text-sm tracking-widest flex items-center gap-2", language === 'ar' && "font-arabic")}>
+                            <div className="w-1 h-4 bg-current/40 rounded-full" />
+                            {language === 'ar' ? "شنوة تربح؟" : "Qu'est-ce que vous y gagnez ?"}
+                          </h4>
+                          <ul className="space-y-3">
+                            {s.details.benefits.map((item, i) => (
+                              <li key={i} className="flex items-start gap-3 bg-white/10 p-4 rounded-2xl border border-white/5 transition-all">
+                                <CheckCircle2 size={18} className="shrink-0" />
+                                <span className={cn("font-bold text-sm md:text-base", language === 'ar' && "font-arabic")}>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Decorative background icon */}
+                {!isSelected && (
+                  <div className="absolute -bottom-10 -right-10 opacity-[0.05] transition-transform group-hover:scale-125 duration-700 pointer-events-none">
+                    <s.icon className="w-48 h-48" />
+                  </div>
+                )}
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
 }
-
