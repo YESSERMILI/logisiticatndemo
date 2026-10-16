@@ -26,65 +26,53 @@ import { BentoServices } from "@/components/home/services-bento";
 import { FAQ } from "@/components/home/faq";
 import { Footer } from "@/components/layout/footer";
 
-// Scrolling ticker component with perfect infinite loop
+// Scrolling ticker component with perfect infinite loop logic
 const ScrollingTicker = () => {
-  const { t } = useTranslation();
-  
   const items = [
-    { text: "LOGISTICA TUNISIE", lang: "fr" },
-    { text: "✦", isSep: true },
-    { text: "LIVRAISON 24 GOUVERNORATS", lang: "fr" },
-    { text: "✦", isSep: true },
-    { text: "بِيع براحتك والتوصيل علينا", lang: "ar" },
-    { text: "✦", isSep: true },
-    { text: "COD & REVERSEMENT J+1", lang: "fr" },
-    { text: "✦", isSep: true },
-    { text: "STOCKAGE SÉCURISÉ", lang: "fr" },
-    { text: "✦", isSep: true },
-    { text: "تتبع كوليك في كل لحظة", lang: "ar" },
-    { text: "✦", isSep: true },
-    { text: "PICKING & PACKING PRO", lang: "fr" },
-    { text: "✦", isSep: true },
-    { text: "من الكوموند لليفريزون", lang: "ar" },
-    { text: "✦", isSep: true },
-    { text: "DASHBOARD SAAS REAL-TIME", lang: "fr" },
-    { text: "✦", isSep: true },
+    "LOGISTICA TUNISIE", "✦", 
+    "LIVRAISON 24 GOUVERNORATS", "✦", 
+    "بِيع براحتك والتوصيل علينا", "✦", 
+    "COD & REVERSEMENT J+1", "✦", 
+    "STOCKAGE SÉCURISÉ", "✦", 
+    "تتبع كوليك في كل لحظة", "✦", 
+    "PICKING & PACKING PRO", "✦", 
+    "من الكوموند لليفريزون", "✦", 
+    "DASHBOARD SAAS REAL-TIME", "✦",
+    "Fulfillment e-commerce N°1", "✦"
   ];
 
-  const TickerSet = () => (
+  const TickerLine = () => (
     <div className="flex items-center flex-shrink-0">
       {items.map((item, i) => (
         <span 
           key={i} 
           className={cn(
-            "inline-flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-2xl tracking-tighter px-8 md:px-16",
-            item.lang === "ar" ? "font-arabic" : "font-sans",
-            item.isSep ? "opacity-25" : ""
+            "inline-flex items-center text-[#0B2A6B] font-black uppercase text-xl md:text-3xl tracking-tighter px-10 md:px-20 whitespace-nowrap",
+            /[\u0600-\u06FF]/.test(item) ? "font-arabic" : "font-sans",
+            item === "✦" ? "opacity-20 scale-75" : ""
           )}
         >
-          {item.text}
+          {item}
         </span>
       ))}
     </div>
   );
 
   return (
-    <div className="relative z-20 h-16 md:h-24 flex items-center overflow-hidden bg-[#0B2A6B]">
-      <div className="absolute inset-x-0 -rotate-1 scale-110 flex items-center bg-[#F7931E] py-4 md:py-6 shadow-2xl border-y border-white/10">
-        <div className="flex whitespace-nowrap animate-ticker-loop">
-          <TickerSet />
-          <TickerSet />
-          <TickerSet />
-          <TickerSet />
+    <div className="relative z-20 h-20 md:h-28 flex items-center overflow-hidden bg-[#0B2A6B]">
+      <div className="absolute inset-x-0 -rotate-1 scale-105 flex items-center bg-[#F7931E] py-5 md:py-7 shadow-2xl border-y border-white/20">
+        <div className="flex animate-ticker-infinite">
+          <TickerLine />
+          <TickerLine />
         </div>
       </div>
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes ticker-loop {
+        @keyframes ticker-infinite {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-25%); }
+          100% { transform: translateX(-50%); }
         }
-        .animate-ticker-loop {
-          animation: ticker-loop 40s linear infinite;
+        .animate-ticker-infinite {
+          animation: ticker-infinite 40s linear infinite;
         }
       `}} />
     </div>
