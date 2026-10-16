@@ -10,377 +10,399 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
+interface ServiceDetail {
+  intro: string;
+  how: string[];
+  benefits: string[];
+}
+
+interface Service {
+  id: number;
+  title: string;
+  icon: any;
+  desc: string;
+  color: string;
+  details: ServiceDetail;
+}
+
 export function BentoServices() {
   const { t, language } = useTranslation();
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const isAr = language === 'ar';
 
-  const services = [
+  const services: Service[] = [
     { 
       id: 0,
-      title: language === 'ar' ? "إنت ركّز في البيع، وإحنا نتكفّلوا بالباقي" : "Concentrez-vous sur la vente, on gère le reste", 
+      title: isAr ? "إنت ركّز في البيع، وإحنا نتكفّلوا بالباقي" : "Vendez sereinement, on gère le reste", 
       icon: Zap, 
-      defaultSize: "md:col-span-2 md:row-span-2", 
-      expandedSize: "md:col-span-3 md:row-span-3",
       color: "bg-[#F7931E] text-[#0B2A6B]", 
-      desc: language === 'ar' ? "Logistica تهز عليك حمل الستوك والتحضير والتوصيل باش إنتي تخدم على تكبير البيزنس متاعك." : "Logistica prend en charge le stock, la préparation et la livraison pour que vous puissiez vous concentrer sur votre croissance.",
+      desc: isAr ? "Logistica تهز عليك حمل الستوك والتحضير والتوصيل." : "Logistica prend en charge le stock, la préparation et la livraison.",
       details: {
-        intro: language === 'ar' 
+        intro: isAr 
           ? "Logistica تعاونك تنظّم العمليات اللوجستية متاع مشروعك، من استقبال السلعة وتخزينها لتحضير الكوموندات وتنسيق التوصيل، باش إنت تركّز على البيع وتطوير البيزنس متاعك."
-          : "Logistica vous aide à organiser les opérations logistiques de votre projet, de la réception des marchandises au stockage, en passant par la préparation des commandes et la coordination des livraisons.",
-        how: language === 'ar' ? [
+          : "Logistica vous aide à organiser les opérations logistiques de votre projet, de la réception au stockage et à la livraison, pour que vous puissiez vous concentrer sur vos ventes.",
+        how: isAr ? [
           "نستقبلو السلعة حسب الإجراءات المتّفق عليها.",
           "ننظّمو الستوك ونتابعو المنتجات المتوفّرة.",
           "نحضّرو الكوموندات حسب الطلبات المسجّلة.",
           "نجهّزو الكولي للإرسال.",
-          "نتابعو مراحل التوصيل حسب الخدمات المتاحة.",
-          "نوفّرولك متابعة أوضح لعملياتك حسب الإمكانيات المتوفّرة."
+          "نتابعو مراحل التوصيل حسب الخدمات المتاحة."
         ] : [
-          "Réception des marchandises selon les procédures convenues.",
-          "Organisation du stock et suivi des produits disponibles.",
-          "Préparation des commandes selon les demandes enregistrées.",
-          "Préparation des colis pour l'expédition.",
-          "Suivi des étapes de livraison selon les services disponibles.",
-          "Mise à disposition d'un suivi clair de vos opérations."
+          "Réception des marchandises selon les procédures.",
+          "Organisation du stock et suivi en temps réel.",
+          "Préparation des commandes selon les demandes.",
+          "Emballage et préparation pour l'expédition.",
+          "Suivi des étapes de livraison."
         ],
-        benefits: language === 'ar' ? [
+        benefits: isAr ? [
           "وقت أكثر للبيع.",
           "تنظيم أحسن للستوك والكوموندات.",
-          "متابعة أسهل للعمليات اليومية.",
-          "خدمة لوجستية منظّمة حسب احتياجات مشروعك."
+          "متابعة أسهل للعمليات اليومية."
         ] : [
           "Plus de temps pour vendre.",
-          "Meilleure organisation du stock et des commandes.",
-          "Suivi plus facile des opérations quotidiennes.",
-          "Service logistique structuré selon vos besoins."
+          "Meilleure organisation des stocks.",
+          "Suivi simplifié des opérations."
         ]
       }
     },
     { 
       id: 1,
-      title: language === 'ar' ? "تحضير وتغليف الكوموندات" : "Préparation et emballage", 
+      title: isAr ? "تحضير وتغليف الكوموندات" : "Préparation et emballage", 
       icon: Package, 
-      defaultSize: "md:col-span-1 md:row-span-1", 
-      expandedSize: "md:col-span-2 md:row-span-2",
       color: "bg-white/5 text-white border-white/10", 
-      desc: language === 'ar' ? "تغليف احترافي وسريع يخرّج الكولي متاعك في وقت قياسي." : "Picking rigoureux et emballage pro avant expédition immédiate.",
+      desc: isAr ? "تغليف احترافي وسريع يخرّج الكولي متاعك في وقت قياسي." : "Picking rigoureux et emballage pro avant expédition immédiate.",
       details: {
-        intro: language === 'ar'
-          ? "كل كوموند تتجهّز حسب المنتجات المطلوبة, مع عناية بالتجميع والتغليف قبل إرسالها للحريف."
-          : "Chaque commande est préparée selon les produits demandés, avec un soin particulier apporté au regroupement et à l'emballage avant l'envoi au client.",
-        how: language === 'ar' ? [
+        intro: isAr
+          ? "كل كوموند تتجهّز حسب المنتجات المطلوبة، مع عناية بالتجميع والتغليف قبل إرسالها للحريف."
+          : "Chaque commande est préparée avec soin, du picking à l'emballage final, garantissant une expérience client premium.",
+        how: isAr ? [
           "تحديد المنتجات المطلوبة.",
           "جمع المنتجات من الستوك (Picking).",
-          "التثبّت من محتوى الكوموند حسب المعلومات المتاحة.",
+          "التثبّت من محتوى الكوموند.",
           "تغليف وتجهيز الكولي (Packing).",
-          "تحضير الكولي للإرسال.",
-          "متابعة وضعية الكوموند حسب مراحل الخدمة."
+          "متابعة وضعية الكوموند."
         ] : [
-          "Identification des produits demandés.",
-          "Collecte des produits du stock (Picking).",
-          "Vérification du contenu de la commande.",
-          "Emballage et préparation du colis (Packing).",
-          "Préparation pour l'expédition.",
-          "Suivi du statut de la commande selon les étapes."
+          "Identification des produits requis.",
+          "Collecte optimisée en entrepôt (Picking).",
+          "Contrôle qualité de la commande.",
+          "Emballage sécurisé (Packing).",
+          "Mise à jour du statut en temps réel."
         ],
-        benefits: language === 'ar' ? [
+        benefits: isAr ? [
           "تحضير أكثر تنظيماً.",
           "تقليل التشتّت في معالجة الكوموندات.",
-          "تغليف مناسب قبل الإرسال.",
-          "وضوح أكبر في مراحل تجهيز الطلبات."
+          "تغليف مناسب قبل الإرسال."
         ] : [
           "Préparation structurée.",
-          "Réduction de la dispersion dans le traitement.",
-          "Emballage adapté avant l'envoi.",
-          "Clarté totale sur les étapes de préparation."
+          "Réduction drastique des erreurs.",
+          "Image de marque renforcée via l'emballage."
         ]
       }
     },
     { 
       id: 2,
-      title: language === 'ar' ? "التوصيل للحرفاء في تونس" : "Livraison clients en Tunisie", 
+      title: isAr ? "التوصيل للحرفاء في تونس" : "Livraison clients en Tunisie", 
       icon: Truck, 
-      defaultSize: "md:col-span-1 md:row-span-2", 
-      expandedSize: "md:col-span-2 md:row-span-3",
       color: "bg-[#1F6FDB] text-white", 
-      desc: language === 'ar' ? "شبكة توصيل تغطي تونس كاملة من بنزرت لبنقردان في أقل من 48 ساعة." : "Livraison express sur tout le territoire tunisien avec suivi temps réel.",
+      desc: isAr ? "شبكة توصيل تغطي 24 ولاية في أقل من 48 ساعة." : "Livraison express sur tout le territoire avec suivi temps réel.",
       details: {
-        intro: language === 'ar'
+        intro: isAr
           ? "نعاونك تنظّم إرسال الكولي للحرفاء في مختلف مناطق تونس حسب شبكة التغطية المتاحة وآجال التوصيل المتّفق عليها."
-          : "Nous vous aidons à organiser l'envoi des colis aux clients dans les différentes régions de Tunisie selon le réseau de couverture et les délais convenus.",
-        how: language === 'ar' ? [
+          : "Nous orchestrons l'envoi de vos colis vers vos clients sur toute la Tunisie grâce à un réseau logistique performant.",
+        how: isAr ? [
           "تجهيز الكولي للتوصيل.",
           "تنظيم عملية الإرسال.",
           "متابعة حالة الكولي حسب المعلومات المتاحة.",
-          "توضيح وضعية الكولي اللي ما تمّش تسليمها.",
-          "متابعة الإجراءات اللازمة حسب الحالة."
+          "توضيح وضعية الكولي اللي ما تمّش تسليمها."
         ] : [
-          "Préparation du colis pour la livraison.",
-          "Organisation du processus d'expédition.",
-          "Suivi du statut du colis en temps réel.",
-          "Clarification du statut des colis non livrés.",
-          "Suivi des mesures nécessaires selon le cas."
+          "Préparation des manifestes de transport.",
+          "Expédition vers les centres de tri.",
+          "Suivi du dernier kilomètre.",
+          "Gestion proactive des non-livrés."
         ],
-        benefits: language === 'ar' ? [
+        benefits: isAr ? [
           "متابعة أوضح لعمليات التوصيل.",
           "تنظيم أحسن للكوموندات الخارجة.",
-          "معلومات تساعدك تجاوب حرفاءك.",
           "رؤية أوضح على وضعية الكولي."
         ] : [
-          "Suivi clair des opérations de livraison.",
-          "Meilleure organisation des commandes sortantes.",
-          "Informations pour répondre à vos clients.",
-          "Visibilité accrue sur l'état des colis."
+          "Visibilité totale sur les flux sortants.",
+          "Réduction des délais de livraison.",
+          "Amélioration du taux de satisfaction client."
         ]
       }
     },
     { 
       id: 3,
-      title: language === 'ar' ? "متابعة خلاصات الكوموندات" : "Suivi des encaissements COD", 
+      title: isAr ? "متابعة خلاصات الـ COD" : "Suivi des encaissements COD", 
       icon: Banknote, 
-      defaultSize: "md:col-span-1 md:row-span-1", 
-      expandedSize: "md:col-span-2 md:row-span-2",
       color: "bg-white/5 text-white border-white/10", 
-      desc: language === 'ar' ? "رجوع فلوسك (COD) في وقتها وبكل دقة ومن غير تكسير راس." : "Versement automatisé de vos encaissements dès le lendemain.",
+      desc: isAr ? "رجوع فلوسك في وقتها وبكل دقة ومن غير تكسير راس." : "Versement automatisé de vos encaissements dès le lendemain.",
       details: {
-        intro: language === 'ar'
-          ? "تابع وضعية الكوموندات اللي تخلّصت عند التسليم (COD), ونظّم معلومات مستحقّاتك باش تكون عندك رؤية أوضح على العمليات المالية المرتبطة بالتوصيل."
-          : "Suivez le statut des commandes payées à la livraison (COD) et organisez vos créances pour avoir une vision claire des opérations financières liées au transport.",
-        how: language === 'ar' ? [
+        intro: isAr
+          ? "تابع وضعية الكوموندات اللي تخلّصت عند التسليم (COD)، ونظّم معلومات مستحقّاتك باش تكون عندك رؤية أوضح على العمليات المالية."
+          : "Suivez vos encaissements Cash on Delivery avec précision et optimisez votre flux de trésorerie.",
+        how: isAr ? [
           "متابعة الكوموندات المعنيّة بالـ COD.",
           "تنظيم معلومات المبالغ المستخلصة.",
-          "متابعة وضعية المستحقّات والتحويلات حسب البيانات المتاحة.",
-          "مراجعة العمليات اللي تستحق متابعة.",
+          "متابعة وضعية المستحقّات والتحويلات.",
           "توفير معلومات أوضح على وضعية الخلاصات."
         ] : [
-          "Suivi des commandes concernées par le COD.",
-          "Organisation des informations sur les montants collectés.",
-          "Suivi du statut des créances et des virements.",
-          "Révision des opérations nécessitant un suivi.",
-          "Informations claires sur l'état des paiements."
+          "Réconciliation automatique des commandes livrées.",
+          "Consolidation des montants perçus.",
+          "Suivi des virements bancaires.",
+          "Rapports financiers détaillés."
         ],
-        benefits: language === 'ar' ? [
+        benefits: isAr ? [
           "متابعة أسهل للمستحقّات.",
           "تنظيم أحسن للمعلومات المالية.",
-          "وضوح أكبر في وضعية العمليات.",
-          "سهولة مراجعة الخلاصات المرتبطة بالكوموندات."
+          "سهولة مراجعة الخلاصات."
         ] : [
-          "Suivi simplifié des créances.",
-          "Meilleure organisation des données financières.",
-          "Clarté accrue sur le statut des opérations.",
-          "Révision facile des paiements liés aux commandes."
+          "Trésorerie plus saine.",
+          "Comptabilité simplifiée.",
+          "Transparence totale sur les fonds collectés."
         ]
       }
     },
     { 
       id: 4,
-      title: language === 'ar' ? "متابعة الكولي المرجوعة" : "Gestion des retours", 
+      title: isAr ? "إدارة الـ Retours" : "Gestion des retours", 
       icon: RotateCcw, 
-      defaultSize: "md:col-span-1 md:row-span-1", 
-      expandedSize: "md:col-span-2 md:row-span-2",
       color: "bg-white/5 text-white border-white/10", 
-      desc: language === 'ar' ? "إدارة المرجوعات والتبديل بكل سلاسة باش تحافظ على ثقة كليوناتك." : "Gestion simplifiée des retours pour garantir la satisfaction client.",
+      desc: isAr ? "إدارة المرجوعات والتبديل بكل سلاسة وبصورة منظمة." : "Gestion simplifiée des retours pour une logistique circulaire fluide.",
       details: {
-        intro: language === 'ar'
-          ? "نتابعو وضعية الكولي اللي ما تمّش تسليمها, وننظّمو إجراءات الإرجاع حسب أسباب الرجوع وشروط الخدمة المتّفق عليها."
-          : "Nous suivons le statut des colis non livrés et organisons les procédures de retour selon les motifs et les conditions de service convenues.",
-        how: language === 'ar' ? [
+        intro: isAr
+          ? "نتابعو وضعية الكولي اللي ما تمّش تسليمها، وننظّمو إجراءات الإرجاع حسب أسباب الرجوع وشروط الخدمة المتّفق عليها."
+          : "Nous gérons les colis non livrés et organisons les procédures de retour selon les motifs et conditions établies.",
+        how: isAr ? [
           "متابعة حالة الكولي المرجوعة.",
-          "تحديد وضعية الإرجاع حسب المعلومات المتاحة.",
-          "تنظيم رجوع المنتجات حسب الإجراءات المعتمدة.",
-          "تحديث معلومات الكوموند وقت تتوفّر معطيات جديدة.",
-          "تنسيق الخطوات التالية مع التاجر حسب الحالة."
+          "تحديد وضعية الإرجاع حسب المعلومات.",
+          "تنظيم رجوع المنتجات للستوك.",
+          "تحديث معلومات الكوموند دورياً."
         ] : [
-          "Suivi de l'état des colis retournés.",
-          "Détermination du statut de retour selon les données.",
-          "Organisation du retour des produits selon les procédures.",
-          "Mise à jour des infos commande en temps réel.",
-          "Coordination des prochaines étapes avec le marchand."
+          "Tracking des colis en retour.",
+          "Analyse des motifs d'échec de livraison.",
+          "Réintégration propre en stock ou renvoi.",
+          "Mise à jour immédiate du WMS."
         ],
-        benefits: language === 'ar' ? [
+        benefits: isAr ? [
           "وضوح أكبر في وضعية الكولي المرجوعة.",
           "متابعة أسهل للمنتجات الراجعة.",
-          "تنظيم أحسن للستوك.",
-          "فهم أفضل للمشاكل المتكرّرة في التوصيل."
+          "فهم أفضل للمشاكل المتكرّرة."
         ] : [
-          "Clarté sur le statut des colis retournés.",
-          "Suivi simplifié des produits de retour.",
-          "Meilleure organisation du stock.",
-          "Compréhension des problèmes de livraison récurrents."
+          "Clarté sur le taux de retour.",
+          "Optimisation des stocks dormants.",
+          "Réduction des pertes opérationnelles."
         ]
       }
     },
     { 
       id: 5,
-      title: language === 'ar' ? "مرافقة ومتابعة لنشاطك" : "Accompagnement et suivi", 
+      title: isAr ? "المرافقة والمتابعة" : "Support et Accompagnement", 
       icon: Headphones, 
-      defaultSize: "md:col-span-1 md:row-span-1", 
-      expandedSize: "md:col-span-2 md:row-span-2",
       color: "bg-white/5 text-white border-white/10", 
-      desc: language === 'ar' ? "إكاونت مانجر معاك خطوة بخطوة باش يجاوب على كل استفساراتك." : "Un Account Manager dédié disponible sur WhatsApp pour vous accompagner.",
+      desc: isAr ? "إكاونت مانجر معاك خطوة بخطوة باش يجاوب على كل استفساراتك." : "Un Account Manager dédié disponible pour piloter votre activité.",
       details: {
-        intro: language === 'ar'
+        intro: isAr
           ? "نعاونك تفهم مراحل الخدمة وتتابع استفساراتك المرتبطة بالعمليات اللوجستية عبر قنوات التواصل المتاحة."
-          : "Nous vous aidons à comprendre les étapes du service et à suivre vos demandes liées aux opérations logistiques via les canaux disponibles.",
-        how: language === 'ar' ? [
+          : "Nous vous accompagnons au quotidien pour fluidifier votre logistique et répondre à vos besoins spécifiques.",
+        how: isAr ? [
           "توضيح إجراءات بداية التعامل.",
           "الإجابة على الاستفسارات المرتبطة بالخدمات.",
-          "المساعدة في متابعة وضعية الكوموندات حسب المعلومات المتاحة.",
-          "توجيهك بخصوص إجراءات الستوك والتحضير والتوصيل.",
-          "متابعة الاستفسارات التشغيلية عبر قنوات التواصل المعتمدة."
+          "المساعدة في متابعة وضعية الكوموندات.",
+          "متابعة الاستفسارات التشغيلية يومياً."
         ] : [
-          "Clarification des procédures de démarrage.",
-          "Réponse aux demandes liées aux services.",
-          "Aide au suivi du statut des commandes.",
-          "Orientation sur le stock, la préparation et la livraison.",
-          "Suivi des demandes opérationnelles via les canaux dédiés."
+          "Aide à l'onboarding et intégration.",
+          "Réponse prioritaire aux requêtes SAV.",
+          "Support opérationnel multicanal.",
+          "Conseils d'optimisation logistique."
         ],
-        benefits: language === 'ar' ? [
+        benefits: isAr ? [
           "فهم أوضح لمراحل الخدمة.",
           "تواصل أسهل بخصوص العمليات.",
-          "متابعة أفضل للاستفسارات.",
-          "تنظيم أحسن للخدمة اليومية."
+          "متابعة أفضل للاستفسارات."
         ] : [
-          "Compréhension claire des étapes du service.",
-          "Communication simplifiée sur les opérations.",
-          "Meilleur suivi des demandes.",
-          "Organisation optimisée du service quotidien."
+          "Relation de confiance durable.",
+          "Réactivité face aux imprévus.",
+          "Partenaire de croissance dédié."
         ]
       }
     },
   ];
 
+  const handleToggle = (id: number) => {
+    setSelectedId(selectedId === id ? null : id);
+  };
+
+  const DetailsPanel = ({ service }: { service: Service }) => (
+    <motion.div
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: "auto", opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      transition={{ duration: 0.25, ease: "easeInOut" }}
+      className="col-span-full overflow-hidden"
+    >
+      <div className="bg-[#081E4E] border-2 border-[#1F6FDB]/30 rounded-[32px] p-8 md:p-12 my-4 relative shadow-2xl">
+        <button 
+          onClick={() => setSelectedId(null)}
+          className="absolute top-6 rtl:left-6 ltr:right-6 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-all text-white/40 hover:text-white"
+        >
+          <X size={20} />
+        </button>
+
+        <div className="flex items-center gap-4 mb-8">
+           <div className="w-12 h-12 rounded-2xl bg-[#1F6FDB]/20 text-[#1F6FDB] flex items-center justify-center">
+             <service.icon size={24} />
+           </div>
+           <h3 className={cn("text-2xl md:text-3xl font-black text-white uppercase", isAr && "font-arabic")}>
+             {service.title}
+           </h3>
+        </div>
+
+        <p className={cn("text-lg text-slate-300 leading-relaxed mb-10 max-w-4xl", isAr && "font-arabic")}>
+          {service.details.intro}
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-12">
+          <div className="space-y-6">
+            <h4 className={cn("text-sm font-black text-[#F7931E] uppercase tracking-[0.2em] flex items-center gap-3", isAr && "font-arabic")}>
+              <div className="w-1 h-4 bg-[#F7931E] rounded-full" />
+              {isAr ? "كيفاش نخدمو؟" : "Fonctionnement"}
+            </h4>
+            <ul className="space-y-4">
+              {service.details.how.map((item, i) => (
+                <li key={i} className="flex items-start gap-4">
+                  <div className="mt-2 w-1.5 h-1.5 rounded-full bg-[#1F6FDB] shrink-0" />
+                  <span className={cn("text-slate-400 text-sm md:text-base font-medium", isAr && "font-arabic")}>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-6">
+            <h4 className={cn("text-sm font-black text-emerald-400 uppercase tracking-[0.2em] flex items-center gap-3", isAr && "font-arabic")}>
+              <div className="w-1 h-4 bg-emerald-400 rounded-full" />
+              {isAr ? "شنوة تربح؟" : "Vos Avantages"}
+            </h4>
+            <div className="grid gap-3">
+              {service.details.benefits.map((item, i) => (
+                <div key={i} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5 transition-colors hover:bg-white/10">
+                   <CheckCircle2 className="text-emerald-400 shrink-0" size={20} />
+                   <span className={cn("text-white font-bold text-sm md:text-base", isAr && "font-arabic")}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+
   return (
-    <section id="services" className="py-24 bg-[#0B2A6B]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+    <section id="services" className="py-24 bg-[#0B2A6B]" dir={isAr ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-[#F7931E] font-black text-xs uppercase tracking-[0.2em]">{t('n1')}</span>
+          <span className="text-[#F7931E] font-black text-[10px] uppercase tracking-[0.25em]">{t('n1')}</span>
           <h2 className={cn(
             "text-4xl md:text-6xl font-bold text-white mt-4 mb-6 uppercase tracking-tight",
-            language === 'ar' && "font-arabic"
+            isAr && "font-arabic"
           )}>
-            {language === 'ar' ? "كل ما يحتاجه مشروعك" : "Tout ce dont votre boutique a besoin"}
+            {isAr ? "كل ما يحتاجه مشروعك" : "Tout pour votre boutique"}
           </h2>
           <p className={cn(
             "text-[#9FB2DE] text-lg font-medium",
-            language === 'ar' && "font-arabic"
+            isAr && "font-arabic"
           )}>
-            {language === 'ar' ? "لوجستيك متكاملة مصممة خصيصاً للتجارة الإلكترونية في تونس." : "Des services modulaires ou clé en main créés spécifiquement pour le commerce électronique tunisien."}
+            {isAr ? "حلول لوجستية متكاملة مصممة خصيصاً للتجارة الإلكترونية في تونس." : "Une plateforme logistique unifiée, de l'entrepôt à la porte de votre client."}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-min">
-          {services.map((s) => {
-            const isSelected = selectedId === s.id;
-            
-            return (
-              <motion.div
-                key={s.id}
-                layout
-                onClick={() => setSelectedId(isSelected ? null : s.id)}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4 }}
-                className={cn(
-                  "rounded-[32px] p-8 flex flex-col group cursor-pointer transition-all duration-500 border relative overflow-hidden",
-                  isSelected ? s.expandedSize : s.defaultSize,
-                  s.color,
-                  s.color.includes('bg-white/5') ? "border-white/5 hover:bg-white/10" : "border-transparent shadow-2xl",
-                  isSelected && "ring-4 ring-[#F7931E]/40 border-[#F7931E] z-20"
-                )}
-              >
-                {/* Header Section (Always Visible) */}
-                <div className="flex items-center justify-between relative z-10">
-                  <div className={cn(
-                    "w-12 h-12 rounded-2xl flex items-center justify-center relative transition-transform group-hover:scale-110",
-                    s.color.includes('bg-[#F7931E]') ? "bg-[#0B2A6B]/10 text-[#0B2A6B]" : "bg-white/10 text-white"
-                  )}>
-                    <s.icon className="h-6 w-6" strokeWidth={2} />
-                  </div>
-                  {isSelected && (
-                    <button 
-                      onClick={(e) => { e.stopPropagation(); setSelectedId(null); }}
-                      className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"
-                    >
-                      <X size={18} />
-                    </button>
-                  )}
-                </div>
-                
-                <div className={cn("relative z-10", isSelected ? "mt-8" : "mt-12")}>
-                  <h3 className={cn(
-                    "font-bold mb-3 uppercase tracking-tight leading-tight",
-                    isSelected ? "text-2xl md:text-3xl" : "text-xl",
-                    language === 'ar' && "font-arabic"
-                  )}>{s.title}</h3>
-                  
-                  {!isSelected && (
-                    <p className={cn(
-                      "text-sm font-medium leading-relaxed opacity-80",
-                      language === 'ar' && "font-arabic"
-                    )}>{s.desc}</p>
-                  )}
-                </div>
-
-                {/* Expanded Content (Visible when selected) */}
+        {/* Desktop & Tablet Logic: Row-aware expansion */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* First Row for Desktop (3 cols) / Tablet (2 cols) */}
+          {services.map((s, idx) => (
+            <div key={s.id} className="contents">
+              <ServiceCard 
+                service={s} 
+                isActive={selectedId === s.id} 
+                onClick={() => handleToggle(s.id)} 
+                isAr={isAr}
+              />
+              
+              {/* Desktop: Insert panel after 3rd item (Row 1) or 6th item (Row 2) */}
+              {/* Tablet: Insert panel after 2nd, 4th, 6th */}
+              <div className="lg:hidden md:block col-span-full">
                 <AnimatePresence>
-                  {isSelected && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="relative z-10 mt-6"
-                    >
-                      <p className={cn("text-lg text-inherit/80 leading-relaxed mb-10", language === 'ar' && "font-arabic")}>
-                        {s.details.intro}
-                      </p>
-
-                      <div className="grid md:grid-cols-2 gap-10">
-                        <div className="space-y-6">
-                          <h4 className={cn("font-black uppercase text-sm tracking-widest flex items-center gap-2", language === 'ar' && "font-arabic")}>
-                            <div className="w-1 h-4 bg-current/40 rounded-full" />
-                            {language === 'ar' ? "كيفاش نخدمو؟" : "Comment ça marche ?"}
-                          </h4>
-                          <ul className="space-y-3">
-                            {s.details.how.map((item, i) => (
-                              <li key={i} className="flex items-start gap-3 opacity-90">
-                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-current/30 shrink-0" />
-                                <span className={cn("text-sm md:text-base leading-relaxed", language === 'ar' && "font-arabic")}>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div className="space-y-6">
-                          <h4 className={cn("font-black uppercase text-sm tracking-widest flex items-center gap-2", language === 'ar' && "font-arabic")}>
-                            <div className="w-1 h-4 bg-current/40 rounded-full" />
-                            {language === 'ar' ? "شنوة تربح؟" : "Qu'est-ce que vous y gagnez ?"}
-                          </h4>
-                          <ul className="space-y-3">
-                            {s.details.benefits.map((item, i) => (
-                              <li key={i} className="flex items-start gap-3 bg-white/10 p-4 rounded-2xl border border-white/5 transition-all">
-                                <CheckCircle2 size={18} className="shrink-0" />
-                                <span className={cn("font-bold text-sm md:text-base", language === 'ar' && "font-arabic")}>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
+                  {selectedId === s.id && (idx === 1 || idx === 3 || idx === 5) && <DetailsPanel service={s} />}
                 </AnimatePresence>
+              </div>
+              <div className="hidden lg:block col-span-full">
+                <AnimatePresence>
+                  {selectedId === s.id && (idx === 2 || idx === 5) && <DetailsPanel service={s} />}
+                </AnimatePresence>
+              </div>
+            </div>
+          ))}
+        </div>
 
-                {/* Decorative background icon */}
-                {!isSelected && (
-                  <div className="absolute -bottom-10 -right-10 opacity-[0.05] transition-transform group-hover:scale-125 duration-700 pointer-events-none">
-                    <s.icon className="w-48 h-48" />
-                  </div>
-                )}
-              </motion.div>
-            );
-          })}
+        {/* Mobile Logic: 1 Column, expansion after each card */}
+        <div className="md:hidden flex flex-col gap-6">
+          {services.map((s) => (
+            <div key={s.id} className="flex flex-col">
+              <ServiceCard 
+                service={s} 
+                isActive={selectedId === s.id} 
+                onClick={() => handleToggle(s.id)} 
+                isAr={isAr}
+              />
+              <AnimatePresence>
+                {selectedId === s.id && <DetailsPanel service={s} />}
+              </AnimatePresence>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
+function ServiceCard({ service, isActive, onClick, isAr }: { service: Service, isActive: boolean, onClick: () => void, isAr: boolean }) {
+  return (
+    <motion.div
+      layout
+      onClick={onClick}
+      whileHover={{ y: isActive ? 0 : -5 }}
+      className={cn(
+        "rounded-[32px] p-8 flex flex-col group cursor-pointer transition-all duration-300 border relative overflow-hidden h-full min-h-[220px]",
+        service.color,
+        service.color.includes('bg-white/5') ? "border-white/5 hover:bg-white/10" : "border-transparent",
+        isActive && "ring-4 ring-[#1F6FDB]/40 border-[#1F6FDB]"
+      )}
+    >
+      <div className="flex items-center justify-between mb-8 relative z-10">
+        <div className={cn(
+          "w-12 h-12 rounded-2xl flex items-center justify-center relative transition-transform group-hover:scale-110",
+          service.color.includes('text-[#0B2A6B]') ? "bg-[#0B2A6B]/10" : "bg-white/10"
+        )}>
+          <service.icon className="h-6 w-6" strokeWidth={2.5} />
+        </div>
+        {isActive && <CheckCircle2 className="text-current opacity-40 h-6 w-6" />}
+      </div>
+      
+      <div className="relative z-10 mt-auto">
+        <h3 className={cn(
+          "font-black text-xl mb-3 uppercase tracking-tight leading-tight",
+          isAr && "font-arabic"
+        )}>{service.title}</h3>
+        <p className={cn(
+          "text-sm font-medium leading-relaxed opacity-70",
+          isAr && "font-arabic"
+        )}>{service.desc}</p>
+      </div>
+
+      <div className="absolute -bottom-10 -right-10 opacity-[0.03] transition-transform group-hover:scale-125 duration-700 pointer-events-none">
+        <service.icon className="w-48 h-48" />
+      </div>
+    </motion.div>
+  );
+}
+
