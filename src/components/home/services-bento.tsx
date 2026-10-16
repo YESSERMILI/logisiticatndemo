@@ -297,27 +297,6 @@ export function BentoServices() {
     </motion.div>
   );
 
-  // Helper to check if the panel should be shown after this index
-  const shouldShowPanel = (idx: number) => {
-    if (selectedId === null) return false;
-    
-    const isLg = typeof window !== 'undefined' && window.innerWidth >= 1024;
-    const isMd = typeof window !== 'undefined' && window.innerWidth >= 768 && window.innerWidth < 1024;
-    
-    if (isLg) {
-      // Row 1 ends at index 2, Row 2 ends at index 5
-      const rowEndIdx = Math.floor(selectedId / 3) * 3 + 2;
-      return idx === Math.min(rowEndIdx, services.length - 1);
-    } else if (isMd) {
-      // Row 1: 0-1, Row 2: 2-3, Row 3: 4-5
-      const rowEndIdx = Math.floor(selectedId / 2) * 2 + 1;
-      return idx === Math.min(rowEndIdx, services.length - 1);
-    } else {
-      // Mobile: Always after the card itself
-      return idx === selectedId;
-    }
-  };
-
   return (
     <section id="services" className="py-24 bg-[#0B2A6B]" dir={isAr ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-6">
@@ -338,22 +317,26 @@ export function BentoServices() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((s, idx) => (
-            <div key={s.id} className="contents">
-              <ServiceCard 
-                service={s} 
-                isActive={selectedId === s.id} 
-                onClick={() => handleToggle(s.id)} 
-                isAr={isAr}
-              />
-              
-              <AnimatePresence mode="wait">
-                {shouldShowPanel(idx) && selectedId !== null && (
+          {services.map((s, idx) => {
+            const isRowEnd = (idx + 1) % (typeof window !== 'undefined' && window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1) === 0 || idx === services.length - 1;
+            const currentSelectedRow = selectedId !== null ? Math.floor(selectedId / (typeof window !== 'undefined' && window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1)) : -1;
+            const currentRow = Math.floor(idx / (typeof window !== 'undefined' && window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1));
+            
+            return (
+              <div key={s.id} className="contents">
+                <ServiceCard 
+                  service={s} 
+                  isActive={selectedId === s.id} 
+                  onClick={() => handleToggle(s.id)} 
+                  isAr={isAr}
+                />
+                
+                {isRowEnd && selectedId !== null && currentSelectedRow === currentRow && (
                   <DetailsPanel service={services[selectedId]} />
                 )}
-              </AnimatePresence>
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
