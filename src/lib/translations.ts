@@ -13,7 +13,7 @@ export const translations = {
     "register_title": "حل حساب جديد", "register_subtitle": "انضم لأكثر من 500 تاجر في تونس", "register_name": "الاسم الكامل", "register_shop": "اسم المتجر", "register_phone": "رقم الهاتف", "register_submit": "إنشاء حساب", "register_have_account": "عندك حساب؟", "register_login": "ادخل من هنا",
 
     // Hero
-    "chip": "أول منصة فولفيلمنت في تونس",
+    "chip": "أول منصة لوجستيك متكاملة في تونس",
     "h1a": "بِيع براحتك…", "h1b": "والتوصيل علينا.",
     "sub": "Logistica تستقبل السلعة، تخزنها، تحضر الطلبات وتوصلها لزبونك — من الكوموند لليفريزون، بسيطة كيما الحكاية.",
     "cta1": "ابدأ معانا اليوم", "cta2": "كيفاش نخدمو",
@@ -22,7 +22,7 @@ export const translations = {
     "hwe": "العمليات", "hwt": "5 خطوات وتوصل الكولي", "hws": "من نهار يوصلنا الكوموند لين يرجعلك الكاش — كل شي منظم ومتبع.",
     "h1t": "الكوموند توصل", "h1d": "من سيتك، صفحتك ولا أي ماركت بلاص.",
     "h2t": "تخزين آمن", "h2d": "سلعتك في مخازننا، مصنفة ومحمية 24/7.",
-    "h3t": "تحضير سريع", "h3d": "Picking و Packing محترف في أقل من ساعتين.",
+    "h3t": "تحضير سريع", "h3d": "Picking و Packing محترف in أقل من ساعتين.",
     "h4t": "توصيل للدار", "h4d": "شبكة تغطي 24 ولاية في وقت قياسي.",
     "h5t": "خلاصك مضمون", "h5d": "نجمعو الـ COD ونرجعوهلك في J+1.",
 
@@ -77,7 +77,7 @@ export const translations = {
     "register_title": "Créer un compte", "register_subtitle": "Rejoignez plus de 500 marchands tunisiens", "register_name": "Nom complet", "register_shop": "Nom de la boutique", "register_phone": "Numéro de téléphone", "register_submit": "Créer mon compte", "register_have_account": "Déjà client ?", "register_login": "Se connecter",
 
     // Hero
-    "chip": "N°1 du Fulfillment e-commerce en Tunisie",
+    "chip": "N°1 de la Logistique e-commerce en Tunisie",
     "h1a": "Vendez sereinement…", "h1b": "la livraison, c'est nous.",
     "sub": "Logistica réceptionne, stocke, prépare et livre vos commandes — de la commande à la livraison, tout simplement.",
     "cta1": "Démarrer maintenant", "cta2": "Voir le fonctionnement",
