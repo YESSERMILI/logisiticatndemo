@@ -29,39 +29,33 @@ import { Footer } from "@/components/layout/footer";
 // Scrolling ticker component with robust infinite loop logic
 const ScrollingTicker = () => {
   const items = [
-    "LOGISTICA TUNISIE", "✦", 
-    "LIVRAISON 24 GOUVERNORATS", "✦", 
-    "بِيع براحتك والتوصيل علينا", "✦", 
-    "COD & REVERSEMENT J+1", "✦", 
-    "STOCKAGE SÉCURISÉ", "✦", 
-    "تتبع كوليك في كل لحظة", "✦", 
-    "PICKING & PACKING PRO", "✦", 
-    "سلعتك في أمان معانا", "✦",
-    "من الكوموند لليفريزون", "✦", 
-    "DASHBOARD SAAS REAL-TIME", "✦",
-    "Fulfillment e-commerce N°1", "✦",
-    "EXPÉDITION EXPRESS 24H", "✦",
-    "ثقة أكثر من 500 تاجر", "✦",
-    "SERVICE CLIENT DÉDIÉ", "✦",
-    "INTÉGRATION API EXPRESS", "✦",
-    "TUNIS • SOUSSE • SFAX", "✦",
-    "إدارة المرجوعات بكل سلاسة", "✦",
-    "LOGISTIQUE SIMPLIFIÉE", "✦",
-    "E-COMMERCE GROWTH PARTNER", "✦"
+    "LOGISTICA TUNISIE — حلول لوجستية للتجارة الإلكترونية في تونس",
+    "إنت ركّز في البيع، وإحنا نتكفّلوا بالباقي",
+    "من استقبال السلعة وتخزينها لتحضير الكوموند وتوصيلها للحريف",
+    "FULFILLMENT E-COMMERCE — DE LA COMMANDE À LA LIVRAISON",
+    "تخزين منظّم، تحضير دقيق، وتغليف احترافي للكوموندات متاعك",
+    "LIVRAISON EN TUNISIE — SUIVI DES COLIS À CHAQUE ÉTAPE",
+    "تابع الكوموندات متاعك واعرف وين وصل كل كولي",
+    "COD & SUIVI DES VERSEMENTS — UNE GESTION PLUS SIMPLE",
+    "من الستوك للـ Picking & Packing، كل مرحلة منظّمة",
+    "LOGISTICA TUNISIE — شريكك اللوجستي باش تكبّر بيزنسك",
+    "حلول توصيل لمختلف الولايات والمناطق في تونس",
+    "UN SERVICE LOGISTIQUE PENSÉ POUR LES E-COMMERÇANTS TUNISIENS"
   ];
 
-  const TickerLine = () => (
-    <div className="flex items-center flex-shrink-0 whitespace-nowrap">
+  const TickerLine = ({ ariaHidden = false }: { ariaHidden?: boolean }) => (
+    <div className="flex items-center flex-shrink-0" aria-hidden={ariaHidden}>
       {items.map((item, i) => (
-        <span 
-          key={i} 
-          className={cn(
-            "inline-flex items-center text-[#0B2A6B] font-black uppercase text-xs md:text-lg tracking-tighter px-6 md:px-12",
-            /[\u0600-\u06FF]/.test(item) ? "font-arabic" : "font-sans",
-            item === "✦" ? "opacity-20 scale-75" : ""
-          )}
-        >
-          {item}
+        <span key={i} className="flex items-center">
+          <span 
+            className={cn(
+              "inline-flex items-center text-[#0B2A6B] font-black uppercase text-xs md:text-sm lg:text-base tracking-tighter px-6 md:px-12 whitespace-nowrap",
+              /[\u0600-\u06FF]/.test(item) ? "font-arabic" : "font-sans"
+            )}
+          >
+            {item}
+          </span>
+          <span className="text-[#0B2A6B] opacity-20 scale-75 select-none font-sans px-2">✦</span>
         </span>
       ))}
     </div>
@@ -70,19 +64,26 @@ const ScrollingTicker = () => {
   return (
     <div className="relative z-20 h-11 md:h-14 flex items-center overflow-hidden bg-[#0B2A6B]">
       <div className="absolute inset-x-0 -rotate-1 scale-105 flex items-center bg-[#F7931E] py-2 md:py-3 shadow-2xl border-y border-white/10">
-        <div className="flex flex-nowrap animate-ticker-infinite-deep-fix">
+        <div className="flex flex-nowrap animate-ticker-infinite-final">
           <TickerLine />
-          <TickerLine />
+          <TickerLine ariaHidden={true} />
         </div>
       </div>
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes ticker-infinite-deep-fix {
+        @keyframes ticker-infinite-final {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
-        .animate-ticker-infinite-deep-fix {
-          animation: ticker-infinite-deep-fix 45s linear infinite;
+        .animate-ticker-infinite-final {
+          animation: ticker-infinite-final 80s linear infinite;
           width: max-content;
+          display: flex;
+          will-change: transform;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-ticker-infinite-final {
+            animation-play-state: paused;
+          }
         }
       `}} />
     </div>
