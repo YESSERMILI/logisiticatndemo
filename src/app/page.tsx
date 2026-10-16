@@ -62,22 +62,21 @@ const ScrollingTicker = () => {
   );
 
   return (
-    <div className="relative z-20 h-11 md:h-14 flex items-center overflow-hidden bg-[#0B2A6B]">
-      <div className="absolute inset-x-0 -rotate-1 scale-105 flex items-center bg-[#F7931E] py-2 md:py-3 shadow-2xl border-y border-white/10">
-        <div className="flex flex-nowrap animate-ticker-infinite-final">
+    <div className="relative z-20 h-11 md:h-14 flex items-center overflow-hidden bg-[#0B2A6B] w-full">
+      <div className="absolute inset-x-0 -rotate-1 scale-105 flex items-center bg-[#F7931E] py-2 md:py-3 shadow-2xl border-y border-white/10 w-full overflow-hidden">
+        {/* The Track: Uses w-max to ensure it doesn't wrap or shrink */}
+        <div className="flex flex-nowrap w-max animate-ticker-infinite-final">
           <TickerLine />
           <TickerLine ariaHidden={true} />
         </div>
       </div>
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes ticker-infinite-final {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
         }
         .animate-ticker-infinite-final {
-          animation: ticker-infinite-final 80s linear infinite;
-          width: max-content;
-          display: flex;
+          animation: ticker-infinite-final 60s linear infinite;
           will-change: transform;
         }
         @media (prefers-reduced-motion: reduce) {
