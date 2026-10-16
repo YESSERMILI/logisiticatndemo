@@ -26,7 +26,7 @@ import { BentoServices } from "@/components/home/services-bento";
 import { FAQ } from "@/components/home/faq";
 import { Footer } from "@/components/layout/footer";
 
-// Scrolling ticker component with perfect infinite loop logic
+// Scrolling ticker component with robust infinite loop logic
 const ScrollingTicker = () => {
   const items = [
     "LOGISTICA TUNISIE", "✦", 
@@ -41,16 +41,22 @@ const ScrollingTicker = () => {
     "DASHBOARD SAAS REAL-TIME", "✦",
     "Fulfillment e-commerce N°1", "✦",
     "EXPÉDITION EXPRESS 24H", "✦",
-    "ثقة أكثر من 500 تاجر", "✦"
+    "ثقة أكثر من 500 تاجر", "✦",
+    "SERVICE CLIENT DÉDIÉ", "✦",
+    "INTÉGRATION API EXPRESS", "✦",
+    "TUNIS • SOUSSE • SFAX", "✦",
+    "إدارة المرجوعات بكل سلاسة", "✦",
+    "LOGISTIQUE SIMPLIFIÉE", "✦",
+    "E-COMMERCE GROWTH PARTNER", "✦"
   ];
 
   const TickerLine = () => (
-    <div className="flex items-center flex-shrink-0">
+    <div className="flex items-center flex-shrink-0 whitespace-nowrap">
       {items.map((item, i) => (
         <span 
           key={i} 
           className={cn(
-            "inline-flex items-center text-[#0B2A6B] font-black uppercase text-sm md:text-xl tracking-tighter px-8 md:px-16 whitespace-nowrap",
+            "inline-flex items-center text-[#0B2A6B] font-black uppercase text-xs md:text-lg tracking-tighter px-6 md:px-12",
             /[\u0600-\u06FF]/.test(item) ? "font-arabic" : "font-sans",
             item === "✦" ? "opacity-20 scale-75" : ""
           )}
@@ -62,21 +68,21 @@ const ScrollingTicker = () => {
   );
 
   return (
-    <div className="relative z-20 h-12 md:h-16 flex items-center overflow-hidden bg-[#0B2A6B]">
-      <div className="absolute inset-x-0 -rotate-1 scale-105 flex items-center bg-[#F7931E] py-3 md:py-4 shadow-2xl border-y border-white/20">
-        <div className="flex animate-ticker-infinite-perfect">
-          <TickerLine />
+    <div className="relative z-20 h-11 md:h-14 flex items-center overflow-hidden bg-[#0B2A6B]">
+      <div className="absolute inset-x-0 -rotate-1 scale-105 flex items-center bg-[#F7931E] py-2 md:py-3 shadow-2xl border-y border-white/10">
+        <div className="flex flex-nowrap animate-ticker-infinite-deep-fix">
           <TickerLine />
           <TickerLine />
         </div>
       </div>
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes ticker-infinite-perfect {
+        @keyframes ticker-infinite-deep-fix {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-33.333%); }
+          100% { transform: translateX(-50%); }
         }
-        .animate-ticker-infinite-perfect {
-          animation: ticker-infinite-perfect 30s linear infinite;
+        .animate-ticker-infinite-deep-fix {
+          animation: ticker-infinite-deep-fix 45s linear infinite;
+          width: max-content;
         }
       `}} />
     </div>
