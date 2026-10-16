@@ -62,7 +62,7 @@ const ScrollingTicker = () => {
   );
 
   return (
-    <div className="relative z-20 h-11 md:h-14 flex items-center overflow-hidden bg-[#0B2A6B] w-full">
+    <div className="relative z-20 h-11 md:h-14 flex items-center overflow-hidden bg-[#0B2A6B] w-full" dir="ltr">
       <div className="absolute inset-x-0 -rotate-1 scale-105 flex items-center bg-[#F7931E] py-2 md:py-3 shadow-2xl border-y border-white/10 w-full overflow-hidden">
         {/* The Track: Uses w-max to ensure it doesn't wrap or shrink */}
         <div className="flex flex-nowrap w-max animate-ticker-infinite-final">
@@ -379,7 +379,7 @@ export default function HomePage() {
               "text-xl text-[#9FB2DE] leading-relaxed",
               language === 'ar' && "font-arabic"
             )}>
-              {language === 'ar' ? "انضم لأكثر من 500 تاجر إلكتروني يثقوا في Logistica لتسيير عملياتهم اليومية." : "Rejoignez plus de 500 e-commerçants qui font confiance à Logistica pour piloter leurs opérations quotidiennes."}
+              {language === 'ar' ? "انضم لأكثر من 500 تاجر إلكتروني يثقوا in Logistica لتسيير عملياتهم اليومية." : "Rejoignez plus de 500 e-commerçants qui font confiance à Logistica pour piloter leurs opérations quotidiennes."}
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
               <Button size="lg" className="h-16 px-10 text-xl font-bold bg-[#F7931E] text-[#0B2A6B] rounded-sm shadow-2xl hover:bg-[#E0861A] border-none" asChild>
