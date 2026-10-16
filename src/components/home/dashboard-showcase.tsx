@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useTranslation } from "@/hooks/use-translation";
@@ -5,7 +6,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { 
   Package, TrendingUp, Wallet, Box, CheckCircle2, 
-  LayoutDashboard, Bell, Search
+  LayoutDashboard, Bell
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +18,7 @@ export function DashboardShowcase() {
     { icon: Package, label: t('db_kpi1'), value: "142", trend: "+18%", color: "text-[#1F6FDB]", bg: "bg-[#1F6FDB]/10" },
     { icon: TrendingUp, label: t('db_kpi2'), value: "98.4 %", trend: "Objectif SLA", color: "text-emerald-400", bg: "bg-emerald-400/10" },
     { icon: Wallet, label: t('db_kpi3'), value: "8 450 DT", trend: "Virement J+1", color: "text-[#F7931E]", bg: "bg-[#F7931E]/10" },
-    { icon: Box, label: t('db_kpi4'), value: "3 SKUs", trend: "Réappro suggéré", color: "text-amber-400", bg: "bg-amber-400/10" },
+    { icon: Box, label: t('db_kpi4'), value: "12 Art.", trend: "Réappro suggéré", color: "text-amber-400", bg: "bg-amber-400/10" },
   ];
 
   const tabs = [
@@ -30,9 +31,8 @@ export function DashboardShowcase() {
   const features = [t('db_feature1'), t('db_feature2'), t('db_feature3')];
 
   return (
-    <section id="dashboard" className="py-24 bg-[#0B2A6B] text-white overflow-hidden relative">
+    <section id="dashboard" className="py-24 bg-[#0B2A6B] text-white overflow-hidden relative border-y border-white/5">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#1F6FDB]/10 rounded-full blur-[120px] opacity-40 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#F7931E]/5 rounded-full blur-[100px] opacity-30 pointer-events-none" />
       
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
@@ -50,7 +50,7 @@ export function DashboardShowcase() {
             {t('db_title')}
           </h2>
           <p className={cn(
-            "text-[#9FB2DE] text-lg font-medium leading-[1.6] max-w-2xl mx-auto",
+            "text-[#9FB2DE] text-lg font-medium leading-[1.6] max-w-2xl mx-auto opacity-80",
             language === 'ar' && "font-arabic"
           )}>
             {t('db_desc')}
@@ -73,7 +73,7 @@ export function DashboardShowcase() {
               </div>
               <div className="hidden md:flex items-center gap-3 px-4 py-1.5 bg-white/5 rounded-lg border border-white/5">
                 <LayoutDashboard className="w-4 h-4 text-[#F7931E]" />
-                <span className="font-bold text-[10px] tracking-widest text-[#9FB2DE]/60 uppercase">Tableau de bord</span>
+                <span className="font-bold text-[10px] tracking-widest text-[#9FB2DE]/60 uppercase">DASHBOARD</span>
               </div>
             </div>
             
@@ -121,25 +121,13 @@ export function DashboardShowcase() {
             </div>
 
             <div className="p-8 rounded-[32px] bg-black/20 border border-white/5 relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#1F6FDB]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
               <div className="flex items-center justify-between mb-10 relative z-10">
                 <div className="space-y-1">
                   <h4 className="text-white font-bold flex items-center gap-2">
                     <TrendingUp className="h-5 w-5 text-[#F7931E]" />
                     {t('db_chart_title')}
                   </h4>
-                  <p className="text-[10px] text-[#9FB2DE]/40 font-bold uppercase tracking-widest">Performances hebdomadaires</p>
-                </div>
-                <div className="flex gap-4">
-                   <div className="flex items-center gap-2">
-                     <div className="w-3 h-3 rounded-full bg-[#F7931E]" />
-                     <span className="text-[10px] font-bold text-[#9FB2DE]/60 uppercase">Livrés</span>
-                   </div>
-                   <div className="flex items-center gap-2">
-                     <div className="w-3 h-3 rounded-full bg-[#1F6FDB]" />
-                     <span className="text-[10px] font-bold text-[#9FB2DE]/60 uppercase">En cours</span>
-                   </div>
+                  <p className="text-[10px] text-[#9FB2DE]/40 font-bold uppercase tracking-widest">Flux hebdomadaires consolidés</p>
                 </div>
               </div>
 
@@ -150,21 +138,8 @@ export function DashboardShowcase() {
                         <stop offset="0%" stopColor="#F7931E" stopOpacity="0.3" />
                         <stop offset="100%" stopColor="#F7931E" stopOpacity="0" />
                       </linearGradient>
-                      <filter id="glow">
-                        <feGaussianBlur stdDeviation="4" result="blur" />
-                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                      </filter>
                     </defs>
-
-                    {[0, 40, 80, 120, 160].map((y) => (
-                      <line key={y} x1="0" y1={y} x2="600" y2={y} stroke="white" strokeWidth="0.5" strokeOpacity="0.05" />
-                    ))}
-
-                    <path 
-                      d="M 0,140 Q 50,110 100,120 T 200,70 T 300,90 T 400,40 T 500,30 T 600,10 L 600,160 L 0,160 Z" 
-                      fill="url(#chartGradient)" 
-                    />
-
+                    <path d="M 0,140 Q 50,110 100,120 T 200,70 T 300,90 T 400,40 T 500,30 T 600,10 L 600,160 L 0,160 Z" fill="url(#chartGradient)" />
                     <motion.path 
                       initial={{ pathLength: 0 }}
                       whileInView={{ pathLength: 1 }}
@@ -174,40 +149,8 @@ export function DashboardShowcase() {
                       strokeWidth="5" 
                       strokeLinecap="round" 
                       fill="none"
-                      filter="url(#glow)"
                     />
-
-                    <motion.path 
-                      initial={{ pathLength: 0 }}
-                      whileInView={{ pathLength: 1 }}
-                      transition={{ duration: 3, ease: "easeInOut", delay: 0.2 }}
-                      d="M 0,150 Q 60,130 120,140 T 240,100 T 360,110 T 480,80 T 600,60" 
-                      stroke="#1F6FDB" 
-                      strokeWidth="3" 
-                      strokeLinecap="round" 
-                      strokeDasharray="8 8"
-                      fill="none"
-                      opacity="0.5"
-                    />
-
-                    {[
-                      {x: 100, y: 120}, {x: 300, y: 90}, {x: 500, y: 30}
-                    ].map((dot, i) => (
-                      <motion.g 
-                        key={i} 
-                        initial={{ opacity: 0, scale: 0 }} 
-                        whileInView={{ opacity: 1, scale: 1 }} 
-                        transition={{ delay: 1.5 + (i * 0.2) }}
-                      >
-                        <circle cx={dot.x} cy={dot.y} r="8" fill="#F7931E" fillOpacity="0.2" />
-                        <circle cx={dot.x} cy={dot.y} r="4" fill="#F7931E" />
-                      </motion.g>
-                    ))}
                  </svg>
-              </div>
-              
-              <div className="flex justify-between mt-6 px-2 text-[9px] font-black text-[#9FB2DE]/30 uppercase tracking-[0.3em]">
-                <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
               </div>
             </div>
           </div>
