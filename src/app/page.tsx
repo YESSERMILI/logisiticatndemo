@@ -192,12 +192,12 @@ export default function HomePage() {
           Logistica Tunisie
         </div>
         
-        <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+        <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-30">
           <motion.div 
             initial={{ opacity: 0, x: language === 'ar' ? 40 : -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col"
+            className="flex flex-col relative z-30"
           >
             <span className="inline-block bg-[#F7931E] text-[#0B2A6B] font-bold text-xs px-4 py-2 rounded-sm mb-6 -rotate-2 shadow-lg w-fit">
               {t('chip')}
@@ -224,13 +224,13 @@ export default function HomePage() {
               {t('sub')}
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
-              <Button className="h-14 px-8 text-lg font-bold bg-[#F7931E] text-[#0B2A6B] shadow-xl hover:shadow-[#F7931E]/20 transition-all rounded-sm group border-none" asChild>
+              <Button className="h-14 px-8 text-lg font-bold bg-[#F7931E] text-[#0B2A6B] shadow-xl hover:shadow-[#F7931E]/20 hover:bg-[#E0861A] transition-all rounded-sm group border-none relative z-40" asChild>
                 <Link href="/register">
                   {t('cta1')}
                   <ArrowRight className={cn("transition-transform group-hover:translate-x-1", language === 'ar' && "rotate-180 ml-2 mr-0")} />
                 </Link>
               </Button>
-              <Button variant="outline" className="h-14 px-8 text-lg font-bold border-2 border-white text-white hover:bg-white hover:text-[#0B2A6B] rounded-sm bg-transparent" asChild>
+              <Button variant="outline" className="h-14 px-8 text-lg font-bold border-2 border-white text-white hover:bg-white hover:text-[#0B2A6B] rounded-sm bg-transparent relative z-40" asChild>
                 <Link href="#preparation">{t('cta2')}</Link>
               </Button>
             </div>
@@ -250,7 +250,7 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          <div className="relative min-w-0 flex items-center justify-center">
+          <div className="relative min-w-0 flex items-center justify-center z-10">
             <div className="hero-hub">
               <img
                 src="/images/hero-logistics-hub.svg"
