@@ -238,13 +238,13 @@ export function BentoServices() {
       initial={{ height: 0, opacity: 0 }}
       animate={{ height: "auto", opacity: 1 }}
       exit={{ height: 0, opacity: 0 }}
-      transition={{ duration: 0.25, ease: "easeInOut" }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       className="col-span-full overflow-hidden"
     >
-      <div className="bg-[#081E4E] border-2 border-[#1F6FDB]/30 rounded-[32px] p-8 md:p-12 my-4 relative shadow-2xl">
+      <div className="bg-[#081E4E] border-2 border-[#1F6FDB]/30 rounded-[32px] p-8 md:p-12 my-6 relative shadow-2xl">
         <button 
           onClick={() => setSelectedId(null)}
-          className="absolute top-6 rtl:left-6 ltr:right-6 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-all text-white/40 hover:text-white"
+          className="absolute top-6 rtl:left-6 ltr:right-6 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-all text-white/40 hover:text-white z-20"
         >
           <X size={20} />
         </button>
@@ -297,6 +297,27 @@ export function BentoServices() {
     </motion.div>
   );
 
+  // Helper to check if the panel should be shown after this index
+  const shouldShowPanel = (idx: number) => {
+    if (selectedId === null) return false;
+    
+    const isLg = typeof window !== 'undefined' && window.innerWidth >= 1024;
+    const isMd = typeof window !== 'undefined' && window.innerWidth >= 768 && window.innerWidth < 1024;
+    
+    if (isLg) {
+      // Row 1 ends at index 2, Row 2 ends at index 5
+      const rowEndIdx = Math.floor(selectedId / 3) * 3 + 2;
+      return idx === Math.min(rowEndIdx, services.length - 1);
+    } else if (isMd) {
+      // Row 1: 0-1, Row 2: 2-3, Row 3: 4-5
+      const rowEndIdx = Math.floor(selectedId / 2) * 2 + 1;
+      return idx === Math.min(rowEndIdx, services.length - 1);
+    } else {
+      // Mobile: Always after the card itself
+      return idx === selectedId;
+    }
+  };
+
   return (
     <section id="services" className="py-24 bg-[#0B2A6B]" dir={isAr ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-6">
@@ -316,9 +337,7 @@ export function BentoServices() {
           </p>
         </div>
 
-        {/* Desktop & Tablet Logic: Row-aware expansion */}
-        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* First Row for Desktop (3 cols) / Tablet (2 cols) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, idx) => (
             <div key={s.id} className="contents">
               <ServiceCard 
@@ -328,34 +347,10 @@ export function BentoServices() {
                 isAr={isAr}
               />
               
-              {/* Desktop: Insert panel after 3rd item (Row 1) or 6th item (Row 2) */}
-              {/* Tablet: Insert panel after 2nd, 4th, 6th */}
-              <div className="lg:hidden md:block col-span-full">
-                <AnimatePresence>
-                  {selectedId === s.id && (idx === 1 || idx === 3 || idx === 5) && <DetailsPanel service={s} />}
-                </AnimatePresence>
-              </div>
-              <div className="hidden lg:block col-span-full">
-                <AnimatePresence>
-                  {selectedId === s.id && (idx === 2 || idx === 5) && <DetailsPanel service={s} />}
-                </AnimatePresence>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Mobile Logic: 1 Column, expansion after each card */}
-        <div className="md:hidden flex flex-col gap-6">
-          {services.map((s) => (
-            <div key={s.id} className="flex flex-col">
-              <ServiceCard 
-                service={s} 
-                isActive={selectedId === s.id} 
-                onClick={() => handleToggle(s.id)} 
-                isAr={isAr}
-              />
-              <AnimatePresence>
-                {selectedId === s.id && <DetailsPanel service={s} />}
+              <AnimatePresence mode="wait">
+                {shouldShowPanel(idx) && selectedId !== null && (
+                  <DetailsPanel service={services[selectedId]} />
+                )}
               </AnimatePresence>
             </div>
           ))}
@@ -375,7 +370,7 @@ function ServiceCard({ service, isActive, onClick, isAr }: { service: Service, i
         "rounded-[32px] p-8 flex flex-col group cursor-pointer transition-all duration-300 border relative overflow-hidden h-full min-h-[220px]",
         service.color,
         service.color.includes('bg-white/5') ? "border-white/5 hover:bg-white/10" : "border-transparent",
-        isActive && "ring-4 ring-[#1F6FDB]/40 border-[#1F6FDB]"
+        isActive && "ring-4 ring-[#1F6FDB]/40 border-[#1F6FDB] z-10"
       )}
     >
       <div className="flex items-center justify-between mb-8 relative z-10">
@@ -405,4 +400,3 @@ function ServiceCard({ service, isActive, onClick, isAr }: { service: Service, i
     </motion.div>
   );
 }
-
